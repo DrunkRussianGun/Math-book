@@ -1,0 +1,25 @@
+\section{Неопределённый интеграл}
+\begin{definition}
+	Первообразной функции~$f(x)$ называется функция~$F(x) \colon F'(x) = f(x)$.
+\end{definition}
+
+\begin{theorem}
+	Если $F'(x) = G'(x) = f(x)$, то $F(x) - G(x) = C$, где $C$~--- некоторая константа.
+\end{theorem}
+\begin{proof}
+	Пусть $F(x) - G(x) = Ф(x)$, тогда по теореме о\ldots $Ф(b) - Ф(a) = Ф'(c)(b - c) = 0
+	\opbr\Rightarrow Ф(x) = C$.
+\end{proof}
+
+Некоторые интегралы:
+\begin{itemize}
+	\item $\int \frac{dx}{1 - x^2} = \frac12 \ln \left|\frac{1 + x}{1 - x}\right| + C$
+	\item $\int \frac{dx}{\sqrt{x^2 + k}} = \ln \left| x + \sqrt{x^2 + k} \right| + C$
+\end{itemize}
+
+Свойства интегралов:
+\begin{itemize}
+	\item $\int (\alpha f(x) + \beta g(x))dx = \alpha\int f(x)dx + \beta\int g(x)dx$
+	Замена переменной: \item $\int f(\varphi(t)) \varphi'(t)dt = F(\varphi(t)) + C$, где $F(x) + C = \int f(x)dx$
+	Интегрирование по частям: $\int u(x) v'(x)dx = u(x) v(x) - \int u'(x) v(x)dx$
+\end{itemize}

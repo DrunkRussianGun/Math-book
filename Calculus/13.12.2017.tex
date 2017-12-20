@@ -1,0 +1,45 @@
+\section{Интегрирование дробно-рациональных функций}
+	Рассмотрим дроби вида $\frac{P_n(x)}{Q_m(x)}$. Будем считать, что $n < m$, т.\,к. при $n \geqslant m \ \frac{P_n(x)}{Q_m(x)} = T_{n-m}(x) + \frac{P_{m-1}'(x)}{Q_m(x)}$.
+	
+	Пусть $Q_m(x) = (x - a_1)^{\alpha_1} (x - a_2)^{\alpha_2} \cdot \ldots \cdot (x - a_p)^{\alpha_p} (x - b_1 - i c_1)^{\beta_1} (x - b_1 + i c_1)^{\beta_1} \cdot \ldots \cdot (x - b_q - i c_q)^{\beta_q} (x - b_q + i c_q)^{\beta_q}
+	\opbr= (x - a_1)^{\alpha_1} (x - a_2)^{\alpha_2} \cdot \ldots \cdot (x - a_p)^{\alpha_p} ((x - b_1)^2 + c_1^2)^{\beta_1} \cdot \ldots \cdot ((x - b_q)^2 + c_q^2)^{\beta_q}$. Т./,о., $m = \sum_{k=1}^{p} \alpha_k + 2 \sum_{k=1}^{q} \beta_k$.
+	
+	Пусть $\frac{P_n(x)}{Q_m(x)} = \frac{A_{11}}{(x - a_1)^{\alpha_1}} + \frac{P_{n-1}(x)}{(x - a_1)^{\alpha_1 - 1} \cdot \ldots} = \ldots
+	\opbr= \frac{A_{11}}{(x - a_1)^{\alpha_1}}
+	+ \frac{A_{12}}{(x - a_1)^{\alpha_1 - 1}} + \ldots
+	+ \frac{A_{1\,\alpha_1}}{x - a_1} + \ldots
+	+ \frac{A_{1\,\alpha_p}}{x - a_p}
+	+ \frac{B_{11} x + C_{11}}{((x - b_1)^2 + c_1^2)^{\beta_1}} + \ldots
+	+ \frac{B_{1\,\beta_q} x + C_{1\,\beta_q}}{(x - b_q)^2 + c_q^2} + \ldots
+	+ \frac{B_{1\,\beta_q} x + C_{1\,\beta_q}}{(x - b_q)^2 + c_q^2}$
+	
+\subsection{Интегрирование простейших дробей}
+	$\int \frac{dx}{(x - a)^\alpha} |z = x - a, \ dx = dz| = \int z^{-\alpha}dz =
+\begin{cases}
+	\frac{(x-a)^{1-\alpha}}{1-\alpha} + C, \ \alpha \neq 1 \\
+	ln |x - a| + C, \ \alpha = 1
+\end{cases}$
+
+	$\int \frac{(x + a)dx}{((x - b)^2 + c^2)^\beta}$
+\begin{enumerate}
+	\item Пусть $\beta = 1$.
+	$\int \frac{(x + a)dx}{(x - b)^2 + c^2} |x - b = z, \ dx = dz| = \int \frac{(z + b + a)dz}{z^2 + c^2} = \frac12 \int \frac{2z dz}{z^2 + c^2} + (a + b) \int \frac{dz}{z^2 + c^2}
+	\opbr= \frac12 \ln (z^2 + c^2) + \frac{a + b}{c} \int \frac{d(\frac{z}c)}{1 + (\frac{z}c)^2}
+	\opbr= \frac12 \ln (z^2 + c^2) + \frac{a + b}{c} \arctan \frac{z}c + C
+	\opbr= \frac12 \ln ((x - b)^2 + c^2) + \frac{a + b}{c} \arctan \frac{x - b}c + C$
+	
+	\item Пусть $\beta \neq 1$.
+	$\int \frac{(x + a)dx}{((x - b)^2 + c^2)^\beta} |x - b = z, \ dx = dz| = \int \frac{(z + b + a)dz}{(z^2 + c^2)^\beta} = \frac12 \int \frac{2z dz}{(z^2 + c^2)^\beta} + (a + b) \int \frac{dz}{(z^2 + c^2)^\beta}
+	\opbr= \frac{(z^2 + c^2)^{1 - \beta}}{4(1 - \beta)} + \frac{a + b}{c} I_\beta$
+	
+	Найдём $I_\beta$: $I_\beta = \int \frac{dz}{(z^2 + c^2)^\beta}
+	\opbr= \frac1{c^2} \int \frac{(c^2 + z^2) - z^2}{(z^2 + c^2)^\beta} dz
+	\opbr= \frac1{c^2} (I_{\beta - 1} - \int \frac{z^2 dz}{(z^2 + c^2)^\beta})$.
+	
+	$\int \frac{z^2 dz}{(z^2 + c^2)^\beta} | u = z, \ u' = 1, \ v' = \frac{z}{(z^2 + c^2)^\beta}, \ v = \frac{(z^2 + c^2)^{1 - \beta}}{2(1 - \beta)} |
+	\opbr= \frac{z}{2(1 - \beta)(z^2 + c^2)^{\beta - 1}} - \frac1{2(1 - \beta)} \int \frac{dz}{(z^2 + c^2)^{\beta - 1}}$
+	
+	Тогда $I_\beta = \frac1{c^2} (I_{\beta - 1} - \frac{z}{2(1 - \beta)(z^2 + c^2)^{\beta - 1}} + \frac1{2(1 - \beta)} I_{\beta - 1})
+	\opbr= \frac{3 - 2\beta}{2 c^2 (1 - \beta)} I_{\beta - 1} - \frac{z}{2 c^2 (1 - \beta)(z^2 + c^2)^{\beta - 1}}
+	\opbr= \frac1{2 c^2 (1 - \beta)} \left( (3 - 2\beta) I_{\beta - 1} - \frac{z}{(z^2 + c^2)^{\beta - 1}} \right)$.
+\end{enumerate}

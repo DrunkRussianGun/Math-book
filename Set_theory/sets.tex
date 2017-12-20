@@ -1,0 +1,45 @@
+\section{Множества}
+	Множество~--- основное понятие. Некоторые числовые множества:
+\begin{itemize}
+	\item $\mathbb N = \{ 1, 2, 3, \dots \}$~--- множество натуральных чисел.
+	\item $\mathbb Z = \{ \dots, -2, -1, 0, 1, 2, \dots \}$~--- множество целых чисел.
+	\item $\mathbb Q = \left\{ \dfrac{m}n \mid m \in \mathbb Z \land n \in \mathbb N \right\}$
+	~--- множество рациональных чисел.
+	\item $\mathbb I$~--- множество иррациональных чисел.
+	\item $\mathbb R$~--- множество действительных (вещественных) чисел.
+	\item $\mathbb C$~--- множество комплексных чисел.
+\end{itemize}
+
+\subsection{Отношения между множествами}
+	Пусть $A, B$~--- множества. Между~ними определены следующие отношения:
+\begin{itemize}
+	\item $A$ включено в~$B$ (является \textbf{подмножеством}~$B$):
+	\[ A \subseteq B \Leftrightarrow \forall a \in A \ a \in B \]
+	Нередко вместо знака~$\subseteq$ пишется знак~$\subset$\,.
+	\item $A$ равно $B$:
+	\[ A = B \Leftrightarrow \forall a \ (a \in A \Leftrightarrow a \in B) \]
+	\item $A$ строго включено в~$B$:
+	\[ A \subset B \Leftrightarrow A \subseteq B \land A = B \]
+\end{itemize}
+
+\subsection{Операции над множествами}
+	Пусть $A, B$~--- множества. Над~ними определены следующие операции:
+\begin{itemize}
+	\item \textbf{Объединение}:
+	\[ A \cup B = \{ x \mid x \in A \lor x \in B \} \]
+	\item \textbf{Пересечение}:
+	\[ A \cap B = \{ x \mid x \in A \land x \in B \} \]
+	\item \textbf{Разность}:
+	\[ A \setminus B = \{ x \mid x \in A \land x \notin B \} \]
+	\item \textbf{Симметрическая разность}:
+	\[ A \triangle B = \{ x \mid x \in A \land x \notin B \lor x \notin A \land x \in B \} \]
+	\item \textbf{Дополнение} до~$U$, где~$A \subseteq U$:
+	\[ \overline A = \{ x \in U \mid x \notin A \} \]
+	\item \textbf{Декартово произведение}:
+	\[ A \times B = \{ (x, y) \mid x \in A \land y \in B \} \]
+	\item \textbf{Декартова степень}:
+	\[ A^n = \underbrace{A \times A \times \ldots \times A}_n \]
+\end{itemize}
+
+\input{Set_theory/functions}
+\input{Set_theory/cardinality_of_a_set}
