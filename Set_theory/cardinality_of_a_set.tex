@@ -1,29 +1,25 @@
 \subsection{Мощность множеств}
-\begin{definition}
-	Множества $A$ и $B$ называются \textbf{равномощными (имеют одинаковую мощность)}, если существует биекция~$f \colon A \to B$, иначе~--- \textbf{неравномощными}.
-	
-	Для конечных множеств это означает, что у~них одинаковое количество элементов.
-\end{definition}
+Множества $A$ и $B$ называются \textbf{равномощными (имеют одинаковую мощность)}, если существует биекция~$f \colon A \to B$, иначе~--- \textbf{неравномощными}.
 
-\begin{definition}
-	\textbf{Мощностью} конечного множества~$A$ называется количество~$|A|$ его элементов.
-\end{definition}
-	
-	Множество всех подмножеств множества~$A$ обозначается
-	\[ \mathcal P(A) = \{ x \mid x \subseteq A \} \]
-	
-	Множество всех подмножеств множества~$A$ мощности~$k$ обозначается
-	\[ \mathcal P_k(A) = \{ x \subseteq A \mid |x| = k \} \]
-	
+Для конечных множеств это означает, что у~них одинаковое количество элементов.
+
+\textbf{Мощностью} конечного множества~$A$ называется количество~$|A|$ его элементов.
+
+Множество всех подмножеств множества~$A$ обозначается
+\[ \mathcal P(A) = \{ x \mid x \subseteq A \} \]
+
+Множество всех подмножеств множества~$A$ мощности~$k$ обозначается
+\[ \mathcal P_k(A) = \{ x \subseteq A \mid |x| = k \} \]
+
 \begin{theorem}[Кантора]
-	Множества $A$ и $\mathcal P(A)$ не~равномощны.
+Множества $A$ и $\mathcal P(A)$ не~равномощны.
 \end{theorem}
 \begin{proofcontra}
-	Пусть $f \colon A \to \mathcal P(A)$~--- биекция. Рассмотрим множество
-	\[ X = \{ a \in A \mid a \notin f(a) \} \Rightarrow X \subset A \Rightarrow X \in \mathcal P(A) \]
-	
-	$f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
-	Возможны два случая:
+Пусть $f \colon A \to \mathcal P(A)$~--- биекция. Рассмотрим множество
+\[ X = \{ a \in A \mid a \notin f(a) \} \Rightarrow X \subset A \Rightarrow X \in \mathcal P(A) \]
+
+$f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
+Возможны два случая:
 \begin{enumerate}
 	\item Пусть $b \in X \Rightarrow b \in f(b) \Rightarrow b \notin X$.
 	Противоречие.
@@ -31,11 +27,11 @@
 	Противоречие.
 \end{enumerate}
 
-	В~обоих случаях получили противоречие.
+В~обоих случаях получили противоречие.
 \end{proofcontra}
 
 \begin{theorem}
-	Пусть дано множество~$A \colon |A| = n$, тогда $|\mathcal P_k(A)| = C_n^k$.
+Пусть дано множество~$A \colon |A| = n$, тогда $|\mathcal P_k(A)| = C_n^k$.
 \end{theorem}
 \begin{proofmathind}
 	\indbase $n = 0$:
@@ -45,13 +41,12 @@
 	Пусть $X \subset A$, $|X| = k$, $a \in A$.
 	Подсчитаем количество таких $X$.
 	Возможны два случая:
-\begin{enumerate}
-	\item Пусть $a \notin X \Rightarrow X \subset A \setminus \{ a \}$, тогда таких~$X$~$C_n^k$.
-	\item Пусть $a \in X$, тогда таких $X$ столько~же, сколько множеств
-	$X \setminus \{ a \} \subset A \setminus \{ a \}$, т.\,е.~$C_n^{k-1}$.
-\end{enumerate}
+	\begin{enumerate}
+		\item Пусть $a \notin X \Rightarrow X \subset A \setminus \{ a \}$, тогда таких~$X$~$C_n^k$.
+		\item Пусть $a \in X$, тогда таких $X$ столько~же, сколько множеств
+		$X \setminus \{ a \} \subset A \setminus \{ a \}$, т.\,е.~$C_n^{k-1}$.
+	\end{enumerate}
 
-	Тогда $|\mathcal P(A)| = C_n^{k-1} + C_n^k = C_{n+1}^k$.
-	\indend
-	
+	Тогда $|\mathcal P(A)| = C_n^{k-1} + C_n^k = C_{n+1}^k$. \indend
+
 \end{proofmathind}
