@@ -1,0 +1,99 @@
+\subsection{Операции над матрицами}
+Матрица, все элементы которой равны 0, называется \textbf{нулевой} и~обозначается $O$.
+
+Квадратная матрица, в~которой элементы главной диагонали равны 1, а остальные~--- 0, называется \textbf{единичной} и~обозначается $E$.
+
+Над~матрицами определены следующие операции:
+\begin{itemize}
+	\item\textbf{Сложение.}
+	Определено только над~матрицами одинакового размера.
+	\begin{equation*}
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\ 
+	a_{21} & a_{22} & \cdots & a_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{Vmatrix} +
+	\begin{Vmatrix}
+	b_{11} & b_{12} & \cdots & b_{1n} \\ 
+	b_{21} & b_{22} & \cdots & b_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	b_{m1} & b_{m2} & \cdots & b_{mn}
+	\end{Vmatrix} =
+	\begin{Vmatrix}
+	a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\ 
+	a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
+	\end{Vmatrix}
+	\end{equation*}
+	
+	Пусть $A, B, C$~--- матрицы. Свойства сложения:
+	\begin{itemize}
+		\item коммутативность:
+		$A + B = B + A$
+		\item ассоциативность:
+		$(A + B) + C = A + (B + C)$
+	\end{itemize}
+	
+	\item\textbf{Умножение на~число.}
+	\begin{equation*}
+	\lambda \cdot
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\ 
+	a_{21} & a_{22} & \cdots & a_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{Vmatrix} =
+	\begin{Vmatrix}
+	\lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\ 
+	\lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	\lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
+	\end{Vmatrix}
+	\end{equation*}
+	
+	Пусть $\alpha, \beta$~--- числа, $A, B$~--- матрицы. Свойства умножения на~число:
+	\begin{itemize}
+		\item ассоциативность:
+		$(\alpha \cdot \beta) \cdot A = \alpha \cdot (\beta \cdot A)$
+		\item дистрибутивность относительно~сложения чисел:
+		$(\alpha + \beta) \cdot A = \alpha \cdot A + \beta \cdot A$
+		\item дистрибутивность относительно~сложения матриц:
+		$\alpha \cdot (A + B) = \alpha \cdot A + \alpha \cdot B$
+	\end{itemize}
+	
+	\item\textbf{Умножение}. $A \cdot B$ определено, только если количество столбцов в~матрице $A$ совпадает с~количеством строк в~матрице $B$.
+	\begin{equation*}
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1k} \\ 
+	a_{21} & a_{22} & \cdots & a_{2k} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	a_{m1} & a_{m2} & \cdots & a_{mk}
+	\end{Vmatrix} \cdot
+	\begin{Vmatrix}
+	b_{11} & b_{12} & \cdots & b_{1n} \\ 
+	b_{21} & b_{22} & \cdots & b_{2n} \\ 
+	\vdots & \vdots & \ddots & \vdots \\ 
+	b_{k1} & b_{k2} & \cdots & b_{kn}
+	\end{Vmatrix} =
+	\begin{Vmatrix}
+	\sum a_{1i}b_{i1} & \sum a_{1i}b_{i2} & \cdots & \sum a_{1i}b_{in} \\
+	\sum a_{2i}b_{i1} & \sum a_{2i}b_{i2} & \cdots & \sum a_{2i}b_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\sum a_{mi}b_{i1} & \sum a_{mi}b_{i2} & \cdots & \sum a_{mi}b_{in}
+	\end{Vmatrix}
+	\end{equation*}
+	где суммирование производится по~$i$ от~$1$ до~$k$.
+	
+	Пусть $\lambda$~--- число, $A, B, C$~--- матрицы. Свойства умножения:
+	\begin{itemize}
+		\item ассоциативность:
+		$(A \cdot B) \cdot C = A \cdot (B \cdot C)$
+		\item дистрибутивность:
+		$(A + B) \cdot C \opbr= A \cdot C + B \cdot C$,
+		$A \cdot (B + C) \opbr= A \cdot B + A \cdot C$
+		\item ассоциативность и~коммутативность относительно~умножения на~число:
+		$(\lambda \cdot A) \cdot B \opbr= \lambda \cdot (A \cdot B) \opbr= A \cdot (\lambda \cdot B)$
+	\end{itemize}
+\end{itemize}
