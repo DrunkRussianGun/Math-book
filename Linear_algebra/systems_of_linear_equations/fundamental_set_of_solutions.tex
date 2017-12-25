@@ -1,0 +1,62 @@
+% beta
+\subsection{Фундаментальная система решений}
+\begin{statement}
+Однородная линейно независимая система уравнений
+\begin{equation*}
+\begin{cases}
+\displaystyle \sum_{i=1}^n a_{1i} x_i = 0 \\
+\displaystyle \sum_{i=1}^n a_{2i} x_i = 0 \\
+\vdots \\
+\displaystyle \sum_{i=1}^n a_{mi} x_i = 0
+\end{cases}
+\end{equation*}
+задаёт векторное пространство размерности~$n - m$.
+\end{statement}
+\begin{proof}
+
+\end{proof}
+
+\textbf{Фундаментальной системой решений} однородной системы линейных уравнений называется базис множества всех её решений.
+
+\subsubsection{Нахождение фундаментальной системы решений}
+Пусть дана однородная линейно независимая система уравнений:
+\begin{equation*}
+\begin{cases}
+\displaystyle \sum_{i=1}^n a_{1i} x_i = 0 \\
+\displaystyle \sum_{i=1}^n a_{2i} x_i = 0 \\
+\vdots \\
+\displaystyle \sum_{i=1}^n a_{mi} x_i = 0 \\
+\end{cases} \Leftrightarrow
+\begin{cases}
+\displaystyle \sum_{i=1}^m a_{1i} x_i = -\sum_{i=m+1}^n a_{1i} x_i \\
+\displaystyle \sum_{i=1}^m a_{2i} x_i = -\sum_{i=m+1}^n a_{2i} x_i \\
+\vdots \\
+\displaystyle \sum_{i=1}^m a_{mi} x_i = -\sum_{i=m+1}^n a_{mi} x_i \\
+\end{cases}
+\end{equation*}
+
+Пусть 
+\begin{equation*}
+(x_{11}; x_{21}; \ldots; x_{m1}; 1; 0; \ldots; 0)
+\end{equation*}
+\begin{equation*}
+(x_{12}; x_{22}; \ldots; x_{m2}; 0; 1; \ldots; 0)
+\end{equation*}
+\begin{equation*}
+\vdots
+\end{equation*}
+\begin{equation*}
+(x_{1\, n-m}; x_{2\, n-m}; \ldots; x_{m\, n-m}; 0; 0; \ldots; 1)
+\end{equation*}
+являются решениями данной системы. 
+Тогда они образуют фундаментальную систему решений.
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+Общее решение неоднородной системы линейных уравнений равно сумме её частного решения и~общего решения соответствующей однородной системы, т.\,е. с~теми~же самыми коэффициентами при~переменных.
+\end{theorem}
+\begin{proof}
+
+\end{proof}

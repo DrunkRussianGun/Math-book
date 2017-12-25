@@ -1,0 +1,125 @@
+% beta
+\subsection{Решение систем линейных уравнений}
+\begin{lemma}
+Пусть система из~строк $A_1, \ldots, A_n$ линейно независима и~$A_{n+1}$ не~является линейной комбинацией $A_1, \ldots, A_n$. Тогда система из~строк $A_1, \ldots, A_n, A_{n+1}$ линейно независима.
+\end{lemma}
+\begin{proofcontra}
+Пусть система из~строк $A_1, \ldots, A_n, A_{n+1}$ линейно зависима:
+\begin{equation*}
+\sum_{i=1}^{n+1} \alpha_i A_i = O, \ 
+\sum_{i=1}^{n+1} \alpha_i^2 \neq 0
+\end{equation*}
+где $O$~--- нулевая строка.
+Система из~строк $A_1, \ldots, A_n$ линейно независима по~условию, тогда
+\begin{equation*}
+\alpha_{n+1} \neq 0 \Rightarrow A_{n+1} = -\sum_{i=1}^n \frac{\alpha_i}{\alpha_{n+1}} A_i
+\end{equation*}
+
+Значит, $A_{n+1}$~--- линейная комбинация $A_1, \ldots, A_n$.
+Противоречие с~условием.
+\end{proofcontra}
+
+\begin{theorem}[Кронекера~---~Капелли]
+Система линейных уравнений совместна $\Leftrightarrow$ ранг основной матрицы совпадает с~рангом расширенной матрицы.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. 
+	\item $\Leftarrow$.
+\end{enumerate}
+\end{proof}
+
+\subsubsection{Метод Гаусса}
+Пусть дана система линейных уравнений
+\begin{equation}
+\label{eq:Gaussian_elimination(1)}
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n = b_m
+\end{cases}
+\end{equation}
+
+Её расширенную матрицу можно привести к~ступенчатому виду, т.\,е. (\ref{eq:Gaussian_elimination(1)}) эквивалентна
+\begin{equation}
+\label{eq:Gaussian_elimination(2)}
+\begin{cases}
+a_{1\, j_1} x_{j_1} + \ldots + a_{1\, j_n} x_{j_n} = b_1 \\
+a_{2\, j_2} x_{j_2} + \ldots + a_{2\, j_n} x_{j_n} = b_2 \\
+\vdots \\
+a_{r\, j_r} x_{j_r} + \ldots + a_{r\, j_n} x_{j_n} = b_r \\
+0 = b_{r+1} \\
+\vdots \\
+0 = b_m
+\end{cases}
+\end{equation}
+где $a_{1\, j_1}, \ldots, a_{r\, j_r} \neq 0$.
+Без~ограничения общности можно считать, что в~базисный минор основной матрицы системы (\ref{eq:Gaussian_elimination(2)}) входят только коэффициенты при~переменных $x_{j_1}, \ldots, x_{j_r}$, называемых \textbf{главными (зависимыми)}.
+Остальные переменные называются \textbf{свободными (независимыми)}.
+
+Если $\exists i > r \colon b_i \neq 0$, то система несовместна.
+Пусть $\forall i > r \ b_i = 0$. Тогда получим систему
+\begin{equation*}
+\begin{cases}
+\displaystyle x_{j_1} = \frac{b_1}{a_{1\, j_1}} - \frac{a_{1\, j_2}}{a_{1\, j_1}} x_{j_2} - \ldots - \frac{a_{1\, j_n}}{a_{1\, j_1}} x_{j_n} \\
+\displaystyle x_{j_2} = \frac{b_2}{a_{2\, j_2}} - \frac{a_{2\, j_3}}{a_{2\, j_2}} x_{j_3} - \ldots - \frac{a_{2\, j_n}}{a_{2\, j_2}} x_{j_n} \\
+\vdots \\
+\displaystyle x_{j_r} = \frac{b_r}{a_{r\, j_r}} - \frac{a_{r\, j_{r+1}}}{a_{r\, j_r}} x_{j_{r+1}} - \ldots - \frac{a_{r\, j_n}}{a_{r\, j_r}} x_{j_n} \\
+\end{cases}
+\end{equation*}
+
+Если свободным переменным полученной системы придавать все возможные значения и~решать новую систему относительно главных неизвестных от~нижнего уравнения к~верхнему, то получим все решения данной системы.
+
+\subsubsection{Метод Крамера}
+Позволяет решить только те системы, которые имеют единственное решение. Пусть дана система линейно независимых уравнений
+\begin{equation*}
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n = b_n
+\end{cases}
+\end{equation*}
+
+Определитель основной матрицы системы не~равен 0, т.\,к. строки линейно независимы. Запишем систему в~матричной форме:
+\begin{equation*}
+AX = B \Leftrightarrow
+X = A^{-1}B \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow
+\begin{Vmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{Vmatrix} =
+\begin{Vmatrix}
+\dfrac{A_{11}}{|A|} & \dfrac{A_{21}}{|A|} & \cdots & \dfrac{A_{n1}}{|A|} \\
+\dfrac{A_{12}}{|A|} & \dfrac{A_{22}}{|A|} & \cdots & \dfrac{A_{n2}}{|A|} \\
+\vdots & \vdots & \ddots & \vdots \\
+\dfrac{A_{1n}}{|A|} & \dfrac{A_{2n}}{|A|} & \cdots & \dfrac{A_{nn}}{|A|}
+\end{Vmatrix} \cdot
+\begin{Vmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{Vmatrix}
+\end{equation*}
+где $A_{ij}$~--- алгебраическое дополнение $a_{ij}$.
+
+Т.\,о., получим решение системы:
+\begin{equation*}
+\label{eq:Cramer's_formula}
+x_i = \frac{\sum_{j=1}^n A_{ji} b_j}{|A|} =
+\begin{vmatrix}
+a_{11} & \cdots & a_{1\, i-1} & b_{1} & a_{1\, i+1} & \cdots & a_{1n} \\
+a_{21} & \cdots & a_{2\, i-1} & b_{2} & a_{2\, i+1} & \cdots & a_{2n} \\
+\vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{n\, i-1} & b_{n} & a_{n\, i+1} & \cdots & a_{nn} \\
+\end{vmatrix}, \ i = 1, \ldots, n
+\end{equation*}
+
+Полученные формулы называется \textbf{формулами Крамера}.

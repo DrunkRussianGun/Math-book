@@ -1,0 +1,73 @@
+% beta
+\subsection{Обратные матрицы}
+Матрица~$B$ называется \textbf{левой обратной} к~квадратной матрице~$A$, если $BA = E$.
+
+Матрица~$C$ называется \textbf{правой обратной} к~квадратной матрице~$A$, если $AC = E$.
+
+Заметим, что обе матрицы $B$ и~$C$~--- квадратные того же порядка, что и~$A$.
+
+\begin{statement}
+Если существуют левая и~правая обратные к~$A$ матрицы $B$ и~$C$, то они совпадают.
+\end{statement}
+\begin{proof}
+$B = BE = BAC = EC = C$
+\end{proof}
+
+Т.\,о., матрица~$A^{-1}$ называется \textbf{обратной} к~матрице~$A$, если $A^{-1} A = A A^{-1} = E$.
+
+\begin{theorem}
+Пусть даны матрицы
+\begin{equation*}
+A =
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{Vmatrix}, \ 
+\tilde A =
+\begin{Vmatrix}
+A_{11} & A_{12} & \cdots & A_{1n} \\
+A_{21} & A_{22} & \cdots & A_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+A_{n1} & A_{n2} & \cdots & A_{nn}
+\end{Vmatrix}
+\end{equation*}
+где $A_{ij}$~--- алгебраическое дополнение $a_{ij}$.
+
+Если $|A| \neq 0$, то
+\begin{equation*}
+A^{-1} = \frac{\tilde A^T}{|A|}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+Пусть дана невырожденная матрица
+\begin{equation*}
+A =
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{Vmatrix}
+\end{equation*}
+
+Присоединим к~ней единичную матрицу:
+\begin{equation*}
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} & 1 & 0 & \cdots & 0 \\
+a_{21} & a_{22} & \cdots & a_{2n} & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} & 0 & 0 & \cdots & 1
+\end{Vmatrix}
+\end{equation*}
+и~с~помощью элементарных преобразований только над~строками полученной матрицы (или только над столбцами) приведём её левую часть к~единичной матрице.
+Тогда правая часть будет обратной к~$A$ матрицей.
+\end{theorem}
+\begin{proof}
+
+\end{proof}

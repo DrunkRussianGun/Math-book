@@ -1,0 +1,59 @@
+\section{Векторные пространства}
+$n$\nobreakdash-мерным векторным пространством над~полем вещественных чисел называется множество
+\begin{equation*}
+V_n = \mathbb R^n = \{ (x_1; \ldots; x_n) \mid x_1, \ldots, x_n \in \mathbb R \}
+\end{equation*}
+элементы которого называются \textbf{векторами}. Над~ними определены операции сложения и~умножения на число, удовлетворяющие аксиомам:
+\begin{enumerate}
+	\item Коммутативность сложения:
+	\begin{equation*}
+	\forall \overline a, \overline b \in V_n \ 
+	\overline a + \overline b = \overline b + \overline a
+	\end{equation*}
+	
+	\item Ассоциативность сложения:
+	\begin{equation*}
+	\forall \overline a, \overline b, \overline c \in V_n \ 
+	\overline a + (\overline b + \overline c) = (\overline a + \overline b) + \overline c
+	\end{equation*}
+	
+	\item Существование \textbf{нулевого} вектора, или~\textbf{нуля}, обозначаемого $\overline 0$:
+	\begin{equation*}
+	\exists \overline 0 \in V_n \colon \forall \overline a \in V \ 
+	\overline a + \overline 0 = \overline 0 + \overline a = \overline a
+	\end{equation*}
+	
+	\item Существование \textbf{противоположного} вектора:
+	\begin{equation*}
+	\forall \overline a \in V_n \ 
+	\exists (-\overline a) \in V_n \colon
+	\overline a + (-\overline a) = \overline 0
+	\end{equation*}
+	
+	\item Ассоциативность умножения на~число:
+	\begin{equation*}
+	\forall \alpha, \beta \in \mathbb R, \ 
+	\forall \overline a \in V_n \ 
+	\alpha (\beta \overline a) = (\alpha \beta) \overline a
+	\end{equation*}
+	
+	\item Дистрибутивность умножения на~число относительно сложения векторов:
+	\begin{equation*}
+	\forall \alpha \in \mathbb R, \ 
+	\forall \overline a, \overline b \in V_n \ 
+	\alpha (\overline a + \overline b) = \alpha \overline a + \alpha \overline b
+	\end{equation*}
+	
+	\item Дистрибутивность умножения на~число относительно сложения чисел:
+	\begin{equation*}
+	\forall \alpha, \beta \in \mathbb R, \ 
+	\forall \overline a \in V_n \ 
+	(\alpha + \beta) \overline a = \alpha \overline a + \beta \overline a
+	\end{equation*}
+	
+	\item Существование \textbf{единицы}:
+	\begin{equation*}
+	\forall \overline a \in V_n \ 
+	1 \cdot \overline a = \overline a
+	\end{equation*}
+\end{enumerate}

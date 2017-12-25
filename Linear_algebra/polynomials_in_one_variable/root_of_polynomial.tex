@@ -1,0 +1,88 @@
+% beta
+\subsection{Корень многочлена}
+\textbf{Корнем} многочлена~$f(x)$ называется такое число~$a$, что $f(a) = 0$.
+
+\begin{theorem}[Безу]
+Остаток от~деления многочлена~$f(x)$ на~двучлен~$x - a$ равен $f(a)$.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+f(x) = g(x)(x - a) + r \Rightarrow f(a) = g(a)(a - a) + r \Leftrightarrow r = f(a)
+\end{equation*}
+\end{proof}
+
+\begin{consequent}
+\label{conseq:division_by_binomial}
+Если $a$~--- корень~$f(x)$, то $f(x)$ делится на~$x - a$ без~остатка.
+\end{consequent}
+
+\textbf{Кратностью} корня~$a$ многочлена~$f(x)$ называется число~
+$m \colon f(x) \mult (x - a)^m, \ f(x) \notmult (x - a)^{m+1}$.
+
+\begin{theorem}[основная теорема алгебры]
+\label{th:fundamental_th_of_algebra}
+Если $f(x)$~--- многочлен, отличный от~константы, то он имеет хотя~бы один комплексный корень.
+\end{theorem}%
+Доказательство теоремы слишком сложно, поэтому здесь не~приводится.
+
+\begin{consequent}
+Многочлен $n$\nobreakdash-й степени имеет ровно $n$ комплексных корней с~учётом их кратности.
+\end{consequent}
+\begin{proof}
+Пусть $f(x)$~--- многочлен $n$\nobreakdash-й степени.
+По~основной теореме алгебры \ref{th:fundamental_th_of_algebra} он имеет корень~$a$, тогда по~следствию \ref{conseq:division_by_binomial} $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен $(n - 1)$\nobreakdash-й степени, который также имеет корень.
+Будем повторять деление до~тех пор, пока не~получим константу.
+Т.\,о., получим $n$~корней.
+\end{proof}
+
+\begin{consequent}
+Любой многочлен~$f(x)$ $n$\nobreakdash-й степени представим в~виде
+\begin{equation*}
+f(x) = a(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation*}
+где $a$~--- число, $x_0, \ldots, x_{n-1}$~--- корни $f(x)$.
+\end{consequent}
+
+\begin{theorem}[Виета]
+Пусть 
+\begin{equation}
+\label{eq:f_in_Vieta_th}
+f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0 = a_n(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation}
+тогда
+\begin{equation*}
+a_{n-1} = -a_n \sum_{i=0}^{n-1} x_i
+\end{equation*}
+\begin{equation*}
+a_{n-2} = a_n \sum_{i=0}^{n-1} \sum_{j=i+1}^{n-1} x_i x_j
+\end{equation*}
+\begin{equation*}
+a_{n-3} = -a_n \sum_{i=0}^{n-1} \sum_{j=i+1}^{n-1} \sum_{k=j+1}^{n-1} x_i x_j x_k
+\end{equation*}
+\begin{equation*}
+\vdots
+\end{equation*}
+\begin{equation*}
+a_1 = (-1)^{n-1} a_n \sum_{i=0}^{n-1} x_0 x_1 \cdot \ldots \cdot x_{i-1} x_{i+1} \cdot \ldots \cdot x_{n-1}
+\end{equation*}
+\begin{equation*}
+a_1 = (-1)^n a_n x_0 x_1 \cdot \ldots \cdot x_{n-1}
+\end{equation*}
+\end{theorem}%
+Для~доказательства достаточно раскрыть скобки в~правой части равенства (\ref{eq:f_in_Vieta_th}).
+
+\begin{theorem}
+Пусть на~плоскости даны $n + 1$~точек, никакие две из~которых не~лежат на~прямой, паралелльной оси ординат, тогда через~них проходит единственная кривая $n$\nobreakdash-го порядка.
+\end{theorem}
+\begin{proof}
+Пусть данные точки заданы координатами $(a_0; b_0), (a_1; b_1), \ldots, (a_n; b_n)$, тогда кривая
+\begin{equation*}
+f = \sum_{i=0}^n b_i \frac
+{(x - a_0) \cdot \ldots \cdot (x - a_{i-1})(x - a_{i+1}) \cdot \ldots \cdot (x - a_n)}
+{(a_i - a_0) \cdot \ldots \cdot (a_i - a_{i-1})(a_i - a_{i+1}) \cdot \ldots \cdot (a_i - a_n)}
+\end{equation*}
+
+Докажем, что $f$ проходит через~все данные точки.
+Рассмотрим точку~$(a_k; b_k)$.
+Подставим $x = a_k$, тогда $k$\nobreakdash-е (считая с~нуля) слагаемое равно $b_k$, а остальные~--- 0.
+\end{proof}

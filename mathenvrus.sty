@@ -2,7 +2,7 @@
 % - новые команды:
 %	- \opbr{математический знак} (operator break) — разрешает перенос строки на данном знаке,
 %	  автоматически дублируя его на следующей;
-%	- \mult — знак кратности;
+%	- \mult и \notmult — знак кратности;
 %	- \indbase (induction base) — оформление базы математической индукции;
 %	- \indstep (induction step) — оформление шага математической индукции;
 %	- \indend (induction end) — конец метода математической индукции.
@@ -13,7 +13,7 @@
 %	- lemma для лемм;
 %	- theorem для теорем;
 %	- consequent для следствий;
-%	- proof для доказательств;
+%	- proof для доказательств с необязательным аргументом — пояснением;
 %	- proofmathind для доказательств методом математической индукции;
 %	- proofcontra для доказательств методом от противного.
 
@@ -21,8 +21,10 @@
 
 \newcommand\opbr[1]
 	{\ensuremath{#1}\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
-	
-\DeclareMathOperator\mult{\vdots}
+
+%\DeclareMathOperator\mult\vdots
+\newcommand\mult{\ensuremath{\;\vdots\;}}
+\newcommand\notmult{\ensuremath{\lefteqn\not\;\vdots\;}}
 	
 \newcommand\indbase
 	{\begin{itemize}
@@ -45,8 +47,8 @@
 \newtheorem{lemma}{Лемма}[section]
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{consequent}{Следствие}[section]
-\newenvironment{proof}
-	{\par{\bf Доказательство.}}
+\newenvironment{proof}[1][\unskip]
+	{\par{\bf Доказательство #1. }}
 	{$\scriptstyle\blacksquare$}
 \newenvironment{proofmathind}
 	{\par{\bf Доказательство (методом математической индукции).}}
@@ -54,6 +56,3 @@
 \newenvironment{proofcontra}
 	{\par{\bf Доказательство (методом от противного).}}
 	{$\scriptstyle\blacksquare$}
-%\newenvironment{proof}[1]
-%	{\par\noindent{\bf Доказательство (#1).}}
-%	{$\scriptstyle\blacksquare$}

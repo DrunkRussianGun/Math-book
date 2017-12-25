@@ -1,0 +1,54 @@
+\subsection{Матричная форма системы линейных уравнений}
+Систему линейных уравнений можно представить в матричной форме:
+\begin{equation*}
+\begin{Vmatrix}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n
+\end{Vmatrix} =
+\begin{Vmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_m
+\end{Vmatrix}
+\Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{Vmatrix} \cdot
+\begin{Vmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{Vmatrix} =
+\begin{Vmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_m
+\end{Vmatrix}
+\Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow
+A \cdot X = B
+\end{equation*}
+
+$A$ называется \textbf{основной матрицей системы}, $X$~--- \textbf{столбцом переменных}, $B$~--- \textbf{столбцом свободных членов}.
+Если к основной матрице справа приписать столбец свободных членов, то получится \textbf{расширенная матрица системы}:
+\begin{equation*}
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} & \vline & b_1 \\
+a_{21} & a_{22} & \cdots & a_{2n} & \vline & b_2 \\
+\vdots & \vdots & \ddots & \vdots & \vline & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn} & \vline & b_m
+\end{Vmatrix}
+\end{equation*}
