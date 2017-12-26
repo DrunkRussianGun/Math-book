@@ -26,11 +26,12 @@ $m \colon f(x) \mult (x - a)^m, \ f(x) \notmult (x - a)^{m+1}$.
 Доказательство теоремы слишком сложно, поэтому здесь не~приводится.
 
 \begin{consequent}
+\label{conseq:n_roots_of_polynomial}
 Многочлен $n$\nobreakdash-й степени имеет ровно $n$ комплексных корней с~учётом их кратности.
 \end{consequent}
 \begin{proof}
 Пусть $f(x)$~--- многочлен $n$\nobreakdash-й степени.
-По~основной теореме алгебры \ref{th:fundamental_th_of_algebra} он имеет корень~$a$, тогда по~следствию \ref{conseq:division_by_binomial} $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен $(n - 1)$\nobreakdash-й степени, который также имеет корень.
+По~основной теореме алгебры (\ref{th:fundamental_th_of_algebra}) он имеет корень~$a$, тогда по~следствию (\ref{conseq:division_by_binomial}) $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен $(n - 1)$\nobreakdash-й степени, который также имеет корень.
 Будем повторять деление до~тех пор, пока не~получим константу.
 Т.\,о., получим $n$~корней.
 \end{proof}
@@ -43,7 +44,45 @@ f(x) = a(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
 где $a$~--- число, $x_0, \ldots, x_{n-1}$~--- корни $f(x)$.
 \end{consequent}
 
-\begin{theorem}[Виета]
+\begin{lemma}
+Если $f(x)$~--- многочлен с~действительными коэффициентами, $z \in \mathbb C$, то $\overline{f(z)} = f(\overline z)$.
+\end{lemma}
+\begin{proof}
+Пусть $z_1 = a_1 + b_1 i, z_2 = a_2 + b_2 i$, $a_1, b_1, a_2, b_2 \in \mathbb R$.
+Многочлен строится при~помощи операций сложения и~умножения, поэтому достаточно доказать следующее:
+\begin{enumerate}
+	\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+	\begin{equation*}
+	\overline{z_1 + z_2} = \overline{(a_1 + a_2) + (b_1 + b_2)i} = (a_1 + a_2) - (b_1 + b_2)i =
+	(a_1 - b_1 i) + (a_2 - b_2 i) = \overline{z_1} + \overline{z_2}
+	\end{equation*}
+	
+	\item $\overline{z_1 z_2} = \overline{z_1} \cdot \overline{z_2}$
+	\begin{equation*}
+	\overline{z_1 z_2} = \overline{(a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i} =
+	(a_1 a_2 - b_1 b_2) - (a_1 b_2 + a_2 b_1)i = (a_1 - b_1 i)(a_2 - b_2 i) =
+	\overline{z_1} \cdot \overline{z_2}
+	\end{equation*}
+\end{enumerate}
+Тогда $\overline{a_n z^n + \ldots + a_1 z + a_0} = a_n \overline z^n + \ldots + a_1 \overline z + a_0$ при $a_0, a_1, \ldots, a_n \in \mathbb R$.
+\end{proof}
+
+\begin{theorem}
+Любой многочлен с~действительными коэффициентами можно разложить на~линейные и~квадратные множители с~действительными коэффициентами.
+\end{theorem}
+\begin{proof}
+Пусть $f(x)$~--- многочлен с~действительными коэффициентами, тогда если $f(z) = 0$, то $f(\overline z) = \overline{f(z)} = \overline{0} = 0$.
+Значит, если $a + bi$~--- корень~$f(x)$, то $a - bi$~--- тоже корень~$f(x)$.
+Имеем:
+\begin{equation*}
+f(x) = a \prod_{j=1}^{m} (x - x_j) \cdot \prod_{j=1}^{n} (x - (a_j + b_j i))(x - (a_j - b_j i)) =
+a \prod_{j=1}^{m} (x - x_j) \cdot \prod_{j=1}^{n} (x^2 - 2a_j x + a_j^2 + b_j^2)
+\end{equation*}
+где $a, x_1, \ldots, x_m, a_1, \ldots, a_n, b_1, \ldots, b_n \in \mathbb R$,\newline
+$x_1, \ldots, x_m, a_1 + b_1 i, \ldots, a_n + b_n i$~--- корни~$f(x)$.
+\end{proof}
+
+\begin{theorem}[формулы Виета]
 Пусть 
 \begin{equation}
 \label{eq:f_in_Vieta_th}

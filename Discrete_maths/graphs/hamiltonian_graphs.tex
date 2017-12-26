@@ -6,18 +6,18 @@
 
 \begin{theorem}[Дирака]
 \label{th:Dirac}
-Если в~графе~$G = (V, E)$ с~$n \geqslant 3$~вершинами $\forall u \in V \ \deg u \geqslant \frac{n}2$, то граф гамильтонов.
+Если в~графе~$G = (V, E)$ с~$n \geqslant 3$~вершинами $\forall u \in V \ \deg u \geqslant \dfrac{n}2$, то граф гамильтонов.
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
 	\item Докажем методом от~противного, что граф связный.
 	Пусть он несвязный.
-	Выберем компоненту связности~$G' = (V', E')$ с~наименьшим числом вершин, тогда $|V'| \leqslant \frac{n}2$.
+	Выберем компоненту связности~$G' = (V', E')$ с~наименьшим числом вершин, тогда $|V'| \leqslant \dfrac{n}2$.
 	Возьмём $v \in V'$, тогда $\deg v \leqslant |V'| - 1 < \frac{n}2$.
 	Противоречие с~условием.
 	\item Выберем цепь~$C = (v_0; e_0; v_1; \ldots; e_{k-1}; v_k)$ максимальной длины.
 	Тогда все вершины, соседние с~$v_0$, лежат в~этой цепи, иначе можно увеличить длину цепи.
-	Среди $v_1, v_2, \ldots, v_k$ не~менее $\frac{n}2$~вершин, соседних с~$v_0$, т.\,к. $\deg v_0 \geqslant \frac{n}2$.
+	Среди $v_1, v_2, \ldots, v_k$ не~менее $\frac{n}2$~вершин, соседних с~$v_0$, т.\,к. $\deg v_0 \geqslant \dfrac{n}2$.
 	Аналогично для~$v_k$.
 	
 	Найдутся $v_{i-1}$ и~$v_i$ такие, что $v_{i-1}$ соседняя с~$v_k$, а $v_i$~--- с~$v_0$.
@@ -38,7 +38,7 @@
 	Пусть он несвязный, тогда в~нём найдутся хотя~бы две компоненты связности $G_1(V_1, E_1)$ и~$G_2(V_2, E_2)$.
 	Пусть $u \in V_1$, $v \in V_2$. $u$ и~$v$ несмежные, тогда
 	\begin{equation*}
-	\deg u \leqslant |V_1| - 1, \ \deg v \leqslant |V_2| - 1 \opbr\Rightarrow \deg u + \deg v opbr\leqslant |V_1| + |V_2| - 2 \opbr\leqslant n - 2
+	\deg u \leqslant |V_1| - 1, \ \deg v \leqslant |V_2| - 1 \opbr\Rightarrow \deg u + \deg v \opbr\leqslant |V_1| + |V_2| - 2 \opbr\leqslant n - 2
 	\end{equation*}
 	
 	Противоречие с~условием.
