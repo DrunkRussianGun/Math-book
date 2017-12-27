@@ -6,17 +6,23 @@
 \textbf{Мощностью} конечного множества~$A$ называется количество~$|A|$ его элементов.
 
 Множество всех подмножеств множества~$A$ обозначается
-\[ \mathcal P(A) = \{ x \mid x \subseteq A \} \]
+\begin{equation*}
+\mathcal P(A) = \{ x \mid x \subseteq A \}
+\end{equation*}
 
 Множество всех подмножеств множества~$A$ мощности~$k$ обозначается
-\[ \mathcal P_k(A) = \{ x \subseteq A \mid |x| = k \} \]
+\begin{equation*}
+\mathcal P_k(A) = \{ x \subseteq A \mid |x| = k \}
+\end{equation*}
 
 \begin{theorem}[Кантора]
 Множества $A$ и $\mathcal P(A)$ не~равномощны.
 \end{theorem}
 \begin{proofcontra}
 Пусть $f \colon A \to \mathcal P(A)$~--- биекция. Рассмотрим множество
-\[ X = \{ a \in A \mid a \notin f(a) \} \Rightarrow X \subset A \Rightarrow X \in \mathcal P(A) \]
+\begin{equation*}
+X = \{ a \in A \mid a \notin f(a) \} \Rightarrow X \subset A \Rightarrow X \in \mathcal P(A)
+\end{equation*}
 
 $f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
 Возможны два случая:
@@ -35,7 +41,10 @@ $f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
 \end{theorem}
 \begin{proofmathind}
 	\indbase $n = 0$:
-	\[ |A| = 0 \Rightarrow A = \varnothing \Rightarrow \mathcal P(A) = \{ \varnothing \} \Rightarrow |\mathcal P_0(A)| = 1 = C_0^0 \]
+	\begin{equation*}
+	|A| = 0 \Rightarrow A = \varnothing \Rightarrow \mathcal P(A) = \{ \varnothing \} \Rightarrow
+	|\mathcal P_0(A)| = 1 = C_0^0
+	\end{equation*}
 	\indstep Пусть теорема верна для~$n$.
 	Докажем её для~$n + 1$.
 	Пусть $X \subset A$, $|X| = k$, $a \in A$.
@@ -48,5 +57,4 @@ $f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
 	\end{enumerate}
 
 	Тогда $|\mathcal P(A)| = C_n^{k-1} + C_n^k = C_{n+1}^k$. \indend
-
 \end{proofmathind}
