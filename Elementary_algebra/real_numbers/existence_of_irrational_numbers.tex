@@ -1,0 +1,66 @@
+\subsection{Существование иррациональных чисел}
+\textbf{Иррациональным} называется число, не~являющееся рациональным.
+
+\begin{statement}
+Существуют иррациональные числа.
+\end{statement}
+\begin{proofcontra}
+Пусть $\exists p \in \mathbb Z, \ q \in \mathbb N \colon
+\left( \dfrac{p}q \right)^2 = 2, \ \NOD(p, q) = 1$.
+Тогда
+\begin{equation*}
+p^2 = 2q^2 \Rightarrow p^2 \mult 2 \Leftrightarrow p \mult 2
+\Leftrightarrow p = 2l, \ l \in \mathbb Z \Rightarrow 2l^2 = q^2
+\end{equation*}
+
+Аналогичными рассуждениями получим $q \mult 2$.
+$p \mult 2, \ q \mult 2 \Rightarrow \NOD(p, q) \neq 1$.
+Противоречие.
+\end{proofcontra}
+
+\begin{statement}
+Среди~вещественных чисел есть иррациональные.
+\end{statement}
+\begin{proof}
+Пусть $X = \{ x \in \mathbb R^+ \mid x^2 < 2 \}$, $Y = \{ y \in \mathbb R^+ \mid y^2 > 2 \}$.
+\begin{equation*}
+\forall x \in X, y \in Y \ (y^2 - x^2 = (y - x)(y + x) > 0 \Rightarrow y > x) \Rightarrow
+\exists z \in \mathbb R \colon \forall x \in X, y \in Y \ x \leqslant z \leqslant y
+\end{equation*}
+
+\begin{enumerate}
+	\item Пусть $z^2 < 2$. $z \in X$, $z > 1{,}1$, тогда
+	\begin{equation*}
+	0 < 2 - z^2 < 1 \Rightarrow \frac{2 - z^2}5 < 1 \Rightarrow
+	\left( \frac{2 - z^2}5 \right)^2 < \frac{2 - z^2}5
+	\end{equation*}
+	
+	\begin{itemize}
+		\item $\displaystyle z + \frac{2 - z^2}5 > z \Rightarrow z + \frac{2 - z^2}5 \notin X$
+		
+		\item $\displaystyle \left( z + \frac{2 - z^2}5 \right)^2 =
+		z^2 + 2z\cdot\frac{2 - z^2}5 + \left( \frac{2 - z^2}5 \right)^2 <
+		z^2 + \frac45 (2 - z^2) + \frac{2 - z^2}5 = 2 \Rightarrow z + \frac{2 - z^2}5 \in X$
+	\end{itemize}
+	Противоречие, значит, $z^2 \geqslant 2$.
+	
+	\item Пусть $z^2 > 2$. $z \in Y$, $z < 1{,}9$, тогда
+	\begin{equation*}
+	0 < z^2 - 2 < 2 \Rightarrow \frac{z^2 - 2}4 < 1 \Rightarrow
+	\left( \frac{z^2 - 2}4 \right)^2 < \frac{z^2 - 2}4
+	\end{equation*}
+	
+	\begin{itemize}
+		\item $\displaystyle z - \frac{z^2 - 2}4 < z \Rightarrow z + \frac{z^2 - 2}4 \notin Y$
+		
+		\item $\displaystyle \left( z - \frac{z^2 - 2}4 \right)^2 =
+		z^2 - z\cdot\frac{z^2 - 2}2 + \left( \frac{2 - z^2}5 \right)^2 >
+		z^2 - (z^2 - 2) = 2 \Rightarrow z - \frac{z^2 - 2}4 \in Y$
+	\end{itemize}
+	
+	Противоречие, значит, $z^2 \leqslant 2$.
+\end{enumerate}
+
+Т.\,о., $z^2 \leqslant 2, \ z^2 \geqslant 2 \Leftrightarrow z^2 = 2 \Rightarrow
+\exists z \in \mathbb R \colon (z^2 = 2 \Rightarrow z \notin \mathbb Q)$.
+\end{proof}

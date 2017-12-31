@@ -1,0 +1,96 @@
+\subsection{Аксиоматика вещественных чисел}
+Аксиомы сложения:
+\begin{enumerate}
+	\item Коммутативность сложения:
+	\begin{equation*}
+	\forall a, b \in \mathbb R \ a + b = b + a
+	\end{equation*}
+	
+	\item Ассоциативность сложения:
+	\begin{equation*}
+	\forall a, b, c \in \mathbb R \ a + (b + c) = (a + b) + c
+	\end{equation*}
+	
+	\item Существование \textbf{нуля}:
+	\begin{equation*}
+	\exists 0 \in \mathbb R \colon \forall a \in \mathbb R \ a + 0 = a
+	\end{equation*}
+	
+	\item Существование \textbf{противоположного} числа:
+	\begin{equation*}
+	\forall a \in \mathbb R \exists (-a) \in \mathbb R \colon a + (-a) = 0
+	\end{equation*}
+\end{enumerate}
+
+Аксиомы умножения:
+\begin{enumerate}
+	\item Коммутативность умножения:
+	\begin{equation*}
+	\forall a, b \in \mathbb R \ a \cdot b = b \cdot a
+	\end{equation*}
+	
+	\item Ассоциативность умножения:
+	\begin{equation*}
+	\forall a, b, c \in \mathbb R \ a \cdot (b \cdot c) = (a \cdot b) \cdot c
+	\end{equation*}
+	
+	\item Дистрибутивность умножения относительно сложения:
+	\begin{equation*}
+	\forall a, b, c \in \mathbb R \ a \cdot (b + c) = a \cdot b + a \cdot c
+	\end{equation*}
+	
+	\item Существование \textbf{единицы}:
+	\begin{equation*}
+	\exists 1 \in \mathbb R \colon \forall a \in \mathbb R \ a \cdot 1 = a
+	\end{equation*}
+	
+	\item Существование \textbf{обратного} числа:
+	\begin{equation*}
+	\forall a \in \mathbb R \setminus \{ 0 \} \exists \frac1a = a^{-1} \in \mathbb R \colon
+	a \cdot a^{-1} = 1
+	\end{equation*}
+\end{enumerate}
+
+Аксиомы порядка:
+\begin{enumerate}
+	\item Рефлексивность:
+	\begin{equation*}
+	\forall a \in \mathbb R \ a \leqslant a
+	\end{equation*}
+	
+	\item Антисимметричность:
+	\begin{equation*}
+	\forall a, b \in \mathbb R \ (a \leqslant b, \ b \leqslant a \Rightarrow a = b)
+	\end{equation*}
+	
+	\item Транзитивность:
+	\begin{equation*}
+	\forall a, b, c \in \mathbb R \ (a \leqslant b, b \leqslant c \Rightarrow a \leqslant c)
+	\end{equation*}
+	
+	\item Линейная упорядоченность:
+	\begin{equation*}
+	\forall a, b \in \mathbb R \ (a \leqslant b \text{ или } b \leqslant a)
+	\end{equation*}
+	
+	\item Связь сложения и порядка:
+	\begin{equation*}
+	\forall a, b, c \in \mathbb R \ (a \leqslant b \Rightarrow a + c \leqslant b + c)
+	\end{equation*}
+	
+	\item Связь умножения и порядка:
+	\begin{equation*}
+	\forall a, b \in \mathbb R \ (0 \leqslant a, \ 0 \leqslant b \Rightarrow 0 \leqslant a \cdot b)
+	\end{equation*}
+\end{enumerate}
+
+Аксиома нетривиальности:
+\begin{equation*}
+0 \neq 1
+\end{equation*}
+
+\hypertarget{eq:continuity_axiom}{Аксиома непрерывности}:
+\begin{equation*}
+\forall A, B \subset \mathbb R \ (\forall a \in A, b \in B \colon a \leqslant b) \
+\exists x \in \mathbb R \colon a \leqslant x \leqslant b
+\end{equation*}

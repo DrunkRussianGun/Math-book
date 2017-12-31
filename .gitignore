@@ -1,8 +1,9 @@
 # Ignore LaTeX files
 *.aux
+*.gz
 *.log
 
 
 *.out
-*.gz
 *.toc
+*.txss

@@ -1,4 +1,4 @@
-% Стилевой файл
+﻿% Стилевой файл
 % - новые команды:
 %	- \opbr{математический знак} (operator break) — разрешает перенос строки на данном знаке,
 %	  автоматически дублируя его на следующей;
@@ -23,9 +23,8 @@
 \newcommand\opbr[1]
 	{\ensuremath{#1}\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
 
-%\DeclareMathOperator\mult\vdots
-\newcommand\mult{\ensuremath{\;\vdots\;}}
-\newcommand\notmult{\ensuremath{\lefteqn{\mkern 1mu\not}\;\vdots\;}}
+\newcommand\mult{\;\vdots\;}
+\newcommand\notmult{\lefteqn{\mkern 1mu\not}\;\vdots\;}
 
 \DeclareMathOperator\Arg{Arg}
 	
@@ -36,7 +35,7 @@
 	{\item {\it Шаг индукции.\ }}
 \newcommand\indend
 	{\end{itemize}}
-	
+
 \renewcommand{\*}
 	{\discretionary{\hbox{$\cdot$}}{\hbox{$\cdot$}}{}}
 

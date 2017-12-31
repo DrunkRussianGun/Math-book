@@ -9,12 +9,26 @@
 \usepackage{mathenvrus}
 \usepackage[all]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
+\usepackage{multicol} % размещение текста в несколько колонок
+\tolerance=500 % увеличение максимально возможной разреженности строк
 \begin{document}
 \chapter*{Введение}
 \input{intro}
 \tableofcontents
-%\part{Школьный курс}
-%\part{Университетский курс}
+\part{Школьный курс}
+\chapter{Теория множеств}
+\input{Set_theory/sets}
+	\input{Set_theory/sets/relations_between_sets}
+	\input{Set_theory/sets/operations_on_sets}
+	\input{Set_theory/sets/functions}
+\chapter{Элементарная алгебра}
+\input{Elementary_algebra/real_numbers}
+	\input{Elementary_algebra/real_numbers/axiomatics_of_real_numbers}
+	\input{Elementary_algebra/real_numbers/existence_of_irrational_numbers}
+	\input{Elementary_algebra/real_numbers/geometric_representation_of_real_numbers}
+\input{Elementary_algebra/subsets_of_set_R}
+\input{Elementary_algebra/algebraic_transformations}
+\part{Университетский курс}
 \chapter{Дискретная математика}
 \input{Discrete_maths/graphs}
 	\input{Discrete_maths/graphs/graph_connectivity}
@@ -46,15 +60,17 @@
 	\input{Linear_algebra/polynomials_in_several_variables/symmetric_polynomials}
 \input{Linear_algebra/quadratic_forms}
 \chapter{Математический анализ}
+\input{Calculus/bounded_subsets_of_set_R}
+\input{Calculus/limit_of_sequence}
 \input{Calculus/extrema_of_multivariate_function}
 \chapter{Теория множеств}
-\input{Set_theory/sets}
-	\input{Set_theory/sets/relations_between_sets}
-	\input{Set_theory/sets/operations_on_sets}
-	\input{Set_theory/sets/functions}
+\section{Множества}
 	\input{Set_theory/sets/cardinality_of_a_set}
+	\input{Set_theory/sets/cardinality_of_number_sets}
 \chapter{Элементарная алгебра}
 \input{Elementary_algebra/complex_numbers}
 	\input{Elementary_algebra/complex_numbers/geometric_representation_of_complex_number}
 	\input{Elementary_algebra/complex_numbers/trigonometric_form_of_complex_number}
+\part*{Глоссарий}
+\input{glossary}
 \end{document}
