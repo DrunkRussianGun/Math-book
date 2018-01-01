@@ -1,6 +1,34 @@
 \section{Предел последовательности}
-\hypertarget{def:limit_of_sequence}{} Число~$a$ называется \textbf{пределом} последовательности~$(x_n)$, если
+\hypertarget{def:limit_of_sequence}{}\hypertarget{def:convergence_of_sequence}{} Число~$a$ называется \textbf{пределом} последовательности~$(x_n)$, если
 \begin{equation*}
-\forall \varepsilon > 0 \ \exists N \colon \forall n > N \ |x_n - a| < \varepsilon
+\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \varepsilon
 \end{equation*}
-и обозначается $\displaystyle \lim_{n \to \infty} x_n$.
+и~обозначается $\displaystyle \lim_{n \to \infty} x_n$.
+Говорят, что последовательность~$(x_n)$ \textbf{сходится}, если $\displaystyle \exists\lim_{n \to \infty} x_n$, иначе говорят, что $(x_n)$ \textbf{расходится}.
+
+\hypertarget{def:bounded_quantity}{} Последовательность~$(x_n)$ называется \textbf{ограниченной}, или~\textbf{ограниченной величиной}, если $\exists a > 0 \colon \forall n \in \mathbb N \ |x_n| < a$.
+
+\hypertarget{def:infinitesimal}{\textbf{Бесконечно малой величиной}} называется последовательность~$(x_n)$, если
+\begin{equation*}
+\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n| < \varepsilon
+\end{equation*}
+
+Можно определить предел последовательности, используя понятие бесконечно малой величины.
+
+Число~$a$ называется \textbf{пределом} последовательности~$(x_n)$, если $x_n = a + \alpha_n$, где $\alpha_n$~--- бесконечно малая величина.
+
+Докажем эквивалентность этих определений.
+\begin{proof}
+\begin{enumerate}
+	\item Пусть дана последовательность~$(x_n)$ такая, что
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \varepsilon
+	\end{equation*}
+	
+	Докажем, что $x_n = a + \alpha_n$.
+	В~самом деле, $\alpha_n = x_n - a$~--- бесконечно малая величина.
+	Т.\,о., $x_n = a + \alpha_n$.
+	
+	\item Проведя те~же самые рассуждения в~обратную сторону, докажем обратное утверждение.
+\end{enumerate}
+\end{proof}

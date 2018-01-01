@@ -1,0 +1,25 @@
+\subsection{Число Эйлера}
+\begin{statement}
+\begin{equation*}
+\exists \lim_{n \to \infty} \left( 1 + \frac1n \right)^n
+\end{equation*}
+\end{statement}
+\begin{proof}
+Рассмотрим последовательность~$(x_n) \colon$
+\begin{equation*}
+x_n = \left( 1 + \frac1n \right)^n = 1 + \frac{n}n + \frac{n(n - 1)}{2n^2} + \frac{n(n - 1)(n - 2)}{2 \cdot 3n^3} + \ldots + \frac{n!}{n!n^n} =
+\end{equation*}
+\begin{equation}
+\label{eq:Euler's_number_1}
+= 2 + \frac1{2!} \left( 1 - \frac1n \right) + \frac1{3!} \left( 1 - \frac1n \right) \left( 1 - \frac2n \right) + \ldots + \frac1{n!} \left( 1 - \frac1n \right) \left( 1 - \frac2n \right) \cdot \ldots \cdot \left( 1 - \frac{n - 1}n \right) <
+\end{equation}
+\begin{equation*}
+< 2 + \frac1{2!} + \frac1{3!} + \ldots + \frac1{n!} < 2 + \frac1{2^1} + \frac1{2^2} + \ldots + \frac1{2^{n-1}} = 2 + 1 - \frac1{2^{n-1}} < 3
+\end{equation*}
+
+Значит, $(x_n)$ ограничена.
+Кроме того, из~выражения~(\ref{eq:Euler's_number_1}) ясно, что $(x_n)$ монотонна.
+Тогда $(x_n)$ сходится.
+\end{proof}
+
+\hypertarget{def:Euler's_number}{} Число~$\displaystyle e = \lim_{n \to \infty} \left( 1 + \frac1n \right)^n = 2{,}718281828\ldots$ называется \textbf{числом Эйлера} (иногда \textbf{числом Непера}, или \textbf{неперовым числом}).
