@@ -10,6 +10,8 @@
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
 \usepackage{multicol} % размещение текста в несколько колонок
+\usepackage{makeidx}
+\makeindex
 \tolerance=500 % увеличение максимально возможной разреженности строк
 \begin{document}
 \chapter*{Введение}
@@ -71,7 +73,35 @@
 	\input{Calculus/limit_of_function/limit_of_function_at_point}
 	\input{Calculus/limit_of_function/limit_of_function_at_infinity}
 	\input{Calculus/limit_of_function/special_limits}
-\input{Calculus/extrema_of_multivariate_function}
+\input{Calculus/inifinitely_small_and_infinitely_large_functions}
+\input{Calculus/continuity_of_function}
+	\input{Calculus/continuity_of_function/properties_of_continuous_functions}
+\input{Calculus/differentiability_of_function}
+	\input{Calculus/differentiability_of_function/geometric_interpretation_of_derivative}
+	\input{Calculus/differentiability_of_function/physical_interpretation_of_derivative}
+	\input{Calculus/differentiability_of_function/differential_of_function}
+	\input{Calculus/differentiability_of_function/properties_of_derivatives}
+	\input{Calculus/differentiability_of_function/table_of_derivatives}
+	\input{Calculus/differentiability_of_function/theorems_about_differentiable_functions}
+	\input{Calculus/differentiability_of_function/higher-order_derivatives_and_differentials}
+	\input{Calculus/differentiability_of_function/Taylor's_formula}
+	\input{Calculus/differentiability_of_function/L'Hospital_rule}
+\input{Calculus/tracing_of_function}
+	\input{Calculus/tracing_of_function/local_extremum_of_function}
+	\input{Calculus/tracing_of_function/minimum_and_maximum_values_of_function}
+	\input{Calculus/tracing_of_function/convexity_of_function}
+	\input{Calculus/tracing_of_function/asymptotes}
+\input{Calculus/functions_of_several_variables}
+	\input{Calculus/functions_of_several_variables/limit_of_function_of_several_variables}
+	\input{Calculus/functions_of_several_variables/continuity_of_function_of_several_variables}
+	\input{Calculus/functions_of_several_variables/differentiability_of_function_of_several_variables}
+	\input{Calculus/functions_of_several_variables/extrema_of_function_of_several_variables}
+\input{Calculus/functions_of_two_and_three_variables}
+	\input{Calculus/functions_of_two_and_three_variables/geometric_interpretation_of_partial_derivatives_of_function_of_two_variables}
+	\input{Calculus/functions_of_two_and_three_variables/equation_of_tangent_plane_to_surface}
+\input{Calculus/vector-valued_functions}
+	\input{Calculus/vector-valued_functions/differentiability_of_vector-valued_function}
+	\input{Calculus/vector-valued_functions/superposition_of_vector-valued_functions}
 \chapter{Теория множеств}
 \section{Множества}
 	\input{Set_theory/sets/cardinality_of_a_set}
@@ -80,6 +110,7 @@
 \input{Elementary_algebra/complex_numbers}
 	\input{Elementary_algebra/complex_numbers/geometric_representation_of_complex_number}
 	\input{Elementary_algebra/complex_numbers/trigonometric_form_of_complex_number}
-\part*{Глоссарий}
-\input{glossary}
+%\part*{Глоссарий}
+%\input{glossary}
+\printindex
 \end{document}

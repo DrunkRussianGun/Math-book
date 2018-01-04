@@ -1,0 +1,25 @@
+\subsection{Правило Лопиталя}
+\begin{theorem}[правило Лопиталя]
+Если
+\begin{enumerate}
+	\item $\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ или $\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = \infty$
+	\item $g'(x) \neq 0$
+	\item $\displaystyle \exists \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$	
+\end{enumerate}
+то $\displaystyle \lim_{x \to a} \dfrac{f(x)}{g(x)} = \lim_{x \to a} \dfrac{f'(x)}{g'(x)}$.
+\end{theorem}
+
+Если $f(x)$ и~$g(x)$ непрерывны в~окрестности~точки~$a$, то для~случая $\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ можно провести следующее доказательство:
+\begin{equation*}
+\lim_{x \to a} \frac{f(x)}{g(x)} =
+\lim_{x \to a} \frac{f(x) - 0}{g(x) - 0} =
+\lim_{x \to a} \frac{f(x) - f(a)}{g(x) - g(a)} \;
+\left| \text{По~\hyperref[th:Cauchy's_mean_value]{теореме Коши}} \right| =
+\lim_{x \to a} \frac{f'(c)}{g'(c)} =
+\end{equation*}
+\begin{equation*}
+\left| c \in (x; a) \text{ или } c \in (a; x) \right| =
+\lim_{x \to a} \frac{f'(x)}{g'(x)}
+\end{equation*}
+
+Полное доказательство правила Лопиталя слишком сложно, поэтому здесь не~приводится.

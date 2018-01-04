@@ -1,9 +1,11 @@
-﻿% Стилевой файл
+% Стилевой файл
 % - новые команды:
 %	- \opbr{математический знак} (operator break) — разрешает перенос строки на данном знаке,
 %	  автоматически дублируя его на следующей;
 %	- \mult и \notmult — знак кратности;
 %	- \Arg — печатает Arg в математической моде;
+%	- \grad — печатает grad в математической моде;
+%	- \sgn — печатает sgn в математической моде;
 %	- \indbase (induction base) — оформление базы математической индукции;
 %	- \indstep (induction step) — оформление шага математической индукции;
 %	- \indend (induction end) — конец метода математической индукции.
@@ -27,6 +29,8 @@
 \newcommand\notmult{\lefteqn{\mkern 1mu\not}\;\vdots\;}
 
 \DeclareMathOperator\Arg{Arg}
+\DeclareMathOperator\grad{grad}
+\DeclareMathOperator\sgn{sgn}
 	
 \newcommand\indbase
 	{\begin{itemize}
