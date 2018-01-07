@@ -1,0 +1,19 @@
+\subsection{Интегрирование тригонометрических выражений}
+Пусть $R(x_1, \ldots, x_n) = \dfrac{P(x_1, \ldots, x_n)}{Q(x_1, \ldots, x_n)}$, где $P(\overline x)$ и~$Q(\overline x)$~--- многочлены.
+\begin{itemize}
+	\item $\int R(\sin x) \cos^{2k+1} x\,dx = \int R(\sin x) (1 - \sin^2 x)^k\,d(\sin x), \ k \in \mathbb Z$
+	
+	\item $\int R(\cos x) \sin^{2k+1} x\,dx = -\int R(\cos x) (1 - \cos^2 x)^k\,d(\cos x), \ k \in \mathbb Z$
+	
+	\item $\displaystyle \int R(\sin^2 x, \cos^2 x)\,dx = \int \frac
+	{R\left( \frac{\tg^2 x}{1 + \tg^2 x}, \frac1{1 + \tg^2 x} \right)}
+	{1 + \tg^2 x} d(\tg x)$
+	
+	\item $\displaystyle \int R(\tg x)\,dx = \int \frac{R(\tg x)}{1 + \tg^2 x} d(\tg x)$
+	
+	\item $\displaystyle \int R(\sin x, \cos x)\,dx = \int \frac
+	{2R\left( \frac{2\tg \frac{x}2}{1 + \tg^2 \frac{x}2}, \frac{1 - \tg^2 \frac{x}2}{1 + \tg^2 \frac{x}2} \right)}
+	{1 + \tg^2 \frac{x}2} d(\tg \frac{x}2)$
+\end{itemize}
+
+Т.\,о., интегрирование тригонометрических выражений сводится к~интегрированию рациональных дробей.

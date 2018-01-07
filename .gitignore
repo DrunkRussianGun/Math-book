@@ -1,6 +1,9 @@
 # Ignore LaTeX files
 *.aux
 *.gz
+*.idx
+*.ilg
+*.ind
 *.log
 
 

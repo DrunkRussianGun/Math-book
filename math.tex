@@ -1,18 +1,27 @@
 \documentclass{report}
 \usepackage[left=3cm,top=2cm,right=2cm,bottom=2cm]{geometry}
-\usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
-\AtBeginDocument{\shorthandoff{"}} % во избежание конфликтов babel и XY-pic
+\usepackage{index} % предметный указатель
+%\renewcommand\indexname{Предметный указатель}
 \usepackage{indentfirst} % отступ красной строки
 \usepackage[unicode,colorlinks=true]{hyperref} % ссылки в оглавлении
 \usepackage{mathenvrus}
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
 \usepackage{multicol} % размещение текста в несколько колонок
-\usepackage{makeidx}
+\AtBeginDocument{\shorthandoff{"} % во избежание конфликтов babel и XY-pic
+%\renewcommand\indexname{Предметный указатель}}
+%\indexname{Предметный указатель}
+}
 \makeindex
 \tolerance=500 % увеличение максимально возможной разреженности строк
+%\addto{\captionsenglish}{%
+%   \renewcommand{\indexname}{Предметный указатель}
+%}
+%\addto{\captionsrussian}{%
+%   \renewcommand{\indexname}{Предметный указатель}
+%}
 \begin{document}
 \chapter*{Введение}
 \input{intro}
@@ -102,6 +111,13 @@
 \input{Calculus/vector-valued_functions}
 	\input{Calculus/vector-valued_functions/differentiability_of_vector-valued_function}
 	\input{Calculus/vector-valued_functions/superposition_of_vector-valued_functions}
+\input{Calculus/indefinite_integral}
+	\input{Calculus/indefinite_integral/properties_of_indefinite_integral}
+	\input{Calculus/indefinite_integral/table_of_antiderivatives}
+	\input{Calculus/indefinite_integral/integrating_simple_fractions}
+	\input{Calculus/indefinite_integral/integrating_rational_fractions}
+	\input{Calculus/indefinite_integral/integrating_trigonometric_expressions}
+	\input{Calculus/indefinite_integral/integrating_quadratic_irrationalities}
 \chapter{Теория множеств}
 \section{Множества}
 	\input{Set_theory/sets/cardinality_of_a_set}
@@ -110,7 +126,7 @@
 \input{Elementary_algebra/complex_numbers}
 	\input{Elementary_algebra/complex_numbers/geometric_representation_of_complex_number}
 	\input{Elementary_algebra/complex_numbers/trigonometric_form_of_complex_number}
-%\part*{Глоссарий}
-%\input{glossary}
+%\renewcommand\indexname{Предметный указатель}
+%\indexname{Предметный указатель}
 \printindex
 \end{document}

@@ -1,0 +1,88 @@
+\subsection{Интегрирование простейших дробей}
+\begin{itemize}
+	\item $\displaystyle \int \frac{dx}{(x - a)^n} =
+	\begin{cases}
+	\frac{(x - a)^{1-n}}{1 - n} + C, \ n \neq 1 \\
+	\ln |x - a| + C, \ n = 1
+	\end{cases}$
+	\begin{proof}
+	\begin{equation*}
+	\int \frac{dx}{(x - a)^n} =
+	\int (x - a)^{-n}\,d(x - a) =
+	\frac{(x - a)^{1-n}}{1 - n} + C, \ n \neq 1
+	\end{equation*}
+	\end{proof}
+	
+	\item $\displaystyle \int \frac{x + a}{(x - b)^2 + c^2} dx =
+	\frac12 \ln ((x - b)^2 + c^2) + \frac{a + b}c \arctg \frac{x - b}c + C$
+	\begin{proof}
+	\begin{equation*}
+	\int \frac{x + a}{(x - b)^2 + c^2} dx \;
+	\left| \text{Пусть } t = x - b \Rightarrow dt = dx \right| =
+	\int \frac{t + b + a}{t^2 + c^2} dt =
+	\end{equation*}
+	\begin{equation*}
+	= \int \frac{t}{t^2 + c^2} dt + (a + b) \int \frac{dt}{t^2 + c^2} =
+	\frac12 \ln ((x - b)^2 + c^2) + \frac{a + b}c \arctg \frac{x - b}c + C
+	\end{equation*}
+	\end{proof}
+	
+	\item Интеграл~$\displaystyle \int \frac{x + a}{((x - b)^2 + c^2)^n} dx$ при~$n \neq 1$ нельзя взять непосредственно.
+	
+	Пусть $\displaystyle I_n = \int \frac{dx}{((x - b)^2 + c^2)^n}$, тогда
+	\begin{equation*}
+	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx =
+	(a + b)I_n - \frac1{2(n - 1)((x - b)^2 + c^2)^{n-1}}
+	\end{equation*}
+	\begin{equation*}
+	I_n = \left( 1 + \frac1{2(n - 1)} \right) \frac{I_{n-1}}{c^2} + \frac{x - b}{2(n - 1)c^2 ((x - b)^2 + c^2)^{n-1}}
+	\end{equation*}
+	\begin{proof}
+	\begin{equation}
+	\label{eq:int_of_simple_frac_proof1}
+	\begin{gathered}
+	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx \;
+	\left| \text{Пусть } t = x - b \Rightarrow dt = dx \right| =
+	\int \frac{t + b + a}{(t^2 + c^2)^n} dt = \\
+	\int \frac{t}{(t^2 + c^2)^n} dt + (a + b) \int \frac{dt}{(t^2 + c^2)^n} =
+	\frac12 \int (t^2 + c^2)^{-n}\,d(t^2 + c^2) + (a + b) \int \frac{dt}{(t^2 + c^2)^n} = \\
+	\left| \text{Пусть } I_n = \int \frac{dt}{(t^2 + c^2)^n} \right| =
+	\frac{(t^2 + c^2)^{1-n}}{2(1 - n)} + (a + b)I_n
+	\end{gathered}
+	\end{equation}
+	
+	Найдём $I_n$:
+	\begin{equation*}
+	I_n = \frac1{c^2} \int \frac{(t^2 + c^2) - t^2}{(t^2 + c^2)^n} dt =
+	\frac{I_{n-1}}{c^2} - \frac1{c^2} \int \frac{t^2}{(t^2 + c^2)^n} dt
+	\end{equation*}
+	
+	Найдём $\displaystyle \int \frac{t^2}{(t^2 + c^2)^n} dt$:
+	\begin{equation*}
+	\int \frac{t^2}{(t^2 + c^2)^n} dt =
+	\left| \text{Пусть } u = t, v' = \frac{t}{(t^2 + c^2)^n} \right|
+	\end{equation*}
+	\begin{equation*}
+	= \frac{t(t^2 + c^2)^{1-n}}{2(1 - n)} - \int \frac{(t^2 + c^2)^{1-n}}{2(1 - n)} dt =
+	\frac{t}{2(1 - n)(t^2 + c^2)^{n-1}} - \frac{I_{n-1}}{2(1 - n)}
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	I_n = \frac{I_{n-1}}{c^2} + \frac1{2(n - 1)c^2} \left( \frac{t}{(t^2 + c^2)^{n-1}} - I_{n-1} \right) =
+	\left( 1 + \frac1{2(n - 1)} \right) \frac{I_{n-1}}{c^2} + \frac{t}{2(n - 1)c^2 (t^2 + c^2)^{n-1}}
+	\end{equation*}
+	
+	Получим рекуррентную формулу:
+	\begin{equation*}
+	I_n = \left( 1 + \frac1{2(n - 1)} \right) \frac{I_{n-1}}{c^2} + \frac{x - b}{2(n - 1)c^2 ((x - b)^2 + c^2)^{n-1}}
+	\end{equation*}
+	
+	Используя (\ref{eq:int_of_simple_frac_proof1}), получим конечную формулу:
+	\begin{equation*}
+	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx =
+	\frac{(t^2 + c^2)^{1-n}}{2(1 - n)} + (a + b)I_n =
+	(a + b)I_n - \frac1{2(n - 1)((x - b)^2 + c^2)^{n-1}}
+	\end{equation*}
+	\end{proof}
+\end{itemize}
