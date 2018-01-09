@@ -3,7 +3,8 @@
 \label{th:Taylor's_formula}
 Если функция~$f(x)$ в~некоторой окрестности~$U(a)$ имеет все производные до~$n + 1$\nobreakdash-го порядка включительно, то
 \begin{equation*}
-\forall x \in U(a) \ f(x) = \sum_{k=0}^n \frac{f^{(k)} (x - a)^k}{k!} + R(x), \ R(x) = \frac{f^{(n + 1)}(a + \Theta(x - a)}{(n + 1)!}(x - a)^{n + 1}, \ \Theta \in (0; 1)
+\forall x \in U(a) \ f(x) = \sum_{k=0}^n \frac{f^{(k)} (x - a)^k}{k!} + R(x), \
+R(x) = \frac{f^{(n + 1)}(a + \Theta(x - a))}{(n + 1)!}(x - a)^{n + 1}, \ \Theta \in (0; 1)
 \end{equation*}
 \end{theorem}
 
@@ -18,7 +19,7 @@ f(x) = \sum_{k=0}^n \frac{f^{(k)} x^k}{k!} + R(x), \ R(x) = \frac{f^{(n + 1)}(\T
 \begin{itemize}
 	\item $f(x) = e^x, \
 	f^{(n)}(x) = e^x, \
-	f{(n)}(0) = 1$
+	f^{(n)}(0) = 1$
 	\begin{equation*}
 	\forall n \in \mathbb N \ f(x) = 1 + x + \frac{x^2}{2!} + \ldots + \frac{x^n}{n!} + R(x), \
 	R(x) = \frac{e^{\Theta x}}{(n + 1)!} x^{n + 1}
@@ -60,7 +61,7 @@ f(x) = \sum_{k=0}^n \frac{f^{(k)} x^k}{k!} + R(x), \ R(x) = \frac{f^{(n + 1)}(\T
 	R(x) = \frac{\cos (\Theta x + \pi n)}{(2n)!} x^{2n}
 	\end{equation*}
 	\begin{equation*}
-	|R(x)| \leqslant \frac{|x|^{2n}}{(2n)!}
+	|R(x)| \leqslant \frac{x^{2n}}{(2n)!}
 	\end{equation*}
 	
 	\item $f(x) = \ln (1 + x), \

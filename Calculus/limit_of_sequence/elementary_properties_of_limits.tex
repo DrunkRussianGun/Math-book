@@ -68,9 +68,9 @@
 	
 	\item Если последовательности~$(x_n)$ и~$(y_n)$~--- ограниченная и~бесконечно малая величины соответственно, то $z_n = x_n y_n$~--- бесконечно малая величина.
 	\begin{proof}
-	Пусть
+	Пусть $a > 0 \colon \forall n \in \mathbb N \ |x_n| < a$, тогда
 	\begin{equation*}
-	a > 0 \colon \forall n \in \mathbb N \ |x_n| < a, \ \forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |y_n| < \frac\varepsilon{a} \Rightarrow
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |y_n| < \frac\varepsilon{a} \Rightarrow
 	\end{equation*}
 	\begin{equation*}
 	\Rightarrow \forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n y_n| < \varepsilon \Rightarrow \lim_{n \to \infty} z_n = 0

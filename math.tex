@@ -1,31 +1,25 @@
 \documentclass{report}
 \usepackage[left=3cm,top=2cm,right=2cm,bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
 \usepackage[russian]{babel}
 \usepackage{index} % предметный указатель
-%\renewcommand\indexname{Предметный указатель}
 \usepackage{indentfirst} % отступ красной строки
 \usepackage[unicode,colorlinks=true]{hyperref} % ссылки в оглавлении
 \usepackage{mathenvrus}
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
 \usepackage{multicol} % размещение текста в несколько колонок
-\AtBeginDocument{\shorthandoff{"} % во избежание конфликтов babel и XY-pic
-%\renewcommand\indexname{Предметный указатель}}
-%\indexname{Предметный указатель}
-}
+\AtBeginDocument{\shorthandoff{"}} % во избежание конфликтов babel и XY-pic
 \makeindex
 \tolerance=500 % увеличение максимально возможной разреженности строк
-%\addto{\captionsenglish}{%
-%   \renewcommand{\indexname}{Предметный указатель}
-%}
-%\addto{\captionsrussian}{%
-%   \renewcommand{\indexname}{Предметный указатель}
-%}
 \begin{document}
 \chapter*{Введение}
 \input{intro}
+\section*{Благодарности}
+\input{gratitudes}
 \tableofcontents
+
 \part{Школьный курс}
 \chapter{Теория множеств}
 \input{Set_theory/sets}
@@ -39,6 +33,7 @@
 	\input{Elementary_algebra/real_numbers/geometric_representation_of_real_numbers}
 \input{Elementary_algebra/subsets_of_set_R}
 \input{Elementary_algebra/algebraic_transformations}
+
 \part{Университетский курс}
 \chapter{Дискретная математика}
 \input{Discrete_maths/graphs}
@@ -126,7 +121,6 @@
 \input{Elementary_algebra/complex_numbers}
 	\input{Elementary_algebra/complex_numbers/geometric_representation_of_complex_number}
 	\input{Elementary_algebra/complex_numbers/trigonometric_form_of_complex_number}
-%\renewcommand\indexname{Предметный указатель}
-%\indexname{Предметный указатель}
+
 \printindex
 \end{document}

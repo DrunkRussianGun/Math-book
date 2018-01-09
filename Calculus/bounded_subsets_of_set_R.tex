@@ -20,7 +20,7 @@
 \end{statement}
 \begin{proof}
 Пусть $B$~--- множество всех мажорант множества~$A$, тогда $\forall a \in A, \ b \in B \ a \leqslant b$.
-По \hyperlink{eq:continuity_axiom}{аксиоме непрерывности} $\exists c \in \mathbb R \colon \forall a \in A, \ b \in B \ a \leqslant c \leqslant b$, тогда $c$~--- минимальная мажоранта множества~$A$.
+По~\hyperlink{eq:continuity_axiom}{аксиоме непрерывности} $\exists c \in \mathbb R \colon \forall a \in A, \ b \in B \ a \leqslant c \leqslant b$, тогда $c$~--- минимальная мажоранта множества~$A$.
 
 Единственность следует из~единственности минимального элемента.
 \end{proof}
@@ -48,7 +48,6 @@
 \end{statement}%
 Доказательство аналогично доказательству утверждения~\ref{st:inequality_of_supremum}.
 
-\hypertarget{th:Archimedes'_principle}{}
 \begin{theorem}[принцип Архимеда]
 Если $h > 0$, то $\forall x \in \mathbb R \ \exists k \in \mathbb Z \colon (k - 1)h \leqslant x < kh$.
 \end{theorem}
@@ -68,11 +67,12 @@
 \end{equation*}
 \end{consequent}
 \begin{proof}
-По~\hyperlink{th:Archimedes'_principle}{принципу Архимеда} для~$h = \varepsilon$, $x = 1$ получим:
+По~принципу Архимеда для~$h = \varepsilon$, $x = 1$ получим:
 \begin{equation*}
-\exists n \in \mathbb Z \colon \left( (n - 1)\varepsilon \leqslant 1 < n\varepsilon \Leftrightarrow
-(1 - \frac1n)\varepsilon \leqslant \frac1n < \varepsilon, \ n \in \mathbb N \Rightarrow
-\frac1n < \varepsilon, \ n \in \mathbb N \right)
+\forall \varepsilon > 0 \ \exists n \in \mathbb N \colon
+\left( (n - 1)\varepsilon \leqslant 1 < n\varepsilon \Leftrightarrow
+(1 - \frac1n)\varepsilon \leqslant \frac1n < \varepsilon \Rightarrow
+\frac1n < \varepsilon \right)
 \end{equation*}
 \end{proof}
 
@@ -85,7 +85,7 @@
 \end{consequent}
 \begin{proof}
 Из~следствия~\ref{conseq:small_rational_exists} для~$\varepsilon = b - a$ получим $\exists n \in \mathbb N \colon \dfrac1n < b - a$.
-По~\hyperlink{th:Archimedes'_principle}{принципу Архимеда} для~$h = \dfrac1n$, $x = a$ получим:
+По~принципу Архимеда для~$h = \dfrac1n$, $x = a$ получим:
 \begin{equation*}
 \exists k \in \mathbb Z \colon \left( \frac{k - 1}n \leqslant a < \frac{k}n \Rightarrow
 a < \frac{k}n = \frac{k - 1}n + \frac1n < a + (b - a) = b \right)
@@ -130,7 +130,7 @@ a < \frac{k}n = \frac{k - 1}n + \frac1n < a + (b - a) = b \right)
 Если $A$~--- бесконечное ограниченное множество, то $\exists a \in \mathbb R$~--- предельная точка $A$.
 \end{theorem}
 \begin{proof}
-$A \subset [a; b]$, где $a = \inf A$, $b = \sup A$.
+$A \subseteq [a; b]$, где $a = \inf A$, $b = \sup A$.
 Пусть $a$ не является предельной точкой $A$, т.\,е. $\exists \varepsilon_0 > 0 \colon \breve U_{\varepsilon_0}(a) \cap A = \varnothing$, тогда $a \in A$, значит, $a$~--- дискретная точка $A$.
 
 Рассмотрим множество~$B$ точек~$y$ таких, что интервал~$(-\infty; y)$ содержит конечное число точек $A$.

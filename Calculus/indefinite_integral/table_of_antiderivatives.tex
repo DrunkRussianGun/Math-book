@@ -9,7 +9,7 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{x^2 + a^2} = \frac1a \arctg \frac{x}a + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{dx}{x^2 + a^2} = \frac1a \arctg \frac{x}a + C, \ a > 0$
 	\begin{proof}
 	\begin{equation*}
 	\int \frac{dx}{x^2 + a^2} =
@@ -19,10 +19,13 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{x^2 - a^2} = \frac1{2a} \ln \left| \frac{x - a}{x + a} \right| + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{dx}{x^2 - a^2} = \frac1{2a} \ln \left| \frac{x - a}{x + a} \right| + C, \ a > 0$
 	\begin{proof}
 	\begin{equation*}
 	\int \frac{dx}{x^2 - a^2} =
+	\int \frac{dx}{2a(x - a)} - \int \frac{dx}{2a(x + a)} =
+	\frac1{2a} ((\ln |x - a| + C_1) - (\ln |x + a| + C_2)) =
+	\frac1{2a} \ln \left| \frac{x - a}{x + a} \right| + C
 	\end{equation*}
 	\end{proof}
 	
@@ -35,17 +38,26 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{\sqrt{x^2 + a}} = \ln |x + \sqrt{x^2 + a}| + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{dx}{\sqrt{x^2 + a}} = \ln \left| x + \sqrt{x^2 + a} \right| + C, \ a \neq 0$
 	\begin{proof}
 	\begin{equation*}
-	\int \frac{dx}{\sqrt{x^2 + a}} =
+	(\ln \left| x + \sqrt{x^2 + a} \right| + C)' =
+	\frac{1 + \frac{x}{\sqrt{x^2 + a}}}
+	{x + \sqrt{x^2 + a}} =
+	\frac{x + \sqrt{x^2 + a}}
+	{x^2 + a + x \sqrt{x^2 + a}} =
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}a + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}a + C, \ a > 0$
 	\begin{proof}
+	Пусть $x = a \sin t$, тогда
 	\begin{equation*}
 	\int \frac{dx}{\sqrt{a^2 - x^2}} =
+	a \int \frac{\cos t}{a \sqrt{1 - \sin^2 t}} dt =
+	\int dt =
+	t + C =
+	\arcsin \frac{x}a + C
 	\end{equation*}
 	\end{proof}
 	

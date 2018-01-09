@@ -20,16 +20,16 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $h(x) = f(x) g(x)$ дифференцируема в~точке~$a$, причём $h'(x) = f'(x) g(x) + f(x) g'(x)$.
+	\item $h(x) = f(x)\,g(x)$ дифференцируема в~точке~$a$, причём $h'(x) = f'(x)\,g(x) + f(x)\,g'(x)$.
 	\begin{proof}
 	\begin{equation*}
 	h'(a) =
-	\lim_{x \to a} \frac{f(x) g(x) - f(a) g(a)}{x - a} =
-	\lim_{x \to a} \frac{f(x) g(x) - f(a) g(x) + f(a) g(x) - f(a) g(a)}{x - a} =
+	\lim_{x \to a} \frac{f(x)\,g(x) - f(a)\,g(a)}{x - a} =
+	\lim_{x \to a} \frac{f(x)\,g(x) - f(a)\,g(x) + f(a)\,g(x) - f(a)\,g(a)}{x - a} =
 	\end{equation*}
 	\begin{equation*}
 	= \lim_{x \to a} \frac{f(x) - f(a)}{x - a} g(x) + \lim_{x \to a} f(a) \frac{g(x) - g(a)}{x - a} =
-	f'(a) g(a) + f(a) g'(a)
+	f'(a)\,g(a) + f(a)\,g'(a)
 	\end{equation*}
 	\end{proof}
 	
@@ -38,7 +38,7 @@
 	\begin{equation*}
 	h'(a) =
 	\lim_{x \to a} \frac{\frac{C}{f(x)} - \frac{C}{f(a)}}{x - a} =
-	-C\lim_{x \to a} \frac{f(x) - f(a)}{f(x) f(a)(x - a)} =
+	-C\lim_{x \to a} \frac{f(x) - f(a)}{f(x)\,f(a)(x - a)} =
 	-\frac{Cf'(a)}{f^2(a)}
 	\end{equation*}
 	\end{proof}
@@ -77,7 +77,7 @@ g'(f(a)) =
 \end{proof}
 
 \subsubsection{Метод логарифмического дифференцирования}
-Если $f(x) > 0$, то $(\ln f(x))' = \dfrac{f'(x)}{f(x)} \Leftrightarrow f'(x) = f(x) \cdot (\ln (f(x)))'$.
+Если $f(x) > 0$, то $(\ln f(x))' = \dfrac{f'(x)}{f(x)} \Leftrightarrow f'(x) = f(x) \cdot (\ln f(x))'$.
 \begin{equation*}
 (g(x)^{h(x)})' =
 g(x)^{h(x)} \cdot (h(x) \ln g(x))' =
