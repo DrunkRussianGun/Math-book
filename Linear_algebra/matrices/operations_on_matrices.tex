@@ -1,12 +1,12 @@
 \subsection{Операции над матрицами}
-Матрица, все элементы которой равны 0, называется \textbf{нулевой} и~обозначается $O$.
+Матрица, все элементы которой равны~$0$, называется \textbf{нулевой} и обозначается $O$.
 
-Квадратная матрица, в~которой элементы главной диагонали равны 1, а остальные~--- 0, называется \textbf{единичной} и~обозначается $E$.
+Квадратная матрица, в~которой элементы главной диагонали равны~$1$, а остальные~---~$0$, называется \textbf{единичной} и обозначается $E$.
 
-Над~матрицами определены следующие операции:
+Над матрицами определены следующие операции:
 \begin{itemize}
 	\item\textbf{Сложение.}
-	Определено только над~матрицами одинакового размера.
+	Определено только над матрицами одинакового размера.
 	\begin{equation*}
 	\begin{Vmatrix}
 	a_{11} & a_{12} & \cdots & a_{1n} \\ 
@@ -36,7 +36,7 @@
 		$(A + B) + C = A + (B + C)$
 	\end{itemize}
 	
-	\item\textbf{Умножение на~число.}
+	\item\textbf{Умножение на число.}
 	\begin{equation*}
 	\lambda \cdot
 	\begin{Vmatrix}
@@ -53,17 +53,17 @@
 	\end{Vmatrix}
 	\end{equation*}
 	
-	Пусть $\alpha, \beta$~--- числа, $A, B$~--- матрицы. Свойства умножения на~число:
+	Пусть $\alpha, \beta$~--- числа, $A, B$~--- матрицы. Свойства умножения на число:
 	\begin{itemize}
 		\item ассоциативность:
 		$(\alpha \cdot \beta) \cdot A = \alpha \cdot (\beta \cdot A)$
-		\item дистрибутивность относительно~сложения чисел:
+		\item дистрибутивность относительно сложения чисел:
 		$(\alpha + \beta) \cdot A = \alpha \cdot A + \beta \cdot A$
-		\item дистрибутивность относительно~сложения матриц:
+		\item дистрибутивность относительно сложения матриц:
 		$\alpha \cdot (A + B) = \alpha \cdot A + \alpha \cdot B$
 	\end{itemize}
 	
-	\item\textbf{Умножение.} $A \cdot B$ определено, только если количество столбцов в~матрице $A$ совпадает с~количеством строк в~матрице $B$.
+	\item\textbf{Умножение.} $A \cdot B$ определено, только если количество столбцов в матрице~$A$ совпадает с количеством строк в матрице~$B$.
 	\begin{equation*}
 	\begin{Vmatrix}
 	a_{11} & a_{12} & \cdots & a_{1k} \\ 
@@ -78,13 +78,13 @@
 	b_{k1} & b_{k2} & \cdots & b_{kn}
 	\end{Vmatrix} =
 	\begin{Vmatrix}
-	\sum\limits_{i=1}^k a_{1i}b_{i1} & \sum\limits_{i=1}^k a_{1i}b_{i2} & \cdots & \sum\limits_{i=1}^k a_{1i}b_{in} \\
-	\sum\limits_{i=1}^k a_{2i}b_{i1} & \sum\limits_{i=1}^k a_{2i}b_{i2} & \cdots & \sum\limits_{i=1}^k a_{2i}b_{in} \\
+	\sum a_{1i}b_{i1} & \sum a_{1i}b_{i2} & \cdots & \sum a_{1i}b_{in} \\
+	\sum a_{2i}b_{i1} & \sum a_{2i}b_{i2} & \cdots & \sum a_{2i}b_{in} \\
 	\vdots & \vdots & \ddots & \vdots \\
-	\sum\limits_{i=1}^k a_{mi}b_{i1} & \sum\limits_{i=1}^k a_{mi}b_{i2} & \cdots & \sum\limits_{i=1}^k a_{mi}b_{in}
+	\sum a_{mi}b_{i1} & \sum a_{mi}b_{i2} & \cdots & \sum a_{mi}b_{in}
 	\end{Vmatrix}
 	\end{equation*}
-	где суммирование производится по~$i$ от~$1$ до~$k$.
+	где суммирование производится по $i$ от $1$ до $k$.
 	
 	Пусть $\lambda$~--- число, $A, B, C$~--- матрицы. Свойства умножения:
 	\begin{itemize}
@@ -93,7 +93,7 @@
 		\item дистрибутивность:
 		$(A + B) \cdot C \opbr= A \cdot C + B \cdot C$,
 		$A \cdot (B + C) \opbr= A \cdot B + A \cdot C$
-		\item ассоциативность и~коммутативность относительно~умножения на~число:
+		\item ассоциативность и коммутативность относительно умножения на число:
 		$(\lambda \cdot A) \cdot B \opbr= \lambda \cdot (A \cdot B) \opbr= A \cdot (\lambda \cdot B)$
 	\end{itemize}
 	

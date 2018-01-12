@@ -22,17 +22,20 @@
 	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \frac{|a|}2 \Rightarrow
 	\end{equation*}
 	\begin{equation*}
-	\Rightarrow \forall n > n_0 \ \left( |a| = |a - x_n + x_n| \leqslant |a - x_n| + |x_n| < \frac{|a|}2 + |x_n| \Rightarrow |x_n| > \frac{|a|}2 \Rightarrow \frac1{|x_n|} < \frac2{|a|} \right)
+	\Rightarrow \forall n > n_0 \ |a| = |a - x_n + x_n| \leqslant |a - x_n| + |x_n| < \frac{|a|}2 + |x_n| \Rightarrow |x_n| > \frac{|a|}2 \Rightarrow \frac1{|x_n|} < \frac2{|a|}
 	\end{equation*}
 	
-	Тогда $\dfrac1{|x_n|} = \dfrac1{|\alpha_n + a|}$~--- ограниченная величина, значит, $\displaystyle \frac{|\alpha_n|}{|a||\alpha_n + a|} = \left| \frac1{x_n} - \frac1a \right|$~--- бесконечно малая величина.
+	Тогда $\dfrac1{|x_n|} = \dfrac1{|\alpha_n + a|}$~--- ограниченная величина, значит,
+	$\displaystyle \frac{|\alpha_n|}{|a||\alpha_n + a|} = \left| \frac1{x_n} - \frac1a \right|$~--- бесконечно малая величина.
 	Отсюда $\displaystyle \lim_{n \to \infty} \left( \frac1{x_n} - \frac1a \right) = 0 \Leftrightarrow \lim_{n \to \infty} \frac1{x_n} = \frac1a$.
 	\end{proof}
 	
 	\item Если $b \neq 0$, то $\displaystyle \lim_{n \to \infty} \frac{x_n}{y_n} = \frac{a}b$.
 	\begin{proof}
 	\begin{equation*}
-	\lim_{n \to \infty} \frac{x_n}{y_n} = \lim_{n \to \infty} \left( x_n \cdot \frac1{y_n} \right) = a \cdot \frac1b = \frac{a}b
+	\lim_{n \to \infty} \frac{x_n}{y_n} =
+	\lim_{n \to \infty} \left( x_n \cdot \frac1{y_n} \right) =
+	a \cdot \frac1b = \frac{a}b
 	\end{equation*}
 	\end{proof}
 \end{enumerate}

@@ -1,62 +1,145 @@
 % beta
 \subsection{Фундаментальная система решений}
 \begin{statement}
+\label{st:homogeneous_system_sets_vector_space}
 Однородная линейно независимая система уравнений
 \begin{equation*}
 \begin{cases}
 \displaystyle \sum_{i=1}^n a_{1i} x_i = 0 \\
 \displaystyle \sum_{i=1}^n a_{2i} x_i = 0 \\
-\vdots \\
+\ldots \\
 \displaystyle \sum_{i=1}^n a_{mi} x_i = 0
 \end{cases}
 \end{equation*}
-задаёт векторное пространство размерности~$n - m$.
+задаёт векторное пространство.
 \end{statement}
 \begin{proof}
+Пусть $(\alpha_1,  \ldots, \alpha_n), (\beta_1,  \ldots, \beta_n)$~--- решения данной системы, $\lambda \neq 0$.
+\begin{itemize}
+	\item \begin{equation*}
+	\begin{cases}
+	\displaystyle \sum_{i=1}^n a_{1i} (\alpha_i + \beta_i) = 0 \\
+	\displaystyle \sum_{i=1}^n a_{2i} (\alpha_i + \beta_i) = 0 \\
+	\ldots \\
+	\displaystyle \sum_{i=1}^n a_{mi} (\alpha_i + \beta_i) = 0
+	\end{cases}
+	\Leftrightarrow
+	\begin{cases}
+	\displaystyle \sum_{i=1}^n a_{1i} \alpha_i + \sum_{i=1}^n a_{1i} \beta_i = 0 \\
+	\displaystyle \sum_{i=1}^n a_{2i} \alpha_i + \sum_{i=1}^n a_{2i} \beta_i = 0 \\
+	\ldots \\
+	\displaystyle \sum_{i=1}^n a_{mi} \alpha_i + \sum_{i=1}^n a_{mi} \beta_i = 0
+	\end{cases}
+	\Leftrightarrow
+	\begin{cases}
+	0 = 0 \\
+	0 = 0 \\
+	\ldots \\
+	0 = 0
+	\end{cases}
+	\end{equation*}
+	
+	Значит, $(\alpha_1 + \beta_1, \ldots, \alpha_n + \beta_n)$ тоже является решением системы.
+	
+	\item \begin{equation*}
+	\begin{cases}
+	\displaystyle \sum_{i=1}^n a_{1i} \lambda \alpha_i = 0 \\
+	\displaystyle \sum_{i=1}^n a_{2i} \lambda \alpha_i = 0 \\
+	\ldots \\
+	\displaystyle \sum_{i=1}^n a_{mi} \lambda \alpha_i = 0
+	\end{cases}
+	\Leftrightarrow
+	\begin{cases}
+	\displaystyle \lambda \sum_{i=1}^n a_{1i} \alpha_i = 0 \\
+	\displaystyle \lambda \sum_{i=1}^n a_{2i} \alpha_i = 0 \\
+	\ldots \\
+	\displaystyle \lambda \sum_{i=1}^n a_{mi} \alpha_i = 0
+	\end{cases}
+	\Leftrightarrow
+	\begin{cases}
+	0 = 0 \\
+	0 = 0 \\
+	\ldots \\
+	0 = 0
+	\end{cases}
+	\end{equation*}
+	
+	Значит, $(\lambda \alpha_1, \ldots, \lambda \alpha_n)$ тоже является решением системы.
+\end{itemize}
 
+Тогда множество решений данной системы~--- векторное пространство.
 \end{proof}
 
-\textbf{Фундаментальной системой решений} однородной системы линейных уравнений называется базис множества всех её решений.
+\textbf{Фундаментальной системой решений однородной системы линейных уравнений} называется базис множества всех её решений.
 
 \subsubsection{Нахождение фундаментальной системы решений}
 Пусть дана однородная линейно независимая система уравнений:
-\begin{equation*}
+\begin{equation}
+\label{eq:homogeneous_system1}
 \begin{cases}
 \displaystyle \sum_{i=1}^n a_{1i} x_i = 0 \\
 \displaystyle \sum_{i=1}^n a_{2i} x_i = 0 \\
-\vdots \\
-\displaystyle \sum_{i=1}^n a_{mi} x_i = 0 \\
+\ldots \\
+\displaystyle \sum_{i=1}^n a_{mi} x_i = 0
 \end{cases} \Leftrightarrow
 \begin{cases}
 \displaystyle \sum_{i=1}^m a_{1i} x_i = -\sum_{i=m+1}^n a_{1i} x_i \\
 \displaystyle \sum_{i=1}^m a_{2i} x_i = -\sum_{i=m+1}^n a_{2i} x_i \\
-\vdots \\
-\displaystyle \sum_{i=1}^m a_{mi} x_i = -\sum_{i=m+1}^n a_{mi} x_i \\
+\ldots \\
+\displaystyle \sum_{i=1}^m a_{mi} x_i = -\sum_{i=m+1}^n a_{mi} x_i
 \end{cases}
+\end{equation}
+
+Присваивая переменным~$x_{m+1}, \ldots, x_n$ произвольные значения, получаем систему уравнений, которая по \hyperref[th:Cramer]{теореме Крамера} имеет единственное решение.
+Тогда решения системы~(\ref*{eq:homogeneous_system1})
+\begin{equation*}
+\overline{e_i} = (x_{1i}; x_{2i}; \ldots; x_{mi}; 1; 0; \ldots; 0), \ i = 1, 2, \ldots, n - m
 \end{equation*}
 
-Пусть 
-\begin{equation*}
-(x_{11}; x_{21}; \ldots; x_{m1}; 1; 0; \ldots; 0)
-\end{equation*}
-\begin{equation*}
-(x_{12}; x_{22}; \ldots; x_{m2}; 0; 1; \ldots; 0)
-\end{equation*}
-\begin{equation*}
-\vdots
-\end{equation*}
-\begin{equation*}
-(x_{1\, n-m}; x_{2\, n-m}; \ldots; x_{m\, n-m}; 0; 0; \ldots; 1)
-\end{equation*}
-являются решениями данной системы. 
-Тогда они образуют фундаментальную систему решений.
+образуют фундаментальную систему решений.
 \begin{proof}
-
+Пусть $\overline r = (r_1, \ldots, r_n)$~--- решение системы~(\ref*{eq:homogeneous_system1}), $\overline p = (p_1, \ldots, p_n) = r_{m+1} \overline{e_1} \opbr+ r_{m+2} \overline{e_2} \opbr+ \ldots \opbr+ r_n \overline{e_{n-m}} \opbr- \overline r$.
+По утверждению~\ref*{st:homogeneous_system_sets_vector_space} $\overline p$~--- решение системы~(\ref*{eq:homogeneous_system1}).
+Легко проверить, что $p_{m+1} \opbr= \ldots \opbr= p_n \opbr= 0$.
+Подставим эти значения в систему~(\ref*{eq:homogeneous_system1}), тогда по \hyperref[th:Cramer]{теореме Крамера} она имеет единственное решение~--- нулевое.
+Значит, $\overline r = r_{m+1} \overline{e_1} + r_{m+2} \overline{e_2} + \ldots + r_n \overline{e_{n-m}}$, т.\,е. $\overline{e_1}, \ldots, \overline{e_{n-m}}$~--- фундаментальная система решений.
 \end{proof}
 
 \begin{theorem}
-Общее решение неоднородной системы линейных уравнений равно сумме её частного решения и~общего решения соответствующей однородной системы, т.\,е. с~теми~же самыми коэффициентами при~переменных.
+Пусть дана линейно независимая система уравнений:
+\begin{equation}
+\label{eq:nonhomogeneous_system}
+\begin{cases}
+\displaystyle \sum_{i=1}^n a_{1i} x_i = b_1 \\
+\displaystyle \sum_{i=1}^n a_{2i} x_i = b_2 \\
+\ldots \\
+\displaystyle \sum_{i=1}^n a_{mi} x_i = b_m
+\end{cases}
+\end{equation}
+
+Если $\overline{e_0}$~--- её решение, а векторы~$\overline{e_1}, \ldots, \overline{e_{n-m}}$~--- фундаментальная система решений системы уравнений
+\begin{equation}
+\label{eq:homogeneous_system2}
+\begin{cases}
+\displaystyle \sum_{i=1}^n a_{1i} x_i = 0 \\
+\displaystyle \sum_{i=1}^n a_{2i} x_i = 0 \\
+\ldots \\
+\displaystyle \sum_{i=1}^n a_{mi} x_i = 0
+\end{cases}
+\end{equation}
+
+то любое решение системы~(\ref*{eq:nonhomogeneous_system}) можно найти по формуле
+\begin{equation*}
+\lambda_1 \overline{e_1} + \ldots + \lambda_{n-m} \overline{e_{n-m}} + \overline{e_0}
+\end{equation*}
+где $\lambda_1, \ldots, \lambda_{n-m}$~--- произвольные числа.
 \end{theorem}
 \begin{proof}
-
+Пусть $\overline v$~--- решение системы~(\ref*{eq:nonhomogeneous_system}).
+Убедимся подстановкой, что $\overline v - \overline{u_0}$~--- решение системы~(\ref*{eq:homogeneous_system2}).
+Тогда
+\begin{equation*}
+\overline v - \overline{u_0} = \sum_{i=1}^{n-m} \lambda_i \overline{u_i} \Leftrightarrow
+\overline v = \sum_{i=1}^{n-m} \lambda_i \overline{u_i} + \overline{u_0}
+\end{equation*}
 \end{proof}

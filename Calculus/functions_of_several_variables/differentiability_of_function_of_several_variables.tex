@@ -1,60 +1,62 @@
 \subsection{Дифференцируемость функции нескольких переменных}
-Функция~$f(x_1, \ldots, x_n)$ называется \textbf{дифференцируемой в~точке~$\overline{x_0} = (x_{10}, \ldots, x_{n0})$}, если
+\index{Функция!нескольких переменных!дифференцируемая} Функция~$f(x_1, \ldots, x_n)$ называется \textbf{дифференцируемой в точке~$\overline{x_0} = (x_{10}, \ldots, x_{n0})$}, если
 \begin{equation*}
 \exists (a_1, \ldots, a_n) \colon \forall \Delta \overline x = (\Delta x_1, \ldots, \Delta x_n) \
 f(\overline{x_0} + \Delta \overline x) - f(\overline{x_0}) =
 a_1 \Delta x_1 + \ldots + a_n \Delta x_n + o(\rho(\overline{x_0} + \Delta \overline x, \overline{x_0}))
 \end{equation*}
 
-Матрица~$\begin{Vmatrix}
+\index{Матрица!производная} Матрица~$\begin{Vmatrix}
 a_1 & a_2 & \ldots & a_n
-\end{Vmatrix}$, состоящая из~одной строки, называется \textbf{производной матрицей}.
+\end{Vmatrix}$, состоящая из одной строки, называется \textbf{производной матрицей}.
 
-Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в~точке~$\overline{x_0} = (x_{10}, \ldots, \allowbreak x_{n0})$, $\Delta \overline x = (0, \ldots, \allowbreak 0, \Delta x_k, \allowbreak 0, \ldots, \allowbreak 0)$, тогда
+Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в точке~$\overline{x_0} = (x_{10}, \ldots, \allowbreak x_{n0})$, $\Delta \overline x = (0, \ldots, \allowbreak 0, \Delta x_k, \allowbreak 0, \ldots, \allowbreak 0)$, тогда
 \begin{equation*}
 \rho(\overline{x_0} + \Delta \overline x, \overline{x_0}) = |\Delta x_k|, \
 f(\overline{x_0} + \Delta \overline x) - f(\overline{x_0}) =
 a_k \Delta x_k + o(|\Delta x_k|)
 \end{equation*}
 
-Это означает, что функция~$g(x) = f(x_{10}, \ldots, x_{k-1\, 0}, x_k, x_{k+1\, 0}, \ldots, x_{n0})$ дифференцируема в~точке~$x_{k0}$ и $a_k = g'(x_{k0})$.
-\index{Частная производная} $g(x)$ называется \textbf{частной производной функции~$f(\overline x)$} и~обозначается $\dfrac{\partial f}{\partial x_k}$, или $f_{x_k}'(\overline x)$.
+Это означает, что функция~$g(x) = f(x_{10}, \ldots, x_{k-1\, 0}, x_k, x_{k+1\, 0}, \ldots, x_{n0})$ дифференцируема в точке~$x_{k0}$ и $a_k = g'(x_{k0})$.
+\index{Производная!частная} $g(x)$ называется \textbf{частной производной функции~$f(\overline x)$} и обозначается $\dfrac{\partial f}{\partial x_k}$, или $f_{x_k}'(\overline x)$.
 Т.\,о., производная матрица функции~$f(\overline x)$ имеет вид $(f_{x_1}', f_{x_2}', \ldots, f_{x_n}')$.
 
-Следует обратить внимание, что обозначение~$\dfrac{\partial f}{\partial x_k}$ следует понимать как цельный символ, а не~как отношение некоторых величин.
+Следует обратить внимание, что обозначение~$\dfrac{\partial f}{\partial x_k}$ следует понимать как цельный символ, а не как отношение некоторых величин.
 Например, $\dfrac{\partial f}{\partial x} \cdot \dfrac{\partial x}{\partial t} \neq \dfrac{\partial f}{\partial t}$.
 
-Существование частных производных функции в~некоторой точке не~является достаточным условием дифференцируемости этой функции в~данной точке.
+Существование частных производных функции в~некоторой точке не является достаточным условием дифференцируемости этой функции в~данной точке.
 Например, функция~$f(x, y) =
 \begin{cases}
 0, \ xy = 0 \\
 1, \ xy \neq 0
 \end{cases}$
-имеет частные производные в~точке~$(0, 0)$: $f_x'(0, 0) = f_y'(0, 0) = 0$,~--- однако не~является дифференцируемой в~этой точке, т.\,к., очевидно, терпит в~ней разрыв.
+имеет частные производные в точке~$(0, 0)$: $f_x'(0, 0) = f_y'(0, 0) = 0$,~--- однако не является дифференцируемой в~этой точке, т.\,к., очевидно, терпит в~ней разрыв.
 
 Частная производная~$f_1(x_1, \ldots, x_n) = f_{x_k}'$ функции~$f(x_1, \ldots, x_n)$ также является функцией.
-Частная производная~$f_{1\, x_l}'$ называется \textbf{частной производной функции~$f(\overline x)$ второго порядка} и~обозначается $f_{x_k x_l}'' = \dfrac{\partial^2 f}{\partial x_k \partial x_l}$.
-При~этом, если $k \neq l$, то такая производная называется \textbf{смешанной}.
+Частная производная~$f_{1\, x_l}'$ называется \textbf{частной производной функции~$f(\overline x)$ второго порядка} и обозначается $f_{x_k x_l}'' = \dfrac{\partial^2 f}{\partial x_k \partial x_l}$.
+При этом, если $k \neq l$, то такая производная называется \textbf{смешанной}.
 Частные производные большего порядка определяются по индукции.
 
+\index{Теорема!Шварца}
 \begin{theorem}[Шварца]
 Пусть дана функция~$f(x_1, \ldots, x_n)$.
 Если $f_{x_i x_j}''$ и~$f_{x_j x_i}''$ непрерывны, то $f_{x_i x_j}'' = f_{x_j x_i}''$.
 \end{theorem}
 
-\textbf{Дифференциалом функции~$f(\overline x)$ в~точке~$\overline{x_0}$} называется величина $\displaystyle \sum_{k=1}^n f_{x_k}'(\overline{x_0}) dx_k$, являющаяся линейной частью приращения функции и~обозначаемая $df(\overline{x_0})$.
-По аналогии с~частными производными произвольного порядка вводятся дифференциалы произвольного порядка.
+\textbf{Дифференциалом функции~$f(\overline x)$ в точке~$\overline{x_0}$} называется величина $\displaystyle \sum_{k=1}^n f_{x_k}'(\overline{x_0}) dx_k$, являющаяся линейной частью приращения функции и обозначаемая $df(\overline{x_0})$.
+По аналогии с частными производными произвольного порядка вводятся дифференциалы произвольного порядка.
 
-\hyperref[th:Taylor's_formula]{Формулу Тейлора} можно обобщить на~случай нескольких переменных:
-\begin{equation*}
+\hyperref[eq:Taylor_series]{Формулу Тейлора} можно обобщить на случай нескольких переменных:
+\begin{equation}
+\label{eq:Taylor_series_for_several_variables}
 f(\overline x) - f(\overline{x_0}) =
 df(\overline{x_0}) + \frac{d^2 f(\overline{x_0})}{2!} + \frac{d^3 f(\overline{x_0})}{3!} + \ldots + \frac{d^n f(\overline{x_0})}{n!} + o(\rho(\overline x, \overline{x_0}))
-\end{equation*}
+\end{equation}
 
-\index{Производная по направлению} Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в~точке~$\overline{x_0}$, $\overline e = (e_1, \ldots, e_n)$~--- единичный вектор.
-\textbf{Производной функции~$f(\overline x)$ по~направлению~$\overline e$} называется величина
+\index{Производная!по направлению} Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в~точке~$\overline{x_0}$, $\overline e = (e_1, \ldots, e_n)$~--- единичный вектор.
+\textbf{Производной функции~$f(\overline x)$ по направлению~$\overline e$} называется величина
 \begin{equation*}
 \frac{\partial f}{\partial \overline e} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \cdot e_i
 \end{equation*}
 
-\index{Градиент функции} \textbf{Градиентом функции $f(x_1, \ldots, x_n)$}, дифференцируемой в~точке~$\overline{x_0}$, называется вектор $\grad f \opbr= (f_{x_1}', \ldots, f_{x_n}')$.
+\index{Градиент} \textbf{Градиентом функции $f(x_1, \ldots, x_n)$}, дифференцируемой в точке~$\overline{x_0}$, называется вектор $\grad f \opbr= (f_{x_1}', \ldots, f_{x_n}')$.

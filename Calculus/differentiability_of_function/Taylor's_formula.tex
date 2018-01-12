@@ -1,19 +1,26 @@
 \subsection{Формула Тейлора}
+\index{Формула!Тейлора}
 \begin{theorem}[формула Тейлора]
-\label{th:Taylor's_formula}
-Если функция~$f(x)$ в~некоторой окрестности~$U(a)$ имеет все производные до~$n + 1$\nobreakdash-го порядка включительно, то
+\label{eq:Taylor_series}
+Если функция~$f(x)$ в~некоторой окрестности~$U(a)$ имеет все производные до~$n + 1$-го порядка включительно, то
 \begin{equation*}
-\forall x \in U(a) \ f(x) = \sum_{k=0}^n \frac{f^{(k)} (x - a)^k}{k!} + R(x), \
-R(x) = \frac{f^{(n + 1)}(a + \Theta(x - a))}{(n + 1)!}(x - a)^{n + 1}, \ \Theta \in (0; 1)
+\forall x \in U(a) \
+f(x) = \sum_{k=0}^n \frac{f^{(k)} (x - a)^k}{k!} + R(x), \
+R(x) = \frac{f^{(n + 1)}(a + \Theta(x - a))}{(n + 1)!}(x - a)^{n + 1}, \
+\Theta \in (0; 1)
 \end{equation*}
 \end{theorem}
 
-$R(x)$ называется \textbf{остаточным членом} в~форме Лагранжа и~используется для~оценки ошибки. Также его можно представить в~форме Пеано~--- $R(x) = o((x - a)^n)$~--- которая используется при~вычислении пределов.
+$R(x)$ называется \textbf{остаточным членом} в~форме Лагранжа и используется для оценки ошибки. Также его можно представить в~форме Пеано~--- $R(x) = o((x - a)^n)$~--- которая используется при вычислении пределов.
 
+\index{Формула!Маклорена}
 Подставив $a = 0$ в~формулу Тейлора, получим \textbf{формулу Маклорена}:
-\begin{equation*}
-f(x) = \sum_{k=0}^n \frac{f^{(k)} x^k}{k!} + R(x), \ R(x) = \frac{f^{(n + 1)}(\Theta x)}{(n + 1)!} x^{n + 1}, \ \Theta \in (0; 1)
-\end{equation*}
+\begin{equation}
+\label{eq:Maclaurin_series}
+f(x) = \sum_{k=0}^n \frac{f^{(k)} x^k}{k!} + R(x), \
+R(x) = \frac{f^{(n + 1)}(\Theta x)}{(n + 1)!} x^{n + 1}, \
+\Theta \in (0; 1)
+\end{equation}
 
 \subsubsection{Разложения некоторых функций в ряд Маклорена}
 \begin{itemize}
@@ -72,7 +79,7 @@ f(x) = \sum_{k=0}^n \frac{f^{(k)} x^k}{k!} + R(x), \ R(x) = \frac{f^{(n + 1)}(\T
 	R(x) = \frac{(-1)^n x^{n+1}}{(n + 1)(1 + \Theta x)^{n+1}}
 	\end{equation*}
 	
-	Для~вычисления $\ln a$, $a \neq -1$, можно воспользоваться формулой
+	Для вычисления $\ln a$, $a \neq -1$, можно воспользоваться формулой
 	\begin{equation*}
 	\forall n \in \mathbb N \ \ln \frac{1 + x_0}{1 - x_0} = \ln (1 + x_0) - \ln (1 - x_0) =
 	2 \left( x_0 + \frac{x_0^3}3 + \frac{x_0^5}5 + \ldots \right)

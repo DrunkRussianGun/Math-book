@@ -25,8 +25,8 @@
 \newcommand\opbr[1]
 	{\ensuremath{#1}\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
 
-\newcommand\mult{\;\vdots\;}
-\newcommand\notmult{\lefteqn{\mkern 1mu\not}\;\vdots\;}
+\newcommand\mult{\ensuremath{\mathbin{\raise -0.6mm\hbox{\vdots}}}}
+\newcommand\notmult{\ensuremath{\mathbin{\lefteqn{\negthickspace\not}\mult}}}
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}

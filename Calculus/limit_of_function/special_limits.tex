@@ -10,7 +10,6 @@ $\begin{xy} /r3cm/:
 (0.5, 0.9142) **@{-}; % касательная
 (0.7071, 0.7071) = "B" *{\bullet} *++!DL{B};
 (1, 0) = "A" **@{-} *{\bullet} *++!UR{A};
-%"B"; (0.7071, 0) = "H" **@{-} *{\bullet} *++!U{H};
 "B";  "O" **@{-};
 {"O" \ellipse<3cm>:a(210),^,=:a(75){}};
 {"O" \ellipse<5mm>:a(90),_,:a(45){}};
@@ -24,7 +23,7 @@ $\begin{xy} /r3cm/:
 \end{statement}
 \begin{proof}
 Пусть $x > 0$.
-Рассмотрим сектор~$AOB$ единичного круга ($OA = OB = 1$) с~углом~$x$ и~касательную~$BC$ к~нему.
+Рассмотрим сектор~$AOB$ единичного круга ($OA = OB = 1$) с углом~$x$ и касательную~$BC$ к нему.
 \begin{equation*}
 S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 \sin x < x < \tg x \Leftrightarrow
@@ -79,7 +78,9 @@ S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 \begin{proof}
 \begin{enumerate}
 	\item Пусть $x > 0$.
-	$\displaystyle \lim_{x \to +\infty} \left( 1 + \frac1{[x]} \right)^{[x]} = \lim_{x \to +\infty} \left( 1 + \frac1{[x] + 1} \right)^{[x] + 1} = e$ по~\hyperlink{def:Euler's_number}{определению числа Эйлера}.
+	$\displaystyle \lim_{x \to +\infty} \left( 1 + \frac1{[x]} \right)^{[x]} =
+	\lim_{x \to +\infty} \left( 1 + \frac1{[x] + 1} \right)^{[x] + 1} =
+	e$.
 	\begin{equation*}
 	\left( 1 + \frac1{[x] + 1} \right)^{[x] + 1} \left( 1 + \frac1{[x] + 1} \right)^{-1} =
 	\left( 1 + \frac1{[x] + 1} \right)^{[x]} <
@@ -119,15 +120,16 @@ S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 Следствия:
 \begin{itemize}
 	\item \begin{equation*}
-	\lim_{x \to 0} (1 + x)^{\tfrac1x} \;
-	\left| \text{Пусть } y = \frac1x \right| =
-	\lim_{y \to \infty} \left( 1 + \frac1y \right)^y = e
+	\lim_{x \to 0} (1 + ax)^{\tfrac1x} \;
+	\left| \text{Пусть } y = \frac1{ax} \right| =
+	\lim_{y \to \infty} \left( \left( 1 + \frac1y \right)^y \right)^a =
+	e^a, \ a \neq 0
 	\end{equation*}
 	
 	\item \begin{equation*}
 	\lim_{x \to \infty} \left( 1 + \frac{a}x \right)^x =
 	\lim_{x \to \infty} \left( \left( 1 + \frac{a}x \right)^{\tfrac{x}a} \right)^a =
-	e^a, a \neq 0
+	e^a, \ a \neq 0
 	\end{equation*}
 	
 	\item \begin{equation*}
@@ -154,6 +156,6 @@ S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 	\left| \text{Пусть } 1 + ax = e^y \right| =
 	\frac{a}b \lim_{y \to 0} \frac{e^{ny} - 1}{e^y - 1} =
 	\frac{an}b \lim_{y \to 0} \frac{e^{ny} - 1}{ny} \cdot \frac{y}{e^y - 1} =
-	\frac{an}b, a, b, n \neq 0
+	\frac{an}b, \ a, b, n \neq 0
 	\end{equation*}
 \end{itemize}

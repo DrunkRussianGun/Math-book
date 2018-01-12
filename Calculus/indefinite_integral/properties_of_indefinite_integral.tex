@@ -1,7 +1,7 @@
 \subsection{Свойства неопределённого интеграла}
 Пусть $C$~--- произвольная константа.
 \begin{enumerate}
-	\item Пусть $F(x)$~первообразная функции~$f(x)$, тогда $d \left( \int f(x)\,dx \right) = f(x)\,dx$.
+	\item Пусть $F(x)$~--- первообразная функции~$f(x)$, тогда $d \left( \int f(x)\,dx \right) = f(x)\,dx$.
 	
 	\item $\int dF(x) = F(x) + C$.
 	
@@ -26,14 +26,14 @@
 	\item Если $\int f(x)\,dx = F(x) + C$, $u(x)$~--- дифференцируемая функция, то $\int f(u)\,du = F(u) + C$.
 \end{enumerate}
 
-Пусть $u(x)$ и~$v(x)$~--- дифференцируемые функции.
+Пусть $u(x)$ и $v(x)$~--- дифференцируемые функции.
 Существует \textbf{метод интегрирования по~частям}, использующий следующее свойство:
-$\int u\,v'\,dx = u\,v - \int u'\,v\,dx$.
+$\int uv'\,dx = uv - \int u'v\,dx$.
 \begin{proof}
 \begin{equation*}
-d(u\,v) = du\,v + u\,dv \Rightarrow
-\int d(u\,v) = \int du\,v + u\,dv \Rightarrow
-u\,v + C = \int du\,v + \int u\,dv \Rightarrow
-\int u\,v'\,dx = u\,v - \int u'\,v\,dx
+d(uv) = du\,v + u\,dv \Rightarrow
+\int d(uv) = \int du\,v + u\,dv \Rightarrow
+uv + C = \int du\,v + \int u\,dv \Rightarrow
+\int uv'\,dx = u\,v - \int u'v\,dx
 \end{equation*}
 \end{proof}

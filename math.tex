@@ -10,9 +10,11 @@
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
 \usepackage{multicol} % размещение текста в несколько колонок
-\AtBeginDocument{\shorthandoff{"}} % во избежание конфликтов babel и XY-pic
-\makeindex
+\usepackage{enumerate} % задание пользовательской нумерации для нумерованных списков
 \tolerance=500 % увеличение максимально возможной разреженности строк
+\AtBeginDocument{\shorthandoff{"}} % во избежание конфликтов babel и XY-pic
+\makeindex % создание предметного указателя
+\renewindex{default}{idx}{ind}{Предметный указатель} % переименование заголовка предметного указателя
 \begin{document}
 \chapter*{Введение}
 \input{intro}

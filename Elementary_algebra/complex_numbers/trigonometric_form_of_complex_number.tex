@@ -1,11 +1,11 @@
 \subsection{Тригонометрическая форма комплексного числа}
-\textbf{Тригонометрической формой} комплексного числа~$z$ называется его представление в~виде
+\textbf{Тригонометрической формой комплексного числа~$z$} называется его представление в~виде
 \begin{equation*}
-z = |z|(\cos \varphi + i\sin \varphi), \varphi = \Arg z
+z = |z|(\cos \varphi + i\sin \varphi), \ \varphi = \Arg z
 \end{equation*}
 
-При~использовании тригонометрических форм операции умножения и~деления комплексных чисел
-$z_1 = |z_1|(\cos \alpha + i\sin \alpha), z_2 = |z_2|(\cos \beta + i\sin \beta)$ упрощаются:
+При использовании тригонометрических форм операции умножения и деления комплексных чисел
+$z_1 = |z_1|(\cos \alpha + i\sin \alpha)$, $z_2 = |z_2|(\cos \beta + i\sin \beta)$ упрощаются:
 \begin{equation*}
 z_1 z_2 = |z_1| |z_2|(\cos \alpha \cos \beta - \sin \alpha \sin \beta + i(\sin \alpha \cos \beta + \cos \alpha \sin \beta)) =
 |z_1| |z_2|(\cos (\alpha + \beta) + i\sin (\alpha + \beta))
@@ -17,43 +17,43 @@ z_1 z_2 = |z_1| |z_2|(\cos \alpha \cos \beta - \sin \alpha \sin \beta + i(\sin \
 \frac{|z_1|}{|z_2|} (\cos (\alpha - \beta) + i\sin (\alpha - \beta))
 \end{equation*}
 
+\index{Формула!Эйлера!в математическом анализе}
 \begin{theorem}[формула Эйлера]
-\label{eq:Euler's_formula}
 \begin{equation*}
 \cos x + i\sin x = e^{ix}
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Воспользуемся разложением $\cos x$, $\sin x$ и $e^{ix}$ в~ряд Маклорена:
+Воспользуемся разложением $\cos x$, $\sin x$ и $e^{ix}$ в~\hyperref[eq:Maclaurin_series]{ряд Маклорена}:
 \begin{equation*}
 \cos x + i\sin x = 1 + \frac{ix}{1!} - \frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{4!} + \frac{ix^5}{5!} + \ldots =
 1 + \frac{ix}{1!} + \frac{i^2 x^2}{2!} + \frac{i^3 x^3}{3!} + \frac{i^4 x^4}{4!} + \frac{i^5 x^5}{5!} + \ldots = e^{ix}
 \end{equation*}
 \end{proof}
 
-При~подстановке $x = \pi$ в~формулу Эйлера (\ref{eq:Euler's_formula}) получим замечательное \textbf{тождество Эйлера}, связывающее пять фундаментальных математических констант:
+При подстановке $x = \pi$ в~формулу Эйлера получим замечательное \textbf{тождество Эйлера}, связывающее пять фундаментальных математических констант:
 \begin{equation*}
 e^{i\pi} + 1 = 0
 \end{equation*}
 
+\index{Формула!Муавра}
 \begin{theorem}[формула Муавра]
-\label{eq:de_Moivre's_formula}
 Если $z = |z|(\cos \varphi + i\sin \varphi)$, $n \in \mathbb R$, то
 \begin{equation*}
 z^n = |z|^n(\cos n\varphi + i\sin n\varphi)
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Для~$n \in \mathbb N$ формулу можно доказать методом математической индукции, тогда показать истинность формулы для~$n \in \mathbb Z$ несложно.
-Мы~же докажем формулу сразу для~$n \in \mathbb R$, пользуясь формулой Эйлера (\ref{eq:Euler's_formula}):
+Для $n \in \mathbb N$ формулу можно доказать методом математической индукции, тогда показать истинность формулы для $n \in \mathbb Z$ несложно.
+Мы~же докажем формулу сразу для $n \in \mathbb R$, пользуясь формулой Эйлера:
 \begin{equation*}
 z^n = |z|^n(\cos \varphi + i\sin \varphi)^n =
 |z|^n e^{i\varphi n} = |z|^n (\cos n\varphi + i\sin n\varphi)
 \end{equation*}
 \end{proof}
 
-Пользуясь формулой Муавра (\ref{eq:de_Moivre's_formula}), можно извлекать корни из~комплексного числа~$z = |z|(\cos \varphi \opbr+ i\sin \varphi)$:
+Пользуясь формулой Муавра, можно извлекать корни из комплексного числа~$z = |z|(\cos \varphi \opbr+ i\sin \varphi)$:
 \begin{equation*}
-\sqrt[n]{z} = \sqrt[n]{|z|}(\cos \frac{\varphi}n + i\sin \frac{\varphi}n)
+\sqrt[n]{z} = \sqrt[n]{|z|} \left( \cos \frac{\varphi}n + i\sin \frac{\varphi}n \right)
 \end{equation*}
-Следует не~забывать, что $\varphi$ определено с~точностью до~$2\pi k, k \in \mathbb Z$, поэтому комплексный корень имеет не~одно, а $n$~значений (что можно показать, пользуясь следствием (\ref{conseq:n_roots_of_polynomial})).
+Следует не забывать, что $\varphi$ определено с точностью до~$2\pi k, k \in \mathbb Z$, поэтому комплексный корень имеет не одно, а $n$~значений (что можно показать, пользуясь следствием~\ref{conseq:n_roots_of_polynomial}).

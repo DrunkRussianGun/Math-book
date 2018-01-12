@@ -1,7 +1,7 @@
 \subsection{Правила дифференцирования}
-Пусть $f(x)$, $g(x)$~--- функции, дифференцируемые в~точке~$a$, $C$~--- константа.
+Пусть $f(x)$, $g(x)$~--- функции, дифференцируемые в точке~$a$, $C$~--- константа.
 \begin{enumerate}
-	\item $h(x) = f(x) + g(x)$ дифференцируема в~точке~$a$, причём $h'(x) = f'(x) + g'(x)$.
+	\item $h(x) = f(x) + g(x)$ дифференцируема в точке~$a$, причём $h'(x) = f'(x) + g'(x)$.
 	\begin{proof}
 	\begin{equation*}
 	h'(a) =
@@ -11,7 +11,7 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $h(x) = Cf(x)$ дифференцируема в~точке~$a$, причём $h'(x) = Cf'(x)$.
+	\item $h(x) = Cf(x)$ дифференцируема в точке~$a$, причём $h'(x) = Cf'(x)$.
 	\begin{proof}
 	\begin{equation*}
 	h'(a) =
@@ -20,36 +20,36 @@
 	\end{equation*}
 	\end{proof}
 	
-	\item $h(x) = f(x)\,g(x)$ дифференцируема в~точке~$a$, причём $h'(x) = f'(x)\,g(x) + f(x)\,g'(x)$.
+	\item $h(x) = f(x)g(x)$ дифференцируема в точке~$a$, причём $h'(x) = f'(x)g(x) + f(x)g'(x)$.
 	\begin{proof}
 	\begin{equation*}
 	h'(a) =
-	\lim_{x \to a} \frac{f(x)\,g(x) - f(a)\,g(a)}{x - a} =
-	\lim_{x \to a} \frac{f(x)\,g(x) - f(a)\,g(x) + f(a)\,g(x) - f(a)\,g(a)}{x - a} =
+	\lim_{x \to a} \frac{f(x)g(x) - f(a)g(a)}{x - a} =
+	\lim_{x \to a} \frac{f(x)g(x) - f(a)g(x) + f(a)g(x) - f(a)g(a)}{x - a} =
 	\end{equation*}
 	\begin{equation*}
 	= \lim_{x \to a} \frac{f(x) - f(a)}{x - a} g(x) + \lim_{x \to a} f(a) \frac{g(x) - g(a)}{x - a} =
-	f'(a)\,g(a) + f(a)\,g'(a)
+	f'(a)g(a) + f(a)g'(a)
 	\end{equation*}
 	\end{proof}
 	
-	\item Если $f(a) \neq 0$, то $h(x) = \dfrac{C}{f(x)}$ дифференцируема в~точке~$a$, причём $h'(x) = -\dfrac{Cf'(x)}{f^2(x)}$.
+	\item Если $f(a) \neq 0$, то $h(x) = \dfrac{C}{f(x)}$ дифференцируема в точке~$a$, причём $h'(x) = -\dfrac{Cf'(x)}{f^2(x)}$.
 	\begin{proof}
 	\begin{equation*}
 	h'(a) =
 	\lim_{x \to a} \frac{\frac{C}{f(x)} - \frac{C}{f(a)}}{x - a} =
-	-C\lim_{x \to a} \frac{f(x) - f(a)}{f(x)\,f(a)(x - a)} =
+	-C\lim_{x \to a} \frac{f(x) - f(a)}{f(x)f(a)(x - a)} =
 	-\frac{Cf'(a)}{f^2(a)}
 	\end{equation*}
 	\end{proof}
 	
-	\item Если $g(a) \neq 0$, то $h(x) = \dfrac{f(x)}{g(x)}$ дифференцируема в~точке~$a$, причём $h'(x) = \dfrac{f'(x) g(x) - f(x) g'(x)}{g^2(x)}$.
+	\item Если $g(a) \neq 0$, то $h(x) = \dfrac{f(x)}{g(x)}$ дифференцируема в точке~$a$, причём $h'(x) = \dfrac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}$.
 	\begin{proof}
 	\begin{equation*}
 	h'(x) =
 	\left( f(x) \cdot \frac1{g(x)} \right)' =
-	\frac{f'(x)}{g(x)} - \frac{f(x) g'(x)}{g^2(x)} =
-	\frac{f'(x) g(x) - f(x) g'(x)}{g^2(x)}
+	\frac{f'(x)}{g(x)} - \frac{f(x)g'(x)}{g^2(x)} =
+	\frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}
 	\end{equation*}
 	\end{proof}
 \end{enumerate}
@@ -66,13 +66,13 @@ g'(f(a)) \cdot f'(a)
 \end{proof}
 
 \subsubsection{Обратная функция}
-Если $f_1(x) = f'(x) \neq 0$, $g(f(x)) = x$, то $g'(x) = \dfrac1{f_1(g(x))}$.
+Если $f'(x) \neq 0$, $g(f(x)) = x$, то $g'(x) = \dfrac1{f'(g(x))}$.
 \begin{proof}
 \begin{equation*}
 g'(f(a)) =
 \lim_{f(x) \to f(a)} \frac{g(f(x)) - g(f(a))}{f(x) - f(a)} =
 \lim_{x \to a} \frac{x - a}{f(x) - f(a)} =
-\frac1{f_1(a)} = \frac1{f_1(g(f(a)))} \Rightarrow g'(x) = \frac1{f_1(g(x))}
+\frac1{f'(a)} = \frac1{f'(g(f(a)))} \Rightarrow g'(x) = \frac1{f'(g(x))}
 \end{equation*}
 \end{proof}
 
