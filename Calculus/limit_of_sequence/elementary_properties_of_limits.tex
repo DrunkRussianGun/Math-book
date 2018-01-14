@@ -10,7 +10,7 @@
 	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |x_n - b| < \frac\varepsilon2 \Rightarrow
 	\end{equation*}
 	\begin{equation*}
-	\Rightarrow \forall n > \max(n_1, n_2) \ |a - b| = |a - x_n + x_n - b| \leqslant |a - x_n| + |x_n - b| < \varepsilon
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |a - b| = |a - x_n + x_n - b| \leqslant |a - x_n| + |x_n - b| < \varepsilon
 	\end{equation*}
 	
 	Значит, $a = b$.
@@ -27,7 +27,7 @@
 	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |z_n - a| < \varepsilon \Rightarrow
 	\end{equation*}
 	\begin{equation*}
-	\Rightarrow \forall n > \max(n_1, n_2) \ a - \varepsilon < x_n \leqslant y_n \leqslant z_n < a + \varepsilon \Rightarrow |y_n - a| < \varepsilon
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ a - \varepsilon < x_n \leqslant y_n \leqslant z_n < a + \varepsilon \Rightarrow |y_n - a| < \varepsilon
 	\end{equation*}
 	\end{proof}
 	
@@ -69,7 +69,7 @@
 	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ ||x_n| - |a|| < 1 \Rightarrow |x_n| < |a| + 1
 	\end{equation*}
 	
-	Тогда $\forall n \in \mathbb N \ |x_n| < \max(|x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1, |a| + 1)$.
+	Тогда $\forall n \in \mathbb N \ |x_n| < \max \{ |x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1, |a| + 1 \}$.
 	\end{proof}
 	
 	\item Если последовательности $(x_n)$ и $(y_n)$~--- ограниченная и бесконечно малая величины соответственно, то $z_n = x_n y_n$~--- бесконечно малая величина.
@@ -91,7 +91,7 @@
 	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |y_n| < \frac\varepsilon2 \Rightarrow
 	\end{equation*}
 	\begin{equation*}
-	\Rightarrow \forall n > \max(n_1, n_2) \ |x_n + y_n| \leqslant |x_n| + |y_n| < \varepsilon \Rightarrow
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |x_n + y_n| \leqslant |x_n| + |y_n| < \varepsilon \Rightarrow
 	\lim_{n \to \infty} z_n = 0
 	\end{equation*}
 	\end{proof}

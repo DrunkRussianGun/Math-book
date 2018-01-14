@@ -13,7 +13,7 @@
 	В~таком случае докажем существование $q$ и $r$ методом математической индукции.
 		\indbase $n = m$.
 		Пусть $f = a x^n + f_1$, $g = b x^n + g_1$, тогда $\deg f_1, \deg g_1 < n$.
-		$\deg (f_1 - \frac{a}b g_1) \opbr\leqslant \max(f_1, g_1) \opbr< \deg g$, тогда $q = \frac{a}b$, $r = f_1 - \frac{a}b g_1$.
+		$\deg (f_1 - \frac{a}b g_1) \opbr\leqslant \max \{ \deg f_1, \deg g_1 \} \opbr< \deg g$, тогда $q = \frac{a}b$, $r = f_1 - \frac{a}b g_1$.
 		\indstep Пусть $n > m$, теорема верна для $k < n$ и $f = a x^n + f_1$, $g = b x^m + g_1$.
 		Рассмотрим
 		\begin{equation*}
@@ -25,7 +25,7 @@
 		\deg h_1 g_1 = \deg h_1 + \deg g_1 < (n - m) + m = n \Rightarrow
 		\end{equation*}
 		\begin{equation*}
-		\Rightarrow \deg (f - h_1 g) = \deg (f_1 - h_1 g_1) \leqslant \max(\deg f_1, \deg h_1 g_1) < n
+		\Rightarrow \deg (f - h_1 g) = \deg (f_1 - h_1 g_1) \leqslant \max \{ \deg f_1, \deg h_1 g_1 \} < n
 		\end{equation*}
 		
 		По предположению индукции
@@ -45,7 +45,7 @@
 	Возможны два случая:
 	\begin{enumerate}
 		\item $q_1 \neq q_2 \Rightarrow
-		\deg (r_1 - r_2) \leqslant \max(r_1, r_2) < \deg g \leqslant \deg (q_1 - q_2)g$
+		\deg (r_1 - r_2) \leqslant \max \{ \deg r_1, \deg r_2 \} < \deg g \leqslant \deg (q_1 - q_2)g$
 		
 		Противоречие.
 		
