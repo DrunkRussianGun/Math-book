@@ -15,6 +15,7 @@ $B = BE = BAC = EC = C$
 \index{Матрица!обратная} Т.\,о., матрица~$A^{-1}$ называется \textbf{обратной} к матрице~$A$, если $A^{-1} A = A A^{-1} = E$.
 
 \begin{theorem}
+\label{th:inverse_matrix_by_matrix_of_cofactors}
 Пусть даны матрицы
 \begin{equation*}
 A =
@@ -238,4 +239,17 @@ T_k \cdot \ldots \cdot T_1 \cdot E = A_1
 \end{cases}
 \Rightarrow A_1 \cdot A = E \Rightarrow A_1 = A^{-1}
 \end{equation*}
+\end{proof}
+
+\begin{theorem}
+Если $A$~--- квадратная матрица, то $\exists A^{-1} \Leftrightarrow \det A \neq 0$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. $A \cdot A^{-1} = E \Rightarrow
+	\det A \cdot \det A^{-1} = 1 \Rightarrow
+	\det A \neq 0$
+	
+	\item $\Leftarrow$. $\exists A^{-1}$ по теореме~\ref*{th:inverse_matrix_by_matrix_of_cofactors}.
+\end{enumerate}
 \end{proof}
