@@ -9,31 +9,20 @@
 Если существуют левая и правая обратные к $A$ матрицы $B$ и $C$, то они совпадают.
 \end{statement}
 \begin{proof}
-$B = BE = BAC = EC = C$
+$B = BE = BAC = EC = C$.
 \end{proof}
 
 \index{Матрица!обратная} Т.\,о., матрица~$A^{-1}$ называется \textbf{обратной} к матрице~$A$, если $A^{-1} A = A A^{-1} = E$.
 
 \begin{theorem}
 \label{th:inverse_matrix_by_matrix_of_cofactors}
-Пусть даны матрицы
-\begin{equation*}
-A =
-\begin{Vmatrix}
-a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nn}
-\end{Vmatrix}, \ 
-\hat A =
-\begin{Vmatrix}
-A_{11} & A_{12} & \cdots & A_{1n} \\
-A_{21} & A_{22} & \cdots & A_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-A_{n1} & A_{n2} & \cdots & A_{nn}
-\end{Vmatrix}
-\end{equation*}
-где $A_{ij}$~--- алгебраическое дополнение $a_{ij}$.
+Пусть даны матрицы $A = \|a_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$, $\hat A = \|A_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$, где $A_{ij}$~--- алгебраическое дополнение $a_{ij}$.
 
 Если $|A| \neq 0$, то
 \begin{equation*}
@@ -41,32 +30,6 @@ A^{-1} = \frac1{|A|} \cdot \hat A^T
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Вычислим $\displaystyle \sum_{k=1}^n a_{ik} A_{jk}$ с помощью теоремы~\ref{th:determinant_expansion}.
-Возможны два случая:
-\begin{enumerate}
-	\item $i = j$
-	\begin{equation*}
-	\sum_{k=1}^n a_{ik} A_{jk} =
-	\sum_{k=1}^n a_{ik} A_{ik} =
-	|A|
-	\end{equation*}
-	
-	\item $i \neq j$
-	\begin{equation*}
-	\sum_{k=1}^n a_{ik} A_{jk} =
-	\begin{vmatrix}
-	a_{11} & a_{12} & \cdots & a_{1n} \\
-	\vdots & \vdots & \ddots & \vdots \\
-	a_{i1} & a_{i2} & \cdots & a_{in} \\
-	\vdots & \vdots & \ddots & \vdots \\
-	a_{i1} & a_{i2} & \cdots & a_{in} \\
-	\vdots & \vdots & \ddots & \vdots \\
-	a_{n1} & a_{n2} & \cdots & a_{nn}
-	\end{vmatrix} = 0
-	\end{equation*}
-\end{enumerate}
-
-Тогда
 \begin{equation*}
 A \cdot \left( \frac1{|A|} \cdot \hat A^T \right) =
 \frac1{|A|} \cdot A \cdot \hat A^T =
@@ -105,17 +68,12 @@ A_{1n} & A_{2n} & \cdots & A_{nn}
 \end{equation*}
 \end{proof}
 
-\begin{theorem}
-Пусть дана невырожденная матрица
-\begin{equation*}
-A =
-\begin{Vmatrix}
-a_{11} & a_{12} & \cdots & a_{1n} \\
-a_{21} & a_{22} & \cdots & a_{2n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n1} & a_{n2} & \cdots & a_{nn}
-\end{Vmatrix}
-\end{equation*}
+\begin{theorem}[метод Гаусса---Жордана]
+\index{Метод!Гаусса---Жордана}
+Пусть дана невырожденная матрица $A = \|a_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$.
 
 Присоединим к~ней единичную матрицу:
 \begin{equation*}

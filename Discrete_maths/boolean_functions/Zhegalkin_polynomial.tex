@@ -1,0 +1,223 @@
+\subsection{Многочлен Жегалкина}
+\index{Многочлен!Жегалкина} \textbf{Многочленом Жегалкина} называется многочлен вида
+$\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot x_{i_k}$, где $a_{i_1, \ldots, i_k} \in B$.
+
+\begin{theorem}[Жегалкина]
+\index{Теорема!Жегалкина}
+Каждая булева функция единственным образом представима в виде многочлена Жегалкина.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item Докажем представимость.
+	Любую булеву функцию можно реализовать формулой над~$\{ \neg, \And, \lor \}$.
+	Тогда
+	\begin{enumerate}
+		\item Заменим $\overline x = x + 1$, $x \And y = xy$, $x \lor y = xy + x + y$.
+		\item Раскроем скобки по дистрибутивности: $x(y + z) = xy + xz$.
+		\item Упростим по формулам $x + x = 0$, $x + \overline x = 1$, $x + 0 = x$, $x \cdot 0 = 0$, $xx = x$.
+	\end{enumerate}
+	
+	Получим многочлен Жегалкина.
+	
+	\item Докажем единственность.
+	Многочлен Жегалкина для булевой функции от $n$~переменных можно представить в виде $\displaystyle \bigoplus_{i=0}^{2^n-1} c_i K_i$, где $c_i$~--- некоторые коэффициенты, $K_i$~--- элементарные конъюнкты.
+	Тогда всего различных многочленов $2^{2^n}$, т.\,е. столько же, сколько и булевых функций.
+	Каждая булева функция представима хотя~бы одним многочленом, значит, каждой функции однозначно соответствует многочлен Жегалкина.
+\end{enumerate}
+\end{proof}
+
+Методы построения многочленов Жегалкина по заданной функции:
+\begin{enumerate}
+	\item \textbf{Эквивалентные преобразования}
+	
+	Описаны в доказательстве теоремы Жегалкина.
+	
+	\item \textbf{Эквивалентные преобразования СДНФ}
+	
+	Заменим в СДНФ $K_1 \lor K_2 = K_1 + K_2$, $\overline x = x + 1$ и упростим.
+	\begin{proof}[корректности]
+	Пусть $K_1$ и $K_2$~--- элементарные конъюнкты СДНФ.
+	Тогда
+	\begin{equation*}
+	\exists x \colon K_1 = x K_1', \ K_2 = \overline x K_2' \Rightarrow
+	K_1 \lor K_2 =
+	x \overline x K_1' K_2' + x K_1' + \overline x K_2' =
+	x K_1' + \overline x K_2' =
+	K_1 + K_2
+	\end{equation*}
+	\end{proof}
+	
+	\item \index{Метод!неопределённых коэффициентов} \textbf{Метод неопределённых коэффициентов}
+	
+	Пусть $f(x_1, \ldots, x_n) = \bigoplus_{i=0}^{2^n-1} c_i K_i$.
+	Составим систему уравнений:
+	\begin{equation*}
+	\begin{cases}
+	f(0, \ldots, 0, 0) = c_0 \\
+	f(0, \ldots, 0, 1) = c_0 + c_{2^n-1} \\
+	\ldots \\
+	f(1, \ldots, 1, 1) = c_0 + \ldots + c_{2^n-1}
+	\end{cases}
+	\end{equation*}
+	
+	Решив её, найдём коэффициенты многочлена Жегалкина.
+	
+	\item \index{Метод!Паскаля} \textbf{Метод Паскаля}
+	
+	Введём по индукции операцию~$T$ над векторами размерности $2^n$:
+		\indbase $n = 1$.
+		Пусть $\overline\alpha = (\alpha_0, \alpha_1)$, тогда $T(\overline\alpha) = (\alpha_0, \alpha_0 + \alpha_1)$.
+		\indstep $n > 1$.
+		Пусть $\overline\alpha = (\overline\alpha_0, \overline\alpha_1)$, где
+		$\overline\alpha_0, \overline\alpha_1$~--- векторы размерности $2^{n-1}$, тогда
+		$T(\overline\alpha) = (T(\overline\alpha_0), T(\overline\alpha_0) + T(\overline\alpha_1))$.
+		\indend
+		
+	Исследуем свойства операции~$T$:
+	\begin{enumerate}
+		\item $T(\overline\alpha + \overline\beta) = T(\overline\alpha) + T(\overline\beta)$
+		\begin{proofmathind}
+			\indbase $n = 1$.
+			Пусть $\overline\alpha = (\alpha_0, \alpha_1)$, $\overline\beta = (\beta_0, \beta_1)$, тогда
+			\begin{equation*}
+			T(\overline\alpha + \overline\beta) =
+			T((\alpha_0, \alpha_1) + (\beta_0, \beta_1)) =
+			T((\alpha_0 + \beta_0, \alpha_1 + \beta_1)) =
+			(\alpha_0 + \beta_0,  \alpha_0 + \beta_0 + \alpha_1 + \beta_1) =
+			\end{equation*}
+			\begin{equation*}
+			= (\alpha_0 + \beta_0,  \alpha_0 + \alpha_1 + \beta_0 + \beta_1) =
+			T(\alpha_0, \alpha_1) + T(\beta_0, \beta_1) =
+			T(\overline\alpha) + T(\overline\beta)
+			\end{equation*}
+			
+			\indstep Предположим, что утверждение верно для векторов размерности $2^n$.
+			Докажем его для $\overline\alpha = (\overline\alpha_0, \overline\alpha_1)$,
+			$\overline\beta = (\overline\beta_0, \overline\beta_1)$, где
+			$\overline\alpha_0, \overline\alpha_1, \overline\beta_0, \overline\beta_1$~--- векторы размерности $2^n$, тогда
+			\begin{equation*}
+			T(\overline\alpha + \overline\beta) =
+			T((\overline\alpha_0, \overline\alpha_1) + (\overline\beta_0, \overline\beta_1)) =
+			T((\overline\alpha_0 + \overline\beta_0, \overline\alpha_1 + \overline\beta_1)) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(\overline\alpha_0 + \overline\beta_0), T(\overline\alpha_0 + \overline\beta_0) + T(\overline\alpha_1 + \overline\beta_1)) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(\overline\alpha_0) + T(\overline\beta_0),  T(\overline\alpha_0) + T(\overline\beta_0) + T(\overline\alpha_1) + T(\overline\beta_1)) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(\overline\alpha_0), T(\overline\alpha_0) + T(\overline\alpha_1)) + (T(\overline\beta_0), T(\overline\beta_0) + T(\overline\beta_1)) =
+			\end{equation*}
+			\begin{equation*}
+			= T(\overline\alpha_0, \overline\alpha_1) + T(\overline\beta_0, \overline\beta_1) =
+			T(\overline\alpha) + T(\overline\beta)
+			\end{equation*}
+			\indend
+		\end{proofmathind}
+		
+		\item $T(T(\overline\alpha)) = \overline\alpha$
+		\begin{proofmathind}
+			\indbase $n = 1$.
+			Пусть $\overline\alpha = (\alpha_0, \alpha_1)$, тогда
+			\begin{equation*}
+			T(T(\overline\alpha)) =
+			T(T((\alpha_0, \alpha_1))) =
+			T((\alpha_0, \alpha_0 + \alpha_1)) =
+			(\alpha_0, \alpha_0 + \alpha_0 + \alpha_1) =
+			(\alpha_0, \alpha_1) =
+			\overline\alpha
+			\end{equation*}
+			
+			\indstep Предположим, что утверждение верно для векторов размерности $2^n$.
+			Докажем его для $\overline\alpha = (\overline\alpha_0, \overline\alpha_1)$, где
+			$\overline\alpha_0, \overline\alpha_1$~--- векторы размерности $2^n$, тогда
+			\begin{equation*}
+			T(T(\overline\alpha)) =
+			T(T((\overline\alpha_0, \overline\alpha_1))) =
+			T((T(\overline\alpha_0), T(\overline\alpha_0) + T(\overline\alpha_1))) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(T(\overline\alpha_0)), T(T(\overline\alpha_0)) + T(T(\overline\alpha_0) + T(\overline\alpha_1))) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(T(\overline\alpha_0)), T(T(\overline\alpha_0)) + T(T(\overline\alpha_0)) + T(T(\overline\alpha_1))) =
+			\end{equation*}
+			\begin{equation*}
+			= (T(T(\overline\alpha_0)), T(T(\overline\alpha_1))) =
+			(\overline\alpha_0, \overline\alpha_1) =
+			\overline\alpha
+			\end{equation*}
+			\indend
+		\end{proofmathind}
+	\end{enumerate}
+	
+	Если $\overline c_f$~--- вектор коэффициентов многочлена Жегалкина, соответствующего булевой функции~$f$, $\overline\alpha_f$~--- вектор значений $f$, то $T(\overline\alpha_f) = \overline c_f$, $T(\overline c_f) = \overline\alpha_f$.
+	\begin{proof}
+	Докажем методом математической индукции, что $T(\overline\alpha_f) = \overline c_f$.
+		\indbase $n = 1$.
+		Пусть $\overline\alpha_f = (a, b)$.
+		Найдём $\overline c_f$ методом неопределённых коэффициентов:
+		\begin{equation*}
+		\begin{cases}
+		f(0) = c_0 \\
+		f(1) = c_0 + c_1
+		\end{cases}
+		\Leftrightarrow
+		\begin{cases}
+		c_0 = a \\
+		c_0 + c_1 = b
+		\end{cases}
+		\Leftrightarrow
+		\begin{cases}
+		c_0 = a \\
+		c_1 = a + b
+		\end{cases}
+		\Rightarrow
+		\overline c_f = (a, a + b) = T(\overline\alpha_f)
+		\end{equation*}
+		
+		\indstep Предположим, что утверждение верно для вектора значений размерности $2^n$.
+		Докажем его для размерности $2^{n+1}$.
+		\begin{equation*}
+		f(x_1, \ldots, x_{n+1}) =
+		\sum_{i=0}^{2^{n+1} - 1} c_i K_i =
+		\sum_{i=0}^{2^n - 1} c_i K_i + \sum_{i=2^n}^{2^{n+1} - 1} c_i K_i
+		\end{equation*}
+		
+		$x_1$ не входит ни в один из конъюнктов $K_0, K_1, \ldots, K_{2^n - 1}$ и входит в каждый из $K_{2^n}, K_{2^n + 1}, \ldots, \allowbreak K_{2^{n+1} - 1}$.
+		\begin{enumerate}
+			\item Пусть $x_1 = 0$.
+			\begin{equation*}
+			f_0(x_2, \ldots, x_{n+1}) = \sum_{i=0}^{2^n - 1} c_i K_i \Rightarrow
+			T(\overline\alpha_{f_0}) = \overline c_{f_0} = (c_0, c_1, \ldots, c_{2^n - 1})
+			\end{equation*}
+			
+			\item Пусть $x_1 = 1$.
+			\begin{equation*}
+			f_1(x_2, \ldots, x_{n+1}) =
+			f(1, x_2, \ldots, x_{n+1}) =			
+			\sum_{i=0}^{2^n - 1} c_i K_i + x_1 \sum_{i=2^n}^{2^{n+1} - 1} c_i K_i' =
+			\sum_{i=0}^{2^n - 1} (c_i + c_{2^n + i}) K_i
+			\end{equation*}
+			т.\,к. $K_0 = 1$ и $K_{2^n} = x_1$, $K_1 = x_n$ и $K_{2^n + 1} = x_1 x_n$, \ldots, т.\,е. $K_{2^n + i}' = K_i$, тогда $T(\overline\alpha_{f_1}) \opbr= \overline c_{f_1} \opbr= (c_0 + c_{2^n}, c_1 + c_{2^n + 1}, \ldots, c_{2^n - 1} + c_{2^{n+1} - 1})$.
+		\end{enumerate}
+		
+		Т.\,о., получим
+		\begin{equation*}
+		T(\overline\alpha_f) =
+		T((\overline\alpha_{f_0}, \overline\alpha_{f_1})) =
+		(T(\overline\alpha_{f_0}), T(\overline\alpha_{f_0}) + T(\overline\alpha_{f_1})) =
+		\end{equation*}
+		\begin{equation*}
+		= ((c_0, \ldots, c_{2^n - 1}), (c_0 + c_0 + c_{2^n}, c_1 + c_1 + c_{2^n + 1}, \ldots, c_{2^n - 1} + c_{2^n - 1} + c_{2^{n+1} - 1})) =
+		\end{equation*}
+		\begin{equation*}
+		= ((c_0, \ldots, c_{2^n - 1}), (c_{2^n}, \ldots, c_{2^{n+1} - 1})) =
+		\overline c_f
+		\end{equation*}
+		\indend
+		
+	Тогда $T(\overline c_f) = T(T(\overline\alpha_f)) = \overline\alpha_f$.
+	\end{proof}
+\end{enumerate}

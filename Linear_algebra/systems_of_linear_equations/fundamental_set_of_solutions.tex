@@ -72,7 +72,6 @@
 
 \textbf{Фундаментальной системой решений однородной системы линейных уравнений} называется базис множества всех её решений.
 
-\subsubsection{Нахождение фундаментальной системы решений}
 Пусть дана однородная линейно независимая система уравнений:
 \begin{equation}
 \label{eq:homogeneous_system1}
@@ -93,16 +92,20 @@
 Присваивая переменным~$x_{m+1}, \ldots, x_n$ произвольные значения, получаем систему уравнений, которая по \hyperref[th:Cramer]{теореме Крамера} имеет единственное решение.
 Тогда решения системы~(\ref*{eq:homogeneous_system1})
 \begin{equation*}
-\overline{e_i} = (x_{1i}; x_{2i}; \ldots; x_{mi}; 1; 0; \ldots; 0), \ i = 1, 2, \ldots, n - m
+\overline e_1 = (x_{11}, x_{21}, \ldots, x_{m1}, 1, 0, \ldots, 0), \
+\overline e_2 = (x_{12}, x_{22}, \ldots, x_{m2}, 0, 1, \ldots, 0), \ \ldots
+\end{equation*}
+\begin{equation*}
+\overline e_{n-m} = (x_{1\, n-m}, x_{2\, n-m}, \ldots, x_{m\, n-m}, 0, 0, \ldots, 1)
 \end{equation*}
 
 образуют фундаментальную систему решений.
 \begin{proof}
-Пусть $\overline r = (r_1, \ldots, r_n)$~--- решение системы~(\ref*{eq:homogeneous_system1}), $\overline p = (p_1, \ldots, p_n) = r_{m+1} \overline{e_1} \opbr+ r_{m+2} \overline{e_2} \opbr+ \ldots \opbr+ r_n \overline{e_{n-m}} \opbr- \overline r$.
+Пусть $\overline r = (r_1, \ldots, r_n)$~--- решение системы~(\ref*{eq:homogeneous_system1}), $\overline p = (p_1, \ldots, p_n) = r_{m+1} \overline e_1 \opbr+ r_{m+2} \overline e_2 \opbr+ \ldots \opbr+ r_n \overline e_{n-m} \opbr- \overline r$.
 По утверждению~\ref*{st:homogeneous_system_sets_vector_space} $\overline p$~--- решение системы~(\ref*{eq:homogeneous_system1}).
 Легко проверить, что $p_{m+1} \opbr= \ldots \opbr= p_n \opbr= 0$.
 Подставим эти значения в систему~(\ref*{eq:homogeneous_system1}), тогда по \hyperref[th:Cramer]{теореме Крамера} она имеет единственное решение~--- нулевое.
-Значит, $\overline r = r_{m+1} \overline{e_1} + r_{m+2} \overline{e_2} + \ldots + r_n \overline{e_{n-m}}$, т.\,е. $\overline{e_1}, \ldots, \overline{e_{n-m}}$~--- фундаментальная система решений.
+Значит, $\overline r = r_{m+1} \overline e_1 + r_{m+2} \overline e_2 + \ldots + r_n \overline e_{n-m}$, т.\,е. $\overline e_1, \ldots, \overline e_{n-m}$~--- фундаментальная система решений.
 \end{proof}
 
 \begin{theorem}
@@ -117,7 +120,7 @@
 \end{cases}
 \end{equation}
 
-Если $\overline{e_0}$~--- её решение, а векторы~$\overline{e_1}, \ldots, \overline{e_{n-m}}$~--- фундаментальная система решений системы уравнений
+Если $\overline e_0$~--- её решение, а векторы~$\overline e_1, \ldots, \overline e_{n-m}$~--- фундаментальная система решений системы уравнений
 \begin{equation}
 \label{eq:homogeneous_system2}
 \begin{cases}
@@ -130,16 +133,16 @@
 
 то любое решение системы~(\ref*{eq:nonhomogeneous_system}) можно найти по формуле
 \begin{equation*}
-\lambda_1 \overline{e_1} + \ldots + \lambda_{n-m} \overline{e_{n-m}} + \overline{e_0}
+\lambda_1 \overline e_1 + \ldots + \lambda_{n-m} \overline e_{n-m} + \overline e_0
 \end{equation*}
 где $\lambda_1, \ldots, \lambda_{n-m}$~--- произвольные числа.
 \end{theorem}
 \begin{proof}
 Пусть $\overline v$~--- решение системы~(\ref*{eq:nonhomogeneous_system}).
-Убедимся подстановкой, что $\overline v - \overline{u_0}$~--- решение системы~(\ref*{eq:homogeneous_system2}).
+Убедимся подстановкой, что $\overline v - \overline u_0$~--- решение системы~(\ref*{eq:homogeneous_system2}).
 Тогда
 \begin{equation*}
-\overline v - \overline{u_0} = \sum_{i=1}^{n-m} \lambda_i \overline{u_i} \Leftrightarrow
-\overline v = \sum_{i=1}^{n-m} \lambda_i \overline{u_i} + \overline{u_0}
+\overline v - \overline u_0 = \sum_{i=1}^{n-m} \lambda_i \overline u_i \Leftrightarrow
+\overline v = \sum_{i=1}^{n-m} \lambda_i \overline u_i + \overline u_0
 \end{equation*}
 \end{proof}

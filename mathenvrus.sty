@@ -2,7 +2,8 @@
 % - новые команды:
 %	- \opbr{математический знак} (operator break) — разрешает перенос строки на данном знаке,
 %	  автоматически дублируя его на следующей;
-%	- \mult и \notmult — знак кратности;
+%	- \mult и \notmult — знак кратности в математической моде;
+%	- \bigAnd — n-арная версия \And (печатается увеличенным символом);
 %	- \Arg — печатает Arg в математической моде;
 %	- \grad — печатает grad в математической моде;
 %	- \sgn — печатает sgn в математической моде;
@@ -10,23 +11,28 @@
 %	- \indstep (induction step) — оформление шага математической индукции;
 %	- \indend (induction end) — конец метода математической индукции.
 % - переопределённые команды:
-%	- \* — работает аналогично \opbr\cdot, но при отсутствии переноса строки ничего не делает
+%	- \* — работает аналогично \opbr\cdot, но при отсутствии переноса строки ничего не делает;
+%	- \And — переопределён как математический оператор (теперь отбивается меньшими отступами).
 % - новые окружения:
 %	- statement для утверждений;
 %	- lemma для лемм;
 %	- theorem для теорем;
 %	- consequent для следствий;
-%	- proof для доказательств с необязательным аргументом — пояснением;
+%	- proof[пояснение] для доказательств;
 %	- proofmathind для доказательств методом математической индукции;
 %	- proofcontra для доказательств методом от противного.
 
 \usepackage{amsmath,amsfonts,amssymb}
+\usepackage{scalerel} % увеличение размера символов
+\usepackage{xparse} % продвинутое создание окружений
 
 \newcommand\opbr[1]
-	{\ensuremath{#1}\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
+	{#1\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
 
-\newcommand\mult{\ensuremath{\mathbin{\raise -0.6mm\hbox{\vdots}}}}
-\newcommand\notmult{\ensuremath{\mathbin{\lefteqn{\negthickspace\not}\mult}}}
+\newcommand\mult{\mathbin{\raise -0.6mm\hbox{\vdots}}}
+\newcommand\notmult{\mathbin{\lefteqn{\negthickspace\not}\mult}}
+
+\newcommand\bigAnd{\mathop{\scalerel*{\&}{\sum}}}
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}
@@ -42,6 +48,8 @@
 
 \renewcommand{\*}
 	{\discretionary{\hbox{$\cdot$}}{\hbox{$\cdot$}}{}}
+\renewcommand\And
+	{\mathop{\&}}
 
 \renewcommand{\@begintheorem}[2]
 	{\par{\bf #1\ #2.\ }\samepage\begingroup\sl}
@@ -53,12 +61,12 @@
 \newtheorem{lemma}{Лемма}[section]
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{consequent}{Следствие}[section]
-\newenvironment{proof}[1][\unskip]
-	{\par{\bf Доказательство #1. }}
+\NewDocumentEnvironment{proof}{o}
+	{\par{\bf Доказательство\IfNoValueTF{#1}{}{ #1}.}}
 	{$\scriptstyle\blacksquare$}
 \newenvironment{proofmathind}
-	{\par{\bf Доказательство (методом математической индукции).}}
+	{\par{\bf Доказательство методом математической индукции.}}
 	{$\scriptstyle\blacksquare$}
 \newenvironment{proofcontra}
-	{\par{\bf Доказательство (методом от противного).}}
+	{\par{\bf Доказательство методом от противного.}}
 	{$\scriptstyle\blacksquare$}

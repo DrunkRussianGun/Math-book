@@ -1,0 +1,85 @@
+\subsection{Замкнутые классы булевых функций}
+\begin{theorem}[Поста о функциональной полноте]
+\index{Теорема!Поста}
+Класс~$F$ булевых функций полон $\Leftrightarrow$ он не лежит целиком ни в одном из классов $T_0, T_1, S, M, L$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Докажем методом от противного.
+	Пусть среди классов $T_0, T_1, S, M, L$ найдётся класс~$K \colon F \subseteq K$, тогда $[F] \subseteq [K] = K \neq P_2$, значит, $F$ не является полным.
+	Противоречие.
+	
+	\item $\Leftarrow$.
+	\begin{equation*}
+	\exists f_0, f_1, f_S, f_M, f_L \in F \colon
+	f_0 \notin T_0, \ f_1 \notin T_1, \ f_S \notin S, \ f_M \notin M, \ f_L \notin L
+	\end{equation*}
+	\begin{enumerate}
+		\item Покажем, что $0$ и $1$ реализуются формулой над~$\{ f_0, f_1, f_S \}$.
+		Пусть $\varphi(x) = f_0(x, \ldots, x) \opbr\Rightarrow \varphi(0) = 1$.
+		\begin{enumerate}
+			\item Пусть $\varphi(1) = 0 \Rightarrow \varphi(x) = \overline x$.
+			Подставляя $x, \overline x$ в~$f_S$, получим одну из констант.
+			Другую константу можно выразить через полученную константу и~$\overline x$.
+			\item Пусть $\varphi(1) = 1 \Rightarrow \varphi(x) = 1 \Rightarrow
+			f_1(\varphi(x), \ldots, \varphi(x)) = f(1, \ldots, 1) = 0$.
+		\end{enumerate}
+		
+		\item Подставляя $0, 1, x$ в~$f_M$, получим $\overline x$.
+		
+		\item Подставляя $0, 1, x, \overline x, y, \overline y$ в~$f_L$ и, возможно, изменяя её значение на противоположное, получим~$x \And y$.
+	\end{enumerate}
+	
+	Т.\,о., функции из полного набора~$\{ \neg, \And \}$ реализуются формулами над~$\{ f_0, f_1, f_S, f_M, f_L \} \subseteq F$, значит, $F$~--- полный набор.
+\end{enumerate}
+\end{proof}
+
+\begin{statement}
+$T_0, T_1, S, M, L$ попарно различны.
+\end{statement}
+\begin{proof}
+Составим таблицу, в которой $+$ означает принадлежность функции классу, а $-$ означает её отсутствие в классе.
+\begin{equation*}
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+  & T_0 & T_1 & S & M & L \\
+  \hline
+0 & + & - & - & + & + \\
+\hline
+1 & - & + & - & + & + \\
+\hline
+\overline x & - & - & + & - & + \\
+\hline
+\end{array}
+\end{equation*}
+\end{proof}
+
+Класс~$F$ булевых функций называется \textbf{предполным}, если $[F] \neq P_2$ и $\forall f \notin F \colon [F \cup \{ f \}] = P_2$.
+
+\begin{statement}
+Существует ровно 5 предполных классов булевых функций: $T_0, T_1, S, M, L$.
+\end{statement}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Пусть $K \in \{ T_0, T_1, S, M, L \}$, $f \notin K$.
+	$K \cup \{ f \}$ не лежит целиком ни в одном из классов $T_0, T_1, S, M, L$, значит, $[K \cup \{ f \}] = P_2$, т.\,е. $K$~--- предполный класс.
+	\item $\Leftarrow$. Пусть $K$~--- предполный класс $\Rightarrow$ $K$ не является полным $\Rightarrow$ $K$ лежит в одном из классов $T_0, T_1, S, M, L$.
+	
+	Докажем методом от противного, что $K$ равен одному из них.
+	Пусть $K_1 \in \{ T_0, T_1, S, M, L \}$, $K \subset K_1$.
+	$f \notin K, \ f \in K_1 \Rightarrow K \cup \{ f \} \subseteq K_1 \neq P_2$, значит, $K$ не является предполным классом.
+	Противоречие.
+\end{enumerate}
+\end{proof}
+
+\begin{consequent}
+Любой замкнутый класс булевых функций $F \neq P_2$ целиком лежит в одном из классов $T_0, T_1, S, M, L$.
+\end{consequent}
+\begin{proofcontra}
+Пусть $F$ не лежит ни в одном из классов $T_0, T_1, S, M, L$, тогда $F = [F] = P_2$.
+Противоречие.
+\end{proofcontra}
+
+Пусть $F$~--- замкнутый набор булевых функций. Набор~$M \subseteq F$ называется \textbf{полным в~$F$}, если $[M] = F$.
+
+\index{Базис!класса булевых функций} Набор~$K$ булевых функций называется \textbf{базисом замкнутого класса~$F$ булевых функций}, если $K$ полон в~$F$ и при удалении из него любой булевой функции он перестаёт быть полным.

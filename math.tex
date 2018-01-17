@@ -6,6 +6,7 @@
 \usepackage{index} % предметный указатель
 \usepackage{indentfirst} % отступ красной строки
 \usepackage[unicode,colorlinks=true]{hyperref} % ссылки в оглавлении
+\usepackage{array} % таблицы
 \usepackage{mathenvrus}
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
@@ -23,6 +24,8 @@
 \tableofcontents
 
 \part{Школьный курс}
+\chapter{Комбинаторика}
+\input{Combinatorics/elements_of_combinatorics}
 \chapter{Теория множеств}
 \input{Set_theory/sets}
 	\input{Set_theory/sets/relations_between_sets}
@@ -38,6 +41,20 @@
 
 \part{Университетский курс}
 \chapter{Дискретная математика}
+\input{Discrete_maths/boolean_functions}
+	\input{Discrete_maths/boolean_functions/logic_operations}
+	\input{Discrete_maths/boolean_functions/formulas}
+	\input{Discrete_maths/boolean_functions/expansion_of_boolean_functions_by_variables}
+	\input{Discrete_maths/boolean_functions/disjunctive_normal_form}
+	\input{Discrete_maths/boolean_functions/duality_principle}
+	\input{Discrete_maths/boolean_functions/conjunctive_normal_form}
+	\input{Discrete_maths/boolean_functions/building_disjunctive_prime_form}
+	\input{Discrete_maths/boolean_functions/geometric_representation_of_boolean_functions}
+	\input{Discrete_maths/boolean_functions/operations_of_type_I_and_II}
+	\input{Discrete_maths/boolean_functions/building_dead-end_DNF}
+	\input{Discrete_maths/boolean_functions/complete_and_closed_classes_of_boolean_functions}
+	\input{Discrete_maths/boolean_functions/Zhegalkin_polynomial}
+	\input{Discrete_maths/boolean_functions/closed_classes_of_boolean_functions}
 \input{Discrete_maths/graphs}
 	\input{Discrete_maths/graphs/graph_connectivity}
 	\input{Discrete_maths/graphs/eulerian_graphs}

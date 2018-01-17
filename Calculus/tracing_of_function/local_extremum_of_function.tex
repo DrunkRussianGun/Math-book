@@ -34,15 +34,15 @@
 
 \index{Экстремум} Точки локального минимума и максимума называются \textbf{точками локального экстремума}.
 
-\begin{theorem}[свойство локального экстремума]
+\begin{theorem}
 Если $x_0$~--- точка локального экстремума функции~$f(x)$, то $\raise 0.4mm\hbox{\lefteqn{\mkern -2mu\not}} \exists f'(x_0)$ или $f'(x_0) = 0$.
 \end{theorem}
 \begin{proof}
 Пусть $x_0$~--- точка локального минимума, $\exists f'(x_0)$, тогда
 \begin{equation*}
 \begin{cases}
-\displaystyle \frac{f(x) - f(x_0)}{x - x_0} < 0, x < x_0 \\
-\displaystyle \frac{f(x) - f(x_0)}{x - x_0} > 0, x > x_0
+\displaystyle \frac{f(x) - f(x_0)}{x - x_0} < 0, \ x < x_0 \\
+\displaystyle \frac{f(x) - f(x_0)}{x - x_0} > 0, \ x > x_0
 \end{cases} \Rightarrow
 \begin{cases}
 \displaystyle \lim_{x \to x_0-0} \frac{f(x) - f(x_0)}{x - x_0} \leqslant 0 \\
@@ -68,7 +68,7 @@ f'(x_0) = 0
 	\begin{proof}
 	Пусть
 	\begin{equation*}
-	\lim_{x \to x_0-0} \frac{f(x) - f(x_0)}{x - x_0} \leqslant 0 \\
+	\lim_{x \to x_0-0} \frac{f(x) - f(x_0)}{x - x_0} \leqslant 0, \
 	\lim_{x \to x_0+0} \frac{f(x) - f(x_0)}{x - x_0} \geqslant 0
 	\end{equation*}
 	\end{proof}
