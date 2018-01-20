@@ -39,6 +39,62 @@
 	\end{proof}
 	
 	\item Т.\,н. <<длинный логарифм>>: $\displaystyle \int \frac{dx}{\sqrt{x^2 + a}} = \ln \left| x + \sqrt{x^2 + a} \right| + C, \ a \neq 0$
+	\begin{proof}
+	Пусть $k = \sqrt{|a|}$.
+	\begin{enumerate}
+		\item Пусть $a < 0$, $x = \dfrac{k}{\sin t}$.
+		\begin{equation*}
+		\int \frac{dx}{\sqrt{x^2 - k^2}} =
+		-\int \frac{\cos t}{\sin^2 t \cdot \sqrt{\frac1{\sin^2 t} - 1}}dt =
+		-\int \frac{dt}{\sin t} =
+		\int \frac{d(\cos t)}{1 - \cos^2 t} =
+		-\frac12 \ln \left| \frac{\cos t - 1}{\cos t + 1} \right| + C_1 =
+		\end{equation*}
+		\begin{equation*}
+		= -\frac12 \ln \left| \frac{\cos^2 t - 1}{\cos^2 t + 1 + 2\cos t} \right| + C_1 =
+		\left| x = \frac{k}{\sin t} \Rightarrow
+		\sqrt{1 - \cos^2 t} = \frac{k}x \Rightarrow
+		\cos^2 t = 1 - \frac{k^2}{x^2} \right|
+		\end{equation*}
+		\begin{equation*}
+		= -\frac12 \ln \left| \frac{-\frac{k^2}{x^2}}{-\frac{k^2}{x^2} + 2 + 2\sqrt{1 - \frac{k^2}{x^2}}} \right| + C_1 =
+		\frac12 \ln \left| 1 - \frac{2x^2}{k^2} - \frac{2x}{k^2}\sqrt{x^2 - k^2} \right| + C_1 =
+		\end{equation*}
+		\begin{equation*}
+		= \frac12 \ln \frac1{k^2} \left| 2x^2 + 2x\sqrt{x^2 + a} + a \right| + C_1 =
+		\frac12 \ln \left| x^2 + 2x\sqrt{x^2 + a} + (x^2 + a) \right| + C =
+		\end{equation*}
+		\begin{equation*}
+		= \ln \left| x + \sqrt{x^2 + a} \right| + C
+		\end{equation*}
+		
+		\item Пусть $a > 0$, $x = k\tg t$.
+		\begin{equation*}
+		\int \frac{dx}{\sqrt{x^2 + k^2}} =
+		\int \frac{dt}{\cos^2 t \cdot \sqrt{\tg^2 t + 1}} =
+		\int \frac{dt}{\cos t} =
+		\int \frac{d(\sin t)}{1 - \sin^2 t} =
+		-\frac12 \ln \left| \frac{\sin t - 1}{\sin t + 1} \right| + C_1 =
+		\end{equation*}
+		\begin{equation*}
+		= -\frac12 \ln \left| \frac{\sin^2 t - 1}{\sin^2 t + 1 + 2\sin t} \right| + C_1 =
+		\end{equation*}
+		\begin{equation*}
+		\left| x = k\tg t \Rightarrow
+		\sqrt{\frac1{\cos^2 t} - 1} = \frac{x}k \Rightarrow
+		\cos^2 t = \frac{k^2}{x^2 + k^2} \Leftrightarrow
+		\sin^2 t = \frac{x^2}{x^2 + k^2} \right|
+		\end{equation*}
+		\begin{equation*}
+		= -\frac12 \ln \left| \frac{-\frac{k^2}{x^2 + k^2}}{\frac{2x^2 + k^2}{x^2 + k^2} + 2\sqrt{\frac{x^2}{x^2 + k^2}}} \right| + C_1 =
+		\frac12 \ln \frac1{k^2} \left| 2x^2 + k^2 + 2x\sqrt{x^2 + k^2} \right| + C_1 =
+		\end{equation*}
+		\begin{equation*}
+		= \frac12 \ln \left| x^2 + 2x\sqrt{x^2 + a} + (x^2 + a) \right| + C =
+		\ln \left| x + \sqrt{x^2 + a} \right| + C
+		\end{equation*}
+	\end{enumerate}
+	\end{proof}
 	
 	\item $\displaystyle \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}a + C, \ a > 0$
 	\begin{proof}

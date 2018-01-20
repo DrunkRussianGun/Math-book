@@ -41,8 +41,6 @@
 \end{enumerate}
 \end{proof}
 
-Из определения по Гейне следует, что пределы функции в~точке обладают теми~же свойствами, что и пределы последовательности.
-
 Также можно определить односторонние пределы.
 
 Число~$b$ называется \textbf{левым пределом}, или \textbf{пределом слева}, \textbf{функции~$f(x)$ в точке~$a$}, если
@@ -58,3 +56,26 @@
 и обозначается $\displaystyle \lim_{x \to a+0} f(x)$.
 
 Т.\,о., $\displaystyle \lim_{x \to a} f(x) = b \Leftrightarrow \lim_{x \to a-0} f(x) = \lim_{x \to a+0} f(x) = b$.
+
+Из определения по Гейне следует справедливость свойств предела функции в~точке.
+
+Элементарные свойства:
+\begin{enumerate}
+	\item Функция может иметь не более одного предела в одной и той~же точке.
+	\item \begin{theorem}[о двух милиционерах]
+	\index{Теорема!о двух милиционерах}
+	\label{th:about_two_policemen}
+	Если в окрестности точки~$a$ $f(x) \leqslant g(x) \leqslant h(x)$, $\displaystyle \lim_{x \to a} f(x) = \lim_{x \to a} h(x) = b$, то $\displaystyle \lim_{x \to a} g(x) = b$.
+	\end{theorem}
+	\item Если в окрестности точки~$a$ $f(x) \geqslant 0$, $\displaystyle \lim_{x \to a} f(x) = b$, то $b \geqslant 0$.
+	\item $\displaystyle \lim_{x \to a} f(x) = b \Rightarrow \lim_{x \to a} |f(x)| = |b|$.
+\end{enumerate}
+
+Арифметические свойства.
+Пусть $\displaystyle \lim_{x \to x_0} f(x) = a$, $\displaystyle \lim_{x \to x_0} g(x) = b$.
+\begin{enumerate}
+	\item $\displaystyle \lim_{x \to x_0} (f(x) + g(x)) = a + b$
+	\item $\displaystyle \lim_{x \to x_0} f(x)g(x) = ab$
+	\item Если $a \neq 0$, то $\displaystyle \lim_{x \to x_0} \frac1{f(x)} = \frac1a$
+	\item Если $b \neq 0$, то $\displaystyle \lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{a}b$
+\end{enumerate}

@@ -1,5 +1,5 @@
 \subsection{Локальный экстремум функции}
-\begin{theorem}[критерий монотонности функции]
+\begin{theorem}
 \label{th:criterion_of_monotonic_function}
 Если функция~$f(x)$ дифференцируема на~$(a; b)$, то она не убывает (не возрастает) на~$(a; b)$ $\Leftrightarrow$ $\forall x \in (a; b) \ f'(x) \geqslant 0 \ (f'(x) \leqslant 0)$.
 \end{theorem}
@@ -59,18 +59,18 @@ f'(x_0) = 0
 
 Существуют следующие признаки локального экстремума:
 \begin{enumerate}
-	\item Если
-	\begin{equation*}
-	\lim_{x \to x_0-0} \frac{f(x) - f(x_0)}{x - x_0} \leqslant 0 \ (\geqslant 0), \
-	\lim_{x \to x_0+0} \frac{f(x) - f(x_0)}{x - x_0} \geqslant 0 \ (\leqslant 0)
-	\end{equation*}
-	то $x_0$~--- точка локального минимума (максимума).
+	\item Если $f_-'(x_0) \leqslant 0 \ (\geqslant 0)$, $f_+'(x_0) \geqslant 0 \ (\leqslant 0)$, то $x_0$~--- точка локального минимума (максимума).
 	\begin{proof}
 	Пусть
 	\begin{equation*}
+	f_-'(x_0) \leqslant 0, \ f_+'(x_0) \geqslant 0 \Leftrightarrow
 	\lim_{x \to x_0-0} \frac{f(x) - f(x_0)}{x - x_0} \leqslant 0, \
 	\lim_{x \to x_0+0} \frac{f(x) - f(x_0)}{x - x_0} \geqslant 0
 	\end{equation*}
+	
+	Значит, в некоторой окрестности точки~$x_0$ $f(x) \geqslant f(x_0)$, тогда $x_0$~--- точка локального минимума.
+	
+	Аналогичное доказательство для максимума.
 	\end{proof}
 	
 	\item Если $f'(x_0) = f''(x_0) = \ldots = f^{(2n-1)}(x_0) = 0$, то
