@@ -1,0 +1,43 @@
+\section{Конъюнктивная нормальная форма}
+\index{Дизъюнкт} \textbf{Элементарным дизъюнктом} называется дизъюнкция литералов, в которую каждая переменная входит не более одного раза.
+Элементарный дизъюнкт называется \textbf{полным}, если он содержит все рассматриваемые переменные.
+
+\textbf{Конъюнктивной нормальной формой}, или \textbf{КНФ}, называется конъюнкция элементарных дизъюнктов.
+
+\textbf{Совершенной конъюнктивной нормальной формой}, или \textbf{СКНФ}, называется конъюнкция полных элементарных дизъюнктов.
+
+\begin{statement}
+Булева функция~$f(x_1, \ldots, x_n)$, не равная тождественно~$1$, представима в~виде СКНФ.
+\end{statement}
+\begin{proof}
+\begin{equation*}
+f^*(x_1, \ldots, x_n) = \bigvee_{\begin{smallmatrix}
+(\sigma_1, \ldots, \sigma_n) \\
+f^*(\sigma_1, \ldots, \sigma_n) = 1
+\end{smallmatrix}} x_1^{\sigma_1} \And \ldots \And x_n^{\sigma_n} \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow f^{**}(x_1, \ldots, x_n) =
+\bigwedge_{\begin{smallmatrix}
+(\sigma_1, \ldots, \sigma_n) \\
+f^*(\sigma_1, \ldots, \sigma_n) = 1
+\end{smallmatrix}} x_1^{\sigma_1} \lor \ldots \lor x_n^{\sigma_n} =
+\end{equation*}
+\begin{equation*}
+= \bigwedge_{\begin{smallmatrix}
+(\sigma_1, \ldots, \sigma_n) \\
+f(\overline{\sigma_1}, \ldots, \overline{\sigma_n}) = 0
+\end{smallmatrix}} x_1^{\sigma_1} \lor \ldots \lor x_n^{\sigma_n} =
+\bigwedge_{\begin{smallmatrix}
+(\sigma_1, \ldots, \sigma_n) \\
+f(\sigma_1, \ldots, \sigma_n) = 0
+\end{smallmatrix}} x_1^{\overline{\sigma_1}} \lor \ldots \lor x_n^{\overline{\sigma_n}} \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow f(x_1, \ldots, x_n)
+= \bigwedge_{\begin{smallmatrix}
+(\sigma_1, \ldots, \sigma_n) \\
+f(\sigma_1, \ldots, \sigma_n) = 0
+\end{smallmatrix}} x_1^{\overline{\sigma_1}} \lor \ldots \lor x_n^{\overline{\sigma_n}}
+\end{equation*}
+\end{proof}

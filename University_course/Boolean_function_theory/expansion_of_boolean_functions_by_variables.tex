@@ -1,0 +1,31 @@
+\section{Разложение булевых функций по переменным}
+\begin{theorem}
+Булева функция~$f(x_1, \ldots, x_n)$ может быть записана в~виде
+\begin{equation*}
+f(x_1, \ldots, x_n) = \bigvee_{(\sigma_1, \ldots, \sigma_m)}
+x_1^{\sigma_1} \And \ldots \And x_m^{\sigma_m} \And f(\sigma_1, \ldots, \sigma_m, x_{m+1}, \ldots, x_n)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Рассмотрим произвольный набор $(\alpha_1, \ldots, \alpha_n)$ и покажем, что левая и правая части данного соотношения принимают на нём одно и то~же значение:
+\begin{enumerate}
+	\item Для левой части получим $f(\alpha_1, \ldots, \alpha_n)$.
+	\item Для правой части получим
+	\begin{equation*}
+	\bigvee_{(\sigma_1, \ldots, \sigma_m)}
+	\alpha_1^{\sigma_1} \And \ldots \And \alpha_m^{\sigma_m} \And f(\sigma_1, \ldots, \sigma_m, \alpha_{m+1}, \ldots, \alpha_n) =
+	\end{equation*}
+	\begin{equation*}
+	\left| \alpha_1^{\sigma_1} \And \ldots \And \alpha_m^{\sigma_m} = 1 \Leftrightarrow
+	\sigma_1 = \alpha_1, \ \ldots, \ \sigma_m = \alpha_m \right|
+	\end{equation*}
+	\begin{equation*}
+	= \alpha_1^{\alpha_1} \And \ldots \And \alpha_m^{\alpha_m} \And f(\alpha_1, \ldots, \alpha_m, \alpha_{m+1}, \ldots, \alpha_n)
+	= f(\alpha_1, \ldots, \alpha_n)
+	\end{equation*}
+\end{enumerate}
+\end{proof}
+
+\begin{consequent}
+Любая булева функция может быть реализована формулой над~$\{ \neg, \And, \lor \}$.
+\end{consequent}

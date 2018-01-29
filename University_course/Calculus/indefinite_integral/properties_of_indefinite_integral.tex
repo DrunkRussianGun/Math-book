@@ -1,0 +1,39 @@
+\subsection{Свойства неопределённого интеграла}
+Пусть $C$~--- произвольная константа.
+\begin{enumerate}
+	\item Пусть $F(x)$~--- первообразная функции~$f(x)$, тогда $d \left( \int f(x)\,dx \right) = f(x)\,dx$.
+	
+	\item $\int dF(x) = F(x) + C$.
+	
+	\item $\int (f(x) + g(x))\,dx = \int f(x)\,dx + \int g(x)\,dx$.
+	\begin{proof}
+	Пусть $F'(x) = f(x)$, $G'(x) = g(x)$, тогда $(F(x) + G(x))' = f(x) + g(x)$.
+	Получим:
+	\begin{equation*}
+	\int f(x)\,dx + \int g(x)\,dx = F(x) + C_1 + G(x) + C_2 = (F(x) + G(x)) + C = \int (f(x) + g(x))\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item $\int a f(x)\,dx = a \int f(x)\,dx$.
+	\begin{proof}
+	Пусть $F'(x) = f(x)$, тогда $(a F(x))' = a f(x)$.
+	Получим:
+	\begin{equation*}
+	a \int f(x)\,dx = a(F(x) + C_1) = a F(x) + C = \int a f(x)\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $\int f(x)\,dx = F(x) + C$, $u(x)$~--- дифференцируемая функция, то $\int f(u)\,du = F(u) + C$.
+\end{enumerate}
+
+Пусть $u(x)$ и $v(x)$~--- дифференцируемые функции.
+Существует \textbf{метод интегрирования по~частям}, использующий следующее свойство:
+$\int uv'\,dx = uv - \int u'v\,dx$.
+\begin{proof}
+\begin{equation*}
+d(uv) = du\,v + u\,dv \Rightarrow
+\int d(uv) = \int du\,v + u\,dv \Rightarrow
+uv + C = \int du\,v + \int u\,dv \Rightarrow
+\int uv'\,dx = u\,v - \int u'v\,dx
+\end{equation*}
+\end{proof}

@@ -1,0 +1,92 @@
+\subsection{Свойства непрерывных функций}
+Пусть $f(x)$ и $g(x)$~--- функции, непрерывные в точке~$a$.
+Для них справедливы следующие арифметические свойства:
+\begin{enumerate}
+	\item $h(x) = f(x) + g(x)$ непрерывна в точке~$a$.
+	\begin{proof}
+	\begin{equation*}
+	\lim_{x \to a} h(x) =
+	\lim_{x \to a} f(x) + \lim_{x \to a} g(x) =
+	f(a) + g(a) =
+	h(a)
+	\end{equation*}
+	\end{proof}
+	
+	\item $h(x) = f(x)g(x)$ непрерывна в точке~$a$.
+	\begin{proof}
+	\begin{equation*}
+	\lim_{x \to a} h(x) =
+	\lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x) =
+	f(a) \cdot g(a) =
+	h(a)
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $g(x) \neq 0$, то $h(x) = \dfrac{f(x)}{g(x)}$ непрерывна в точке~$a$.
+	\begin{proof}
+	\begin{equation*}
+	\lim_{x \to a} h(x) =
+	\frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)} =
+	\frac{f(a)}{g(a)} =
+	h(a)
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\begin{statement}
+Если функция~$f(x)$ непрерывна в точке~$a$, $g(x)$~--- в точке~$f(a)$, то $h(x) = g(f(x))$ непрерывна в точке~$a$.
+\end{statement}
+\begin{proof}
+\begin{equation*}
+\lim_{x \to a} h(x) = \lim_{x \to a} g(f(x)) = g(\lim_{x \to a} f(x)) = g(f(a))
+\end{equation*}
+\end{proof}
+
+Пусть функция~$f(x)$ непрерывна на отрезке~$[a; b]$.
+\begin{enumerate}
+	\item $f(x)$ ограничена на~$[a; b]$.
+	\begin{proofcontra}
+	Пусть $\forall n \in \mathbb N \ \exists x_n \in [a; b] \colon |f(x_n)| > n$.
+	Получили ограниченную последовательность~$(x_n)$.
+	Выберем из неё сходящуюся подпоследовательность~$\displaystyle (x_{n_k}) \colon \lim_{k \to \infty} x_{n_k} = x_0$.
+	Точка~$x_0$ предельная для~$[a; b]$, значит, $x_0 \in [a; b]$, т.\,к. $[a; b]$~--- замкнутое множество.
+	Тогда в~силу непрерывности $f(x)$ $\displaystyle \lim_{k \to \infty} f(x_{n_k}) = f(x_0)$.
+	Это противоречит тому, что $|f(x_{n_k})| > n_k$.
+	\end{proofcontra}
+	
+	\item\label{st:continuous_function_takes_inf_and_sup} Если $\displaystyle m = \inf_{x \in [a; b]} f(x)$, $\displaystyle M = \sup_{x \in [a; b]} f(x)$, то
+	$\exists x_m, x_M \in [a; b] \colon f(x_m) = m, \ f(x_M) = M$.
+	\begin{proof}
+	По утверждению~\ref{st:inequality_of_infimum} $\forall n \in \mathbb N \ \exists x_n \in [a; b] \colon m \leqslant x_n < m + \dfrac1n$.
+	Получили ограниченную последовательность~$(x_n)$.
+	Выберем из неё сходящуюся подпоследовательность~$\displaystyle (x_{n_k}) \colon \lim_{k \to \infty} x_{n_k} = x_m$.
+	Точка~$x_m$ предельная для~$[a; b]$, значит, $x_m \in [a; b]$, т.\,к. $[a; b]$~--- замкнутое множество.
+	Тогда в~силу непрерывности~$f(x)$ $\displaystyle \lim_{k \to \infty} f(x_{n_k}) = f(x_m), \ m \leqslant x_{n_k} < m + \frac1{n_k} \opbr\Rightarrow f(x_m) = m$.
+	
+	$f(x_M) = M$ доказывается аналогично.
+	\end{proof}
+	
+	\item \begin{theorem}[о нуле непрерывной функции]
+	\label{th:zero_of_continuous_function}
+	Если $f(a) \cdot f(b) < 0$, то $\exists x_0 \in [a; b] \colon f(x_0) = 0$.
+	\end{theorem}
+	\begin{proof}
+	Разделим отрезок~$[a; b]$ пополам.
+	Если $f\left( \dfrac{a + b}2 \right) = 0$, то $x_0 = \dfrac{a + b}2$.
+	Иначе выберём ту половину отрезка~$[a; b]$, на границах которой функция принимает разные знаки.
+	Разделим её пополам и проверим значение в~середине.
+	Продолжая таким образом, получим либо $0$ в~одной из середин полученных отрезков, либо последовательность вложенных отрезков~$\displaystyle [a_n; b_n] \colon \lim_{n \to \infty} (b_n - a_n) = 0, \ f(a_n) \cdot f(b_n) < 0$.
+	По \hyperref[lemma:about_nested_intervals]{лемме о~вложенных отрезках} $\displaystyle \lim_{n \to \infty} a_n \opbr= \lim_{n \to \infty} b_n \opbr= c \in [a; b]$.
+	В~силу непрерывности~$f(x)$ $\displaystyle \lim_{n \to \infty} f(a_n) = \lim_{n \to \infty} f(b_n) = f(c) = 0$, т.\,к. $f(a_n)$ и $f(b_n)$ имеют разные знаки.
+	\end{proof}
+	
+	\item \begin{theorem}[о промежуточном значении]
+	Если $f(a) \neq f(b)$, то, без ограничения общности полагая $f(a) < f(b)$, $[f(a); f(b)] \subseteq E(f)$.
+	\end{theorem}
+	\begin{proof}
+	Пусть $C \in (f(a); f(b))$, $g(x) = f(x) - C$.
+	$g(a) = f(a) - C < 0$, $g(b) = f(b) - C > 0$, тогда по \hyperref[th:zero_of_continuous_function]{теореме о~нуле непрерывной функции} $\exists c \in [a; b] \colon (g(c) = 0 \Leftrightarrow f(c) = C)$.
+	\end{proof}
+	
+	\item Если $\displaystyle m = \inf_{x \in [a; b]} f(x)$, $\displaystyle M = \sup_{x \in [a; b]} f(x)$, то $[m; M] \subseteq E(f)$.
+\end{enumerate}

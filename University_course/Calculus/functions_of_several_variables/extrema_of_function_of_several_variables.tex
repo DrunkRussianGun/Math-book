@@ -1,0 +1,212 @@
+\subsection{Экстремумы функции нескольких переменных}
+\index{Минимум!функции} Точка~$\overline x_0 = (x_{10}, \ldots, x_{n0})$ называется \textbf{точкой локального минимума функции~$f(\overline x) \opbr= f(x_1, \ldots, \allowbreak x_n)$}, если существует проколотая окрестность
+$\breve U(\overline x_0) \colon \forall \overline x \in \breve U(\overline x_0) \ \allowbreak
+f(\overline x) \opbr> f(\overline x_0)$.
+	
+\index{Максимум!функции} Точка~$\overline x_0 = (x_{10}, \ldots, x_{n0})$ называется \textbf{точкой локального максимума функции~$f(\overline x) \opbr= f(x_1, \ldots, \allowbreak x_n)$}, если существует проколотая окрестность
+$\breve U(\overline x_0) \colon \forall \overline x \in \breve U(\overline x_0) \ \allowbreak
+f(\overline x) \opbr< f(\overline x_0)$.
+
+\index{Экстремум} Точки локального минимума и максимума называются \textbf{точками локального экстремума}.
+	
+\begin{theorem}
+В~точке локального экстремума частные производные функции равны нулю или не существуют.
+\end{theorem}
+\begin{proof}
+Пусть $\overline x_0 = (x_{10}, \ldots, x_{n0})$~--- точка локального экстремума функции~$f(\overline x)$, дифференцируемой в точке~$\overline x_0$.
+Рассмотрим
+$g(x) \opbr= f(x_{10}, \ldots, \allowbreak x_{k-1\,0}, x, x_{k+1\,0}, \ldots, \allowbreak x_{n0})$.
+$\overline x_0$~--- точка экстремума~$f(\overline x)$, тогда $x_{k0}$~--- точка экстремума~$g(x)$, значит, $g'(x_{k0}) = 0$ или не существует.
+Тогда $f_{x_k}'(\overline x_0) \opbr= 0$ или не существует.
+\end{proof}
+
+\begin{theorem}
+Пусть дана функция~$f(x, y)$. Если
+\begin{itemize}
+	\item $\displaystyle f_x'(x_0, y_0) = f_y'(x_0, y_0) = 0$
+	\item $\displaystyle (f_{xy}''(x_0, y_0))^2 - f_{xx}''(x_0, y_0) f_{yy}''(x_0, y_0) < 0$
+\end{itemize}
+то $(x_0, y_0)$~--- точка локального экстремума $f(x, y)$.
+	
+\begin{enumerate}
+	\item $(x_0, y_0)$~--- точка локального минимума,
+	если $f_{xx}''(x_0, y_0) \opbr> 0$ или~$f_{yy}''(x_0, y_0) \opbr> 0$.
+	\item $(x_0, y_0)$~--- точка локального максимума,
+	если $f_{xx}''(x_0, y_0) \opbr< 0$ или~$f_{yy}''(x_0, y_0) \opbr< 0$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+По \hyperref[eq:Taylor_series_for_several_variables]{формуле Тейлора}
+\begin{equation*}
+f(x, y) - f(x_0, y_0) = f(x_0, y_0) + df(x_0, y_0) + \frac12 d^2f(x_0, y_0) + o(\rho^2((x, y), (x_0, y_0))) - f(x_0, y_0) =
+\end{equation*}
+\begin{equation*}
+= \frac12 d^2f(x_0, y_0) + o(\rho^2((x, y), (x_0, y_0)))
+\end{equation*}
+значит, $f(x, y) - f(x_0, y_0)$ сохраняет знак, если $d^2f(x_0, y_0)$ сохраняет знак.
+
+\begin{equation*}
+d^2f(x_0, y_0) = f_{xx}''(x_0, y_0) dx^2 + 2f_{xy}''(x_0, y_0) dxdy + f_{yy}''(x_0, y_0) dy^2 =
+\end{equation*}
+\begin{equation*}
+= \left(f_{xx}''(x_0, y_0) + 2f_{xy}''(x_0, y_0) \frac{dy}{dx} + f_{yy}''(x_0, y_0) \left(\frac{dy}{dx}\right)^2\right) dx^2
+\end{equation*}
+
+Т.\,о., $(x_0, y_0)$~--- точка локального экстремума $f(x, y)$,
+если $d^2f(x_0, y_0)$ сохраняет знак, т.\,е. при
+\begin{equation*}
+(f_{xy}''(x_0, y_0))^2 - f_{xx}''(x_0, y_0) f_{yy}''(x_0, y_0) < 0
+\end{equation*}
+
+\begin{equation*}
+(f_{xy}''(x_0, y_0))^2 - f_{xx}''(x_0, y_0) f_{yy}''(x_0, y_0) < 0 \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow f_{xx}''(x_0, y_0) f_{yy}''(x_0, y_0) > (f_{xy}''(x_0, y_0))^2 \Rightarrow f_{xx}''(x_0, y_0) f_{yy}''(x_0, y_0) > 0
+\end{equation*}
+значит, $f_{xx}''(x_0, y_0)$ и~$f_{yy}''(x_0, y_0)$ одного знака.
+
+\begin{enumerate}
+	\item Если $f_{xx}''(x_0, y_0) > 0$ или $f_{yy}''(x_0, y_0) > 0 \opbr\Rightarrow d^2f(x_0, y_0) \opbr> 0$, тогда $(x_0, y_0)$~--- точка локального минимума.
+	\item Если $f_{xx}''(x_0, y_0) < 0$ или $f_{yy}''(x_0, y_0) < 0 \opbr\Rightarrow d^2f(x_0, y_0) \opbr< 0$, тогда $(x_0, y_0)$~--- точка локального максимума.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+\label{th:sufficient_condition_of_local_extremum}
+Пусть дана функция~$f(\overline x) = f(x_1, \ldots, x_n)$.
+Точка $\overline x_0 = (x_{10}, \ldots, x_{n0})$~--- точка локального экстремума $f(\overline x)$, если
+\begin{enumerate}
+	\item $\displaystyle f_{x_1}'(\overline x_0) = \ldots = f_{x_n}'(\overline x_0) = 0$
+	\item $\displaystyle \sum_{
+	\begin{smallmatrix}
+	i = \overline{1, n} \\
+	j = \overline{1, n}
+	\end{smallmatrix}
+	} f_{x_i x_j}''(\overline x_0) dx_i dx_j$ сохраняет знак.
+\end{enumerate}
+
+\begin{enumerate}
+	\item $\overline x_0$~--- точка локального минимума, если $\displaystyle \sum_{
+	\begin{smallmatrix}
+	i = \overline{1, n} \\
+	j = \overline{1, n}
+	\end{smallmatrix}
+	} f_{x_i x_j}''(\overline x_0) dx_i dx_j > 0$.
+	\item $\overline{x_0}$~--- точка локального максимума, если $\displaystyle \sum_{
+	\begin{smallmatrix}
+	i = \overline{1, n} \\
+	j = \overline{1, n}
+	\end{smallmatrix}
+	} f_{x_i x_j}''(\overline x_0) dx_i dx_j < 0$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+По \hyperref[eq:Taylor_series_for_several_variables]{формуле Тейлора}
+\begin{equation*}
+f(\overline x) - f(\overline x_0) =
+f(\overline x_0) + df(\overline x_0) + \frac{d^2 f(\overline x_0)}{2!} + o(\rho^2(\overline x, \overline x_0)) - f(\overline x_0) =
+\frac{d^2 f(\overline x_0)}{2!} + o(\rho^2(\overline x, \overline x_0))
+\end{equation*}
+значит, $f(\overline x) - f(\overline x_0)$ сохраняет знак, если $d^2 f(\overline x_0)$ сохраняет знак.
+	
+\begin{equation*}
+d^2 f(\overline x_0) = \sum_{
+\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}
+} f_{x_i x_j}''(\overline x_0) dx_i dx_j
+\end{equation*}
+	
+\begin{enumerate}
+	\item Если $\displaystyle \sum_{
+	\begin{smallmatrix}
+	i = \overline{1, n} \\
+	j = \overline{1, n}
+	\end{smallmatrix}
+	} f_{x_i x_j}''(\overline x_0) dx_i dx_j > 0 \opbr\Leftrightarrow
+	d^2 f(\overline x_0) > 0$, то $\overline x_0$~--- точка локального минимума.
+	\item Если $\displaystyle \sum_{
+	\begin{smallmatrix}
+	i = \overline{1, n} \\
+	j = \overline{1, n}
+	\end{smallmatrix}
+	} f_{x_i x_j}''(\overline x_0) dx_i dx_j < 0 \opbr\Leftrightarrow
+	d^2 f(\overline x_0) < 0$, то $\overline x_0$~--- точка локального максимума.
+\end{enumerate}
+\end{proof}
+	
+При практическом применении теоремы~\ref*{th:sufficient_condition_of_local_extremum} полезен критерий Сильвестра.
+	
+\subsubsection{Метод наименьших квадратов}
+\index{Метод!наименьших квадратов}
+Пусть даны точки $x_1, \ldots, x_n$ и требуется найти аппроксимирующую прямую для значений некоторой функции~$f(x)$ в~этих точках.
+Уравнение прямой~--- $y = Ax + B$.
+Найдём точку, в~которой сумма
+\begin{equation*}
+S(A, B) = \sum_{i=1}^n (A x_i + B - f(x_i))^2
+\end{equation*}
+принимает наименьшее значение.
+	
+\begin{equation*}
+S_A' = \sum 2 x_i (A x_i + B - f(x_i))
+\end{equation*}
+\begin{equation*}
+S_B' = \sum 2 (A x_i + B - f(x_i))
+\end{equation*}
+\begin{equation*}
+\begin{cases}
+\displaystyle S_A' = 0 \\
+\displaystyle S_B' = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+\displaystyle A \sum x_i^2 + B \sum x_i = \sum x_i f(x_i) \\
+\displaystyle A \sum x_i + Bn = \sum f(x_i)
+\end{cases}
+\Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow
+\begin{cases}
+\displaystyle \left(n \sum x_i^2 - \left(\sum x_i\right)^2\right)A = n \sum x_i f(x_i) - \sum x_i \sum f(x_i) \\
+\displaystyle Bn = \sum f(x_i) - A \sum x_i
+\end{cases}
+\Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow
+\begin{cases}
+\displaystyle A = \frac{\displaystyle n \sum x_i f(x_i) - \sum x_i \sum f(x_i)}{\displaystyle n \sum x_i^2 - \left(\sum x_i\right)^2} \\
+\displaystyle B = \frac{\displaystyle \sum x_i^2 \sum f(x_i) - \sum x_i \sum x_i f(x_i)}{\displaystyle n \sum x_i^2 - \left(\sum x_i\right)^2}
+\end{cases}
+\end{equation*}
+	
+Найденные значения~$A$ и $B$~--- искомые коэффициенты в~уравнении аппроксимирующей прямой.
+Для оценки точности аппроксимации можно найти коэффициент корреляции по формуле
+\begin{equation*}
+r = \sqrt{\frac
+{\sum (f(x_i) - \tilde y)^2 - \sum (f(x_i) - \tilde{y_i})^2}
+{\sum (f(x_i) - \tilde y)^2}} =
+\sqrt{1 - \frac{\sum (f(x_i) - \tilde{y_i})^2}{\sum (f(x_i) - \tilde y)^2}}
+\end{equation*}
+где $\tilde y = \frac1n \sum f(x_i)$, $\tilde{y_i} = A x_i + B$, а значение коэффициента~$r$ тем ближе к единице, чем точнее аппроксимация.
+	
+\subsubsection{Метод множителей Лагранжа}
+Пусть дана функция $f(x_1, \ldots, x_n)$, переменные которой удовлетворяют условиям
+\begin{equation*}
+\begin{cases}
+g_1(x_1, \ldots, x_n) = 0 \\
+\vdots \\
+g_m(x_1, \ldots, x_n) = 0
+\end{cases}
+\end{equation*}
+
+Для нахождения её экстремумов (называемых \textbf{условными}) введём функцию Лагранжа
+\begin{equation*}
+L(x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_m) =
+f(x_1, \ldots, x_n) + \lambda_1 g_1(x_1, \ldots, x_n) + \ldots + \lambda_m g_m(x_1, \ldots, x_n)
+\end{equation*}
+и исследуем её.
+Её экстремумы являются условными экстремумами функции~$f$.

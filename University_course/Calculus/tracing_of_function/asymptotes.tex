@@ -1,0 +1,20 @@
+\subsection{Асимптоты}
+\index{Асимптота} Прямая называется \textbf{асимптотой кривой}, если расстояние от переменной точки кривой до данной прямой при удалении этой точки в бесконечность стремится к нулю.
+Если указанное расстояние стремится к нулю при~$x \to \infty$, то такая асимптота называется \textbf{наклонной}, а если при~$y \to \infty$, то \textbf{вертикальной}.
+Если наклонная асимптота задаётся уравнением $y = b$, то она называется \textbf{горизонтальной}.
+
+\begin{theorem}
+Кривая, задаваемая уравнением~$y = f(x)$, имеет наклонную асимптоту, задаваемую уравнением~$y = kx + b$, если $\displaystyle \lim_{x \to \infty} \frac{f(x)}x = k$ и $\displaystyle \lim_{x \to \infty} (f(x) - kx) = b$.
+\end{theorem}
+\begin{proof}
+Из определения наклонной асимптоты $f(x) - (kx + b) = \alpha(x)$, где $\alpha(x)$~--- бесконечно малая при~$x \to \infty$.
+Тогда
+\begin{equation*}
+\lim_{x \to \infty} \frac{f(x)}x =
+\lim_{x \to \infty} \left( k + \frac{b}x + \frac{\alpha(x)}x \right) =
+k, \
+\lim_{x \to \infty} (f(x) - kx) =
+\lim_{x \to \infty} (b + \alpha(x)) =
+b
+\end{equation*}
+\end{proof}

@@ -1,0 +1,213 @@
+\section{Обратные матрицы}
+Матрица~$B$ называется \textbf{левой обратной} к квадратной матрице~$A$, если $BA = E$.
+
+Матрица~$C$ называется \textbf{правой обратной} к квадратной матрице~$A$, если $AC = E$.
+
+Заметим, что обе матрицы $B$ и $C$~--- квадратные того же порядка, что и~$A$.
+
+\begin{statement}
+Если существуют левая и правая обратные к $A$ матрицы $B$ и $C$, то они совпадают.
+\end{statement}
+\begin{proof}
+$B = BE = BAC = EC = C$.
+\end{proof}
+
+\index{Матрица!обратная} Т.\,о., матрица~$A^{-1}$ называется \textbf{обратной} к матрице~$A$, если $A^{-1} A = A A^{-1} = E$.
+
+\begin{theorem}
+\label{th:inverse_matrix_by_matrix_of_cofactors}
+Пусть даны матрицы $A = \|a_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$, $\hat A = \|A_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$, где $A_{ij}$~--- алгебраическое дополнение $a_{ij}$.
+
+Если $|A| \neq 0$, то
+\begin{equation*}
+A^{-1} = \frac1{|A|} \cdot \hat A^T
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+A \cdot \left( \frac1{|A|} \cdot \hat A^T \right) =
+\frac1{|A|} \cdot A \cdot \hat A^T =
+\frac1{|A|} \cdot
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{Vmatrix} \cdot
+\begin{Vmatrix}
+A_{11} & A_{21} & \cdots & A_{n1} \\
+A_{12} & A_{22} & \cdots & A_{n2} \\
+\vdots & \vdots & \ddots & \vdots \\
+A_{1n} & A_{2n} & \cdots & A_{nn}
+\end{Vmatrix} =
+\end{equation*}
+\begin{equation*}
+= \frac1{|A|} \cdot
+\begin{Vmatrix}
+\sum\limits_{k=1}^n a_{1k} A_{1k} & \sum\limits_{k=1}^n a_{1k} A_{2k} & \cdots & \sum\limits_{k=1}^n a_{1k} A_{nk} \\
+\sum\limits_{k=1}^n a_{2k} A_{1k} & \sum\limits_{k=1}^n a_{2k} A_{2k} & \cdots & \sum\limits_{k=1}^n a_{2k} A_{nk} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum\limits_{k=1}^n a_{nk} A_{1k} & \sum\limits_{k=1}^n a_{nk} A_{2k} & \cdots & \sum\limits_{k=1}^n a_{nk} A_{nk} \\
+\end{Vmatrix} =
+\frac1{|A|} \cdot
+\begin{Vmatrix}
+|A| & 0 & \cdots & 0 \\
+0 & |A| & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & |A|
+\end{Vmatrix} = E \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \frac1{|A|} \cdot \hat A^T = A^{-1}
+\end{equation*}
+\end{proof}
+
+\begin{theorem}[метод Гаусса---Жордана]
+\index{Метод!Гаусса---Жордана}
+Пусть дана невырожденная матрица $A = \|a_{ij}\|_{\begin{smallmatrix}
+i = \overline{1, n} \\
+j = \overline{1, n}
+\end{smallmatrix}}$.
+
+Присоединим к~ней единичную матрицу:
+\begin{equation*}
+B = \begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} & 1 & 0 & \cdots & 0 \\
+a_{21} & a_{22} & \cdots & a_{2n} & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} & 0 & 0 & \cdots & 1
+\end{Vmatrix}
+\end{equation*}
+и с помощью элементарных преобразований только над строками полученной матрицы (или только над столбцами) приведём её левую часть к единичной матрице.
+Тогда правая часть будет обратной к~$A$ матрицей.
+\end{theorem}
+\begin{proof}
+Каждое элементарное преобразование квадратной матрицы~$A$ эквивалентно её умножению на некоторую матрицу~$T$ того~же порядка:
+\begin{itemize}
+	\item \begin{equation*}
+	\begin{Vmatrix}
+	1 & 0 & \ldots & 0 & \ldots & 0 & \ldots & 0 \\
+	0 & 1 & \ldots & 0 & \ldots & 0 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 0 & \ldots & 1 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 1 & \ldots & 0 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 0 & \ldots & 0 & \ldots & 1
+	\end{Vmatrix} \cdot
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1j} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2j} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{i1} & a_{i2} & \ldots & a_{ii} & \ldots & a_{ij} & \ldots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{j1} & a_{j2} & \ldots & a_{ji} & \ldots & a_{jj} & \ldots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{jn} & \ldots & a_{nn}
+	\end{Vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= \begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1j} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2j} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{j1} & a_{j2} & \ldots & a_{ji} & \ldots & a_{jj} & \ldots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{i1} & a_{i2} & \ldots & a_{ii} & \ldots & a_{ij} & \ldots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{jn} & \ldots & a_{nn}
+	\end{Vmatrix}
+	\end{equation*}
+	
+	\item \begin{equation*}
+	\begin{Vmatrix}
+	1 & 0 & \ldots & 0 & \ldots & 0 \\
+	0 & 1 & \ldots & 0 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & \lambda & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 0 & \ldots & 1
+	\end{Vmatrix} \cdot
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{i1} & a_{i2} & \ldots & a_{ii} & \ldots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{nn}
+	\end{Vmatrix} =
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	\lambda a_{i1} & \lambda a_{i2} & \ldots & \lambda a_{ii} & \ldots & \lambda a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{nn}
+	\end{Vmatrix}
+	\end{equation*}
+	
+	\item \begin{equation*}
+	\begin{Vmatrix}
+	1 & 0 & \ldots & 0 & \ldots & 0 & \ldots & 0 \\
+	0 & 1 & \ldots & 0 & \ldots & 0 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 1 & \ldots & 0 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & \lambda & \ldots & 1 & \ldots & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	0 & 0 & \ldots & 0 & \ldots & 0 & \ldots & 1
+	\end{Vmatrix} \cdot
+	\begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1j} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2j} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{i1} & a_{i2} & \ldots & a_{ii} & \ldots & a_{ij} & \ldots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{j1} & a_{j2} & \ldots & a_{ji} & \ldots & a_{jj} & \ldots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{jn} & \ldots & a_{nn}
+	\end{Vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= \begin{Vmatrix}
+	a_{11} & a_{12} & \ldots & a_{1i} & \ldots & a_{1j} & \ldots & a_{1n} \\
+	a_{21} & a_{22} & \ldots & a_{2i} & \ldots & a_{2j} & \ldots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{i1} & a_{i2} & \ldots & a_{ii} & \ldots & a_{ij} & \ldots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	\lambda a_{i1} + a_{j1} & \lambda a_{i2} + a_{j2} & \ldots & \lambda a_{ii} + a_{ji} & \ldots & \lambda a_{ij} + a_{jj} & \ldots & \lambda a_{in} + a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \ldots \\
+	a_{1n} & a_{2n} & \ldots & a_{in} & \ldots & a_{jn} & \ldots & a_{nn}
+	\end{Vmatrix}
+	\end{equation*}
+\end{itemize}
+
+Т.\,о., результат последовательных элементарных преобразований матрицы~$B$ можно представить в виде $T_k \cdot \ldots \cdot T_1 \cdot B$.
+Рассматривая отдельно левую и правую части матрицы~$B$, получим:
+\begin{equation*}
+\begin{cases}
+T_k \cdot \ldots \cdot T_1 \cdot A = E \\
+T_k \cdot \ldots \cdot T_1 \cdot E = A_1
+\end{cases}
+\Rightarrow A_1 \cdot A = E \Rightarrow A_1 = A^{-1}
+\end{equation*}
+\end{proof}
+
+\begin{theorem}
+Если $A$~--- квадратная матрица, то $\exists A^{-1} \Leftrightarrow \det A \neq 0$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. $A \cdot A^{-1} = E \Rightarrow
+	\det A \cdot \det A^{-1} = 1 \Rightarrow
+	\det A \neq 0$
+	
+	\item $\Leftarrow$. $\exists A^{-1}$ по теореме~\ref*{th:inverse_matrix_by_matrix_of_cofactors}.
+\end{enumerate}
+\end{proof}

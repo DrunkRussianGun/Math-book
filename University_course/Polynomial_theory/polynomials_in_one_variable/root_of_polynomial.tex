@@ -1,0 +1,139 @@
+\subsection{Корень многочлена}
+\index{Корень} \textbf{Корнем многочлена~$f(x)$} называется такое число~$a$, что $f(a) = 0$.
+
+\index{Теорема!Безу}
+\begin{theorem}[Безу]
+Остаток от деления многочлена~$f(x)$ на двучлен~$x - a$ равен $f(a)$.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+f(x) = g(x)(x - a) + r \Rightarrow f(a) = g(a)(a - a) + r \Leftrightarrow r = f(a)
+\end{equation*}
+\end{proof}
+
+\begin{consequent}
+\label{conseq:division_by_binomial}
+Если $a$~--- корень~$f(x)$, то $f(x)$ делится на~$x - a$ без остатка.
+\end{consequent}
+
+\textbf{Кратностью корня~$a$} многочлена~$f(x)$ называется число~
+$m \colon f(x) \mult (x - a)^m, \ f(x) \notmult (x - a)^{m+1}$.
+
+\index{Теорема!основная т. алгебры}
+\begin{theorem}[основная теорема алгебры]
+\label{th:fundamental_th_of_algebra}
+Если $f(x)$~--- многочлен, отличный от константы, то он имеет хотя~бы один комплексный корень.
+\end{theorem}%
+Доказательство теоремы слишком сложно, поэтому здесь не приводится.
+
+\begin{consequent}
+\label{conseq:n_roots_of_polynomial}
+Многочлен $n$\nobreakdash-й степени имеет ровно $n$ комплексных корней с учётом их кратности.
+\end{consequent}
+\begin{proof}
+Пусть $f(x)$~--- многочлен $n$\nobreakdash-й степени.
+По основной теореме алгебры он имеет корень~$a$, тогда по следствию~\ref*{conseq:division_by_binomial} $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен $n - 1$-й степени, который также имеет корень.
+Будем повторять деление до~тех пор, пока не получим константу.
+Т.\,о., получим $n$~корней.
+\end{proof}
+
+\begin{consequent}
+Любой многочлен~$f(x)$ $n$\nobreakdash-й степени представим в~виде
+\begin{equation*}
+f(x) = a(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation*}
+где $a$~--- число, $x_0, \ldots, x_{n-1}$~--- корни $f(x)$.
+\end{consequent}
+
+\begin{lemma}
+Если $f(x)$~--- многочлен с действительными коэффициентами, $z \in \mathbb C$, то $\overline{f(z)} = f(\overline z)$.
+\end{lemma}
+\begin{proof}
+Пусть $z_1 = a_1 + b_1 i, z_2 = a_2 + b_2 i$, $a_1, b_1, a_2, b_2 \in \mathbb R$.
+Многочлен строится при помощи операций сложения и умножения, поэтому достаточно доказать следующее:
+\begin{enumerate}
+	\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
+	\begin{equation*}
+	\overline{z_1 + z_2} = \overline{(a_1 + a_2) + (b_1 + b_2)i} = (a_1 + a_2) - (b_1 + b_2)i =
+	(a_1 - b_1 i) + (a_2 - b_2 i) = \overline{z_1} + \overline{z_2}
+	\end{equation*}
+	
+	\item $\overline{z_1 z_2} = \overline{z_1} \cdot \overline{z_2}$
+	\begin{equation*}
+	\overline{z_1 z_2} = \overline{(a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i} =
+	(a_1 a_2 - b_1 b_2) - (a_1 b_2 + a_2 b_1)i = (a_1 - b_1 i)(a_2 - b_2 i) =
+	\overline{z_1} \cdot \overline{z_2}
+	\end{equation*}
+\end{enumerate}
+Тогда $\overline{a_n z^n + \ldots + a_1 z + a_0} = a_n \overline z^n + \ldots + a_1 \overline z + a_0$ при $a_0, a_1, \ldots, a_n \in \mathbb R$.
+\end{proof}
+
+\begin{theorem}
+\label{th:polynomial_factorization}
+Любой многочлен с действительными коэффициентами можно разложить на линейные и квадратные множители с действительными коэффициентами.
+\end{theorem}
+\begin{proof}
+Пусть $f(x)$~--- многочлен с действительными коэффициентами, тогда если $f(z) = 0$, то $f(\overline z) = \overline{f(z)} = \overline 0 = 0$.
+Значит, если $a + bi$~--- корень~$f(x)$, то $a - bi$~--- тоже корень~$f(x)$.
+Имеем:
+\begin{equation*}
+f(x) = a \prod_{j=1}^{m} (x - x_j) \cdot \prod_{j=1}^{n} (x - (a_j + b_j i))(x - (a_j - b_j i)) =
+a \prod_{j=1}^{m} (x - x_j) \cdot \prod_{j=1}^{n} (x^2 - 2a_j x + a_j^2 + b_j^2)
+\end{equation*}
+где $a, x_1, \ldots, x_m, a_1, \ldots, a_n, b_1, \ldots, b_n \in \mathbb R$,
+$x_1, \ldots, x_m, a_1 + b_1 i, \ldots, a_n + b_n i$~--- корни~$f(x)$.
+\end{proof}
+
+\index{Формула!Виета}
+\begin{theorem}[формулы Виета]
+Пусть 
+\begin{equation}
+\label{eq:f_in_Vieta_th}
+f(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0 = a_n(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation}
+тогда
+\begin{equation*}
+a_{n-1} = -a_n \sum_{i=0}^{n-1} x_i
+\end{equation*}
+\begin{equation*}
+a_{n-2} = a_n \sum_{i=0}^{n-1} \sum_{j=i+1}^{n-1} x_i x_j
+\end{equation*}
+\begin{equation*}
+a_{n-3} = -a_n \sum_{i=0}^{n-1} \sum_{j=i+1}^{n-1} \sum_{k=j+1}^{n-1} x_i x_j x_k
+\end{equation*}
+\begin{equation*}
+\ldots
+\end{equation*}
+\begin{equation*}
+a_2 = (-1)^{n-1} \cdot a_n \sum_{i=0}^{n-1} x_0 x_1 \cdot \ldots \cdot x_{i-1} x_{i+1} \cdot \ldots \cdot x_{n-1}
+\end{equation*}
+\begin{equation*}
+a_1 = (-1)^n \cdot a_n x_0 x_1 \cdot \ldots \cdot x_{n-1}
+\end{equation*}
+\end{theorem}%
+Для доказательства достаточно раскрыть скобки в~правой части равенства (\ref*{eq:f_in_Vieta_th}).
+
+\begin{theorem}
+Пусть на плоскости даны $n + 1$~точек, никакие две из которых не лежат на прямой, паралелльной оси ординат, тогда через них проходит единственная кривая $n$\nobreakdash-го порядка.
+\end{theorem}
+\begin{proof}
+Пусть данные точки заданы координатами $(a_0, b_0), (a_1, b_1), \ldots, (a_n, b_n)$.
+\begin{enumerate}
+	\item Докажем существование.
+	Рассмотрим многочлен~$f(x)$, называемый \textbf{интерполяционным многочленом Лагранжа}:
+	\begin{equation*}
+	f(x) = \sum_{i=0}^n b_i \frac
+	{(x - a_0) \cdot \ldots \cdot (x - a_{i-1})(x - a_{i+1}) \cdot \ldots \cdot (x - a_n)}
+	{(a_i - a_0) \cdot \ldots \cdot (a_i - a_{i-1})(a_i - a_{i+1}) \cdot \ldots \cdot (a_i - a_n)}
+	\end{equation*}
+	
+	Докажем, что кривая, задаваемая функцией~$f$, проходит через все данные точки.
+	Рассмотрим точку~$(a_k; b_k)$.
+	Подставим $x = a_k$, тогда $k$\nobreakdash-е (считая с нуля) слагаемое равно $b_k$, а остальные~--- 0.
+	
+	\item Докажем единственность.
+	Предположим, что существуют многочлены $f(x)$ и $g(x)$ $n$-й степени такие, что $f(a_i) = g(a_i) = b_i$, где $i = 0, 1, \ldots, n$.
+	Рассмотрим $h(x) = f(x) - g(x) \Rightarrow \deg h \leqslant n \Rightarrow$ $h(x)$ имеет не более $n$~корней.
+	При этом $h(x) = 0$ в $n + 1$~точках $\Rightarrow$ $h(x)$ тождественно равен нулю $\Rightarrow$ $f(x) = g(x)$.
+\end{enumerate}
+\end{proof}

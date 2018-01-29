@@ -1,0 +1,56 @@
+\section{Дизъюнктивная нормальная форма}
+\index{Литерал} \textbf{Литералом} называется переменная или её отрицание.
+
+\index{Конъюнкт} \textbf{Элементарным конъюнктом} называется конъюнкция литералов, в которую каждая переменная входит не более одного раза.
+Элементарный конъюнкт называется \textbf{полным}, если он содержит все рассматриваемые переменные.
+
+\index{Импликант} Элементарный конъюнкт~$K$ называется \textbf{импликантом} булевой функции~$f$, если $K \lor f = f$.
+Импликант называется \textbf{простым}, если вычёркиванием литералов из него нельзя получить импликант $f$.
+
+\begin{statement}
+Элементарный конъюнкт~$K$~--- импликант булевой функции~$f$ $\Leftrightarrow K \rightarrow f = 1$.
+\end{statement}
+\begin{proof}
+$K \lor f = f \Leftrightarrow
+\overline K \lor K \lor f = f \lor \overline K \Leftrightarrow
+1 = K \rightarrow f$.
+\end{proof}
+
+\textbf{Дизъюнктивной нормальной формой}, или \textbf{ДНФ}, называется дизъюнкция элементарных конъюнктов.
+
+\textbf{Совершенной дизъюнктивной нормальной формой}, или \textbf{СДНФ}, называется дизъюнкция полных элементарных конъюнктов.
+
+\begin{statement}
+Булева функция~$f$ от $n$~переменных, не равная тождественно~$0$, представима в~виде СДНФ.
+\end{statement}%
+Для доказательства достаточно разложить её по всем переменным.
+
+ДНФ булевой функции~$f$ называется \textbf{сокращённой}, если все её конъюнкты~--- простые импликанты $f$.
+
+\begin{statement}
+Булева функция представима в~виде сокращённой ДНФ, причём единственным образом.
+\end{statement}
+\begin{proof}
+Пусть $f(x_1, \ldots, x_n)$~--- булева функция, $D = K_1 \lor K_2 \lor \ldots \lor K_m$~--- дизъюнкция всех простых импликантов $f$.
+Возможны два случая:
+\begin{enumerate}
+	\item Пусть $f = 0 \Leftrightarrow
+	\forall 1 \leqslant i \leqslant m \ K_i = 0 \Leftrightarrow
+	D = 0 \Rightarrow
+	D = f$.
+	
+	\item Пусть $f = 1$.
+	Запишем $f$ в~виде СДНФ:
+	\begin{equation*}
+	1 = f = \bigvee_{\begin{smallmatrix}
+	(\sigma_1, \ldots, \sigma_n) \\
+	f(\sigma_1, \ldots, \sigma_n) = 1
+	\end{smallmatrix}} x_1^{\sigma_1} \And x_2^{\sigma_2} \And \ldots \And x_n^{\sigma_n} \Rightarrow
+	\exists \alpha_1, \ldots, \alpha_n \colon x_1^{\alpha_1} \And x_2^{\alpha_2} \And \ldots \And x_n^{\alpha_n} = 1
+	\end{equation*}
+	
+	Получили импликант.
+	Из него можно получить простой импликант~$K$ вычёркиванием литералов, причём $K = 1$.
+	$K$ входит в~$D$, тогда $D = 1 = f$.
+\end{enumerate}
+\end{proof}

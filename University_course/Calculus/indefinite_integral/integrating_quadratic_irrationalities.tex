@@ -1,0 +1,54 @@
+\subsection{Интегрирование квадратичных иррациональностей}
+Пусть $R(x_1, \ldots, x_n) = \dfrac{P(x_1, \ldots, x_n)}{Q(x_1, \ldots, x_n)}$, где $P(\overline x)$ и $Q(\overline x)$~--- многочлены.
+\begin{equation*}
+\int R(x, \sqrt{ax^2 + bx + c})\,dx =
+\int R\left( x, \sqrt{a(x + \frac{b}{2a})^2 + c - \frac{b^2}{4a}} \right)\,dx =
+\end{equation*}
+\begin{equation*}
+\left| \text{Пусть } y = x + \frac{b}{2a}, \ z = c - \frac{b^2}{4a} \right| =
+\int R\left( y - \frac{b}{2a}, \sqrt{ay^2 + z} \right)\,dy
+\end{equation*}
+
+Пусть $\alpha = \sqrt{|a|}$, $\beta = \sqrt{|z|}$.
+Возможны три случая:
+\begin{itemize}
+	\item Если $a > 0$, $z > 0$
+	\begin{equation*}
+	\int R\left( y - \frac{b}{2a}, \sqrt{\alpha^2 y^2 + \beta^2} \right)\,dy =
+	\left| \text{Пусть } y = \frac\beta\alpha \tg t \right|
+	\end{equation*}
+	\begin{equation*}
+	= \frac\beta\alpha \int \frac
+	{R\left( \frac\beta\alpha \tg t - \frac{b}{2a}, \beta \sqrt{\tg^2 t + 1} \right)}
+	{\cos^2 t} dt =
+	\frac\beta\alpha \int \frac
+	{R\left( \frac{\beta \sin t}{\alpha \cos t} - \frac{b}{2a}, \frac\beta{\cos t} \right)}
+	{\cos^2 t} dt
+	\end{equation*}
+	
+	\item Если $a > 0$, $z < 0$
+	\begin{equation*}
+	\int R\left( y - \frac{b}{2a}, \sqrt{\alpha^2 y^2 - \beta^2} \right)\,dy =
+	\left| \text{Пусть } y = \frac\beta{\alpha \sin t} \right|
+	\end{equation*}
+	\begin{equation*}
+	= -\frac\beta\alpha \int \frac
+	{R\left( \frac\beta{\alpha \sin t} - \frac{b}{2a}, \beta \sqrt{\frac1{\sin^2 t} - 1} \right) \cos t}
+	{\sin^2 t} dt =
+	-\frac\beta\alpha \int \frac
+	{R\left( \frac\beta{\alpha \sin t} - \frac{b}{2a}, \frac{\beta \cos t}{\sin t} \right) \cos t}
+	{\sin^2 t} dt
+	\end{equation*}
+	
+	\item Если $a < 0$, $z > 0$
+	\begin{equation*}
+	\int R\left( y - \frac{b}{2a}, \sqrt{-\alpha^2 y^2 + \beta^2} \right)\,dy =
+	\left| \text{Пусть } y = \frac\beta\alpha \sin t \right|
+	\end{equation*}
+	\begin{equation*}
+	= \frac\beta\alpha \int R\left( \frac\beta\alpha \sin t - \frac{b}{2a}, \beta \sqrt{1 - \sin^2 t} \right) \cos t\,dt =
+	\frac\beta\alpha \int R\left( \frac\beta\alpha \sin t - \frac{b}{2a}, \beta \cos t \right) \cos t\,dt
+	\end{equation*}
+\end{itemize}
+
+Т.\,о., интегрирование квадратичных иррациональностей сводится к интегрированию тригонометрических выражений.

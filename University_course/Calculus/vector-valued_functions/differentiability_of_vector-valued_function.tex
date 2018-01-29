@@ -1,0 +1,49 @@
+\subsection{Дифференцируемость вектор-функции}
+\index{Вектор-функция!дифференцируемая} Вектор-функция~$f(x_1, \ldots, x_n) = (f_1(\overline x), f_2(\overline x), \ldots, f_m(\overline x))$ называется \textbf{дифференцируемой в точке~$\overline x_0 = (x_{10}, \ldots, x_{n0})$}, если
+\begin{equation*}
+\exists A =
+\begin{Vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{Vmatrix} \colon
+\forall \Delta \overline x = (\Delta x_1, \ldots, \Delta x_n) \
+\begin{Vmatrix}
+f_1(\overline x_0 + \Delta \overline x) - f_1(\overline x_0) \\
+f_2(\overline x_0 + \Delta \overline x) - f_2(\overline x_0) \\
+\vdots \\
+f_m(\overline x_0 + \Delta \overline x) - f_m(\overline x_0)
+\end{Vmatrix} =
+A \cdot
+\begin{Vmatrix}
+\Delta x_1 \\
+\Delta x_2 \\
+\vdots \\
+\Delta x_n
+\end{Vmatrix} +
+\begin{Vmatrix}
+\alpha_1 \\
+\alpha_2 \\
+\vdots \\
+\alpha_m
+\end{Vmatrix},
+\end{equation*}
+\begin{equation*}
+\lim_{\rho(\overline x_0 + \Delta \overline x, \overline x_0) \to 0}
+\frac{\sqrt{\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_m^2}}
+{\rho(\overline x_0 + \Delta \overline x, \overline x_0)} = 0
+\end{equation*}
+
+\index{Матрица!производная} \index{Матрица!Якоби} Матрица~$A$ называется \textbf{производной матрицей}, или \textbf{матрицей Як\'{о}би}, и состоит из значений всех частных производных всех координатных функций в~данной точке:
+\begin{equation*}
+A =
+\begin{Vmatrix}
+f_{1\, x_1}'(\overline x_0) & f_{1\, x_2}'(\overline x_0) & \cdots & f_{1\, x_n}'(\overline x_0) \\
+f_{2\, x_1}'(\overline x_0) & f_{2\, x_2}'(\overline x_0) & \cdots & f_{2\, x_n}'(\overline x_0) \\
+\vdots & \vdots & \ddots & \vdots \\
+f_{m\, x_1}'(\overline x_0) & f_{m\, x_2}'(\overline x_0) & \cdots & f_{m\, x_n}'(\overline x_0) \\
+\end{Vmatrix}
+\end{equation*}
+
+\index{Якобиан} Если $f(x_1, \ldots, x_n)$~--- вектор-функция размерности~$n$, дифференцируемая в точке~$\overline x_0$, то \textbf{якобианом} называется определитель её производной матрицы и обозначается $\left. \dfrac{\partial f}{\partial \overline x} \right|_{\overline x_0}$.

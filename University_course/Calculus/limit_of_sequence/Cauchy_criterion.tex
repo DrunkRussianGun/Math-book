@@ -1,0 +1,46 @@
+\subsection{Критерий Коши}
+\index{Последовательность!фундаментальная} Последовательность~$(x_n)$ называется \textbf{фундаментальной}, если
+\begin{equation*}
+\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall m, n > n_0 \ |x_n - x_m| < \varepsilon
+\end{equation*}
+
+\begin{theorem}[критерий Коши]
+Последовательность сходится $\Leftrightarrow$ она фундаментальна.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Пусть $\displaystyle \lim_{n \to \infty} x_n = a$, тогда
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \frac\varepsilon2
+	\end{equation*}
+	
+	Пусть $m, n > n_0$.
+	\begin{equation*}
+	|x_n - x_m| = |x_n - a + a - x_m| \leqslant |x_n - a| + |a - x_m| < \frac\varepsilon2 + \frac\varepsilon2 = \varepsilon
+	\end{equation*}
+	
+	\item $\Leftarrow$.
+	\begin{equation*}
+	\exists n_0 \in \mathbb N \colon \forall m, n > n_0 \ |x_n - x_m| < 1 \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow (|x_n - x_{n_0 + 1}| < 1 \Rightarrow
+	||x_n| - |x_{n_0 + 1}|| < 1 \Rightarrow
+	|x_n| < |x_{n_0 + 1}| + 1)
+	\end{equation*}
+	
+	Значит, $\forall x \in \mathbb N \ |x_n| < \max \{ |x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1 \}$, т.\,е. $(x_n)$ ограничена.
+	
+	Выберем из неё сходящуюся подпоследовательность~$\displaystyle (x_{n_k}): \lim_{k \to \infty} x_{n_k} = a$.
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists k_0, n_1 \in \mathbb N \colon \forall k > k_0, n > n_1 \ |x_n - x_{n_k}| < \varepsilon \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\left| \text{ При } k \to \infty \text{ получим } \right|
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow |x_n - a| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} x_n = a
+	\end{equation*}
+\end{enumerate}
+\end{proof}

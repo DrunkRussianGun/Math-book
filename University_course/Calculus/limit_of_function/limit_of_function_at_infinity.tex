@@ -1,0 +1,62 @@
+\subsection{Предел функции на бесконечности}
+Пусть $f(x)$~--- функция.
+Следующие определения эквивалентны:
+\begin{enumerate}
+	\item \textbf{Определение по Гейне}
+	
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n): \lim_{n \to \infty} x_n = \infty$.
+	
+	\item \textbf{Определение по Коши}
+	
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \ |x| > M \Rightarrow |f(x) - b| < \varepsilon
+	\end{equation*}
+\end{enumerate}
+
+Предел функции~$f(x)$ на бесконечности обозначается $\displaystyle \lim_{x \to \infty} f(x)$.
+\begin{proof}[эквивалентности]
+\begin{enumerate}
+	\item (2) $\Rightarrow$ (1).
+	Пусть $\displaystyle \lim_{n \to \infty} x_n = \infty$, тогда
+	\begin{equation*}
+	\forall M > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n| > M \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \forall \varepsilon > 0 \ |f(x_n) - a| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} f(x_n) = a
+	\end{equation*}
+	
+	\item (1) $\Rightarrow$ (2).
+	Докажем методом от противного, что условия определения~(2) выполняются.
+	Пусть
+	\begin{equation*}
+	\exists \varepsilon_0 > 0 \colon \forall M > 0 \ \exists x_0 \colon |x_0| > M, \ |f(x_0) - a| \geqslant \varepsilon_0
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	\forall n \in \mathbb N \ \exists x_n \colon |x_n| > n, \ |f(x_n) - a| \geqslant \varepsilon_0
+	\end{equation*}
+	
+	Получили последовательность $\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = \infty, \ \lim_{n \to \infty} f(x_n) \neq a$.
+	Противоречие.
+\end{enumerate}
+\end{proof}
+
+Аналогично доказывается эквивалентность следующих определений:
+\begin{enumerate}
+	\item \textbf{Определение по Гейне}
+	
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если \allowbreak
+	$\displaystyle \lim_{n \to \infty} f(x_n) \opbr= a$ для любой последовательности~$\displaystyle (x_n): \lim_{n \to \infty} x_n = +\infty \ (\lim_{n \to \infty} x_n = -\infty)$.
+	
+	\item \textbf{Определение по Коши}
+	
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \ x > M \ (x < -M) \Rightarrow |f(x) - b| < \varepsilon
+	\end{equation*}
+\end{enumerate}
+
+Предел функции на бесконечности обладает теми же свойствами, что и предел функции в~точке.

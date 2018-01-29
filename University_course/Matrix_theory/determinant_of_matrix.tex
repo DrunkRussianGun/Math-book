@@ -1,0 +1,518 @@
+\section{Определитель матрицы}
+\index{det}\index{Определитель} \textbf{Определителем порядка~$n$} квадратной {матрицы~$A$} порядка~$n$, называется число, равное
+\begin{equation}
+\label{eq:determinant}
+\Delta = \det A = |A| =
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} =
+\sum_{\sigma = (i_1, \ldots, i_n) \in S_n} (-1)^{|\sigma|} a_{1\, i_1} a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n}, \ 
+|\sigma| =
+\begin{cases}
+0, \sigma \text{ чётная} \\
+1, \sigma \text{ нечётная}
+\end{cases}
+\end{equation}
+где $S_n$~--- множество всех перестановок $n$-элементного множества.
+
+Матрица называется \textbf{вырожденной}, если её определитель равен~$0$, иначе~--- \textbf{невырожденной}.
+
+Свойства определителя:
+\begin{itemize}
+	\item Если элементы какой-либо строки или столбца определителя имеют общий множитель~$\lambda$, то его можно вынести за знак определителя.
+	\begin{proof}
+	\begin{equation*}
+	\Delta = \sum (-1)^{|\sigma|} a_{1\, i_1} a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n}
+	\end{equation*}
+	Каждое слагаемое имеет множитель из каждой строки, а также из каждого столбца, т.\,к. $\sigma$ является перестановкой и содержит все номера столбцов от $1$ до $n$ включительно.
+	Тогда все слагаемые имеют общий множитель~$\lambda$, поэтому его можно вынести за скобки.
+	\end{proof}
+	
+	\item Если какая-либо строка или столбец определителя состоит из нулей, то он равен~$0$.
+	
+	\item \begin{equation*}
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} + b_{i1} & a_{i2} + b_{i2} & \cdots & a_{in} + b_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} =
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} +
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	b_{i1} & b_{i2} & \cdots & b_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix}
+	\end{equation*}
+	Свойство для столбцов аналогично.
+	\begin{proof}
+	\begin{equation*}
+	\Delta = \begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} + b_{i1} & a_{i2} + b_{i2} & \cdots & a_{in} + b_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} =
+	\sum (-1)^{|\sigma|} a_{1\, i_1} \cdot \ldots \cdot a_{n\, i_n} =
+	\end{equation*}
+	\begin{equation*}
+	\left| \text{ Каждое слагаемое содержит ровно~$1$ элемент из $i$\nobreakdash-й строки и поэтому имеет вид } \right|
+	\end{equation*}
+	\begin{equation*}
+	= \sum (-1)^{|\sigma|} a_{1\, i_1} \cdot \ldots \cdot a_{k-1\, i_{k-1}} (a_{k\, i_k} + b_{k\, i_k}) a_{k+1\, i_{k+1}} \cdot \ldots \cdot a_{n\, i_n} =
+	\end{equation*}
+	\begin{equation*}
+	= \sum (-1)^{|\sigma|} a_{1\, i_1} \cdot \ldots \cdot a_{k\, i_k} \cdot \ldots \cdot a_{n\, i_n} +
+	\sum (-1)^{|\sigma|} a_{1\, i_1} \cdot \ldots \cdot b_{k\, i_k} \cdot \ldots \cdot a_{n\, i_n} =
+	\end{equation*}
+	\begin{equation*}
+	= \begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} +
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	b_{i1} & b_{i2} & \cdots & b_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix}
+	\end{equation*}
+	Свойство для столбцов доказывается аналогично.
+	\end{proof}
+	
+	\item Если в~определителе поменять две строки или два столбца местами, то он изменит знак.
+	\begin{proof}
+	При перестановке строк или столбцов местами по утверждению~\ref{st:parity_of_permutation} все перестановки в формуле~(\ref{eq:determinant}) меняют чётность, значит, каждое слагаемое меняет знак, тогда и определитель меняет знак.
+	\end{proof}
+	
+	\item Если в~определителе две строки или два столбца совпадают, то он равен~$0$.
+	\begin{proof}
+	Если поменять местами совпадающие строки или столбцы, то он, с~одной стороны, не изменится, а с~другой, поменяет знак. Значит, определитель равен~$0$.
+	\end{proof}
+	
+	\item \begin{equation*}
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} =
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\lambda a_{i1} + a_{j1} & \lambda a_{i2} + a_{j2} & \cdots & \lambda a_{in} + a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix}
+	\end{equation*}
+	Свойство для столбцов аналогично.
+	\begin{proof}
+	\begin{equation*}
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} =
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\lambda a_{i1} & \lambda a_{i2} & \cdots & \lambda a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} +
+	\begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= \begin{vmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\lambda a_{i1} + a_{j1} & \lambda a_{i2} + a_{j2} & \cdots & \lambda a_{in} + a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	\end{vmatrix}
+	\end{equation*}
+	Свойство для столбцов доказывается аналогично.
+	\end{proof}
+\end{itemize}
+
+Рассмотрим квадратную матрицу~$A$ $n$-го порядка.
+Пусть $1 \leqslant i_1 < i_2 < \ldots < i_k \leqslant n$, $1 \opbr\leqslant j_1 \opbr< j_2 \opbr< \ldots \opbr< j_k \opbr\leqslant n$.
+\index{Минор} \textbf{Минором $k$-го порядка матрицы~$A$} называется определитель, образованный элементами матрицы, стоящими на пересечении строк с номерами~$i_1, i_2, \ldots, i_k$ и столбцов с номерами~$j_1, j_2, \ldots, j_k$, и обозначается~$M_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}$.
+\textbf{Дополнительным минором $n - k$-го порядка к минору $M_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}$} называется определитель, полученный вычеркиванием строк с номерами~$i_1, i_2, \ldots, i_k$ и столбцов с номерами~$j_1, j_2, \ldots, j_k$ из определителя матрицы~$A$, и обозначается $\overline M_{j_1 j_2 \ldots j_k}^{i_1 i_2 \ldots i_k}$.
+\index{Алгебраическое дополнение} \textbf{Алгебраическим дополнением элемента~$a_{ij}$} матрицы~$A$ называется величина, равная $(-1)^{i+j} \overline M_j^i$, и обозначается $A_{ij}$.
+
+\begin{theorem}
+\label{th:determinant_expansion}
+Любой определитель можно \textbf{разложить по элементам} произвольной строки или столбца:
+\begin{equation*}
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} =
+\sum_{j=1}^n a_{ij} A_{ij} =
+\sum_{i=1}^n a_{ij} A_{ij}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i1} & a_{i2} & \cdots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} =
+(-1)^{i-1} \cdot
+\begin{vmatrix}
+a_{i1} & a_{i2} & \cdots & a_{in} \\
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} =
+(-1)^{i+1} \cdot
+\end{equation*}
+\begin{equation*}
+\cdot \left(
+\begin{vmatrix}
+a_{i1} & 0 & \cdots & 0 \\
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} +
+\begin{vmatrix}
+0 & a_{i2} & \cdots & 0 \\
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} + \ldots + 
+\begin{vmatrix}
+0 & 0 & \cdots & a_{in} \\
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\right) =
+\end{equation*}
+\begin{equation*}
+= (-1)^{i+1} \cdot \left(
+\begin{vmatrix}
+a_{i1} & 0 & \cdots & 0 \\
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} -
+\begin{vmatrix}
+a_{i2} & 0 & 0 & \cdots & 0 \\
+a_{12} & a_{11} & a_{13} & \cdots & a_{1n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 2} & a_{i-1\, 1} & a_{i-1\, 3} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 2} & a_{i+1\, 1} & a_{i+1\, 3} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n2} & a_{n1} & a_{n3} & \cdots & a_{nn}
+\end{vmatrix} + \ldots + \right.
+\end{equation*}
+\begin{equation*}
+\left. \vphantom1 + (-1)^{n-1} \cdot
+\begin{vmatrix}
+a_{in} & 0 & \cdots & 0 \\
+a_{1n} & a_{11} & \cdots & a_{1\, n-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, n} & a_{i-1\, 1}  & \cdots & a_{i-1\, n-1} \\
+a_{i+1\, n} & a_{i+1\, 1} & \cdots & a_{i+1\, n-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{nn} & a_{n1} & \cdots & a_{n\, n-1}
+\end{vmatrix}
+\right) =
+\end{equation*}
+\begin{equation*}
+\left| \begin{gathered}
+\text{Пользуясь формулой~(\ref*{eq:determinant}), получим} \\
+\begin{vmatrix}
+a & 0 & \cdots & 0 \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = \\
+= \sum a \cdot a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n} +
+\sum 0 \cdot a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n} + \ldots +
+\sum 0 \cdot a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n} = \\
+= a \sum a_{2\, i_2} \cdot \ldots \cdot a_{n\, i_n} =
+a \cdot
+\begin{vmatrix}
+a_{22} & \cdots & a_{2n} \\
+\vdots & \ddots & \vdots \\
+a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\end{gathered} \right|
+\end{equation*}
+\begin{equation*}
+= (-1)^{i+1} a_{i1} \cdot
+\begin{vmatrix}
+a_{12} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{i-1\, 2} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 2} & \cdots & a_{i+1\, n} \\
+\vdots & \ddots & \vdots \\
+a_{n2} & \cdots & a_{nn}
+\end{vmatrix} +
+(-1)^{i+2} a_{i2} \cdot
+\begin{vmatrix}
+a_{11} & a_{13} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i-1\, 1} & a_{i-1\, 3} & \cdots & a_{i-1\, n} \\
+a_{i+1\, 1} & a_{i+1\, 3} & \cdots & a_{i+1\, n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n3} & \cdots & a_{nn}
+\end{vmatrix} + \ldots +
+\end{equation*}
+\begin{equation*}
+\vphantom1 + (-1)^{i+n} a_{in} \cdot
+\begin{vmatrix}
+a_{11} & \cdots & a_{1\, n-1} \\
+\vdots & \ddots & \vdots \\
+a_{i-1\, 1}  & \cdots & a_{i-1\, n-1} \\
+a_{i+1\, 1} & \cdots & a_{i+1\, n-1} \\
+\vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{n\, n-1}
+\end{vmatrix} =
+\sum_{j=1}^n a_{ij} A_{ij}
+\end{equation*}
+
+Аналогично доказывается
+\begin{equation*}
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} =
+\sum_{i=1}^n a_{ij} A_{ij}
+\end{equation*}
+\end{proof}
+
+\begin{consequent}[фальшивое разложение определителя]
+Пусть дана квадратная матрица~$A = \|a_{ij}\|$ $n$-го порядка, тогда
+\begin{equation*}
+\sum_{k=1}^n a_{ik} A_{jk} = \sum_{k=1}^n a_{ki} A_{kj} = 0, \ i \neq j
+\end{equation*}
+\end{consequent}
+\begin{proof}
+\begin{equation*}
+\sum_{k=1}^n a_{ik} A_{jk} =
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i1} & a_{i2} & \cdots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i1} & a_{i2} & \cdots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = 0 =
+\begin{vmatrix}
+a_{11} & \cdots & a_{1i} & \cdots & a_{1i} & \cdots & a_{1n} \\
+a_{21} & \cdots & a_{2i} & \cdots & a_{2i} & \cdots & a_{2n} \\
+\vdots & \ddots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{ni} & \cdots & a_{ni} & \cdots & a_{nn}
+\end{vmatrix} =
+\sum_{k=1}^n a_{ki} A_{kj}
+\end{equation*}
+\end{proof}
+
+\begin{statement}
+Определитель транспонированной матрицы равен определителю исходной.
+\end{statement}
+\begin{proof}
+\begin{equation*}
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}^T =
+\begin{vmatrix}
+a_{11} & a_{21} & \cdots & a_{n1} \\
+a_{12} & a_{22} & \cdots & a_{n2} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1n} & a_{2n} & \cdots & a_{nn}
+\end{vmatrix} =
+\sum_{j=1}^n a_{1j} A_{1j} =
+\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\end{equation*}
+\end{proof}
+
+\begin{theorem}[Лапл\'{а}са]
+\index{Теорема!Лапласа}
+Пусть дана квадратная матрица~$A$ $n$-го порядка.
+\begin{equation*}
+\forall 0 < k < n, \ 1 \leqslant i_1 < i_2 < \ldots < i_k \leqslant n \
+\det A = \sum_{1 \leqslant j_1 < \ldots < j_k \leqslant n}
+(-1)^{i_1 + \ldots + i_k + j_1 + \ldots + j_k}
+M_{j_1 \ldots j_k}^{i_1 \ldots i_k}
+\overline M_{j_1 \ldots j_k}^{i_1 \ldots i_k}
+\end{equation*}
+\end{theorem}
+\begin{proofmathind}
+	\indbase При~$k = 1$ данная теорема эквивалентна теореме~\ref*{th:determinant_expansion}.
+	\indstep Пусть теорема верна при~$k - 1$. Докажем её для~$k$.
+	\begin{equation*}
+	\det A = \sum_{1 \leqslant j_1 < \ldots < j_{k-1} \leqslant n}
+	(-1)^{i_1 + \ldots + i_{k-1} + j_1 + \ldots + j_{k-1}}
+	M_{j_1 \ldots j_{k-1}}^{i_1 \ldots i_{k-1}}
+	\overline M_{j_1 \ldots j_{k-1}}^{i_1 \ldots i_{k-1}} =
+	\end{equation*}
+	\begin{equation*}
+	\left| \text{Разложим каждый минор~$\overline M_{j_1 \ldots j_{k-1}}^{i_1 \ldots i_{k-1}}$ по строке~$A_{i_k}$, полагая, что $\Theta_{j_1 \ldots j_k}$~--- некоторое число} \right|
+	\end{equation*}
+	\begin{equation*}
+	= \sum_{1 \leqslant j_1 < \ldots < j_k \leqslant n}
+	\Theta_{j_1 \ldots j_k} \overline M_{j_1 \ldots j_k}^{i_1 \ldots i_k}
+	\end{equation*}
+	
+	Найдём значение~$\Theta_{j_1 \ldots j_k}$.
+	Заметим, что минор~$\overline M_{j_1 \ldots j_k}^{i_1 \ldots i_k}$ получается при разложении только миноров
+	\begin{equation*}
+	\overline M_{j_1 \ldots j_{s-1} j_{s+1} \ldots j_k}^{i_1 \ldots i_{k-1}}, \ s = 1, 2, \ldots, k
+	\end{equation*}
+	причём
+	\begin{equation*}
+	\overline M_{j_1 \ldots j_{s-1} j_{s+1} \ldots j_k}^{i_1 \ldots i_{k-1}} =
+	(-1)^{i_k - (k - 1) + j_s - (s - 1)} a_{i_k j_s}
+	\overline M_{j_1 \ldots j_k}^{i_1 \ldots i_k} + \ldots
+	\end{equation*}
+	где многоточием обозначены остальные слагаемые.
+	
+	Тогда
+	\begin{equation*}
+	\Theta_{j_1 \ldots j_k} =
+	(-1)^{i_1 + \ldots + i_k + j_1 + \ldots + j_k}
+	\sum_{s=1}^k (-1)^{k+s} M_{j_1 \ldots j_{s-1} j_{s+1} \ldots j_k}^{i_1 \ldots i_{k-1}} =
+	(-1)^{i_1 + \ldots + i_k + j_1 + \ldots + j_k}
+	M_{j_1 \ldots j_k}^{i_1 \ldots i_k}
+	\end{equation*}
+	\indend
+\end{proofmathind}
+
+\begin{theorem}
+Если $A = \|a_{ij}\|, B = \|b_{ij}\|$~--- квадратные матрицы $n$-го порядка, то $\det AB \opbr= \det A \opbr\cdot \det B$.
+\end{theorem}
+\begin{proof}
+Пусть $O, E$~--- нулевая и единичная соответственно квадратные матрицы $n$-го порядка, $C = AB$.
+Рассмотрим блочные матрицы
+\begin{equation*}
+\begin{Vmatrix}
+A & O \\
+-E & B
+\end{Vmatrix}, \
+\begin{Vmatrix}
+A & C \\
+-E & O
+\end{Vmatrix}
+\end{equation*}
+
+Раскладывая первую матрицу по первым $n$~строкам, а вторую~--- по последним $n$~строкам, получим
+\begin{equation*}
+\begin{vmatrix}
+A & O \\
+-E & B
+\end{vmatrix} =
+|A| |B|, \
+\begin{vmatrix}
+A & C \\
+-E & O
+\end{vmatrix} =
+(-1)^{1 + \ldots + 2n}|-E| |C| =
+|C|
+\end{equation*}
+
+Тогда
+\begin{equation*}
+\det A \cdot \det B =
+\begin{vmatrix}
+A & O \\
+-E & B
+\end{vmatrix} =
+\begin{vmatrix}
+a_{11} & \cdots & a_{1n} & 0 & \cdots & 0 \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{nn} & 0 & \cdots & 0 \\
+-1 & \cdots & 0 & b_{11} & \cdots & b_{1n} \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+0 & \cdots & -1 & b_{n1} & \cdots & b_{nn}
+\end{vmatrix} =
+\end{equation*}
+\begin{equation*}
+= \begin{vmatrix}
+a_{11} & \cdots & a_{1n} & \sum\limits_{i=1}^n a_{1i} b_{i1} & \cdots & \sum\limits_{i=1}^n a_{1i} b_{in} \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{nn} & \sum\limits_{i=1}^n a_{ni} b_{i1} & \cdots & \sum\limits_{i=1}^n a_{ni} b_{in} \\
+-1 & \cdots & 0 & 0 & \cdots & 0 \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+0 & \cdots & -1 & 0 & \cdots & 0
+\end{vmatrix} =
+\begin{vmatrix}
+A & C \\
+-E & O
+\end{vmatrix} =
+\det C
+\end{equation*}
+\end{proof}

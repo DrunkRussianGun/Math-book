@@ -1,0 +1,82 @@
+\subsection{Базис и размерность векторного пространства}
+Множество векторов~$\overline a_1, \ldots, \overline a_n$ называется \textbf{линейно зависимым}, если
+\begin{equation*}
+\exists \alpha_1, \ldots, \alpha_n \colon
+\sum_{i=1}^n \alpha_i \overline a_i = \overline 0, \
+\sum_{i=1}^n \alpha_i^2 \neq 0
+\end{equation*}
+иначе~--- \textbf{линейно независимым}.
+
+\index{Базис!векторного пространства} Множество линейно независимых векторов~$\overline e_1, \ldots, \overline e_n$ векторного пространства~$V$ называется \textbf{базисом} этого \textbf{пространства}, если
+\begin{equation*}
+\forall \overline x \in V \
+\exists \alpha_1, \ldots, \alpha_n \colon
+\overline x = \sum_{i=1}^n \alpha_i \overline e_i
+\end{equation*}
+
+Приведённое равенство называется \textbf{разложением вектора~$\overline x$ по базису~$\overline e_1, \ldots, \overline e_n$.}
+
+\begin{theorem}[о~базисе]
+Любой вектор~$\overline x$ может быть разложен по базису~$\overline e_1, \ldots, \overline e_n$ единственным образом.
+\end{theorem}
+\begin{proof}
+Пусть
+\begin{equation*}
+\overline x = a_1 \overline e_1 + \ldots + a_n \overline e_n
+\end{equation*}
+\begin{equation*}
+\overline x = b_1 \overline e_1 + \ldots + b_n \overline e_n
+\end{equation*}
+
+Вычитанием одного равенства из другого получим:
+\begin{equation*}
+(a_1 - b_1) \overline e_1 + \ldots + (a_n - b_n) \overline e_n = \overline 0
+\end{equation*}
+
+В силу линейной независимости векторов~$\overline e_1, \ldots, \overline e_n$
+\begin{equation*}
+\begin{cases}
+a_1 - b_1 = 0 \\
+\ldots \\
+a_n - b_n = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+a_1 = b_1 \\
+\ldots \\
+a_n = b_n
+\end{cases}
+\end{equation*}
+\end{proof}
+
+\textbf{Размерностью векторного пространства} называется максимальное количество линейно независимых векторов.
+
+\begin{theorem}
+В~векторном пространстве~$V$ размерности~$n$ любые $n$ линейно независимых векторов образуют его базис.
+\end{theorem}
+\begin{proof}
+Рассмотрим множество линейно независимых векторов~$\overline e_1, \ldots, \overline e_n \in V$.
+Для любого вектора~$\overline x \in V$ множество векторов~$\overline e_1, \ldots, \overline e_n, \overline x$ линейно зависимо, т.\,к. размерность~$V$ равна~$n$, тогда
+\begin{equation*}
+\exists \alpha_1, \ldots, \alpha_n, \alpha_{n+1} \colon
+\sum_{i=1}^n \alpha_i \overline e_i + \alpha_{n+1} \overline x = \overline 0, \
+\alpha_{n+1} \neq 0 \Rightarrow
+\overline x = \sum_{i=1}^n -\frac{\alpha_i}{\alpha_{n+1}} \overline e_i
+\end{equation*}
+
+Значит, векторы~$\overline e_1, \ldots, \overline e_n$ образуют базис пространства~$V$.
+\end{proof}
+
+\begin{theorem}
+Если векторное пространство~$V$ имеет базис из $n$~векторов, то его размерность равна~$n$.
+\end{theorem}
+\begin{proof}
+Рассмотрим базис, состоящий из векторов~$\overline e_1, \ldots, \overline e_n \in V$.
+\begin{equation*}
+\forall \overline e_{n+1} \in V \
+\exists \alpha_1, \ldots, \alpha_n \colon
+\overline e_{n+1} = \sum_{i=1}^n \alpha_i \overline e_i
+\end{equation*}
+
+Значит, базис из $n + 1$~векторов не существует, тогда размерность пространства~$V$ равна~$n$.
+\end{proof}
