@@ -6,8 +6,8 @@
 	Тогда
 	\begin{equation*}
 	\forall \varepsilon > 0 \
-	\exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \frac\varepsilon2, \
-	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |x_n - b| < \frac\varepsilon2 \Rightarrow
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \frac\varepsilon2 \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |x_n - b| < \frac\varepsilon2 \right) \Rightarrow
 	\end{equation*}
 	\begin{equation*}
 	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |a - b| = |a - x_n + x_n - b| \leqslant |a - x_n| + |x_n - b| < \varepsilon
@@ -24,8 +24,8 @@
 	\begin{proof}
 	\begin{equation*}
 	\forall \varepsilon > 0 \
-	\exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \varepsilon, \
-	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |z_n - a| < \varepsilon \Rightarrow
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \varepsilon \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |z_n - a| < \varepsilon \right) \Rightarrow
 	\end{equation*}
 	\begin{equation*}
 	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ a - \varepsilon < x_n \leqslant y_n \leqslant z_n < a + \varepsilon \Rightarrow |y_n - a| < \varepsilon
@@ -88,8 +88,8 @@
 	\begin{proof}
 	\begin{equation*}
 	\forall \varepsilon > 0 \
-	\exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n| < \frac\varepsilon2, \
-	\exists n_2 \in \mathbb N \colon \forall n > n_2 \ |y_n| < \frac\varepsilon2 \Rightarrow
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n| < \frac\varepsilon2 \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |y_n| < \frac\varepsilon2 \right) \Rightarrow
 	\end{equation*}
 	\begin{equation*}
 	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |x_n + y_n| \leqslant |x_n| + |y_n| < \varepsilon \Rightarrow

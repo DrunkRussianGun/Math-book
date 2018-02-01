@@ -2,11 +2,11 @@
 Пусть $R(x_1, \ldots, x_n) = \dfrac{P(x_1, \ldots, x_n)}{Q(x_1, \ldots, x_n)}$, где $P(\overline x)$ и $Q(\overline x)$~--- многочлены.
 \begin{equation*}
 \int R(x, \sqrt{ax^2 + bx + c})\,dx =
-\int R\left( x, \sqrt{a(x + \frac{b}{2a})^2 + c - \frac{b^2}{4a}} \right)\,dx =
+\int R\left( x, \sqrt{a \left( x + \frac{b}{2a} \right)^2 + c - \frac{b^2}{4a}} \right) dx =
 \end{equation*}
 \begin{equation*}
 \left| \text{Пусть } y = x + \frac{b}{2a}, \ z = c - \frac{b^2}{4a} \right| =
-\int R\left( y - \frac{b}{2a}, \sqrt{ay^2 + z} \right)\,dy
+\int R\left( y - \frac{b}{2a}, \sqrt{ay^2 + z} \right) dy
 \end{equation*}
 
 Пусть $\alpha = \sqrt{|a|}$, $\beta = \sqrt{|z|}$.
@@ -14,7 +14,7 @@
 \begin{itemize}
 	\item Если $a > 0$, $z > 0$
 	\begin{equation*}
-	\int R\left( y - \frac{b}{2a}, \sqrt{\alpha^2 y^2 + \beta^2} \right)\,dy =
+	\int R\left( y - \frac{b}{2a}, \sqrt{\alpha^2 y^2 + \beta^2} \right) dy =
 	\left| \text{Пусть } y = \frac\beta\alpha \tg t \right|
 	\end{equation*}
 	\begin{equation*}
@@ -42,7 +42,7 @@
 	
 	\item Если $a < 0$, $z > 0$
 	\begin{equation*}
-	\int R\left( y - \frac{b}{2a}, \sqrt{-\alpha^2 y^2 + \beta^2} \right)\,dy =
+	\int R\left( y - \frac{b}{2a}, \sqrt{-\alpha^2 y^2 + \beta^2} \right) dy =
 	\left| \text{Пусть } y = \frac\beta\alpha \sin t \right|
 	\end{equation*}
 	\begin{equation*}

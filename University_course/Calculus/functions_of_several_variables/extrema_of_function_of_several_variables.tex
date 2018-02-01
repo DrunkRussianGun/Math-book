@@ -30,9 +30,9 @@ $\overline x_0$~--- точка экстремума~$f(\overline x)$, тогда
 	
 \begin{enumerate}
 	\item $(x_0, y_0)$~--- точка локального минимума,
-	если $f_{xx}''(x_0, y_0) \opbr> 0$ или~$f_{yy}''(x_0, y_0) \opbr> 0$.
+	если $f_{xx}''(x_0, y_0) \opbr> 0 \lOr f_{yy}''(x_0, y_0) \opbr> 0$.
 	\item $(x_0, y_0)$~--- точка локального максимума,
-	если $f_{xx}''(x_0, y_0) \opbr< 0$ или~$f_{yy}''(x_0, y_0) \opbr< 0$.
+	если $f_{xx}''(x_0, y_0) \opbr< 0 \lOr f_{yy}''(x_0, y_0) \opbr< 0$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -46,7 +46,7 @@ f(x, y) - f(x_0, y_0) = f(x_0, y_0) + df(x_0, y_0) + \frac12 d^2f(x_0, y_0) + o(
 значит, $f(x, y) - f(x_0, y_0)$ сохраняет знак, если $d^2f(x_0, y_0)$ сохраняет знак.
 
 \begin{equation*}
-d^2f(x_0, y_0) = f_{xx}''(x_0, y_0) dx^2 + 2f_{xy}''(x_0, y_0) dxdy + f_{yy}''(x_0, y_0) dy^2 =
+d^2f(x_0, y_0) = f_{xx}''(x_0, y_0)\,dx^2 + 2f_{xy}''(x_0, y_0)\,dx\,dy + f_{yy}''(x_0, y_0)\,dy^2 =
 \end{equation*}
 \begin{equation*}
 = \left(f_{xx}''(x_0, y_0) + 2f_{xy}''(x_0, y_0) \frac{dy}{dx} + f_{yy}''(x_0, y_0) \left(\frac{dy}{dx}\right)^2\right) dx^2
@@ -67,8 +67,8 @@ d^2f(x_0, y_0) = f_{xx}''(x_0, y_0) dx^2 + 2f_{xy}''(x_0, y_0) dxdy + f_{yy}''(x
 значит, $f_{xx}''(x_0, y_0)$ и~$f_{yy}''(x_0, y_0)$ одного знака.
 
 \begin{enumerate}
-	\item Если $f_{xx}''(x_0, y_0) > 0$ или $f_{yy}''(x_0, y_0) > 0 \opbr\Rightarrow d^2f(x_0, y_0) \opbr> 0$, тогда $(x_0, y_0)$~--- точка локального минимума.
-	\item Если $f_{xx}''(x_0, y_0) < 0$ или $f_{yy}''(x_0, y_0) < 0 \opbr\Rightarrow d^2f(x_0, y_0) \opbr< 0$, тогда $(x_0, y_0)$~--- точка локального максимума.
+	\item Если $f_{xx}''(x_0, y_0) > 0 \lOr f_{yy}''(x_0, y_0) > 0$, то $d^2 f(x_0, y_0) \opbr> 0$, тогда $(x_0, y_0)$~--- точка локального минимума.
+	\item Если $f_{xx}''(x_0, y_0) < 0 \lOr f_{yy}''(x_0, y_0) < 0$, то $d^2 f(x_0, y_0) \opbr< 0$, тогда $(x_0, y_0)$~--- точка локального максимума.
 \end{enumerate}
 \end{proof}
 
@@ -83,7 +83,7 @@ d^2f(x_0, y_0) = f_{xx}''(x_0, y_0) dx^2 + 2f_{xy}''(x_0, y_0) dxdy + f_{yy}''(x
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0) dx_i dx_j$ сохраняет знак.
+	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j$ сохраняет знак.
 \end{enumerate}
 
 \begin{enumerate}
@@ -92,13 +92,13 @@ d^2f(x_0, y_0) = f_{xx}''(x_0, y_0) dx^2 + 2f_{xy}''(x_0, y_0) dxdy + f_{yy}''(x
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0) dx_i dx_j > 0$.
-	\item $\overline{x_0}$~--- точка локального максимума, если $\displaystyle \sum_{
+	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j > 0$.
+	\item $\overline x_0$~--- точка локального максимума, если $\displaystyle \sum_{
 	\begin{smallmatrix}
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0) dx_i dx_j < 0$.
+	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j < 0$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -116,7 +116,7 @@ d^2 f(\overline x_0) = \sum_{
 i = \overline{1, n} \\
 j = \overline{1, n}
 \end{smallmatrix}
-} f_{x_i x_j}''(\overline x_0) dx_i dx_j
+} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j
 \end{equation*}
 	
 \begin{enumerate}
@@ -125,15 +125,13 @@ j = \overline{1, n}
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0) dx_i dx_j > 0 \opbr\Leftrightarrow
-	d^2 f(\overline x_0) > 0$, то $\overline x_0$~--- точка локального минимума.
+	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j > 0$, то	$d^2 f(\overline x_0) > 0$, тогда $\overline x_0$~--- точка локального минимума.
 	\item Если $\displaystyle \sum_{
 	\begin{smallmatrix}
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0) dx_i dx_j < 0 \opbr\Leftrightarrow
-	d^2 f(\overline x_0) < 0$, то $\overline x_0$~--- точка локального максимума.
+	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j < 0$, то	$d^2 f(\overline x_0) < 0$, тогда $\overline x_0$~--- точка локального максимума.
 \end{enumerate}
 \end{proof}
 	

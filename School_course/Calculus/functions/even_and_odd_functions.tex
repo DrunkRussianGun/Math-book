@@ -1,0 +1,96 @@
+\subsection{Чётные и нечётные функции}
+\index{Функция!чётная} Функция~$f(x)$ называется \textbf{чётной}, если $\forall x \in D(f) \ {-x} \in D(f) \lAnd f(-x) = f(x)$.
+
+\index{Функция!нечётная} Функция~$f(x)$ называется \textbf{нечётной}, если $\forall x \in D(f) \ {-x} \in D(f) \lAnd f(-x) = -f(x)$.
+
+Свойства чётных и нечётных функций:
+\begin{enumerate}
+	\item Функция~$f(x) \colon \forall x \in D(f) \ {-x} \in D(f)$ единственным образом может быть представлена в виде суммы чётной и нечётной функций.
+	\begin{proof}
+	\begin{itemize}
+		\item Докажем представимость.
+		Пусть
+		\begin{equation*}
+		g(x) = \frac{f(x) + f(-x)}2, \ h(x) = \frac{f(x) - f(-x)}2
+		\end{equation*}
+		
+		Тогда
+		\begin{equation*}
+		g(-x) = \frac{f(-x) + f(x)}2 = g(x), \ h(-x) = \frac{f(-x) - f(x)}2 = -h(x)
+		\end{equation*}
+		
+		Значит, $g(x)$ чётна, $h(x)$ нечётна.
+		\begin{equation*}
+		f(x) = \frac12 f(x) + \frac12 f(x) + \frac12 f(-x) - \frac12 f(-x) =
+		\frac{f(x) + f(-x)}2 + \frac{f(x) - f(-x)}2 =
+		g(x) + h(x)
+		\end{equation*}
+		
+		\item Докажем единственность представления.
+		Пусть $f(x) = g(x) + h(x) = g_1(x) + h_1(x)$, где $g, g_1$~--- чётные функции, $h, h_1$~--- нечётные функции.
+		\begin{equation*}
+		g(x) + h(x) = g_1(x) + h_1(x) \Leftrightarrow
+		g(x) - g_1(x) = h_1(x) - h(x)
+		\end{equation*}
+		
+		Подставляя $-x$, получим
+		\begin{equation*}
+		g(-x) - g_1(-x) = h_1(-x) - h(-x) \Leftrightarrow
+		g(x) - g_1(x) = h(x) - h_1(x)
+		\end{equation*}
+		
+		Тогда
+		\begin{equation*}
+		h_1(x) - h(x) = g(x) - g_1(x) = h(x) - h_1(x) \Rightarrow
+		\end{equation*}
+		\begin{equation*}
+		\Rightarrow g(x) - g_1(x) = 0 \And h_1(x) - h(x) = 0 \Rightarrow
+		g_1(x) = g(x) \lAnd h_1(x) = h(x)
+		\end{equation*}
+	\end{itemize}
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- чётные (нечётные) функции, то $h(x) = f(x) + g(x)$ чётна (нечётна).
+	\begin{proof}
+	\begin{itemize}
+		\item Пусть $f(x)$ и $g(x)$ чётны, тогда $h(-x) = f(-x) + g(-x) = f(x) + g(x) = h(x)$, значит, $h(x)$ чётна.
+		\item Пусть $f(x)$ и $g(x)$ нечётны, тогда $h(-x) = f(-x) + g(-x) = -f(x) - g(x) = -h(x)$, значит, $h(x)$ нечётна.
+	\end{itemize}
+	\end{proof}
+	
+	\item Если $f(x)$~--- чётная (нечётная) функция, то $h(x) = C f(x)$ чётна (нечётна).
+	\begin{proof}
+	\begin{itemize}
+		\item Пусть $f(x)$ чётна, тогда $h(-x) = C f(-x) = C f(x) = h(x)$, значит, $h(x)$ чётна.
+		\item Пусть $f(x)$ нечётна, тогда $h(-x) = C f(-x) = -C f(x) = -h(x)$, значит, $h(x)$ нечётна.
+	\end{itemize}
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- обе чётные или обе нечётные функции, то $h(x) = f(x)g(x)$ чётна.
+	\begin{proof}
+	\begin{itemize}
+		\item Пусть $f(x)$ и $g(x)$ чётны, тогда $h(-x) = f(-x)g(-x) = f(x)g(x) = h(x)$, значит, $h(x)$ чётна.
+		\item Пусть $f(x)$ и $g(x)$ нечётны, тогда $h(-x) = f(-x)g(-x) = (-f(x)) (-g(x)) = h(x)$, значит, $h(x)$ нечётна.
+	\end{itemize}
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- нечётная и чётная функции, то $h(x) = f(x)g(x)$ нечётна.
+	\begin{proof}
+	$h(-x) = f(-x)g(-x) = -f(x)g(x) = -h(x)$, значит, $h(x)$ нечётна.
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- нечётные функции, то $h(x) = g(f(x))$ нечётна.
+	\begin{proof}
+	$h(-x) = g(f(-x)) = g(-f(x)) = -g(f(x)) = -h(x)$, значит, $h(x)$ нечётна.
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- нечётная и чётная функции соответственно, то $h(x) = g(f(x))$ чётна.
+	\begin{proof}
+	$h(-x) = g(f(-x)) = g(-f(x)) = g(f(x)) = h(x)$, значит, $h(x)$ чётна.
+	\end{proof}
+	
+	\item Если $f(x)$ и $g(x)$~--- функции, причём $f(x)$ чётна, то $h(x) = g(f(x))$ чётна.
+	\begin{proof}
+	$h(-x) = g(f(-x)) = g(f(x)) = h(x)$, значит, $h(x)$ чётна.
+	\end{proof}
+\end{enumerate}

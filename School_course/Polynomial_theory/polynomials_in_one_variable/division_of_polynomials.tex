@@ -1,0 +1,58 @@
+\subsection{Деление многочленов}
+\begin{theorem}
+Пусть $f(x)$ и $g(x) \neq 0$~--- многочлены, тогда существуют единственные многочлены $q(x)$ и $r(x)$ такие, что $f = qg + r$, причём $\deg r < \deg g$.
+\end{theorem}
+\begin{proof}
+Пусть $\deg f = n$, $\deg g = m$.
+\begin{enumerate}
+	\item Докажем существование.
+	Если $m = 0$, то $q = \frac{f}g$, $r = 0$.
+	Пусть $m > 0$.
+	Если $n < m$, то $q = 0$, $r = f$.
+	Пусть $n \geqslant m$.
+	В~таком случае докажем существование $q$ и $r$ методом математической индукции.
+		\indbase $n = m$.
+		Пусть $f = a x^n + f_1$, $g = b x^n + g_1$, тогда $\deg f_1, \deg g_1 < n$.
+		$\deg (f_1 - \frac{a}b g_1) \opbr\leqslant \max \{ \deg f_1, \deg g_1 \} \opbr< \deg g$, тогда $q = \frac{a}b$, $r = f_1 - \frac{a}b g_1$.
+		\indstep Пусть $n > m$, теорема верна для $k < n$ и $f = a x^n + f_1$, $g = b x^m + g_1$.
+		Рассмотрим
+		\begin{equation*}
+		h_1(x) = \frac{a}b x^{n-m} \Rightarrow
+		h_1 g = a x^n + h_1 g_1 \Rightarrow
+		f - h_1 g = a x^n + f_1 - a x^n - h_1 g_1 = f_1 - h_1 g_1
+		\end{equation*}
+		\begin{equation*}
+		\deg h_1 g_1 = \deg h_1 + \deg g_1 < (n - m) + m = n \Rightarrow
+		\end{equation*}
+		\begin{equation*}
+		\Rightarrow \deg (f - h_1 g) = \deg (f_1 - h_1 g_1) \leqslant \max \{ \deg f_1, \deg h_1 g_1 \} < n
+		\end{equation*}
+		
+		По предположению индукции
+		\begin{equation*}
+		f - h_1 g = q_1 g + r \Rightarrow
+		f = (h_1 + q_1)g + r, \ \deg r < \deg g
+		\end{equation*}
+		\indend
+		
+	\item Докажем единственность.
+	Пусть
+	\begin{equation*}
+	f = q_1 g + r_1 = q_2 g + r_2 \Rightarrow
+	(q_1 - q_2)g = r_2 - r_1, \ \deg r_1, \deg r_2 < \deg g
+	\end{equation*}
+	
+	Возможны два случая:
+	\begin{enumerate}
+		\item $q_1 \neq q_2 \Rightarrow
+		\deg (r_1 - r_2) \leqslant \max \{ \deg r_1, \deg r_2 \} < \deg g \leqslant \deg (q_1 - q_2)g$
+		
+		Противоречие.
+		
+		\item $q_1 = q_2 \Rightarrow r_1 = r_2$
+	\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+Многочлен~$q$ называется \textbf{частным}, а $r$~--- \textbf{остатком от деления $\frac{f}g$}.
+Если $r = 0$, то говорят, что \textbf{$f$ делится на $g$ без остатка}, и пишут $f \mult g$.

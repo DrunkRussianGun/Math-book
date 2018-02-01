@@ -26,7 +26,7 @@
 	\begin{proof}
 	\begin{equation*}
 	\lim_{x \to a} h(x) =
-	\frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)} =
+	\frac{\displaystyle \lim_{x \to a} f(x)}{\displaystyle \lim_{x \to a} g(x)} =
 	\frac{f(a)}{g(a)} =
 	h(a)
 	\end{equation*}
@@ -55,7 +55,7 @@
 	\end{proofcontra}
 	
 	\item\label{st:continuous_function_takes_inf_and_sup} Если $\displaystyle m = \inf_{x \in [a; b]} f(x)$, $\displaystyle M = \sup_{x \in [a; b]} f(x)$, то
-	$\exists x_m, x_M \in [a; b] \colon f(x_m) = m, \ f(x_M) = M$.
+	$\exists x_m, x_M \in [a; b] \colon f(x_m) = m \And f(x_M) = M$.
 	\begin{proof}
 	По утверждению~\ref{st:inequality_of_infimum} $\forall n \in \mathbb N \ \exists x_n \in [a; b] \colon m \leqslant x_n < m + \dfrac1n$.
 	Получили ограниченную последовательность~$(x_n)$.
@@ -75,17 +75,18 @@
 	Если $f\left( \dfrac{a + b}2 \right) = 0$, то $x_0 = \dfrac{a + b}2$.
 	Иначе выберём ту половину отрезка~$[a; b]$, на границах которой функция принимает разные знаки.
 	Разделим её пополам и проверим значение в~середине.
-	Продолжая таким образом, получим либо $0$ в~одной из середин полученных отрезков, либо последовательность вложенных отрезков~$\displaystyle [a_n; b_n] \colon \lim_{n \to \infty} (b_n - a_n) = 0, \ f(a_n) \cdot f(b_n) < 0$.
+	Продолжая таким образом, получим либо $0$ в~одной из середин полученных отрезков, либо последовательность вложенных отрезков~$\displaystyle [a_n; b_n] \colon \lim_{n \to \infty} (b_n - a_n) = 0 \lAnd f(a_n) \cdot f(b_n) < 0$.
 	По \hyperref[lemma:about_nested_intervals]{лемме о~вложенных отрезках} $\displaystyle \lim_{n \to \infty} a_n \opbr= \lim_{n \to \infty} b_n \opbr= c \in [a; b]$.
 	В~силу непрерывности~$f(x)$ $\displaystyle \lim_{n \to \infty} f(a_n) = \lim_{n \to \infty} f(b_n) = f(c) = 0$, т.\,к. $f(a_n)$ и $f(b_n)$ имеют разные знаки.
 	\end{proof}
 	
 	\item \begin{theorem}[о промежуточном значении]
-	Если $f(a) \neq f(b)$, то, без ограничения общности полагая $f(a) < f(b)$, $[f(a); f(b)] \subseteq E(f)$.
+	Если $f(a) \neq f(b)$, то $[f(a); f(b)] \subseteq E(f) \opbr\lOr [f(b); f(a)] \subseteq E(f)$.
 	\end{theorem}
 	\begin{proof}
+	Без ограничения общности предположим, что $f(a) < f(b)$.
 	Пусть $C \in (f(a); f(b))$, $g(x) = f(x) - C$.
-	$g(a) = f(a) - C < 0$, $g(b) = f(b) - C > 0$, тогда по \hyperref[th:zero_of_continuous_function]{теореме о~нуле непрерывной функции} $\exists c \in [a; b] \colon (g(c) = 0 \Leftrightarrow f(c) = C)$.
+	$g(a) = f(a) - C < 0$, $g(b) = f(b) - C > 0$, тогда по \hyperref[th:zero_of_continuous_function]{теореме о~нуле непрерывной функции} $\exists c \in [a; b] \colon g(c) = 0 \Leftrightarrow f(c) = C$.
 	\end{proof}
 	
 	\item Если $\displaystyle m = \inf_{x \in [a; b]} f(x)$, $\displaystyle M = \sup_{x \in [a; b]} f(x)$, то $[m; M] \subseteq E(f)$.

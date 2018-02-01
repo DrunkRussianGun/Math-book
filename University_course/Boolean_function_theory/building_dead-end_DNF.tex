@@ -26,11 +26,11 @@
 	\end{cases}
 	\end{equation*}
 	
-	\item Составляем выражение $\displaystyle \bigAnd_{j=1}^r (\sigma_{1j} K_1 \lor \sigma_{2j} K_2 \lor \ldots \lor \sigma_{mj} K_m)$ и раскрываем в нём скобки по формулам $(A \lor B)C = AC \lor BC$, $A \lor BA = A$.
-	В полученной ДНФ относительно переменных $K_1, \ldots, K_m$ каждому конъюнкту однозначно соответствует тупиковая ДНФ для~$f$: $K_{i_1} \And \ldots \And K_{i_p} \to K_{i_1} \opbr\lor \ldots \opbr\lor K_{i_p}$.
+	\item Составляем выражение $\displaystyle \bigand_{j=1}^r (\sigma_{1j} K_1 \lor \sigma_{2j} K_2 \lor \ldots \lor \sigma_{mj} K_m)$ и раскрываем в нём скобки по формулам $(A \lor B)C = AC \lor BC$, $A \lor BA = A$.
+	В полученной ДНФ относительно переменных $K_1, \ldots, K_m$ каждому конъюнкту однозначно соответствует тупиковая ДНФ для~$f$: $K_{i_1} \land \ldots \land K_{i_p} \to K_{i_1} \opbr\lor \ldots \opbr\lor K_{i_p}$.
 \end{enumerate}
 \begin{proof}
 $\sigma_{1j} K_1 \lor \ldots \lor \sigma_{mj} K_m = 1 \Rightarrow
 P_j \in N_{\sigma_{1j} K_1} \cup \ldots \cup N_{\sigma_{mj} K_m}$, тогда если
-$\displaystyle \bigAnd_{j=1}^r (\sigma_{1j} K_1 \opbr\lor \ldots \opbr\lor \sigma_{mj} K_m) = 1$, то набор полученных граней покрывает все вершины из~$N_f$.
+$\displaystyle \bigand_{j=1}^r (\sigma_{1j} K_1 \opbr\lor \ldots \opbr\lor \sigma_{mj} K_m) = 1$, то набор полученных граней покрывает все вершины из~$N_f$.
 \end{proof}

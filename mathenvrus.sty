@@ -3,7 +3,9 @@
 %	- \opbr{математический знак} (operator break) — разрешает перенос строки на данном знаке,
 %	  автоматически дублируя его на следующей;
 %	- \mult и \notmult — знак кратности в математической моде;
-%	- \bigAnd — n-арная версия \And (печатается увеличенным символом);
+%	- \bigand — n-арная версия \land (печатается увеличенным символом);
+%	- \lAnd — знак конъюнкции для связывания высказываний;
+%	- \lOr — знак дизъюнкции для связывания высказываний;
 %	- \Arg — печатает Arg в математической моде;
 %	- \grad — печатает grad в математической моде;
 %	- \sgn — печатает sgn в математической моде;
@@ -12,7 +14,7 @@
 %	- \indend (induction end) — конец метода математической индукции.
 % - переопределённые команды:
 %	- \* — работает аналогично \opbr\cdot, но при отсутствии переноса строки ничего не делает;
-%	- \And — переопределён как математический оператор (теперь отбивается меньшими отступами).
+%	- \land — теперь печатает &.
 % - новые окружения:
 %	- statement для утверждений;
 %	- lemma для лемм;
@@ -29,10 +31,14 @@
 \newcommand\opbr[1]
 	{#1\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
 
-\newcommand\mult{\mathbin{\raise -0.6mm\hbox{\vdots}}}
-\newcommand\notmult{\mathbin{\lefteqn{\negthickspace\not}\mult}}
+\newcommand\mult{\mathrel{\raise -0.6mm\hbox{\vdots}}}
+\newcommand\notmult{\mathrel{{\mkern -0.2mu\not}\mult}}
+%\newcommand\notmult{\mathrel{{\mkern -0.2mu\not}\mult}}
 
-\newcommand\bigAnd{\mathop{\scalerel*{\&}{\sum}}}
+\renewcommand\land{\mathbin{\&}}
+\newcommand\bigand{\mathop{\scalerel*{\&}{\sum}}}
+\newcommand\lAnd{\mathrel{\&}}
+\newcommand\lOr{\mathrel{\lor}}
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}
@@ -48,8 +54,6 @@
 
 \renewcommand{\*}
 	{\discretionary{\hbox{$\cdot$}}{\hbox{$\cdot$}}{}}
-\renewcommand\And
-	{\mathop{\&}}
 
 \renewcommand{\@begintheorem}[2]
 	{\par{\bf #1\ #2.\ }\samepage\begingroup\sl}

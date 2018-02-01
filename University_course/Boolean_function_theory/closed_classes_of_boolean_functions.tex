@@ -12,7 +12,7 @@
 	\item $\Leftarrow$.
 	\begin{equation*}
 	\exists f_0, f_1, f_S, f_M, f_L \in F \colon
-	f_0 \notin T_0, \ f_1 \notin T_1, \ f_S \notin S, \ f_M \notin M, \ f_L \notin L
+	f_0 \notin T_0 \lAnd f_1 \notin T_1 \lAnd f_S \notin S \lAnd f_M \notin M \lAnd f_L \notin L
 	\end{equation*}
 	\begin{enumerate}
 		\item Покажем, что $0$ и $1$ реализуются формулой над~$\{ f_0, f_1, f_S \}$.
@@ -27,10 +27,10 @@
 		
 		\item Подставляя $0, 1, x$ в~$f_M$, получим $\overline x$.
 		
-		\item Подставляя $0, 1, x, \overline x, y, \overline y$ в~$f_L$ и, возможно, изменяя её значение на противоположное, получим~$x \And y$.
+		\item Подставляя $0, 1, x, \overline x, y, \overline y$ в~$f_L$ и, возможно, изменяя её значение на противоположное, получим~$x \land y$.
 	\end{enumerate}
 	
-	Т.\,о., функции из полного набора~$\{ \neg, \And \}$ реализуются формулами над~$\{ f_0, f_1, f_S, f_M, f_L \} \subseteq F$, значит, $F$~--- полный набор.
+	Т.\,о., функции из полного набора~$\{ \neg, \land \}$ реализуются формулами над~$\{ f_0, f_1, f_S, f_M, f_L \} \subseteq F$, значит, $F$~--- полный набор.
 \end{enumerate}
 \end{proof}
 
@@ -67,7 +67,7 @@ $T_0, T_1, S, M, L$ попарно различны.
 	
 	Докажем методом от противного, что $K$ равен одному из них.
 	Пусть $K_1 \in \{ T_0, T_1, S, M, L \}$, $K \subset K_1$.
-	$f \notin K, \ f \in K_1 \Rightarrow K \cup \{ f \} \subseteq K_1 \neq P_2$, значит, $K$ не является предполным классом.
+	$f \notin K \lAnd f \in K_1 \Rightarrow K \cup \{ f \} \subseteq K_1 \neq P_2$, значит, $K$ не является предполным классом.
 	Противоречие.
 \end{enumerate}
 \end{proof}

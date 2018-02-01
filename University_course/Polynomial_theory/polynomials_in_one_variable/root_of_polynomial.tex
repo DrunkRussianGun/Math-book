@@ -1,24 +1,4 @@
 \subsection{Корень многочлена}
-\index{Корень} \textbf{Корнем многочлена~$f(x)$} называется такое число~$a$, что $f(a) = 0$.
-
-\index{Теорема!Безу}
-\begin{theorem}[Безу]
-Остаток от деления многочлена~$f(x)$ на двучлен~$x - a$ равен $f(a)$.
-\end{theorem}
-\begin{proof}
-\begin{equation*}
-f(x) = g(x)(x - a) + r \Rightarrow f(a) = g(a)(a - a) + r \Leftrightarrow r = f(a)
-\end{equation*}
-\end{proof}
-
-\begin{consequent}
-\label{conseq:division_by_binomial}
-Если $a$~--- корень~$f(x)$, то $f(x)$ делится на~$x - a$ без остатка.
-\end{consequent}
-
-\textbf{Кратностью корня~$a$} многочлена~$f(x)$ называется число~
-$m \colon f(x) \mult (x - a)^m, \ f(x) \notmult (x - a)^{m+1}$.
-
 \index{Теорема!основная т. алгебры}
 \begin{theorem}[основная теорема алгебры]
 \label{th:fundamental_th_of_algebra}
@@ -32,7 +12,7 @@ $m \colon f(x) \mult (x - a)^m, \ f(x) \notmult (x - a)^{m+1}$.
 \end{consequent}
 \begin{proof}
 Пусть $f(x)$~--- многочлен $n$\nobreakdash-й степени.
-По основной теореме алгебры он имеет корень~$a$, тогда по следствию~\ref*{conseq:division_by_binomial} $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен $n - 1$-й степени, который также имеет корень.
+По основной теореме алгебры он имеет корень~$a$, тогда по следствию~\ref*{conseq:division_by_binomial} $f(x) = g(x)(x - a)$, где $g(x)$~--- многочлен степени $n - 1$, который также имеет корень.
 Будем повторять деление до~тех пор, пока не получим константу.
 Т.\,о., получим $n$~корней.
 \end{proof}
@@ -49,7 +29,7 @@ f(x) = a(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
 Если $f(x)$~--- многочлен с действительными коэффициентами, $z \in \mathbb C$, то $\overline{f(z)} = f(\overline z)$.
 \end{lemma}
 \begin{proof}
-Пусть $z_1 = a_1 + b_1 i, z_2 = a_2 + b_2 i$, $a_1, b_1, a_2, b_2 \in \mathbb R$.
+Пусть $z_1 = a_1 + b_1 i$, $z_2 = a_2 + b_2 i$, $a_1, b_1, a_2, b_2 \in \mathbb R$.
 Многочлен строится при помощи операций сложения и умножения, поэтому достаточно доказать следующее:
 \begin{enumerate}
 	\item $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
@@ -73,7 +53,7 @@ f(x) = a(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
 Любой многочлен с действительными коэффициентами можно разложить на линейные и квадратные множители с действительными коэффициентами.
 \end{theorem}
 \begin{proof}
-Пусть $f(x)$~--- многочлен с действительными коэффициентами, тогда если $f(z) = 0$, то $f(\overline z) = \overline{f(z)} = \overline 0 = 0$.
+Пусть $f(x)$~--- многочлен с действительными коэффициентами, тогда если $f(z) \opbr= 0$, то $f(\overline z) = \overline{f(z)} = \overline 0 = 0$.
 Значит, если $a + bi$~--- корень~$f(x)$, то $a - bi$~--- тоже корень~$f(x)$.
 Имеем:
 \begin{equation*}
@@ -128,7 +108,7 @@ a_1 = (-1)^n \cdot a_n x_0 x_1 \cdot \ldots \cdot x_{n-1}
 	\end{equation*}
 	
 	Докажем, что кривая, задаваемая функцией~$f$, проходит через все данные точки.
-	Рассмотрим точку~$(a_k; b_k)$.
+	Рассмотрим точку~$(a_k, b_k)$.
 	Подставим $x = a_k$, тогда $k$\nobreakdash-е (считая с нуля) слагаемое равно $b_k$, а остальные~--- 0.
 	
 	\item Докажем единственность.

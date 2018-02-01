@@ -1,6 +1,6 @@
 \section{Многочлен Жегалкина}
 \index{Многочлен!Жегалкина} \textbf{Многочленом Жегалкина} называется многочлен вида
-$\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot x_{i_k}$, где $a_{i_1, \ldots, i_k} \in B$.
+$\displaystyle \sum_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot x_{i_k}$, где $a_{i_1, \ldots, i_k} \in B$.
 
 \begin{theorem}[Жегалкина]
 \index{Теорема!Жегалкина}
@@ -9,10 +9,10 @@ $\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot 
 \begin{proof}
 \begin{enumerate}
 	\item Докажем представимость.
-	Любую булеву функцию можно реализовать формулой над~$\{ \neg, \And, \lor \}$.
+	Любую булеву функцию можно реализовать формулой над~$\{ \neg, \land, \lor \}$.
 	Тогда
 	\begin{enumerate}
-		\item Заменим $\overline x = x + 1$, $x \And y = xy$, $x \lor y = xy + x + y$.
+		\item Заменим $\overline x = x + 1$, $x \land y = xy$, $x \lor y = xy + x + y$.
 		\item Раскроем скобки по дистрибутивности: $x(y + z) = xy + xz$.
 		\item Упростим по формулам $x + x = 0$, $x + \overline x = 1$, $x + 0 = x$, $x \cdot 0 = 0$, $xx = x$.
 	\end{enumerate}
@@ -20,7 +20,7 @@ $\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot 
 	Получим многочлен Жегалкина.
 	
 	\item Докажем единственность.
-	Многочлен Жегалкина для булевой функции от $n$~переменных можно представить в виде $\displaystyle \bigoplus_{i=0}^{2^n-1} c_i K_i$, где $c_i$~--- некоторые коэффициенты, $K_i$~--- элементарные конъюнкты.
+	Многочлен Жегалкина для булевой функции от $n$~переменных можно представить в виде $\displaystyle \sum_{i=0}^{2^n-1} c_i K_i$, где $c_i$~--- некоторые коэффициенты, $K_i$~--- элементарные конъюнкты.
 	Тогда всего различных многочленов $2^{2^n}$, т.\,е. столько же, сколько и булевых функций.
 	Каждая булева функция представима хотя~бы одним многочленом, значит, каждой функции однозначно соответствует многочлен Жегалкина.
 \end{enumerate}
@@ -39,7 +39,7 @@ $\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot 
 	Пусть $K_1$ и $K_2$~--- элементарные конъюнкты СДНФ.
 	Тогда
 	\begin{equation*}
-	\exists x \colon K_1 = x K_1', \ K_2 = \overline x K_2' \Rightarrow
+	\exists x \colon K_1 = x K_1' \lAnd K_2 = \overline x K_2' \Rightarrow
 	K_1 \lor K_2 =
 	x \overline x K_1' K_2' + x K_1' + \overline x K_2' =
 	x K_1' + \overline x K_2' =
@@ -49,7 +49,7 @@ $\bigoplus_{(i_1, \ldots, i_k)} a_{i_1, \ldots, i_k} x_{i_1} \cdot \ldots \cdot 
 	
 	\item \index{Метод!неопределённых коэффициентов} \textbf{Метод неопределённых коэффициентов}
 	
-	Пусть $f(x_1, \ldots, x_n) = \bigoplus_{i=0}^{2^n-1} c_i K_i$.
+	Пусть $\displaystyle  f(x_1, \ldots, x_n) = \sum_{i=0}^{2^n-1} c_i K_i$.
 	Составим систему уравнений:
 	\begin{equation*}
 	\begin{cases}

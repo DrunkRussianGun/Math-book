@@ -8,7 +8,7 @@
 \end{theorem}
 \begin{proof}
 \begin{equation*}
-f_1 = \Phi_1(g_1, g_2, \ldots), f_2 = \Phi_2(g_1, g_2, \ldots), \ldots \Rightarrow
+f_1 = \Phi_1(g_1, g_2, \ldots) \lAnd f_2 = \Phi_2(g_1, g_2, \ldots) \lAnd \ldots \Rightarrow
 \end{equation*}
 \begin{equation*}
 \Rightarrow \forall f = \Phi(f_1, f_2, \ldots) =
@@ -31,7 +31,7 @@ f_1 = \Phi_1(g_1, g_2, \ldots), f_2 = \Phi_2(g_1, g_2, \ldots), \ldots \Rightarr
 Множество~$F$ булевых функций полно $\Leftrightarrow [F] = P_2$.
 \end{statement}
 
-\subsubsection{Класс \texorpdfstring{$T_0$}{} функций, сохраняющих константу 0}
+\subsection{Класс \texorpdfstring{$T_0$}{} функций, сохраняющих константу 0}
 \begin{equation*}
 T_0 = \{ f(x_1, \ldots, x_n) \mid f(0, \ldots, 0) = 0 \}
 \end{equation*}
@@ -48,7 +48,7 @@ f(0, \ldots, 0) = 0
 
 $T_0$ содержит $\dfrac{2^{2^n}}2 = 2^{2^n - 1}$~функций от $n$~переменных.
 
-\subsubsection{Класс \texorpdfstring{$T_1$}{} функций, сохраняющих константу 1}
+\subsection{Класс \texorpdfstring{$T_1$}{} функций, сохраняющих константу 1}
 \begin{equation*}
 T_1 = \{ f(x_1, \ldots, x_n) \mid f(1, \ldots, 1) = 1 \}
 \end{equation*}
@@ -65,7 +65,7 @@ f(1, \ldots, 1) = 1
 
 $T_1$ содержит $\dfrac{2^{2^n}}2 = 2^{2^n - 1}$~функций от $n$~переменных.
 
-\subsubsection{Класс \texorpdfstring{$S$}{} самодвойственных функций}
+\subsection{Класс \texorpdfstring{$S$}{} самодвойственных функций}
 \index{Функция!булева!самодвойственная} Булева функция~$f$ называется \textbf{самодвойственной}, если $f^* = f$.
 \begin{equation*}
 S = \{ f(x_1, \ldots, x_n) \mid
@@ -104,9 +104,9 @@ f(\alpha_1, \ldots, \alpha_n) \neq \overline f(\overline{\alpha_1}, \ldots, \ove
 $f(0^{\alpha_1}, \ldots, 0^{\alpha_n}) = f(1^{\alpha_1}, \ldots, 1^{\alpha_n})$, значит, $f(x^{\alpha_1}, \ldots, x^{\alpha_n})$~--- константа.
 \end{proof}
 
-\subsubsection{Класс \texorpdfstring{$M$}{} монотонных функций}
+\subsection{Класс \texorpdfstring{$M$}{} монотонных функций}
 Введём отношение~$\preccurlyeq$: $\overline\alpha = (\alpha_1, \ldots, \alpha_n) \preccurlyeq \overline\beta = (\beta_1, \ldots, \beta_n) \Leftrightarrow
-\alpha_1 \leqslant \beta_1, \ldots, \alpha_n \leqslant \beta_n$.
+\alpha_1 \leqslant \beta_1 \lAnd \ldots \lAnd \alpha_n \leqslant \beta_n$.
 
 \index{Функция!булева!монотонная} Булева функция~$f$ называется \textbf{монотонной}, если
 $\forall \overline\alpha, \overline\beta \
@@ -124,8 +124,8 @@ M = \{ f(x_1, \ldots, x_n) \mid
 Пусть $f, f_1, \ldots, f_n \in S$, $\Phi = f(f_1, \ldots, f_n)$.
 \begin{equation*}
 \overline\alpha \preccurlyeq \overline\beta \Rightarrow
-f(\overline\alpha) \leqslant f(\overline\beta), \
-f_1(\overline\alpha) \leqslant f_1(\overline\beta), \ \ldots, \
+f(\overline\alpha) \leqslant f(\overline\beta) \land
+f_1(\overline\alpha) \leqslant f_1(\overline\beta) \land \ldots \land
 f_n(\overline\alpha) \leqslant f_n(\overline\beta) \Rightarrow
 \end{equation*}
 \begin{equation*}
@@ -140,8 +140,8 @@ f(f_1(\overline\alpha), \ldots, f_n(\overline\alpha)) \leqslant f(f_1(\overline\
 Если некоторая ДНФ для булевой функции~$f$ не содержит отрицаний, то $f$ монотонна.
 \end{consequent}
 \begin{proof}
-ДНФ без отрицаний — это формула над~$\{ \And, \lor \}$.
-$\And, \lor$~--- монотонные функции, значит, ДНФ без отрицаний тоже монотонна, тогда и $f$ монотонна.
+ДНФ без отрицаний — это формула над~$\{ \land, \lor \}$.
+$\land, \lor$~--- монотонные функции, значит, ДНФ без отрицаний тоже монотонна, тогда и $f$ монотонна.
 \end{proof}
 
 \begin{lemma}[о немонотонной функции]
@@ -151,8 +151,8 @@ $\And, \lor$~--- монотонные функции, значит, ДНФ бе�
 \begin{equation*}
 f(x_1, \ldots, x_n) \notin M \Leftrightarrow
 \exists \overline\alpha, \overline\beta \colon
-\overline\alpha \preccurlyeq \overline\beta, \ f(\overline\alpha) \nleqslant f(\overline\beta) \Leftrightarrow
-f(\overline\alpha) = 1, \ f(\overline\beta) = 0
+\overline\alpha \preccurlyeq \overline\beta \lAnd f(\overline\alpha) \nleqslant f(\overline\beta) \Leftrightarrow
+f(\overline\alpha) = 1 \lAnd f(\overline\beta) = 0
 \end{equation*}
 \begin{enumerate}
 	\item Пусть $\overline\alpha$ и $\overline\beta$ отличаются в нескольких позициях:
@@ -195,8 +195,8 @@ f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, 0) = 1 \Rightarrow
 f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, 1) = 1
 \end{equation*}
 
-Пусть $K' = x_1^{\sigma_1} \cdot \ldots \cdot x_k^{\sigma_k} \Rightarrow
-K(\sigma_1, \ldots, \sigma_k) = 1$, $f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, y) = 1 \Rightarrow$ $K'$~--- импликант $f \Rightarrow K$ не является простым импликантом $f$.
+Пусть $K' = x_1^{\sigma_1} \land \ldots \land x_k^{\sigma_k} \Rightarrow
+K(\sigma_1, \ldots, \sigma_k) = 1 \lAnd f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, y) = 1 \Rightarrow$ $K'$~--- импликант $f \Rightarrow K$ не является простым импликантом $f$.
 Противоречие.
 \end{proofcontra}
 
@@ -215,7 +215,7 @@ K(\sigma_1, \ldots, \sigma_k) = 1$, $f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldo
 Сокращённая ДНФ для монотонной булевой функции является тупиковой.
 \end{theorem}
 \begin{proof}
-Пусть $K = x_1 \And \ldots \And x_k$~--- простой импликант монотонной булевой функции~$f(x_1, \ldots, x_n)$, $f = K \lor f'$.
+Пусть $K = x_1 \land \ldots \land x_k$~--- простой импликант монотонной булевой функции~$f(x_1, \ldots, x_n)$, $f = K \lor f'$.
 Каждый импликант $f'$ должен содержать один из литералов $x_{k+1}, \ldots, x_n$, т.\,к. $K$~--- простой импликант.
 Тогда при $x_1 = \ldots = x_k = 1$, $x_{k+1} = \ldots = x_n = 0$ имеем $f(x_1, \ldots, x_n) = 1$, $f'(x_1, \ldots, x_n) = 0 \Rightarrow f \neq f' \Rightarrow$ из сокращённой ДНФ нельзя вычеркнуть ни один из конъюнктов, поэтому она тупиковая.
 \end{proof}
@@ -250,7 +250,7 @@ c_0 + c_1(c_{10} + c_{11} x_1 + \ldots + c_{1n} x_n) + \ldots + c_n(c_{n0} + c_{
 $L$ содержит $2^{n+1}$~функций от $n$~переменных.
 
 \begin{lemma}[о нелинейной функции]
-Если булева функция~$f \notin L$, то подстановкой $0, 1, x, y, \overline x, \overline y$ вместо переменных и, возможно, инверсией значения $f$ можно получить $x \And y$.
+Если булева функция~$f \notin L$, то подстановкой $0, 1, x, y, \overline x, \overline y$ вместо переменных и, возможно, инверсией значения $f$ можно получить $x \land y$.
 \end{lemma}
 \begin{proof}
 $f \notin L$, тогда без ограничения общности можно считать, что $f$ содержит $x_1 x_2$.
