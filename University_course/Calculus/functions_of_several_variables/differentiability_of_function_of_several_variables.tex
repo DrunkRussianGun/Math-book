@@ -10,14 +10,14 @@ a_1 \Delta x_1 + \ldots + a_n \Delta x_n + o(\rho(\overline x_0 + \Delta \overli
 a_1 & a_2 & \ldots & a_n
 \end{Vmatrix}$ называется \textbf{производной матрицей}.
 
-Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в точке~$\overline x_0 = (x_{10}, \ldots, \allowbreak x_{n0})$, $\Delta \overline x = (0, \ldots, \allowbreak 0, \Delta x_k, \allowbreak 0, \ldots, \allowbreak 0)$, тогда
+Пусть функция~$f(x_1, \ldots, x_n)$ дифференцируема в точке~$\overline x_0 = (x_{10}, \ldots, x_{n0})$, $\Delta \overline x = (0, \ldots, 0, \Delta x_k, 0, \ldots, 0)$, тогда
 \begin{equation*}
 \rho(\overline x_0 + \Delta \overline x, \overline x_0) = |\Delta x_k|, \
 f(\overline x_0 + \Delta \overline x) - f(\overline x_0) =
 a_k \Delta x_k + o(|\Delta x_k|)
 \end{equation*}
 
-Это означает, что функция~$g(x) = f(x_{10}, \ldots, x_{k-1\, 0}, x_k, x_{k+1\, 0}, \ldots, x_{n0})$ дифференцируема в точке~$x_{k0}$ и $a_k = g'(x_{k0})$.
+Это означает, что функция~$g(x) = f(x_{10}, \ldots, x_{k-1\, 0}, x_k, x_{k+1\, 0}, \ldots, x_{n0})$ дифференцируема в точке~$x_{k0}$ и $a_k \opbr= g'(x_{k0})$.
 \index{Производная!частная} $g(x)$ называется \textbf{частной производной функции~$f(\overline x)$} и обозначается $\dfrac{\partial f}{\partial x_k}$, или $f_{x_k}'(\overline x)$.
 Т.\,о., производная матрица функции~$f(\overline x)$ имеет вид $(f_{x_1}', f_{x_2}', \ldots, f_{x_n}')$.
 
@@ -59,4 +59,4 @@ df(\overline x_0) + \frac{d^2 f(\overline x_0)}{2!} + \frac{d^3 f(\overline x_0)
 \frac{\partial f}{\partial \overline e} = \sum_{i=1}^n \frac{\partial f}{\partial x_i} \cdot e_i
 \end{equation*}
 
-\index{grad} \index{Градиент} \textbf{Градиентом функции $f(x_1, \ldots, x_n)$}, дифференцируемой в точке~$\overline x_0$, называется вектор $\grad f \opbr= (f_{x_1}'(\overline x_0), \ldots, f_{x_n}'(\overline x_0))$.
+\index{grad} \index{Градиент} \textbf{Градиентом функции $f(x_1, \ldots, x_n)$}, дифференцируемой в точке~$\overline x_0$, называется вектор $\grad f = (f_{x_1}'(\overline x_0), \ldots, \allowbreak f_{x_n}'(\overline x_0))$.

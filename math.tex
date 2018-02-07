@@ -1,21 +1,26 @@
 \documentclass{report}
-\usepackage[left=3cm,top=2cm,right=2cm,bottom=2cm]{geometry}
+\usepackage[left=1.5cm,top=2cm,right=1.5cm,bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[russian]{babel}
+
 \usepackage{index} % предметный указатель
 \usepackage{indentfirst} % отступ красной строки
 \usepackage[unicode,colorlinks=true]{hyperref} % ссылки в оглавлении
 \usepackage{array} % таблицы
-\usepackage{mathenvrus}
 \usepackage[all,arc]{xy} % создание рисунков
 \usepackage{floatflt} % размещение рисунков
-\usepackage{multicol} % размещение текста в несколько колонок
 \usepackage{enumerate} % задание пользовательской нумерации для нумерованных списков
+
+\usepackage{mathenvrus} % математическая запись
+
 \tolerance=500 % увеличение максимально возможной разреженности строк
+
 \AtBeginDocument{\shorthandoff{"}} % во избежание конфликтов babel и XY-pic
+
 \makeindex % создание предметного указателя
 \renewindex{default}{idx}{ind}{Предметный указатель} % переименование заголовка предметного указателя
+
 \begin{document}
 \chapter*{Введение}
 \input{intro}

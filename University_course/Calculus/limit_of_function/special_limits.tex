@@ -2,25 +2,12 @@
 Замечательными пределами называют два тождества, часто используемых при нахождении других пределов.
 
 \subsubsection{Первый замечательный предел}
-\begin{floatingfigure}[r]{5.75cm}
-\noindent
-$\begin{xy} /r3cm/:
-(0, 0) = "O" *{\bullet} *++!R{O};
-(1.4142, 0) = "C" **@{-} *{\bullet} *++!UL{C};
-(0.5, 0.9142) **@{-}; % касательная
-(0.7071, 0.7071) = "B" *{\bullet} *++!DL{B};
-(1, 0) = "A" **@{-} *{\bullet} *++!UR{A};
-"B";  "O" **@{-};
-{"O" \ellipse<3cm>:a(210),^,=:a(75){}};
-{"O" \ellipse<5mm>:a(90),_,:a(45){}};
-(0.23, 0.075) *{x};
-\end{xy}$
-\end{floatingfigure}
 \begin{statement}
 \begin{equation*}
 \lim_{x \to 0} \frac{\sin x}x = 1
 \end{equation*}
 \end{statement}
+\begin{minipage}[c]{122.5mm}\parindent=15pt
 \begin{proof}
 Пусть $x > 0$.
 Рассмотрим сектор~$AOB$ единичного круга ($OA = OB = 1$) с углом~$x$ и касательную~$BC$ к нему.
@@ -38,6 +25,20 @@ S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 
 Для $x < 0$ $\displaystyle \lim_{x \to 0} \frac{\sin x}x = \lim_{x \to 0} \frac{\sin (-x)}{-x} = 1$.
 \end{proof}
+\end{minipage}
+\begin{minipage}[c]{57.5mm}
+$\begin{xy} /r3cm/:
+(0, 0) = "O" *{\bullet} *++!R{O};
+(1.4142, 0) = "C" **@{-} *{\bullet} *++!L{C};
+(0.5, 0.9142) **@{-}; % касательная
+(0.7071, 0.7071) = "B" *{\bullet} *++!DL{B};
+(1, 0) = "A" **@{-} *{\bullet} *++!UR{A};
+"B";  "O" **@{-};
+{"O" \ellipse<3cm>:a(210),^,=:a(75){}};
+{"O" \ellipse<5mm>:a(90),_,:a(45){}};
+(0.23, 0.075) *{x};
+\end{xy}$
+\end{minipage}
 
 Следствия:
 \begin{itemize}

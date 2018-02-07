@@ -5,15 +5,16 @@
 
 \index{Теорема!Оре}
 \begin{theorem}[Оре]
-Если в~графе с $n \geqslant 3$~вершинами для любых двух несмежных вершин $u$ и $v$ $\deg u + \deg v \geqslant n$, то граф гамильтонов.
+Если в~графе с $n \geqslant 3$~вершинами для любых двух несмежных вершин $u$ и $v$ $\deg u \opbr+ \deg v \opbr\geqslant n$, то граф гамильтонов.
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
 	\item Докажем методом от противного, что граф связный.
 	Пусть он несвязный, тогда в~нём найдутся хотя~бы две компоненты связности $G_1(V_1, E_1)$ и $G_2(V_2, E_2)$.
-	Пусть $u \in V_1$, $v \in V_2$. $u$ и $v$ несмежные, тогда
+	Пусть $u \in V_1$, $v \in V_2$.
+	$u$ и $v$ несмежные, тогда
 	\begin{equation*}
-	\deg u \leqslant |V_1| - 1, \ \deg v \leqslant |V_2| - 1 \opbr\Rightarrow \deg u + \deg v \opbr\leqslant |V_1| + |V_2| - 2 \opbr\leqslant n - 2
+	\deg u \leqslant |V_1| - 1, \ \deg v \leqslant |V_2| - 1 \Rightarrow \deg u + \deg v \leqslant |V_1| + |V_2| - 2 \leqslant n - 2
 	\end{equation*}
 	
 	Противоречие с условием.
@@ -39,7 +40,7 @@
 Если в графе~$G = (V, E)$ с $n \geqslant 3$~вершинами $\forall u \in V \ \deg u \geqslant \frac{n}2$, то граф гамильтонов.
 \end{theorem}
 \begin{proof}
-Пусть $u$, $v$~--- несвязные вершины в~$G$, тогда $\deg u \geqslant \frac{n}2 \lAnd \deg v \geqslant \frac{n}2 \opbr\Rightarrow \deg u \opbr+ \deg v \opbr\geqslant n \Rightarrow$ по теореме Оре $G$ гамильтонов.
+Пусть $u$, $v$~--- несвязные вершины в~$G$, тогда $\deg u \geqslant \frac{n}2 \lAnd \deg v \geqslant \frac{n}2 \Rightarrow \deg u + \deg v \geqslant n$ $\Rightarrow$ по теореме Оре $G$ гамильтонов.
 \end{proof}
 
 Цепь называется \textbf{гамильтоновым путём}, если она не является циклом и содержит все вершины графа.

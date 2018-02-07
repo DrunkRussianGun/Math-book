@@ -35,7 +35,7 @@ K \rightarrow f = 1 \Rightarrow (K = 1 \Rightarrow f = 1)
 	Покажем, что все литералы, содержащиеся в~$K$, содержатся и в~$K_i$.
 	\begin{itemize}
 		\item Пусть $x_j$ входит в~$K$, тогда $K(\sigma_1, \ldots, \sigma_{j-1}, 1, \sigma_{j+1}, \ldots, \sigma_n) = 1$.
-		Если $\overline{x_j}$ входит в~$K_i$, то $K_i(\sigma_1, \ldots, \sigma_{j-1}, 1, \sigma_{j+1}, \ldots, \sigma_n) = 0$.
+		Если $\overline{x_j}$ входит в~$K_i$, то $K_i(\sigma_1, \ldots, \allowbreak \sigma_{j-1}, 1, \sigma_{j+1}, \ldots, \sigma_n) = 0$.
 		Противоречие, значит, $\overline{x_j}$ не входит в~$K_i$.
 		
 		\item Пусть $\overline{x_j}$ входит в~$K$.
@@ -43,7 +43,7 @@ K \rightarrow f = 1 \Rightarrow (K = 1 \Rightarrow f = 1)
 		
 		\item Пусть $x_j^{\sigma_j}$ входит в~$K$.
 		Если ни $x_j$, ни $\overline{x_j}$ не входят в~$K_i$, то $K_i(\sigma_1, \ldots, \sigma_j, \ldots, \sigma_n) \opbr=
-		K_i(\sigma_1, \ldots, \overline{\sigma_j}, \ldots, \sigma_n) = 1 \Rightarrow
+		K_i(\sigma_1, \ldots, \overline{\sigma_j}, \ldots, \sigma_n) \opbr= 1 \opbr\Rightarrow
 		x_1^{\sigma_1} \cdot \ldots \cdot x_{i-1}^{\sigma_{i-1}} x_{i+1}^{\sigma_{i+1}} \cdot \ldots \cdot x_n^{\sigma_n}$~--- импликант $\Rightarrow$ $K$ не является простым импликантом.
 		Противоречие, значит, $x_j$ или $\overline{x_j}$ входит в~$K_i$.
 	\end{itemize}
@@ -59,7 +59,7 @@ K \rightarrow f = 1 \Rightarrow (K = 1 \Rightarrow f = 1)
 \end{statement}
 \begin{proof}
 Пусть $K$~--- простой импликант $f \land g$.
-По утверждению~\ref*{st:about_prime_implicants_1} $\exists i, j, K' \colon K_i M_j \opbr= K K'$.
+По утверждению~\ref*{st:about_prime_implicants_1} $\exists i, j, K' \colon K_i M_j = K K'$.
 \begin{enumerate}
 	\item Докажем методом от противного, что $K_i M_j = K$.
 	Пусть $K' \neq 1$, $y$~--- переменная, входящая в~$K'$, тогда $y$ входит в $K_i$ или в $M_j$.

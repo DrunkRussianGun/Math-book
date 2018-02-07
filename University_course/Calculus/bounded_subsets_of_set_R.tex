@@ -56,7 +56,7 @@ $\forall x \in \mathbb R \ \exists k \in \mathbb Z \colon (k - 1)h \leqslant x <
 \begin{proof}
 Рассмотрим множество~$A = \left\{ z \in \mathbb Z \mid z > \dfrac{x}h \right\}$, тогда $\exists a = \inf A$.
 По утверждению~\ref*{st:inequality_of_infimum}
-$\forall \varepsilon \in (0; 1] \ \exists z_0 \colon a \leqslant z_0 < a + \varepsilon$.
+$\forall \varepsilon \in \nobreak (0; 1] \ \exists z_0 \colon a \leqslant z_0 < a + \varepsilon$.
 Т.\,к. в~промежутке~$[a; a + 1)$ лежит только одно целое число, то $a = z_0$, тогда $a - 1 \leqslant \dfrac{x}h < a$.
 Т.\,о., $a$~--- искомое значение~$k$.
 \end{proof}
@@ -139,7 +139,7 @@ $\exists \varepsilon > 0 \colon U_\varepsilon(a) \subset A$.
 \end{theorem}
 \begin{proof}
 $A \subseteq [a; b]$, где $a = \inf A$, $b = \sup A$.
-Пусть $a$ не является предельной точкой $A$, т.\,е. $\exists \varepsilon_0 > 0 \colon \breve U_{\varepsilon_0}(a) \cap A = \varnothing$, тогда $a \in A$, значит, $a$~--- дискретная точка $A$.
+Пусть $a$ не является предельной точкой $A$, т.\,е. $\exists \varepsilon_0 > 0 \colon \allowbreak \breve U_{\varepsilon_0}(a) \cap A = \varnothing$, тогда $a \in A$, значит, $a$~--- дискретная точка $A$.
 
 Рассмотрим множество~$B$ точек~$y$ таких, что интервал~$(-\infty; y)$ содержит конечное число точек $A$.
 Интервал~$(-\infty; a + \varepsilon_0)$ содержит только одну точку множества~$A$~--- $a$, значит, $\forall k \in (0; 1] \ a + k\varepsilon_0 \in B$.
