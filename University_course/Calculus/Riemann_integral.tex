@@ -1,0 +1,222 @@
+\section{Интеграл Римана}
+Пусть на отрезке~$[a; b]$ определена функция~$f(x)$.
+Рассмотрим разбиение~$R = (x_0, x_1, \ldots, x_n)$ этого отрезка, где $a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
+Среди длин подынтервалов $\Delta x_i = x_i - x_{i-1}$, $i = 1, \ldots, n$, найдём диаметр $d = \max \{ \Delta x_1, \Delta x_2, \ldots, \Delta x_n \}$ разбиения.
+Выберём множество точек $\xi = \{ \xi_1, \ldots, \xi_n \}$, где $\xi_i \in [x_{i-1}; x_i]$, $i = 1, \ldots, n$.
+
+\textbf{Интегральной суммой Римана} называется сумма $\displaystyle \sigma(f, R, \xi) = \sum_{i=1}^n f(\xi_i) \Delta x_i$.
+
+Рассмотрим криволинейную трапецию~$M$, ограниченную прямыми $y = 0$, $x = a$, $x = b$ и кривой $y = f(x)$. Пусть $S$~--- площадь $M$, $S_1, \ldots, S_n$~--- площади трапеций, на которые разбивается $M$ прямыми $x = x_1$, \ldots, $x = x_{n-1}$, тогда
+\begin{equation*}
+S = \sum_{i=1}^n S_i \approx \sum_{i=1}^n f(\xi_i) \Delta x_i = \sigma(f, R, \xi)
+\end{equation*}
+
+\begin{center}
+\noindent
+$\begin{xy} /r12mm/:
+(-0.5, 0); (6, 0) **@{-} *@{>} *++!U{x};
+(0, -0.5); (0, 4) **@{-} *@{>} *++!R{y};
+(1, 2) = "a"; (5, 3.75) = "b" **\crv{(2, 3) & (3, 0) & (4, 4)} *+!D{y = f(x)};
+"a"; (1, 0) **@{-} *++!U{a};
+"b"; (5, 0) **@{-} *++!U{b};
+(1.5, 2.3225) = "x1"; (1.5, 0) **@{-} *++!U{x_1};
+(2, 2.267) = "x2"; (2, 0) **@{-} *++!U{x_2};
+(2.9, 1.72) = "x3"; (2.9, 0) **@{-};
+(3.5, 2.4) = "x4"; (3.5, 0) **@{-};
+(4.2, 3.452) = "x5"; (4.2, 0) **@{-} *++!U{x_{n-1}};
+(1.25, 2.205) = "e1"; (1.25, 0) **@{--} *++++!U{\xi_1};
+"a"; (1, 2.205) **@{--}; (1.5, 2.205) **@{--};
+(1.75, 2.3435) = "e2"; (1.75, 0) **@{--} *++++!U{\xi_2};
+"x1"; (1.5, 2.3435) **@{--}; (2, 2.3435) **@{--}; "x2" **@{--};
+(2.25, 2.109) = "e3"; (2.25, 0) **@{--};
+"x3"; (2.9, 2.109) **@{--}; (2, 2.109) **@{--};
+(3.25, 1.999) = "e4"; (3.25, 0) **@{--};
+"x3"; (2.9, 1.999) **@{--}; (3.5, 1.999) **@{--};
+(3.85, 2.994) = "e5"; (3.85, 0) **@{--};
+"x4"; (3.5, 2.994) **@{--}; (4.2, 2.994) **@{--};
+(4.6, 3.7274) = "e6"; (4.6, 0) **@{--} *++++!U{\xi_n};
+"x5"; (4.2, 3.7274) **@{--}; (5, 3.7274) **@{--};
+\end{xy}$
+\end{center}
+
+Т.\,о., интегральная сумма Римана приближённо равна площади соответствующей криволинейной трапеции.
+
+\index{Интеграл!Римана} \index{Интеграл!определённый} Если независимо от выбора $\xi$ $\displaystyle \exists \lim_{d \to 0} \sigma(f, R, \xi)$, то значение предела~$\displaystyle \lim_{d \to 0} \sigma(f, R, \xi)$ называется \textbf{интегралом Римана}, или \textbf{определённым интегралом}, и обозначается $\displaystyle \int_a^b f(x)\,dx$.
+$f(x)$ называется \textbf{интегрируемой (по Риману) на~$[a; b]$}.
+
+Интеграл Римана $\displaystyle \int_a^b f(x)\,dx$ численно равен площади трапеции, ограниченной прямыми $y = 0$, $x = a$, $x = b$ и кривой $y = f(x)$.
+
+\begin{theorem}
+Любая непрерывная функция интегрируема по Риману.
+\end{theorem}
+
+\subsection{Свойства интеграла Римана}
+\begin{enumerate}
+	\item \label{st:b_a_integral} $\displaystyle \int_a^b f(x)\,dx = -\int_b^a f(x)\,dx$
+	\begin{proof}
+	Пусть $R' = (x_0' = b, x_1' = x_{n-1}, \ldots, x_{n-1}' = x_1, x_n' = a)$.
+	\begin{equation*}
+	\sigma(f, R, \xi) =
+	\sum_{i=1}^n f(\xi_i) (x_i - x_{i-1}) =
+	-\sum_{i=1}^n f(\xi_i) (x_i' - x_{i-1}') =
+	-\sigma(f, R', \xi)
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	\int_a^b f(x)\,dx =
+	\lim_{d \to 0} \sigma(f, R, \xi) =
+	\lim_{d \to 0} -\sigma(f, R', \xi) =
+	-\lim_{d \to 0} \sigma(f, R, \xi) =
+	-\int_b^a f(x)\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item Линейность: $\displaystyle \int_a^b (\alpha f(x) + \beta g(x))\,dx = 
+	\alpha \int_a^b f(x)\,dx + \beta \int_a^b g(x)\,dx$
+	\begin{proof}
+	\begin{equation*}
+	\sigma(\alpha f(x) + \beta g(x), R, \xi) =
+	\sum_{i=1}^n (\alpha f(\xi_i) + \beta g(\xi_i)) \Delta x_i =
+	\end{equation*}
+	\begin{equation*}
+	= \alpha \sum_{i=1}^n f(\xi_i) \Delta x_i + \beta \sum_{i=1}^n g(\xi_i) \Delta x_i =
+	\alpha \sigma(f(x), R, \xi) + \beta \sigma(g(x), R, \xi)
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	\int_a^b (\alpha f(x) + \beta g(x))\,dx =
+	\lim_{d \to 0} \sigma(\alpha f(x) + \beta g(x), R, \xi) =
+	\end{equation*}
+	\begin{equation*}
+	= \lim_{d \to 0} \alpha \sigma(f(x), R, \xi) + \beta \sigma(g(x), R, \xi) =
+	\end{equation*}
+	\begin{equation*}
+	= \alpha \lim_{d \to 0} \sigma(f(x), R, \xi) + \beta \lim_{d \to 0} \sigma(g(x), R, \xi) =
+	\alpha \int_a^b f(x)\,dx + \beta \int_a^b g(x)\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item Аддитивность: $\displaystyle \int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$
+	\begin{proof}
+	\begin{enumerate}
+		\item Пусть $c \in [a; b]$, $\displaystyle \int_a^b f(x)\,dx = \lim_{d \to 0} \sigma(f(x), R, \xi)$, причём $c = x_k \in R$, а также\\
+		$R_1 = (a = x_0, \ldots, x_k = c)$, $R_2 = (c = x_k, \ldots, x_n = b)$,\\
+		$\lambda_1 = \{ \xi_1, \ldots, \xi_k \}$, $\lambda_2 = \{ \xi_{k+1}, \ldots, \xi_n \}$.
+		\begin{equation*}
+		\sigma(f(x), R, \xi) =
+		\sum_{i=1}^n f(\xi_i) \Delta x_i =
+		\sum_{i=1}^k f(\xi_i) \Delta x_i + \sum_{i=k+1}^n f(\xi_i) \Delta x_i =
+		\sigma(f(x), R_1, \lambda_1) + \sigma(f(x), R_2, \lambda_2)
+		\end{equation*}
+		
+		Тогда
+		\begin{equation*}
+		\int_a^b f(x)\,dx =
+		\lim_{d \to 0} \sigma(f(x), R, \xi) =
+		\lim_{d \to 0} (\sigma(f(x), R_1, \lambda_1) + \sigma(f(x), R_2, \lambda_2)) =
+		\end{equation*}
+		\begin{equation*}
+		= \lim_{d \to 0} \sigma(f(x), R_1, \lambda_1) + \lim_{d \to 0} \sigma(f(x), R_2, \lambda_2) =
+		\int_a^c f(x)\,dx + \int_c^b f(x)\,dx
+		\end{equation*}
+		
+		\item Для остальных случаев свойство легко доказывается с использованием свойства~\ref*{st:b_a_integral} и уже рассмотренного случая.
+		Например, пусть $f(x)$ интегрируема на~$[c; b]$, $a \in [c; b]$, тогда
+		\begin{equation*}
+		\int_c^b f(x)\,dx = \int_c^a f(x)\,dx + \int_a^b f(x)\,dx \Leftrightarrow
+		\int_a^b f(x)\,dx = -\int_c^a f(x)\,dx + \int_c^b f(x)\,dx \Leftrightarrow
+		\end{equation*}
+		\begin{equation*}
+		\Leftrightarrow \int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx
+		\end{equation*}
+	\end{enumerate}
+	\end{proof}
+	
+	\item Невырожденность: $\displaystyle \int_a^b dx = b - a$
+	\begin{proof}
+	Пусть $f(x) = 1$.
+	\begin{equation*}
+	\sigma(f, R, \xi) =
+	\sum_{i=1}^n f(\xi_i) \Delta x_i =
+	\sum_{i=1}^n \Delta x_i =
+	-x_0 + x_1 - x_1 + x_2 - \ldots - x_{n-2} + x_{n-1} - x_{n-1} + x_n =
+	x_n - x_0 =
+	b - a
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	\int_a^b dx =
+	\lim_{d \to 0} \sigma(f, R, \xi) =
+	\lim_{d \to 0} (b - a) =
+	b - a
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $f(x) \geqslant 0$ при $x \in [a; b]$, то $\displaystyle \int_a^b f(x)\,dx \geqslant 0$
+	
+	\item Если $f(x) \leqslant g(x)$ при $x \in [a; b]$, то $\displaystyle \int_a^b f(x)\,dx \leqslant \int_a^b g(x)\,dx$
+	\begin{proof}
+	\begin{equation*}
+	f(x) \leqslant g(x) \Leftrightarrow
+	g(x) - f(x) \geqslant 0 \Rightarrow
+	\int_a^b (g(x) - f(x))\,dx \geqslant 0 \Leftrightarrow
+	\int_a^b g(x)\,dx - \int_a^b f(x)\,dx \geqslant 0 \Leftrightarrow
+	\int_a^b f(x)\,dx \leqslant \int_a^b g(x)\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $\displaystyle m = \min_{x \in [a; b]} f(x)$, $\displaystyle M = \max_{x \in [a; b]} f(x)$, то $\displaystyle m(b - a) \leqslant \int_a^b f(x)\,dx \leqslant M(b - a)$
+	
+	\item \begin{theorem}[о среднем]
+	Если $f(x)$ непрерывна на~$[a; b]$, то $\displaystyle \exists x_0 \in [a; b] \colon \int_a^b f(x)\,dx = f(x_0)(b - a)$.
+	\end{theorem}
+	\begin{proof}
+	$\displaystyle m(b - a) \leqslant \int_a^b f(x)\,dx \leqslant M(b - a) \Leftrightarrow
+	m \leqslant \frac1{b - a} \left( \int_a^b f(x)\,dx \right) \leqslant M$, тогда по \hyperref[th:intermediate_value]{теореме о промежуточном значении}
+	$\displaystyle \exists x_0 \colon f(x_0) = \frac1{b - a} \left( \int_a^b f(x)\,dx \right)
+	\Leftrightarrow \int_a^b f(x)\,dx = f(x_0)(b - a)$.
+	\end{proof}
+\end{enumerate}
+
+Методы вычисления определённого интеграла:
+\begin{enumerate}
+	\item \textbf{Замена переменной}
+	
+	Если $\varphi(t) \colon [\alpha; \beta] \to [a; b]$~--- монотонная функция, то $\displaystyle \int_a^b f(x)\,dx = \int_\alpha^\beta f(\varphi(t)) \varphi'(t)\,dt$
+	
+	\item \textbf{Интегрирование по частям}
+	
+	$\displaystyle \int_a^b u(x) v'(x)\,dx = \left. (u(x) v(x)) \right|_a^b - \int_a^b u'(x) v(x)\,dx$
+\end{enumerate}
+
+\subsection{Формула Ньютона---Лейбница}
+\begin{theorem}[Ньютона---Лейбница]
+\index{Теорема!Ньютона---Лейбница}
+Если функция~$f(x)$ непрерывна на~$[a; b]$, $\Phi(x)$~--- её первообразная, то
+\begin{equation}
+\label{eq:Newton-Leibniz_formula}
+\int_a^b f(x)\,dx = \left. \Phi(x) \right|_a^b = \Phi(b) - \Phi(a)
+\end{equation}
+\end{theorem}
+\index{Формула!Ньютона---Лейбница} Равенство~(\ref{eq:Newton-Leibniz_formula}) называется \textbf{формулой Ньютона---Лейбница}.
+\begin{proof}
+Пусть $\displaystyle I(t) = \int_a^t f(x)\,dx$, тогда $I(a) = 0$, $\displaystyle I(b) = \int_a^b f(x)\,dx$.
+\begin{equation*}
+I(t + \Delta t) - I(t) =
+\int_a^{t+\Delta t} f(x)\,dx - \int_a^t f(x)\,dx =
+\int_t^{t + \Delta t} f(x)\,dx \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \exists \Theta \colon 0 \leqslant \Theta \leqslant 1 \lAnd I(t + \Delta t) - I(t) = f(t + \Theta \Delta t) \Delta t \Rightarrow
+\lim_{\Delta t \to 0} \frac{I(t + \Delta t) - I(t)}{\Delta t} = \lim_{\Delta t \to 0} f(t + \Theta \Delta t) \Rightarrow
+I'(t) = f(t)
+\end{equation*}
+
+Тогда $I(x)$~--- первообразная функции~$f(x)$, значит, $\Phi(a) = I(a) + C$, $\Phi(b) = I(b) + C$.
+\begin{equation*}
+\Phi(b) - \Phi(a) = I(b) - I(a) = \int_a^b f(x)\,dx
+\end{equation*}
+\end{proof}

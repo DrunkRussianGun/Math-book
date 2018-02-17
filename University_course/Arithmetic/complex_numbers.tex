@@ -1,5 +1,5 @@
 \section{Комплексные числа}
-\index{i@$i$} \index{Мнимая единица} \textbf{Мнимой единицей} называется число, квадрат которого равен $-1$, и обозначается $i$.
+\index{i@$i$} \index{Мнимая единица} \textbf{Мнимой единицей} называется число $i \colon i^2 = -1$.
 
 \index{Число!комплексное} \textbf{Комплексным} называется число вида $a + bi$, $a, b \in \mathbb R$.
 \index{Число!мнимое} Если $a = 0$, то такое число называется \textbf{мнимым}, или \textbf{чисто мнимым}.
@@ -9,20 +9,84 @@
 
 Следующие операции над комплексными числами $z_1 = a_1 + b_1 i$, $z_2 = a_2 + b_2 i$, $a_1, b_1, a_2, b_2 \in \mathbb R$ осуществляются так~же, как над вещественными, и обладают теми~же свойствами:
 \begin{itemize}
-	\item\textbf{Сложение}
-	\begin{equation*}
-	z_1 + z_2 = (a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i
-	\end{equation*}
-	
-	\item\textbf{Умножение}
-	\begin{equation*}
-	z_1 \cdot z_2 = (a_1 + b_1 i)(a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i
-	\end{equation*}
-	
-	\item\textbf{Деление}
-	\begin{equation*}
-	\frac{z_1}{z_2} = \frac{a_1 + b_1 i}{a_2 + b_2 i} =
+	\item \textbf{Сложение}: $z_1 + z_2 = (a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i$
+	\item \textbf{Умножение}: $z_1 \cdot z_2 = (a_1 + b_1 i)(a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + a_2 b_1)i$
+	\item \textbf{Деление}: $\displaystyle \frac{z_1}{z_2} = \frac{a_1 + b_1 i}{a_2 + b_2 i} =
 	\frac{(a_1 + b_1 i)(a_2 - b_2 i)}{a_2^2 + b_2^2} =
-	\frac{a_1 a_2 + b_1 b_2}{a_2^2 + b_2^2} + \frac{a_2 b_1 - a_1 b_2}{a_2^2 + b_2^2} i
-	\end{equation*}
+	\frac{a_1 a_2 + b_1 b_2}{a_2^2 + b_2^2} + \frac{a_2 b_1 - a_1 b_2}{a_2^2 + b_2^2} i$
 \end{itemize}
+
+\subsection{Геометрическое представление комплексного числа}
+Комплексное число~$a + bi$ принято изображать на координатной плоскости точкой~$(a, b)$, а также ра\-ди\-ус"=век\-то\-ром, соединяющим начало координат с этой точкой.
+Такая плоскость называется \textbf{комплексной}.
+
+\textbf{Модулем комплексного числа~$z = a + bi$}, или его \textbf{абсолютной величиной}, называется длина соответствующего радиус-вектора комплексной плоскости, равная
+\begin{equation*}
+|z| = \sqrt{a^2 + b^2}
+\end{equation*}
+
+\index{Arg} \textbf{Аргументом комплексного числа~$z = a + bi$} называется угол соответствующего радиус-вектора на комплексной плоскости (с точностью до $2\pi k$, $k \in \mathbb Z$):
+\begin{equation*}
+a = |z| \cos \Arg z, \ b = |z| \sin \Arg z
+\end{equation*}
+\index{arg} \textbf{Главным} аргументом называется значение~$\Arg z \in (-\pi; \pi]$ и обозначается $\arg z$.
+
+\subsection{Тригонометрическая форма комплексного числа}
+\textbf{Тригонометрической формой комплексного числа~$z$} называется его представление в~виде
+\begin{equation*}
+z = |z|(\cos \varphi + i\sin \varphi), \ \varphi = \Arg z
+\end{equation*}
+
+При использовании тригонометрических форм операции умножения и деления комплексных чисел
+$z_1 = |z_1| \* (\cos \alpha + i\sin \alpha)$, $z_2 = |z_2|(\cos \beta + i\sin \beta)$ упрощаются:
+\begin{equation*}
+z_1 z_2 = |z_1| |z_2|(\cos \alpha \cos \beta - \sin \alpha \sin \beta + i(\sin \alpha \cos \beta + \cos \alpha \sin \beta)) =
+|z_1| |z_2|(\cos (\alpha + \beta) + i\sin (\alpha + \beta))
+\end{equation*}
+\begin{equation*}
+\frac{z_1}{z_2} = \frac{|z_1|}{|z_2|} \cdot
+\frac{(\cos \alpha \cos \beta + \sin \alpha \sin \beta + i(\sin \alpha \cos \beta - \cos \alpha \sin \beta))}
+{\cos^2 \beta + \sin^2 \beta} =
+\frac{|z_1|}{|z_2|} (\cos (\alpha - \beta) + i\sin (\alpha - \beta))
+\end{equation*}
+
+\index{Формула!Эйлера!в математическом анализе}
+\begin{theorem}[формула Эйлера]
+\begin{equation*}
+\cos x + i\sin x = e^{ix}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Воспользуемся разложением $\cos x$, $\sin x$ и $e^{ix}$ в~\hyperref[eq:Maclaurin_series]{ряд Маклорена}:
+\begin{equation*}
+\cos x + i\sin x = 1 + \frac{ix}{1!} - \frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{4!} + \frac{ix^5}{5!} + \ldots =
+1 + \frac{ix}{1!} + \frac{i^2 x^2}{2!} + \frac{i^3 x^3}{3!} + \frac{i^4 x^4}{4!} + \frac{i^5 x^5}{5!} + \ldots = e^{ix}
+\end{equation*}
+\end{proof}
+
+При подстановке $x = \pi$ в~формулу Эйлера получим замечательное \textbf{тождество Эйлера}, связывающее пять фундаментальных математических констант:
+\begin{equation*}
+e^{i\pi} + 1 = 0
+\end{equation*}
+
+\index{Формула!Муавра}
+\begin{theorem}[формула Муавра]
+Если $z = |z|(\cos \varphi + i\sin \varphi)$, $n \in \mathbb R$, то
+\begin{equation*}
+z^n = |z|^n(\cos n\varphi + i\sin n\varphi)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Для $n \in \mathbb N$ формулу можно доказать методом математической индукции, тогда показать истинность формулы для $n \in \mathbb Z$ несложно.
+Мы~же докажем формулу сразу для $n \in \mathbb R$, пользуясь формулой Эйлера:
+\begin{equation*}
+z^n = |z|^n(\cos \varphi + i\sin \varphi)^n =
+|z|^n e^{i\varphi n} = |z|^n (\cos n\varphi + i\sin n\varphi)
+\end{equation*}
+\end{proof}
+
+Пользуясь формулой Муавра, можно извлекать корни из комплексного числа~$z = |z|(\cos \varphi \opbr+ i\sin \varphi)$:
+\begin{equation*}
+\sqrt[n]{z} = \sqrt[n]{|z|} \left( \cos \frac{\varphi}n + i\sin \frac{\varphi}n \right)
+\end{equation*}
+Следует не забывать, что $\varphi$ определено с точностью до~$2\pi k, k \in \mathbb Z$, поэтому комплексный корень имеет не одно, а $n$~значений (что можно показать, пользуясь следствием~\ref{conseq:n_roots_of_polynomial}).

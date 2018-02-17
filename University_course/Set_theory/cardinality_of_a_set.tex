@@ -1,0 +1,149 @@
+\section{Мощность множеств}
+Множества $A$ и $B$ называются \textbf{равномощными (имеют одинаковую мощность)}, если существует биекция~$f \colon A \to B$, иначе~--- \textbf{неравномощными}.
+
+Для конечных множеств это означает, что у них одинаковое количество элементов.
+
+\index{Мощность} \textbf{Мощностью конечного множества~$A$} называется количество его элементов и обозначается $|A|$.
+
+Множество всех подмножеств множества~$A$ обозначается
+\begin{equation*}
+\mathcal P(A) = \{ x \mid x \subseteq A \}
+\end{equation*}
+
+Множество всех подмножеств множества~$A$ мощности~$k$ обозначается
+\begin{equation*}
+\mathcal P_k(A) = \{ x \subseteq A \mid |x| = k \}
+\end{equation*}
+
+\begin{theorem}[Кантора]
+\index{Теорема!Кантора}
+Множества $A$ и $\mathcal P(A)$ не~равномощны.
+\end{theorem}
+\begin{proofcontra}
+Пусть $f \colon A \to \mathcal P(A)$~--- биекция. Рассмотрим множество
+\begin{equation*}
+X = \{ a \in A \mid a \notin f(a) \} \Rightarrow X \subset A \Rightarrow X \in \mathcal P(A)
+\end{equation*}
+
+$f$~--- биекция, тогда $\exists b \in A \colon f(b) = X$.
+Возможны два случая:
+\begin{enumerate}
+	\item Пусть $b \in X \Rightarrow b \in f(b) \Rightarrow b \notin X$.
+	Противоречие.
+	\item Пусть $b \notin X \Rightarrow b \in f(b) \Rightarrow b \in X$.
+	Противоречие.
+\end{enumerate}
+
+В~обоих случаях получили противоречие.
+\end{proofcontra}
+
+\begin{theorem}
+Пусть дано множество~$A \colon |A| = n$, тогда $|\mathcal P_k(A)| = C_n^k$.
+\end{theorem}
+\begin{proofmathind}
+	\indbase $n = 0$:
+	\begin{equation*}
+	|A| = 0 \Rightarrow A = \varnothing \Rightarrow \mathcal P(A) = \{ \varnothing \} \Rightarrow
+	|\mathcal P_0(A)| = 1 = C_0^0
+	\end{equation*}
+	\indstep Пусть теорема верна для $n$.
+	Докажем её для $n + 1$.
+	Пусть $X \subset A$, $|X| = k$, $a \in A$.
+	Подсчитаем количество таких $X$.
+	Возможны два случая:
+	\begin{enumerate}
+		\item Пусть $a \notin X \Rightarrow X \subset A \setminus \{ a \}$, тогда таких $X$ $C_n^k$.
+		\item Пусть $a \in X$, тогда таких $X$ столько~же, сколько множеств
+		$X \setminus \{ a \} \subset A \setminus \{ a \}$, т.\,е.~$C_n^{k-1}$.
+	\end{enumerate}
+
+	Тогда $|\mathcal P(A)| = C_n^{k-1} + C_n^k = C_{n+1}^k$. \indend
+\end{proofmathind}
+
+\subsection{Мощность числовых множеств}
+Множество называется \textbf{счётным}, если оно равномощно множеству натуральных чисел.
+Бесконечное множество, не являющееся счётным, называется \textbf{несчётным}.
+
+\begin{statement}
+$\mathbb Z$ счётно.
+\end{statement}
+\begin{proof}
+Построим биекцию~$f \colon \mathbb Z \to \mathbb N$:
+\begin{equation*}
+f(n) =
+\begin{cases}
+-2n - 1, \ n < 0 \\
+2n, \ n \geqslant 0
+\end{cases}
+\end{equation*}
+
+Тогда $|\mathbb Z| = |\mathbb N|$.
+\end{proof}
+
+\begin{statement}
+$\mathbb Q$ счётно.
+\end{statement}
+\begin{proof}
+Составим таблицу, в~верхней строке которой стоят $p_i \in \mathbb Z$, где $i = 1, 2, \ldots$, в~левом столбце~--- $q_j \in \mathbb N$, где $j = 1, 2, \ldots$, а на пересечении столбца и строки~--- $\frac{p_i}{q_j}$.
+Обходя таблицу в~указанном порядке, будем нумеровать очередной элемент, только если он не встречался ранее:
+
+\xymatrix{
+  & 0 & -1 & 1 & -2 & -2 & \cdots \\
+1 & *+[o]+[F]{0} \ar[r] & *+[o]+[F]{-1} \ar[ld] & *+[o]+[F]{1} \ar[r] & *+[o]+[F]{-2} \ar[ld] & *+[o]+[F]{2} \ar[r] & \cdots \ar[ld] \\
+2 & 0 \ar[d] & *+[o]+[F]{-\dfrac12} \ar[ur] & *+[o]+[F]{\dfrac12} \ar[ld] & -1 \ar[ur] & 1 \ar[ld] & \cdots \\
+3 & 0 \ar[ur] & *+[o]+[F]{-\dfrac13} \ar[ld] & *+[o]+[F]{\dfrac13} \ar[ur] & *+[o]+[F]{-\dfrac23} \ar[ld] & *+[o]+[F]{\dfrac23} \ar[ur] & \cdots \ar[ld] \\
+4 & 0 \ar[d] & *+[o]+[F]{-\dfrac14} \ar[ur] & *+[o]+[F]{\dfrac14} \ar[ld] & -\dfrac12 \ar[ur] & \dfrac12 \ar[ld] & \cdots \\
+5 & 0 \ar[ur] & *+[o]+[F]{-\dfrac15} \ar[ld] & *+[o]+[F]{\dfrac15} \ar[ur] & *+[o]+[F]{-\dfrac25} \ar[ld] & *+[o]+[F]{\dfrac25} \ar[ur] & \cdots \\
+\vdots & \vdots & \vdots \ar[ur] & \vdots & \vdots \ar[ur] & \vdots & \ddots
+}
+
+Ясно, что таким образом можно пронумеровать все элементы~$\mathbb Q$, причём ни один из них не будет пронумерован дважды, значит, $\mathbb Q$ счётно.
+\end{proof}
+
+\begin{statement}
+$(0; 1)$ несчётно.
+\end{statement}
+\begin{proofcontra}
+Пусть все числа из интервала~$(0; 1)$ можно пронумеровать.
+Тогда представим каждое число в~виде десятичной дроби и расположим эти дроби в~соответствии с нумерацией:
+\begin{enumerate}
+	\item $0{,}a_{11}a_{12} \ldots$
+	\item $0{,}a_{21}a_{22} \ldots$
+	
+	\ldots
+\end{enumerate}
+где $a_{11}, a_{12}, \ldots, a_{21}, a_{22}, \ldots$~--- цифры.
+Рассмотрим дробь $0{,}b_1 b_2 \ldots$, где $b_1, b_2, \ldots$~--- цифры такие, что $b_1 \neq a_{11}$, \linebreak $b_2 \neq a_{22}$, \ldots.
+Такая дробь отличается от каждой из пронумерованных хотя~бы в~одной позиции, значит, она не пронумерована.
+Противоречие.
+\end{proofcontra}
+
+\begin{statement}
+Отрезок~$[a; b]$ равномощен отрезку~$[c; d]$.
+\end{statement}
+\begin{proof}
+Рассмотрим функцию
+\begin{equation*}
+f(x) = \frac{c - d}{a - b} (x - a) + c, \ D(f) = [a; b]
+\end{equation*}
+
+$E(f) = [c; d]$, $f$~--- биекция, значит, любые два отрезка равномощны друг другу.
+\end{proof}
+
+\begin{statement}
+Множество~$\mathbb R$ равномощно интервалу~$(0; 1)$.
+\end{statement}
+\begin{proof}
+Рассмотрим функцию
+\begin{equation*}
+f(x) =
+\begin{cases}
+\dfrac1x - 2, \ 0 < x \leqslant \dfrac12 \\
+\dfrac1{x - 1} + 2, \ \dfrac12 < x < 1
+\end{cases}
+\end{equation*}
+
+$D(f) = (0; 1)$, $E(f) = \mathbb R$, $f$~--- биекция, значит, интервал~$(0; 1)$ равномощен $\mathbb R$.
+\end{proof}
+
+$|\mathbb R|$ называется \textbf{континуумом}.

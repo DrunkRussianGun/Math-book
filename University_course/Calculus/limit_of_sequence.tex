@@ -43,3 +43,271 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	\item $\displaystyle \lim_{n \to \infty} x_n = -\infty \Leftrightarrow
 	\forall M > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ x_n < -M$
 \end{itemize}
+
+\subsection{Элементарные свойства пределов}
+\begin{enumerate}
+	\item Последовательность может иметь не более одного предела.
+	\begin{proof}
+	Пусть $\displaystyle a = \lim_{n \to \infty} x_n$, $\displaystyle b = \lim_{n \to \infty} x_n$.
+	Тогда
+	\begin{equation*}
+	\forall \varepsilon > 0 \
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \frac\varepsilon2 \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |x_n - b| < \frac\varepsilon2 \right) \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |a - b| = |a - x_n + x_n - b| \leqslant |a - x_n| + |x_n - b| < \varepsilon
+	\end{equation*}
+	
+	Значит, $a = b$.
+	\end{proof}
+	
+	\item \begin{theorem}[о~двух милиционерах]
+	\index{Теорема!о двух милиционерах}
+	Пусть $\forall n \in \mathbb N \ x_n \leqslant y_n \leqslant z_n$.
+	Если $\displaystyle \lim_{n \to \infty} x_n = \lim_{n \to \infty} z_n = a$, то $\displaystyle \lim_{n \to \infty} y_n = a$.
+	\end{theorem}
+	\begin{proof}
+	\begin{equation*}
+	\forall \varepsilon > 0 \
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n - a| < \varepsilon \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |z_n - a| < \varepsilon \right) \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ a - \varepsilon < x_n \leqslant y_n \leqslant z_n < a + \varepsilon \Rightarrow |y_n - a| < \varepsilon
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $\displaystyle \forall n \in \mathbb N \ x_n \geqslant 0, \ \lim_{n \to \infty} x_n = a$, то $a \geqslant 0$.
+	\begin{proofcontra}
+	Пусть $a < 0$.
+	\begin{equation*}
+	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < -\frac{a}2 \Rightarrow
+	\frac{a}2 < x_n - a < -\frac{a}2 \Rightarrow
+	x_n < \frac{a}2 < 0
+	\end{equation*}
+	
+	Противоречие.
+	\end{proofcontra}
+	
+	\item Если $\displaystyle \lim_{n \to \infty} x_n = a$, то $\displaystyle \lim_{n \to \infty} |x_n| = |a|$.
+	\begin{proof}
+	\begin{equation*}
+	\begin{cases}
+	|a| - |x_n| \leqslant |a - x_n| \\
+	|x_n| - |a| \leqslant |x_n - a|
+	\end{cases}
+	\Rightarrow ||x_n| - |a|| \leqslant |x_n - a|
+	\end{equation*}
+	
+	Тогда
+	\begin{equation*}
+	\lim_{n \to \infty} x_n = a \Rightarrow
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ ||x_n| - |a|| \leqslant |x_n - a| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} |x_n| = |a|
+	\end{equation*}
+	\end{proof}
+	
+	\item Если последовательность~$(x_n)$ сходится, то она ограничена.
+	\begin{proof}
+	Пусть $\displaystyle \lim_{n \to \infty} x_n = a \Rightarrow \lim_{n \to \infty} |x_n| = |a|$.
+	Получим:
+	\begin{equation*}
+	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ ||x_n| - |a|| < 1 \Rightarrow |x_n| < |a| + 1
+	\end{equation*}
+	
+	Тогда $\forall n \in \mathbb N \ |x_n| < \max \{ |x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1, |a| + 1 \}$.
+	\end{proof}
+	
+	\item Если последовательности $(x_n)$ и $(y_n)$~--- ограниченная и бесконечно малая величины соответственно, то $z_n \opbr= x_n y_n$~--- бесконечно малая величина.
+	\begin{proof}
+	Пусть $a > 0 \colon \forall n \in \mathbb N \ |x_n| < a$, тогда
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon
+	\forall n > n_0 \ |y_n| < \frac\varepsilon{a} \Rightarrow
+	|x_n y_n| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} z_n = 0
+	\end{equation*}
+	\end{proof}
+	
+	\item Если последовательности $(x_n)$ и $(y_n)$~--- бесконечно малые величины, то $z_n = x_n + y_n$~--- тоже бесконечно малая величина.
+	\begin{proof}
+	\begin{equation*}
+	\forall \varepsilon > 0 \
+	\left( \exists n_1 \in \mathbb N \colon \forall n > n_1 \ |x_n| < \frac\varepsilon2 \right) \lAnd
+	\left( \exists n_2 \in \mathbb N \colon \forall n > n_2 \ |y_n| < \frac\varepsilon2 \right) \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \forall n > \max \{ n_1, n_2 \} \ |x_n + y_n| \leqslant |x_n| + |y_n| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} z_n = 0
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\subsection{Арифметические свойства пределов}
+Пусть даны сходящиеся последовательности~$x_n = a + \alpha_n$ и~$y_n = b + \beta_n$, где $(\alpha_n), (\beta_n)$~--- бесконечно малые величины.
+\begin{enumerate}
+	\item $\displaystyle \lim_{n \to \infty} (x_n + y_n) = a + b$
+	\begin{proof}
+	\begin{equation*}
+	\lim_{n \to \infty} (x_n + y_n) = \lim_{n \to \infty} (a + b + \alpha_n + \beta_n) = a + b
+	\end{equation*}
+	\end{proof}
+	
+	\item $\displaystyle \lim_{n \to \infty} x_n y_n = ab$
+	\begin{proof}
+	\begin{equation*}
+	\lim_{n \to \infty} x_n y_n = \lim_{n \to \infty} (ab + a\beta_n + b\alpha_n + \alpha_n \beta_n) = ab
+	\end{equation*}
+	\end{proof}
+	
+	\item Если $a \neq 0$, то $\displaystyle \lim_{n \to \infty} \frac1{x_n} = \frac1a$
+	\begin{proof}
+	Покажем, что $\displaystyle \left| \frac1{x_n} - \frac1a \right| = \frac{|\alpha_n|}{|a||\alpha_n + a|}$~--- бесконечно малая величина.
+	\begin{equation*}
+	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \frac{|a|}2 \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \forall n > n_0 \ |a| = |a - x_n + x_n| \leqslant |a - x_n| + |x_n| < \frac{|a|}2 + |x_n| \Rightarrow |x_n| > \frac{|a|}2 \Rightarrow \frac1{|x_n|} < \frac2{|a|}
+	\end{equation*}
+	
+	Тогда $\dfrac1{|x_n|} = \dfrac1{|\alpha_n + a|}$~--- ограниченная величина, значит,
+	$\displaystyle \frac{|\alpha_n|}{|a||\alpha_n + a|} = \left| \frac1{x_n} - \frac1a \right|$~--- бесконечно малая величина.
+	Отсюда $\displaystyle \lim_{n \to \infty} \left( \frac1{x_n} - \frac1a \right) = 0 \Leftrightarrow \lim_{n \to \infty} \frac1{x_n} = \frac1a$.
+	\end{proof}
+	
+	\item Если $b \neq 0$, то $\displaystyle \lim_{n \to \infty} \frac{x_n}{y_n} = \frac{a}b$.
+	\begin{proof}
+	\begin{equation*}
+	\lim_{n \to \infty} \frac{x_n}{y_n} =
+	\lim_{n \to \infty} \left( x_n \cdot \frac1{y_n} \right) =
+	a \cdot \frac1b = \frac{a}b
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\subsection{Основные свойства пределов последовательностей}
+\begin{enumerate}
+	\item Из ограниченной последовательности можно выбрать сходящуюся подпоследовательность.
+	\begin{proof}
+	Пусть $A$~--- множество значений, принимаемых членами ограниченной последовательности~$(x_n)$.
+	\begin{enumerate}
+		\item Пусть $A$ конечно.
+		Тогда бесконечное множество членов последовательности~$(x_n)$ принимает хотя~бы одно значение из~$A$, значит, подпоследовательность, состоящая из~них, сходится к этому значению.
+		
+		\item Пусть $A$ бесконечно, тогда оно ограничено, значит, по \hyperref[th:Weierstrass]{теореме Вейерштрасса} оно имеет предельную точку~$a$.
+		В окрестности~$\breve U_1(a)$ содержится хотя~бы одна точка из множества~$A$, а соответствующее значение принимает член~$x_{n_1}$.
+		
+		Рассмотрим множество~$A_1$, полученное из~$A$ удалением значений, принимаемых членами $x_1, x_2, \ldots, x_{n_1}$.
+		$A_1$ бесконечно и имеет предельную точку~$a$, поэтому в окрестности~$\breve U_\frac12(a)$ найдётся значение, принимаемое членом~$x_{n_2}$, причём $n_1 < n_2$.
+		
+		Рассмотрим множество~$A_2$, полученное из~$A_1$ удалением значений, принимаемых членами $x_{n_1 + 1}, x_{n_1 + 2}, \allowbreak \ldots, x_{n_2}$.
+		$A_2$ бесконечно и имеет предельную точку~$a$, поэтому в окрестности~$\breve U_\frac13(a)$ найдётся значение, принимаемое членом~$x_{n_3}$, причём $n_2 < n_3$.
+		
+		Продолжая, получим последовательность~$(x_{n_k}) \colon |x_{n_k} - a| < \dfrac1k$. По следствию~\ref{conseq:small_rational_exists} $\displaystyle \lim_{k \to \infty} x_{n_k} \opbr= a$.
+	\end{enumerate}
+	\end{proof}
+	
+	\item Монотонная ограниченная последовательность~$(x_n)$ сходится.
+	\begin{proof}
+	Для опредёленности предположим, что $\forall n \in \mathbb N \ x_n \leqslant x_{n+1}$.
+	Последовательность ограничена, поэтому множество~$A$ её значений имеет супремум~$a = \sup A$.
+	По утверждению~\ref{st:inequality_of_supremum}
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists k \in \mathbb N \colon a - \varepsilon < x_k \leqslant a \Rightarrow
+	\forall n > k \ a - \varepsilon < x_k \leqslant x_n \leqslant a \Rightarrow
+	|x_n - a| < \varepsilon \Rightarrow \lim_{n \to \infty} x_n = a
+	\end{equation*}
+	\end{proof}
+	
+	\item\index{Лемма!о~вложенных отрезках} \begin{lemma}[о~вложенных отрезках]
+	\label{lemma:about_nested_intervals}
+	Пусть $(a_n), (b_n)$~--- последовательности концов последовательно вложенных друг в~друга отрезков (т.\,е. $[a_n; b_n] \subset [a_{n-1}; b_{n-1}]$), причём $\displaystyle \lim_{n \to \infty} (b_n - a_n) = 0$.
+	Тогда $\displaystyle \bigcap_{k=1}^\infty [a_k; b_k] = \{ a \}$.
+	\end{lemma}
+	\begin{proof}
+	Очевидно, что $(a_n)$ монотонна и ограничена сверху, $(b_n)$ монотонна и ограничена снизу, тогда $\displaystyle \lim_{n \to \infty} a_n = a$, $\displaystyle \lim_{n \to \infty} b_n = b$.
+	Имеем:
+	\begin{equation*}
+	b = \lim_{n \to \infty} b_n = \lim_{n \to \infty} (b_n - a_n + a_n) = \lim_{n \to \infty} (b_n - a_n) + \lim_{n \to \infty} a_n = a
+	\end{equation*}
+	
+	Отрезки последовательно вложены друг в~друга, поэтому $\displaystyle \bigcap_{k=1}^n [a_k; b_k] = [a_n; b_n]$.
+	\begin{equation*}
+	\bigcap_{k=1}^\infty [a_k; b_k] = \lim_{n \to \infty} \bigcap_{k=1}^n [a_k; b_k] = \lim_{n \to \infty} [a_n; b_n] = \{ a \}
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\subsection{Число Эйлера}
+\begin{statement}
+\begin{equation*}
+\exists \lim_{n \to \infty} \left( 1 + \frac1n \right)^n
+\end{equation*}
+\end{statement}
+\begin{proof}
+Рассмотрим последовательность~$(x_n) \colon$
+\begin{equation*}
+x_n = \left( 1 + \frac1n \right)^n = 1 + \frac{n}n + \frac{n(n - 1)}{2n^2} + \frac{n(n - 1)(n - 2)}{2 \cdot 3n^3} + \ldots + \frac{n!}{n!n^n} =
+\end{equation*}
+\begin{equation}
+\label{eq:Euler's_number_1}
+= 2 + \frac1{2!} \left( 1 - \frac1n \right) + \frac1{3!} \left( 1 - \frac1n \right) \left( 1 - \frac2n \right) + \ldots + \frac1{n!} \left( 1 - \frac1n \right) \left( 1 - \frac2n \right) \cdot \ldots \cdot \left( 1 - \frac{n - 1}n \right) <
+\end{equation}
+\begin{equation*}
+< 2 + \frac1{2!} + \frac1{3!} + \ldots + \frac1{n!} < 2 + \frac1{2^1} + \frac1{2^2} + \ldots + \frac1{2^{n-1}} = 2 + 1 - \frac1{2^{n-1}} < 3
+\end{equation*}
+
+Значит, $(x_n)$ ограничена.
+Кроме того, из выражения~(\ref*{eq:Euler's_number_1}) ясно, что $(x_n)$ монотонна.
+Тогда $(x_n)$ сходится.
+\end{proof}
+
+\index{e@$e$} \index{Число!Эйлера} Число~$\displaystyle e = \lim_{n \to \infty} \left( 1 + \frac1n \right)^n = 2{,}718281828\ldots$ называется \textbf{числом Эйлера} (иногда \textbf{числом Непера}, или \textbf{неперовым числом}).
+
+\subsection{Критерий Коши}
+\index{Последовательность!фундаментальная} Последовательность~$(x_n)$ называется \textbf{фундаментальной}, если
+\begin{equation*}
+\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall m, n > n_0 \ |x_n - x_m| < \varepsilon
+\end{equation*}
+
+\begin{theorem}[критерий Коши]
+Последовательность сходится $\Leftrightarrow$ она фундаментальна.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Пусть $\displaystyle \lim_{n \to \infty} x_n = a$, тогда
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \frac\varepsilon2
+	\end{equation*}
+	
+	Пусть $m, n > n_0$.
+	\begin{equation*}
+	|x_n - x_m| = |x_n - a + a - x_m| \leqslant |x_n - a| + |a - x_m| < \frac\varepsilon2 + \frac\varepsilon2 = \varepsilon
+	\end{equation*}
+	
+	\item $\Leftarrow$.
+	\begin{equation*}
+	\exists n_0 \in \mathbb N \colon \forall m, n > n_0 \ |x_n - x_m| < 1 \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow |x_n - x_{n_0 + 1}| < 1 \Rightarrow
+	||x_n| - |x_{n_0 + 1}|| < 1 \Rightarrow
+	|x_n| < |x_{n_0 + 1}| + 1
+	\end{equation*}
+	
+	Значит, $\forall x \in \mathbb N \ |x_n| < \max \{ |x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1 \}$, т.\,е. $(x_n)$ ограничена.
+	
+	Выберем из неё сходящуюся подпоследовательность~$\displaystyle (x_{n_k}): \lim_{k \to \infty} x_{n_k} = a$.
+	\begin{equation*}
+	\forall \varepsilon > 0 \ \exists k_0, n_1 \in \mathbb N \colon \forall k > k_0, n > n_1 \ |x_n - x_{n_k}| < \varepsilon \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\left| \text{ При } k \to \infty \text{ получим } \right|
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow |x_n - a| < \varepsilon \Rightarrow
+	\lim_{n \to \infty} x_n = a
+	\end{equation*}
+\end{enumerate}
+\end{proof}
