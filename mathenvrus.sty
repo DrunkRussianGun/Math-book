@@ -25,52 +25,60 @@
 %	- proofcontra для доказательств методом от противного.
 
 \usepackage[intlimits]{amsmath}
-\usepackage{amsfonts,amssymb}
+\usepackage{amsfonts, amssymb}
 \usepackage{scalerel} % увеличение размера символов
 \usepackage{xparse} % продвинутое создание окружений
 
-\newcommand\opbr[1]
-	{#1\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}}
+\NewDocumentCommand\opbr{m}{%
+	#1\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}%
+}
 
-\newcommand\mult{\mathrel{\raise -0.6mm\hbox{\vdots}}}
-\newcommand\notmult{\mathrel{{\mkern -0.2mu\not}\mult}}
+\NewDocumentCommand\mult{}{\mathrel{\raise -0.6mm\hbox{\vdots}}}
+\NewDocumentCommand\notmult{}{\mathrel{{\mkern -0.2mu\not}\mult}}
 
-\renewcommand\land{\mathbin{\&}}
-\newcommand\bigand{\mathop{\scalerel*{\&}{\sum}}}
-\newcommand\lAnd{\mathrel{\&}}
-\newcommand\lOr{\mathrel{\lor}}
+\RenewDocumentCommand\land{}{\mathbin{\&}}
+\NewDocumentCommand\bigand{}{\mathop{\scalerel*{\&}{\sum}}}
+\NewDocumentCommand\lAnd{}{\mathrel{\&}}
+\NewDocumentCommand\lOr{}{\mathrel{\lor}}
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}
 \DeclareMathOperator\sgn{sgn}
 	
-\newcommand\indbase
-	{\begin{itemize}
-	\item {\it База индукции.\ }}
-\newcommand\indstep
-	{\item {\it Шаг индукции.\ }}
-\newcommand\indend
-	{\end{itemize}}
+\NewDocumentCommand\indbase{}{%
+	\begin{itemize}%
+	\item \textit{База индукции.\ }%
+}
+\NewDocumentCommand\indstep{}{%
+	\item \textit{Шаг индукции.\ }%
+}
+\NewDocumentCommand\indend{}{%
+	\end{itemize}%
+}
 
-\renewcommand{\*}
-	{\discretionary{\hbox{\ensuremath{\cdot}}}{\hbox{\ensuremath{\cdot}}}{}}
+\RenewDocumentCommand{\*}{}{%
+	\discretionary{\hbox{\ensuremath{\cdot}}}{\hbox{\ensuremath{\cdot}}}{}%
+}
 
-\renewcommand{\@begintheorem}[2]
-	{\par{\bf #1\ #2.\ }\samepage\begingroup\sl}
-\renewcommand{\@opargbegintheorem}[3]
-	{\par{\bf #1\ #2\ (#3).\ }\samepage\begingroup\sl}
-\renewcommand{\@endtheorem}{\endgroup}
+\RenewDocumentCommand{\@begintheorem}{mm}{%
+	\par\textbf{#1\ #2.\ }\begingroup\slshape%
+}
+\RenewDocumentCommand{\@opargbegintheorem}{mmm}{%
+	\par\textbf{#1\ #2\ (#3).\ }\begingroup\slshape%
+}
+\RenewDocumentCommand{\@endtheorem}{}{\endgroup}
 
+\newtheorem{theorem}{Теорема}[section]
 \newtheorem{statement}{Утверждение}[section]
 \newtheorem{lemma}{Лемма}[section]
-\newtheorem{theorem}{Теорема}[section]
 \newtheorem{consequent}{Следствие}[section]
+
 \NewDocumentEnvironment{proof}{o}
-	{\par{\bf Доказательство\IfNoValueTF{#1}{}{ #1}.}}
+	{\par\textbf{Доказательство\IfNoValueTF{#1}{}{ #1}.}}
 	{$\scriptstyle\blacksquare$}
-\newenvironment{proofmathind}
-	{\par{\bf Доказательство методом математической индукции.}}
+\NewDocumentEnvironment{proofmathind}{}
+	{\par\textbf{Доказательство методом математической индукции.}}
 	{$\scriptstyle\blacksquare$}
-\newenvironment{proofcontra}
-	{\par{\bf Доказательство методом от противного.}}
+\NewDocumentEnvironment{proofcontra}{}
+	{\par\textbf{Доказательство методом от противного.}}
 	{$\scriptstyle\blacksquare$}

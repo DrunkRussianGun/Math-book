@@ -4,40 +4,55 @@
 Среди длин подынтервалов $\Delta x_i = x_i - x_{i-1}$, $i = 1, \ldots, n$, найдём диаметр $d = \max \{ \Delta x_1, \Delta x_2, \ldots, \Delta x_n \}$ разбиения.
 Выберём множество точек $\xi = \{ \xi_1, \ldots, \xi_n \}$, где $\xi_i \in [x_{i-1}; x_i]$, $i = 1, \ldots, n$.
 
-\textbf{Интегральной суммой Римана} называется сумма $\displaystyle \sigma(f, R, \xi) = \sum_{i=1}^n f(\xi_i) \Delta x_i$.
+\begin{wrapfigure}[10]{r}{0pt}
+\noindent
+\begin{tikzpicture}
+\drawaxis{-0.5}{7}{-0.5}{4};
+\draw[name path=curve] (0.5, 1.5) coordinate (a) to[out=60, in=180] (1.25, 2)
+	to[out=0, in=135] (2, 1.6)
+	to[out=-45, in=180] (2.75, 1)
+	to[out=0, in=-120] (4.5, 3)
+	to[out=60, in=135] (5.5, 3) coordinate (b) node[above right] {$y = f(x)$};
+\printcoordsonaxis[solid]{a}{a};
+\printcoordsonaxis[solid]{b}{b};
+
+\coordinate (x0) at (a);
+\coordinate (x6) at (b);
+
+% разбиваем фигуру на части
+\def\getpoint#1#2{% {имя точки}{значение x}
+	\path[name path=vertical] (#2, \bottom_y) -- (#2, \top_y);
+	\path[name intersections={of=curve and vertical, by=i}]
+		(i) coordinate (#1);
+}
+\foreach \i/\x in {1/1, 2/1.5, 3/2.5, 4/3.75, 5/4.6}
+	\getpoint{x\i}{\x};
+\printcoordsonaxis[solid]{x1}{x_1};
+\printcoordsonaxis[solid]{x2}{x_2};
+\foreach \i in {3, 4}
+	\printcoordsonaxis[solid]{x\i}{};
+\printcoordsonaxis[solid]{x5}{x_{n-1}};
+
+% приближаем её прямоугольниками
+\coordinate (prev) at (x0);
+\foreach \i/\x in {1/0.75, 2/1.25, 3/1.75, 4/3.25, 5/4.3, 6/5}
+{
+	\getpoint{e\i}{\x};
+	\printcoordsonaxis{e\i}{};
+	
+	\draw[dashed] (prev) -- (prev |- e\i) -- (e\i -| x\i) -- (x\i);
+	
+	\coordinate (prev) at (x\i);
+}
+\end{tikzpicture}
+\end{wrapfigure}
+
+\textbf{Интегральной суммой Римана} называется сумма $\displaystyle \sigma(f, R, \xi) \opbr= \sum_{i=1}^n f(\xi_i) \Delta x_i$.
 
 Рассмотрим криволинейную трапецию~$M$, ограниченную прямыми $y = 0$, $x = a$, $x = b$ и кривой $y = f(x)$. Пусть $S$~--- площадь $M$, $S_1, \ldots, S_n$~--- площади трапеций, на которые разбивается $M$ прямыми $x = x_1$, \ldots, $x = x_{n-1}$, тогда
 \begin{equation*}
 S = \sum_{i=1}^n S_i \approx \sum_{i=1}^n f(\xi_i) \Delta x_i = \sigma(f, R, \xi)
 \end{equation*}
-
-\begin{center}
-\noindent
-$\begin{xy} /r12mm/:
-(-0.5, 0); (6, 0) **@{-} *@{>} *++!U{x};
-(0, -0.5); (0, 4) **@{-} *@{>} *++!R{y};
-(1, 2) = "a"; (5, 3.75) = "b" **\crv{(2, 3) & (3, 0) & (4, 4)} *+!D{y = f(x)};
-"a"; (1, 0) **@{-} *++!U{a};
-"b"; (5, 0) **@{-} *++!U{b};
-(1.5, 2.3225) = "x1"; (1.5, 0) **@{-} *++!U{x_1};
-(2, 2.267) = "x2"; (2, 0) **@{-} *++!U{x_2};
-(2.9, 1.72) = "x3"; (2.9, 0) **@{-};
-(3.5, 2.4) = "x4"; (3.5, 0) **@{-};
-(4.2, 3.452) = "x5"; (4.2, 0) **@{-} *++!U{x_{n-1}};
-(1.25, 2.205) = "e1"; (1.25, 0) **@{--} *++++!U{\xi_1};
-"a"; (1, 2.205) **@{--}; (1.5, 2.205) **@{--};
-(1.75, 2.3435) = "e2"; (1.75, 0) **@{--} *++++!U{\xi_2};
-"x1"; (1.5, 2.3435) **@{--}; (2, 2.3435) **@{--}; "x2" **@{--};
-(2.25, 2.109) = "e3"; (2.25, 0) **@{--};
-"x3"; (2.9, 2.109) **@{--}; (2, 2.109) **@{--};
-(3.25, 1.999) = "e4"; (3.25, 0) **@{--};
-"x3"; (2.9, 1.999) **@{--}; (3.5, 1.999) **@{--};
-(3.85, 2.994) = "e5"; (3.85, 0) **@{--};
-"x4"; (3.5, 2.994) **@{--}; (4.2, 2.994) **@{--};
-(4.6, 3.7274) = "e6"; (4.6, 0) **@{--} *++++!U{\xi_n};
-"x5"; (4.2, 3.7274) **@{--}; (5, 3.7274) **@{--};
-\end{xy}$
-\end{center}
 
 Т.\,о., интегральная сумма Римана приближённо равна площади соответствующей криволинейной трапеции.
 

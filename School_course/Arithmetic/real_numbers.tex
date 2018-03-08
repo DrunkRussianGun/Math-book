@@ -106,49 +106,46 @@ $p \mult 2, \ q \mult 2 \Rightarrow \NOD(p, q) \neq 1$.
 
 \subsection{Геометрическое представление вещественных чисел}
 Самой распространённой интерпретацией множества~$\mathbb R$ является бесконечная прямая.
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \noindent
-$\begin{xy} /r5mm/:
-(0, 0) *{\bullet} *++!U{0};
-(5, 0) **@{-};
-(-5, 0) **@{-};
-(1, 0) *{\bullet} *++!U{1};
-(2, 0) *{\bullet} *++!U{2};
-(3, 0) *{\bullet} *++!U{3};
-(-1, 0) *{\bullet} *++!U{-1};
-(-2, 0) *{\bullet} *++!U{-2};
-(-3, 0) *{\bullet} *++!U{-3};
-\end{xy}$
+\begin{tikzpicture}
+\draw (-5, 0) -- (5, 0);
+\foreach \x in {-3, ..., 3}
+	\draw (\x, 0) node {$\bullet$} node[below] {$\x$};
+\end{tikzpicture}
 \caption{Множество~$\mathbb R$ в~виде прямой}
 \end{figure}
 
 Множество~$\mathbb R$ также можно представить в~виде окружности, одна точка которой соответствует нулю, а другая~--- бесконечности.
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \noindent
-$\begin{xy} /r7mm/:
-(0, 0) *\cir<7mm>{};
-(-0.8660, -0.5) *{\bullet} *++!R{-2};
-(-0.5, -0.8660) *{\bullet} *+!UR{-1};
-(0, -1) *{\bullet} *++!U{0};
-(0.5, -0.8660) *{\bullet} *+!UL{1};
-(0.8660, -0.5) *{\bullet} *++!L{2};
-(0, 1) *{\bullet} *++!D{\infty};
-\end{xy}$
+\begin{tikzpicture}
+\draw (0, 0) circle (1);
+\def\angle#1{#1*30-90}
+\def\drawpoint#1#2#3{% {угол}{надпись}{параметры надписи}
+	\draw (#1:1) node {$\bullet$} node[#3] {$#2$}
+}
+
+\foreach \x in {-2, -1}
+	\drawpoint{\angle{\x}}{\x}{below left};
+\drawpoint{\angle{0}}{0}{below};
+\foreach \x in {1, 2}
+	\drawpoint{\angle{\x}}{\x}{below right};
+\drawpoint{90}{\infty}{above};
+\end{tikzpicture}
 \caption{Множество~$\mathbb R$ в~виде окружности}
 \end{figure}
 
-\begin{floatingfigure}[r]{54mm}
+\begin{wrapfigure}{r}{0pt} %54mm
 \noindent
-$\begin{xy} /r5mm/:
-(0, 0) *{\bullet} *++!U{0};
-(5, 0) **@{-} *++!D{a};
-(-5, 0) **@{-};
-(0, 1) *\cir<5mm>{};
-(0, 2) = "inf" *{\bullet} *++!D{\infty};
-(3.75, -0.5) **@{-};
-"inf"; (-2.5, -0.5) **@{-};
-\end{xy}$
-\end{floatingfigure}
+\begin{tikzpicture}[scale=0.5]
+\draw (-5, 0) -- (0, 0) node {$\bullet$} node[below] {$0$} -- (5, 0) node[above] {$a$};
+\draw (0, 1) circle (1);
+\draw (0, 2) coordinate (I) node {$\bullet$} node[above] {$\infty$};
+\draw (I) -- (3.75, -0.5)
+	(I) -- (-2.5, -0.5);
+\end{tikzpicture}
+\end{wrapfigure}
 Покажем, что эти интерпретации взаимозаменяемы.
 Изобразим их так, чтобы точка, соответствующая нулю на прямой~$a$, совпадала с точкой, соответствующей нулю на окружности.
 Теперь из точки, соответствующей бесконечности на окружности, проведём все возможные прямые.

@@ -7,7 +7,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$b$ называется \textbf{пределом функции~$f(x)$ в точке~$a$}, если $\displaystyle \lim_{n \to \infty} f(x_n) = b$ для любой последовательности~$\displaystyle (x_n): \lim_{n \to \infty} x_n = a$.
+	Число~$b$ называется \textbf{пределом функции~$f(x)$ в точке~$a$}, если $\displaystyle \lim_{n \to \infty} f(x_n) = b$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = a$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -90,7 +90,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n): \lim_{n \to \infty} x_n = \infty$.
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = \infty$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -134,7 +134,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n): \lim_{n \to \infty} x_n = +\infty \ (\lim_{n \to \infty} x_n = -\infty)$.
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = +\infty \ (\lim_{n \to \infty} x_n = -\infty)$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -158,10 +158,29 @@
 \lim_{x \to 0} \frac{\sin x}x = 1
 \end{equation*}
 \end{statement}
-\begin{minipage}[c]{122.5mm}\parindent=15pt
+\begin{wrapfigure}{r}{0pt}
+\noindent
+\shorthandoff{"}
+\begin{tikzpicture}[scale=3]
+\clip (-0.15, -0.2) rectangle (1.6, 1.1);
+\draw circle (1);
+\draw (0:1) coordinate["$A$" {below right}] (A) node {$\bullet$}
+	-- (0:0) coordinate["$O$" {left}] (O) node {$\bullet$}
+	-- (45:1) coordinate["$B$" {above right}] (B) node {$\bullet$}
+	-- cycle;
+\draw pic[draw, "$x$", angle eccentricity=1.5, angle radius=3mm] {angle = A--O--B};
+
+\draw[name path=tangent] (B) +(135:1) -- +(-45:2);
+\path[name path=OA] (O) -- (0:2);
+\draw[name intersections={of=OA and tangent, by=C}]
+	(C) node {$\bullet$} node[above right] {$C$} -- (A);
+\end{tikzpicture}
+\shorthandon{"}
+\end{wrapfigure}
 \begin{proof}
 Пусть $x > 0$.
 Рассмотрим сектор~$AOB$ единичного круга ($OA = OB = 1$) с углом~$x$ и касательную~$BC$ к нему.
+
 \begin{equation*}
 S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 \sin x < x < \tg x \Leftrightarrow
@@ -176,20 +195,6 @@ S_{AOB} < S_\text{сект} < S_{BOC} \Leftrightarrow
 
 Для $x < 0$ $\displaystyle \lim_{x \to 0} \frac{\sin x}x = \lim_{x \to 0} \frac{\sin (-x)}{-x} = 1$.
 \end{proof}
-\end{minipage}
-\begin{minipage}[c]{57.5mm}
-$\begin{xy} /r3cm/:
-(0, 0) = "O" *{\bullet} *++!R{O};
-(1.4142, 0) = "C" **@{-} *{\bullet} *++!L{C};
-(0.5, 0.9142) **@{-}; % касательная
-(0.7071, 0.7071) = "B" *{\bullet} *++!DL{B};
-(1, 0) = "A" **@{-} *{\bullet} *++!UR{A};
-"B";  "O" **@{-};
-{"O" \ellipse<3cm>:a(210),^,=:a(75){}};
-{"O" \ellipse<5mm>:a(90),_,:a(45){}};
-(0.23, 0.075) *{x};
-\end{xy}$
-\end{minipage}
 
 Следствия:
 \begin{itemize}

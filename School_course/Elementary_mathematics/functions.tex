@@ -269,23 +269,39 @@ $k$ называется \textbf{угловым коэффициентом}.
 
 График линейной функции~--- прямая.
 \begin{center}
-$\begin{xy} /r8mm/:
-(-3, 0); (3, 0) **@{-} *@{>} *++!U{x};
-(0, -2); (0, 3) **@{-} *@{>} *++!R{y};
-(-3, 2); (3, -1) **@{-} *+++!R{\scriptstyle y = kx + b, \ k < 0};
-{(1, 0) \ellipse<2mm>:a(90),_,:a(-63.435){}} *++!LD{\alpha};
-(-1, 1) = "M"; (-1, 0) **@{--} *++!U{x_0};
-"M"; (0, 1) **@{--} *++!L{y_0};
-\end{xy}$
-$\begin{xy} /r8mm/:
-(-3, 0); (3, 0) **@{-} *@{>} *++!U{x};
-(0, -2); (0, 3) **@{-} *@{>} *++!R{y};
-(-2, -2); (3, 2.5) **@{-} *+!DR{\scriptstyle y = kx + b, \ k > 0};
-{(0.222, 0) \ellipse<3mm>:a(48.013),^,:a(90){}};
-(0.9, 0.25) *{\alpha};
-(1.5, 1.15) = "M"; (1.5, 0) **@{--} *++!U{x_0};
-"M"; (0, 1.15) **@{--} *++!R{y_0};
-\end{xy}$
+\shorthandoff{"}
+\begin{tikzpicture}
+\drawaxis{-3}{3}{-2}{3};
+
+\def\func#1{-1/2*#1 + 0.5}
+\draw[name path=plot] (\left_x, \func{\left_x}) coordinate (start)
+	-- (\right_x, \func{\right_x}) coordinate[pos=0.3](point)
+	node[below left] {$y = kx + b$, $k < 0$};
+
+% указываем угол \alpha
+\coordinate (x) at (\right_x, 0);
+\draw[name intersections={of=plot and x_axis, by=zero}]
+	pic[draw, "$\alpha$", angle eccentricity=1.5, angle radius=3mm] {angle = x--zero--start};
+
+\printcoordsonaxis{point}{x_0}{y_0}[right];
+\end{tikzpicture}
+\begin{tikzpicture}
+\drawaxis{-3}{3}{-2}{3};
+
+\def\func#1{#1 - 0.5}
+\draw[name path=plot] (\left_x, \func{\left_x})
+	-- (\right_x, \func{\right_x}) coordinate (end)
+	coordinate[pos=0.8](point)
+	node[above left] {$y = kx + b$, $k > 0$};
+
+% указываем угол \alpha
+\coordinate (x) at (\right_x, 0);
+\draw[name intersections={of=plot and x_axis, by=zero}]
+	pic[draw, "$\alpha$", angle eccentricity=1.6, angle radius=3mm] {angle = x--zero--end};
+
+\printcoordsonaxis{point}{x_0}{y_0};
+\end{tikzpicture}
+\shorthandon{"}
 \end{center}
 
 Докажем, что $k = \tg \alpha$.
@@ -354,18 +370,18 @@ x + \frac{b}{2a} = \pm\frac{\sqrt{b^2 - 4ac}}{2a} \Leftrightarrow
 При $a < 0$ её \textbf{ветви} направлены вниз, а при $a > 0$~--- вверх.
 Точка наименьшего или наибольшего значения функции называется \textbf{вершиной параболы} (на рисунках обозначена через $M$), которая имеет координаты~$\bigl( -\frac{b}{2a}, -\frac{b^2 - 4ac}{4a} \bigr)$.
 \begin{center}
-$\begin{xy} /r8mm/:
-(-2, 0); (2, 0) **@{-} *@{>} *++!U{x};
-(0, -3); (0, 3) **@{-} *@{>} *++!R{y};
-(-2, -3); (1.5, -3) **\crv{(-0.25, 5)} *++!L{\scriptstyle y = ax^2 + bx + c, \ a < 0};
-(-0.25, 1) *{\bullet} *+!DR{M};
-\end{xy}$
-$\begin{xy} /r8mm/:
-(-2, 0); (2, 0) **@{-} *@{>} *++!U{x};
-(0, -3); (0, 3) **@{-} *@{>} *++!R{y};
-(-1, 3); (2, 3) **\crv{(0.5, -2)} *++!L{\scriptstyle y = ax^2 + bx + c, \ a > 0};
-(0.5, 0.5) *{\bullet} *+!UL{M};
-\end{xy}$
+\begin{tikzpicture}
+\drawaxis{-2}{2}{-3}{3};
+\draw (-0.25, 1) coordinate (M) node {$\bullet$} node[above] {$M$}
+	(\left_x, \bottom_y) parabola bend (M) (1.5, \bottom_y)
+	node[above left,rotate=-75] {$\scriptstyle y = ax^2 + bx + c$, $\scriptstyle a < 0$};
+\end{tikzpicture}
+\begin{tikzpicture}
+\drawaxis{-2}{2}{-3}{3};
+\draw (0.25, 0.5) coordinate (M) node {$\bullet$} node[below] {$M$}
+	(-1, \top_y) parabola bend (M) (1.5, \top_y)
+	node[below left, rotate=70] {$\scriptstyle y = ax^2 + bx + c$, $\scriptstyle a > 0$};
+\end{tikzpicture}
 \end{center}
 
 \subsection{Рациональная функция}
