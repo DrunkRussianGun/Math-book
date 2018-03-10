@@ -58,7 +58,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 
 \subsection{Таблица первообразных}
 \begin{itemize}
-	\item $\displaystyle \int x^n\,dx = \frac{x^{n+1}}{n + 1} + C, \ n \neq -1$
+	\item $\displaystyle \int x^n\,dx = \frac{x^{n+1}}{n + 1} + C$, $n \neq -1$
 	
 	\item $\displaystyle \int \frac{dx}{x + a} = \ln |x + a| + C$
 	\begin{proof}
@@ -67,7 +67,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{x^2 + a^2} = \frac1a \arctg \frac{x}a + C, \ a > 0$
+	\item $\displaystyle \int \frac{dx}{x^2 + a^2} = \frac1a \arctg \frac{x}a + C$, $a > 0$
 	\begin{proof}
 	\begin{equation*}
 	\int \frac{dx}{x^2 + a^2} =
@@ -77,7 +77,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\end{equation*}
 	\end{proof}
 	
-	\item Т.\,н. <<высокий логарифм>>: $\displaystyle \int \frac{dx}{x^2 - a^2} = \frac1{2a} \ln \left| \frac{x - a}{x + a} \right| + C, \ a > 0$
+	\item Т.\,н. <<высокий логарифм>>: $\displaystyle \int \frac{dx}{x^2 - a^2} = \frac1{2a} \ln \left| \frac{x - a}{x + a} \right| + C$, $a > 0$
 	\begin{proof}
 	\begin{equation*}
 	\int \frac{dx}{x^2 - a^2} =
@@ -87,23 +87,23 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{x}{x^2 + a} dx = \frac12 \ln |x^2 + a| + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{x}{x^2 + a}\,dx = \frac12 \ln |x^2 + a| + C$, $a \neq 0$
 	\begin{proof}
 	\begin{equation*}
-	\int \frac{x}{x^2 + a} dx =
+	\int \frac{x}{x^2 + a}\,dx =
 	\frac12 \int \frac{d(x^2 + a)}{x^2 + a} =
 	\frac12 \ln |x^2 + a| + C
 	\end{equation*}
 	\end{proof}
 	
-	\item Т.\,н. <<длинный логарифм>>: $\displaystyle \int \frac{dx}{\sqrt{x^2 + a}} = \ln \left| x + \sqrt{x^2 + a} \right| + C, \ a \neq 0$
+	\item Т.\,н. <<длинный логарифм>>: $\displaystyle \int \frac{dx}{\sqrt{x^2 + a}} = \ln \left| x + \sqrt{x^2 + a} \right| + C$, $a \neq 0$
 	\begin{proof}
 	Пусть $k = \sqrt{|a|}$.
 	\begin{enumerate}
 		\item Пусть $a < 0$, $x = \dfrac{k}{\sin t}$.
 		\begin{equation*}
 		\int \frac{dx}{\sqrt{x^2 - k^2}} =
-		-\int \frac{\cos t}{\sin^2 t \cdot \sqrt{\frac1{\sin^2 t} - 1}}dt =
+		-\int \frac{\cos t}{\sin^2 t \cdot \sqrt{\frac1{\sin^2 t} - 1}}\,dt =
 		-\int \frac{dt}{\sin t} =
 		\int \frac{d(\cos t)}{1 - \cos^2 t} =
 		-\frac12 \ln \left| \frac{\cos t - 1}{\cos t + 1} \right| + C_1 =
@@ -154,23 +154,23 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\end{enumerate}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}a + C, \ a > 0$
+	\item $\displaystyle \int \frac{dx}{\sqrt{a^2 - x^2}} = \arcsin \frac{x}a + C$, $a > 0$
 	\begin{proof}
 	Пусть $x = a \sin t$, тогда
 	\begin{equation*}
 	\int \frac{dx}{\sqrt{a^2 - x^2}} =
-	a \int \frac{\cos t}{a \sqrt{1 - \sin^2 t}} dt =
+	a \int \frac{\cos t}{a \sqrt{1 - \sin^2 t}}\,dt =
 	\int dt =
 	t + C =
 	\arcsin \frac{x}a + C
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{x}{\sqrt{a^2 \pm x^2}} dx = \pm \sqrt{a^2 \pm x^2} + C, \ a \neq 0$
+	\item $\displaystyle \int \frac{x}{\sqrt{a^2 \pm x^2}}\,dx = \pm \sqrt{a^2 \pm x^2} + C$, $a \neq 0$
 	\begin{proof}
 	\begin{equation*}
-	\int \frac{x}{\sqrt{a^2 \pm x^2}} dx =
-	\pm \frac12 \int (a^2 \pm x^2)^{-\tfrac12} d(a^2 \pm x^2) =
+	\int \frac{x}{\sqrt{a^2 \pm x^2}}\,dx =
+	\pm \frac12 \int (a^2 \pm x^2)^{-\tfrac12}\,d(a^2 \pm x^2) =
 	\pm \sqrt{a^2 \pm x^2} + C
 	\end{equation*}
 	\end{proof}
@@ -182,7 +182,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation*}
 	\int \ln x\,dx =
 	\int \ln x \cdot 1 \cdot dx =
-	x \ln x - \int \frac{x}x dx =
+	x \ln x - \int \frac{x}x\,dx =
 	x \ln x - x + C
 	\end{equation*}
 	\end{proof}
@@ -199,7 +199,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{proof}
 	\begin{equation*}
 	\int \tg x\,dx =
-	\int \frac{\sin x}{\cos x} dx =
+	\int \frac{\sin x}{\cos x}\,dx =
 	-\int \frac{d(\cos x)}{\cos x} =
 	-\ln |\cos x| + C
 	\end{equation*}
@@ -209,7 +209,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{proof}
 	\begin{equation*}
 	\int \ctg x\,dx =
-	\int \frac{\cos x}{\sin x} dx =
+	\int \frac{\cos x}{\sin x}\,dx =
 	\int \frac{d(\sin x)}{\sin x} =
 	\ln |\sin x| + C
 	\end{equation*}
@@ -220,10 +220,10 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation*}
 	\int \arcsin x =
 	\int \arcsin x \cdot 1 \cdot dx =
-	x \arcsin x - \int \frac{x}{\sqrt{1 - x^2}} dx =
+	x \arcsin x - \int \frac{x}{\sqrt{1 - x^2}}\,dx =
 	\end{equation*}
 	\begin{equation*}
-	= x \arcsin x + \frac12 \int (1 - x^2)^{-\tfrac12} d(1 - x^2) =
+	= x \arcsin x + \frac12 \int (1 - x^2)^{-\tfrac12}\,d(1 - x^2) =
 	x \arcsin x + \sqrt{1 - x^2} + C
 	\end{equation*}
 	\end{proof}
@@ -233,10 +233,10 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation*}
 	\int \arccos x =
 	\int \arccos x \cdot 1 \cdot dx =
-	x \arccos x + \int \frac{x}{\sqrt{1 - x^2}} dx =
+	x \arccos x + \int \frac{x}{\sqrt{1 - x^2}}\,dx =
 	\end{equation*}
 	\begin{equation*}
-	= x \arccos x - \frac12 \int (1 - x^2)^{-\tfrac12} d(1 - x^2) =
+	= x \arccos x - \frac12 \int (1 - x^2)^{-\tfrac12}\,d(1 - x^2) =
 	x \arccos x - \sqrt{1 - x^2} + C
 	\end{equation*}
 	\end{proof}
@@ -246,7 +246,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation*}
 	\int \arctg x =
 	\int \arctg x \cdot 1 \cdot dx =
-	x \arctg x - \int \frac{x}{1 + x^2} dx =
+	x \arctg x - \int \frac{x}{1 + x^2}\,dx =
 	\end{equation*}
 	\begin{equation*}
 	= x \arctg x - \frac12 \int \frac{d(1 + x^2)}{1 + x^2} =
@@ -259,7 +259,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation*}
 	\int \arcctg x =
 	\int \arcctg x \cdot 1 \cdot dx =
-	x \arcctg x + \int \frac{x}{1 + x^2} dx =
+	x \arcctg x + \int \frac{x}{1 + x^2}\,dx =
 	\end{equation*}
 	\begin{equation*}
 	= x \arcctg x + \frac12 \int \frac{d(1 + x^2)}{1 + x^2} =
@@ -283,25 +283,25 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\end{equation*}
 	\end{proof}
 	
-	\item $\displaystyle \int \frac{x + a}{(x - b)^2 + c^2} dx =
+	\item $\displaystyle \int \frac{x + a}{(x - b)^2 + c^2}\,dx =
 	\frac12 \ln ((x - b)^2 + c^2) + \frac{a + b}c \arctg \frac{x - b}c + C$
 	\begin{proof}
 	\begin{equation*}
-	\int \frac{x + a}{(x - b)^2 + c^2} dx \;
+	\int \frac{x + a}{(x - b)^2 + c^2}\,dx \;
 	\left| \text{Пусть } t = x - b \Rightarrow dt = dx \right| =
-	\int \frac{t + b + a}{t^2 + c^2} dt =
+	\int \frac{t + b + a}{t^2 + c^2}\,dt =
 	\end{equation*}
 	\begin{equation*}
-	= \int \frac{t}{t^2 + c^2} dt + (a + b) \int \frac{dt}{t^2 + c^2} =
+	= \int \frac{t}{t^2 + c^2}\,dt + (a + b) \int \frac{dt}{t^2 + c^2} =
 	\frac12 \ln ((x - b)^2 + c^2) + \frac{a + b}c \arctg \frac{x - b}c + C
 	\end{equation*}
 	\end{proof}
 	
-	\item Интеграл~$\displaystyle \int \frac{x + a}{((x - b)^2 + c^2)^n} dx$ при~$n \neq 1$ нельзя взять непосредственно.
+	\item Интеграл~$\displaystyle \int \frac{x + a}{((x - b)^2 + c^2)^n}\,dx$ при~$n \neq 1$ нельзя взять непосредственно.
 	
 	Пусть $\displaystyle I_n = \int \frac{dx}{((x - b)^2 + c^2)^n}$, тогда
 	\begin{equation*}
-	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx =
+	\int \frac{x + a}{((x - b)^2 + c^2)^n}\,dx =
 	(a + b)I_n - \frac1{2(n - 1)((x - b)^2 + c^2)^{n-1}}
 	\end{equation*}
 	\begin{equation*}
@@ -311,10 +311,10 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	\begin{equation}
 	\label{eq:int_of_simple_frac_proof1}
 	\begin{gathered}
-	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx \;
+	\int \frac{x + a}{((x - b)^2 + c^2)^n}\,dx \;
 	\left| \text{Пусть } t = x - b \Rightarrow dt = dx \right| =
-	\int \frac{t + b + a}{(t^2 + c^2)^n} dt = \\
-	\int \frac{t}{(t^2 + c^2)^n} dt + (a + b) \int \frac{dt}{(t^2 + c^2)^n} =
+	\int \frac{t + b + a}{(t^2 + c^2)^n}\,dt = \\
+	\int \frac{t}{(t^2 + c^2)^n}\,dt + (a + b) \int \frac{dt}{(t^2 + c^2)^n} =
 	\frac12 \int (t^2 + c^2)^{-n}\,d(t^2 + c^2) + (a + b) \int \frac{dt}{(t^2 + c^2)^n} = \\
 	\left| \text{Пусть } I_n = \int \frac{dt}{(t^2 + c^2)^n} \right| =
 	\frac{(t^2 + c^2)^{1-n}}{2(1 - n)} + (a + b)I_n
@@ -323,17 +323,17 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	
 	Найдём $I_n$:
 	\begin{equation*}
-	I_n = \frac1{c^2} \int \frac{(t^2 + c^2) - t^2}{(t^2 + c^2)^n} dt =
-	\frac{I_{n-1}}{c^2} - \frac1{c^2} \int \frac{t^2}{(t^2 + c^2)^n} dt
+	I_n = \frac1{c^2} \int \frac{(t^2 + c^2) - t^2}{(t^2 + c^2)^n}\,dt =
+	\frac{I_{n-1}}{c^2} - \frac1{c^2} \int \frac{t^2}{(t^2 + c^2)^n}\,dt
 	\end{equation*}
 	
-	Найдём $\displaystyle \int \frac{t^2}{(t^2 + c^2)^n} dt$:
+	Найдём $\displaystyle \int \frac{t^2}{(t^2 + c^2)^n}\,dt$:
 	\begin{equation*}
-	\int \frac{t^2}{(t^2 + c^2)^n} dt =
+	\int \frac{t^2}{(t^2 + c^2)^n}\,dt =
 	\left| \text{Пусть } u = t, v' = \frac{t}{(t^2 + c^2)^n} \right|
 	\end{equation*}
 	\begin{equation*}
-	= \frac{t(t^2 + c^2)^{1-n}}{2(1 - n)} - \int \frac{(t^2 + c^2)^{1-n}}{2(1 - n)} dt =
+	= \frac{t(t^2 + c^2)^{1-n}}{2(1 - n)} - \int \frac{(t^2 + c^2)^{1-n}}{2(1 - n)}\,dt =
 	\frac{t}{2(1 - n)(t^2 + c^2)^{n-1}} - \frac{I_{n-1}}{2(1 - n)}
 	\end{equation*}
 	
@@ -350,7 +350,7 @@ uv + C = \int du\,v + \int u\,dv \Rightarrow
 	
 	Используя (\ref{eq:int_of_simple_frac_proof1}), получим конечную формулу:
 	\begin{equation*}
-	\int \frac{x + a}{((x - b)^2 + c^2)^n} dx =
+	\int \frac{x + a}{((x - b)^2 + c^2)^n}\,dx =
 	\frac{(t^2 + c^2)^{1-n}}{2(1 - n)} + (a + b)I_n =
 	(a + b)I_n - \frac1{2(n - 1)((x - b)^2 + c^2)^{n-1}}
 	\end{equation*}
@@ -374,19 +374,19 @@ Q_m(x) = \prod_{i=1}^{p} (x - a_i)^{\alpha_i} \cdot \prod_{i=1}^{q} ((x - b_i)^2
 \subsection{Интегрирование тригонометрических выражений}
 Пусть $R(x_1, \ldots, x_n) = \dfrac{P(x_1, \ldots, x_n)}{Q(x_1, \ldots, x_n)}$, где $P(\overline x)$ и $Q(\overline x)$~--- многочлены.
 \begin{itemize}
-	\item $\int R(\sin x) \cos^{2k+1} x\,dx = \int R(\sin x) (1 - \sin^2 x)^k\,d(\sin x), \ k \in \mathbb Z$
+	\item $\int R(\sin x) \cos^{2k+1} x\,dx = \int R(\sin x) (1 - \sin^2 x)^k\,d(\sin x)$, $k \in \mathbb Z$
 	
-	\item $\int R(\cos x) \sin^{2k+1} x\,dx = -\int R(\cos x) (1 - \cos^2 x)^k\,d(\cos x), \ k \in \mathbb Z$
+	\item $\int R(\cos x) \sin^{2k+1} x\,dx = -\int R(\cos x) (1 - \cos^2 x)^k\,d(\cos x)$, $k \in \mathbb Z$
 	
 	\item $\displaystyle \int R(\sin^2 x, \cos^2 x)\,dx = \int \frac
 	{R\left( \frac{\tg^2 x}{1 + \tg^2 x}, \frac1{1 + \tg^2 x} \right)}
-	{1 + \tg^2 x} d(\tg x)$
+	{1 + \tg^2 x}\,d(\tg x)$
 	
-	\item $\displaystyle \int R(\tg x)\,dx = \int \frac{R(\tg x)}{1 + \tg^2 x} d(\tg x)$
+	\item $\displaystyle \int R(\tg x)\,dx = \int \frac{R(\tg x)}{1 + \tg^2 x}\,d(\tg x)$
 	
 	\item $\displaystyle \int R(\sin x, \cos x)\,dx = \int \frac
 	{2R\left( \frac{2\tg \frac{x}2}{1 + \tg^2 \frac{x}2}, \frac{1 - \tg^2 \frac{x}2}{1 + \tg^2 \frac{x}2} \right)}
-	{1 + \tg^2 \frac{x}2} d(\tg \frac{x}2)$
+	{1 + \tg^2 \frac{x}2}\,d(\tg \frac{x}2)$
 \end{itemize}
 
 Т.\,о., интегрирование тригонометрических выражений сводится к интегрированию рациональных дробей.
@@ -413,10 +413,10 @@ Q_m(x) = \prod_{i=1}^{p} (x - a_i)^{\alpha_i} \cdot \prod_{i=1}^{q} ((x - b_i)^2
 	\begin{equation*}
 	= \frac\beta\alpha \int \frac
 	{R\left( \frac\beta\alpha \tg t - \frac{b}{2a}, \beta \sqrt{\tg^2 t + 1} \right)}
-	{\cos^2 t} dt =
+	{\cos^2 t}\,dt =
 	\frac\beta\alpha \int \frac
 	{R\left( \frac{\beta \sin t}{\alpha \cos t} - \frac{b}{2a}, \frac\beta{\cos t} \right)}
-	{\cos^2 t} dt
+	{\cos^2 t}\,dt
 	\end{equation*}
 	
 	\item Если $a > 0$, $z < 0$
@@ -427,10 +427,10 @@ Q_m(x) = \prod_{i=1}^{p} (x - a_i)^{\alpha_i} \cdot \prod_{i=1}^{q} ((x - b_i)^2
 	\begin{equation*}
 	= -\frac\beta\alpha \int \frac
 	{R\left( \frac\beta{\alpha \sin t} - \frac{b}{2a}, \beta \sqrt{\frac1{\sin^2 t} - 1} \right) \cos t}
-	{\sin^2 t} dt =
+	{\sin^2 t}\,dt =
 	-\frac\beta\alpha \int \frac
 	{R\left( \frac\beta{\alpha \sin t} - \frac{b}{2a}, \frac{\beta \cos t}{\sin t} \right) \cos t}
-	{\sin^2 t} dt
+	{\sin^2 t}\,dt
 	\end{equation*}
 	
 	\item Если $a < 0$, $z > 0$
