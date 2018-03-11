@@ -7,7 +7,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$b$ называется \textbf{пределом функции~$f(x)$ в точке~$a$}, если $\displaystyle \lim_{n \to \infty} f(x_n) = b$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = a$.
+	Число~$b$ называется \textbf{пределом функции~$f(x)$ в точке~$a$}, если $\lim\limits_{n \to \infty} f(x_n) = b$ для любой последовательности~$(x_n) \colon \lim\limits_{n \to \infty} x_n = a$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -17,11 +17,11 @@
 	\end{equation*}
 \end{enumerate}
 
-Предел функции~$f(x)$ в точке~$a$ обозначается $\displaystyle \lim_{x \to a} f(x)$.
+Предел функции~$f(x)$ в точке~$a$ обозначается $\lim\limits_{x \to a} f(x)$.
 \begin{proof}[эквивалентности]
 \begin{enumerate}
 	\item (2) $\Rightarrow$ (1).
-	Пусть $\displaystyle \lim_{n \to \infty} x_n = a$, тогда
+	Пусть $\lim\limits_{n \to \infty} x_n = a$, тогда
 	\begin{equation*}
 	\forall \delta > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \delta \Rightarrow
 	\forall \varepsilon > 0 \ |f(x_n) - b| < \varepsilon \Rightarrow
@@ -40,26 +40,28 @@
 	\forall n \in \mathbb N \ \exists x_n \colon |x_n - a| < \frac1n \lAnd |f(x_n) - b| \geqslant \varepsilon_0
 	\end{equation*}
 	
-	Получили последовательность $\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = a, \ \lim_{n \to \infty} f(x_n) \neq b$.
+	Получили последовательность $(x_n) \colon \lim\limits_{n \to \infty} x_n = a \lAnd \lim\limits_{n \to \infty} f(x_n) \neq b$.
 	Противоречие.
 \end{enumerate}
 \end{proof}
 
-Также можно определить односторонние пределы.
+Также определяются односторонние пределы.
 
 Число~$b$ называется \textbf{левым пределом}, или \textbf{пределом слева}, \textbf{функции~$f(x)$ в точке~$a$}, если
 \begin{equation*}
 \forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \ (0 < a - x < \delta \Rightarrow |f(x) - b| < \varepsilon)
 \end{equation*}
-и обозначается $\displaystyle \lim_{x \to a-0} f(x)$.
+и обозначается $\lim\limits_{x \to a-0} f(x)$.
 
 Число~$b$ называется \textbf{правым пределом}, или \textbf{пределом справа}, \textbf{функции~$f(x)$ в точке~$a$}, если
 \begin{equation*}
 \forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \ (0 < x - a < \delta \Rightarrow |f(x) - b| < \varepsilon)
 \end{equation*}
-и обозначается $\displaystyle \lim_{x \to a+0} f(x)$.
+и обозначается $\lim\limits_{x \to a+0} f(x)$.
 
-Т.\,о., $\displaystyle \lim_{x \to a} f(x) = b \Leftrightarrow \lim_{x \to a-0} f(x) = \lim_{x \to a+0} f(x) = b$.
+При $a = 0$ также существуют обозначения $\lim\limits_{x \to -0} f(x)$ и $\lim\limits_{x \to +0} f(x)$ для левого и правого пределов соответственно.
+
+Т.\,о., $\lim\limits_{x \to a} f(x) = b \Leftrightarrow \lim\limits_{x \to a-0} f(x) = \lim\limits_{x \to a+0} f(x) = b$.
 
 С помощью определения по Гейне и свойств предела последовательности доказываются свойства предела функции в~точке.
 
@@ -69,19 +71,19 @@
 	\item \begin{theorem}[о двух милиционерах]
 	\index{Теорема!о двух милиционерах}
 	\label{th:about_two_policemen}
-	Если в окрестности точки~$a$ $f(x) \leqslant g(x) \leqslant h(x)$, $\displaystyle \lim_{x \to a} f(x) \opbr= \lim_{x \to a} h(x) \opbr= b$, то $\displaystyle \lim_{x \to a} g(x) = b$.
+	Если в окрестности точки~$a$ $f(x) \leqslant g(x) \leqslant h(x)$, $\lim\limits_{x \to a} f(x) \opbr= \lim\limits_{x \to a} h(x) \opbr= b$, то $\lim\limits_{x \to a} g(x) = b$.
 	\end{theorem}
-	\item Если в окрестности точки~$a$ $f(x) \geqslant 0$, $\displaystyle \lim_{x \to a} f(x) = b$, то $b \geqslant 0$.
-	\item $\displaystyle \lim_{x \to a} f(x) = b \Rightarrow \lim_{x \to a} |f(x)| = |b|$.
+	\item Если в окрестности точки~$a$ $f(x) \geqslant 0$, $\lim\limits_{x \to a} f(x) = b$, то $b \geqslant 0$.
+	\item $\lim\limits_{x \to a} f(x) = b \Rightarrow \lim\limits_{x \to a} |f(x)| = |b|$.
 \end{enumerate}
 
 Арифметические свойства.
-Пусть $\displaystyle \lim_{x \to x_0} f(x) = a$, $\displaystyle \lim_{x \to x_0} g(x) = b$.
+Пусть $\lim\limits_{x \to x_0} f(x) = a$, $\lim\limits_{x \to x_0} g(x) = b$.
 \begin{enumerate}
-	\item $\displaystyle \lim_{x \to x_0} (f(x) + g(x)) = a + b$
-	\item $\displaystyle \lim_{x \to x_0} f(x)g(x) = ab$
-	\item Если $a \neq 0$, то $\displaystyle \lim_{x \to x_0} \frac1{f(x)} = \frac1a$
-	\item Если $b \neq 0$, то $\displaystyle \lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{a}b$
+	\item $\lim\limits_{x \to x_0} (f(x) + g(x)) = a + b$
+	\item $\lim\limits_{x \to x_0} f(x)g(x) = ab$
+	\item Если $a \neq 0$, то $\lim\limits_{x \to x_0} \frac1{f(x)} = \frac1a$
+	\item Если $b \neq 0$, то $\lim\limits_{x \to x_0} \frac{f(x)}{g(x)} = \frac{a}b$
 \end{enumerate}
 
 \subsection{Предел функции на бесконечности}
@@ -90,7 +92,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = \infty$.
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если $\lim\limits_{n \to \infty} f(x_n) = a$ для любой последовательности~$(x_n) \colon \lim\limits_{n \to \infty} x_n = \infty$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -100,11 +102,11 @@
 	\end{equation*}
 \end{enumerate}
 
-Предел функции~$f(x)$ на бесконечности обозначается $\displaystyle \lim_{x \to \infty} f(x)$.
+Предел функции~$f(x)$ на бесконечности обозначается $\lim\limits_{x \to \infty} f(x)$.
 \begin{proof}[эквивалентности]
 \begin{enumerate}
 	\item (2) $\Rightarrow$ (1).
-	Пусть $\displaystyle \lim_{n \to \infty} x_n = \infty$, тогда
+	Пусть $\lim\limits_{n \to \infty} x_n = \infty$, тогда
 	\begin{equation*}
 	\forall M > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n| > M \Rightarrow
 	\end{equation*}
@@ -125,7 +127,7 @@
 	\forall n \in \mathbb N \ \exists x_n \colon |x_n| > n \lAnd |f(x_n) - a| \geqslant \varepsilon_0
 	\end{equation*}
 	
-	Получили последовательность $\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = \infty, \ \lim_{n \to \infty} f(x_n) \neq a$.
+	Получили последовательность $(x_n) \colon \lim\limits_{n \to \infty} x_n = \infty \lAnd \lim\limits_{n \to \infty} f(x_n) \neq a$.
 	Противоречие.
 \end{enumerate}
 \end{proof}
@@ -134,7 +136,7 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если $\displaystyle \lim_{n \to \infty} f(x_n) = a$ для любой последовательности~$\displaystyle (x_n) \colon \lim_{n \to \infty} x_n = +\infty \ (\lim_{n \to \infty} x_n = -\infty)$.
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если $\lim\limits_{n \to \infty} f(x_n) = a$ для любой последовательности~$(x_n) \colon \lim\limits_{n \to \infty} x_n = +\infty \ (\lim\limits_{n \to \infty} x_n = -\infty)$.
 	
 	\item \textbf{Определение по Коши}
 	
@@ -168,7 +170,7 @@
 	-- (0:0) coordinate["$O$" {left}] (O) node {$\bullet$}
 	-- (45:1) coordinate["$B$" {above right}] (B) node {$\bullet$}
 	-- cycle;
-\draw pic[draw, "$x$", angle eccentricity=1.5, angle radius=3mm] {angle = A--O--B};
+\draw pic[draw, "$x$", angle eccentricity=1.7, angle radius=3mm] {angle = A--O--B};
 
 \draw[name path=tangent] (B) +(135:1) -- +(-45:2);
 \path[name path=OA] (O) -- (0:2);

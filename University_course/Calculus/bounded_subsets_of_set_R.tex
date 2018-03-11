@@ -54,10 +54,10 @@ $\forall \varepsilon > 0 \ \exists x \in A \colon a - \varepsilon < x \leqslant 
 $\forall x \in \mathbb R \ \exists k \in \mathbb Z \colon (k - 1)h \leqslant x < kh$.
 \end{theorem}
 \begin{proof}
-Рассмотрим множество~$A = \left\{ z \in \mathbb Z \mid z > \dfrac{x}h \right\}$, тогда $\exists a = \inf A$.
+Рассмотрим множество~$A = \left\{ z \in \mathbb Z \mid z > \frac{x}h \right\}$, тогда $\exists a = \inf A$.
 По утверждению~\ref*{st:inequality_of_infimum}
 $\forall \varepsilon \in \nobreak (0; 1] \ \exists z_0 \colon a \leqslant z_0 < a + \varepsilon$.
-Т.\,к. в~промежутке~$[a; a + 1)$ лежит только одно целое число, то $a = z_0$, тогда $a - 1 \leqslant \dfrac{x}h < a$.
+Т.\,к. в~промежутке~$[a; a + 1)$ лежит только одно целое число, то $a = z_0$, тогда $a - 1 \leqslant \frac{x}h < a$.
 Т.\,о., $a$~--- искомое значение~$k$.
 \end{proof}
 
@@ -87,14 +87,14 @@ $\forall \varepsilon \in \nobreak (0; 1] \ \exists z_0 \colon a \leqslant z_0 < 
 \end{equation*}
 \end{consequent}
 \begin{proof}
-Из следствия~\ref*{conseq:small_rational_exists} для $\varepsilon = b - a$ получим $\exists n \in \mathbb N \colon \dfrac1n < b - a$.
-По принципу Архимеда для $h = \dfrac1n$, $x = a$ получим:
+Из следствия~\ref*{conseq:small_rational_exists} для $\varepsilon = b - a$ получим $\exists n \in \mathbb N \colon \frac1n < b - a$.
+По принципу Архимеда для $h = \frac1n$, $x = a$ получим:
 \begin{equation*}
 \exists k \in \mathbb Z \colon \frac{k - 1}n \leqslant a < \frac{k}n \Rightarrow
 a < \frac{k}n = \frac{k - 1}n + \frac1n < a + (b - a) = b
 \end{equation*}
 
-Т.\,о., $\dfrac{k}n$~--- искомое значение~$c$.
+Т.\,о., $\frac{k}n$~--- искомое значение~$c$.
 \end{proof}
 
 \index{Точка!предельная} Точка~$a \in \mathbb R$ называется \textbf{предельной точкой множества~$A \subset \mathbb R$}, если

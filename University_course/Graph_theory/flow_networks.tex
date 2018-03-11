@@ -6,17 +6,17 @@
 \index{Поток} \textbf{Потоком в сети~$(V, E)$} называется функция~$p \colon E \to R^+$ такая, что
 \begin{itemize}
 	\item $\forall (i, j) \in E \ p(i, j) \leqslant q(i, j)$;
-	\item $\displaystyle \forall k \in V \setminus \{ s, t \} \ \sum_{(i, k) \in E} p(i, k) = \sum_{(k, j) \in E} p(k, j)$, где $s$~--- источник, $t$~--- сток.
+	\item $\forall k \in V \setminus \{ s, t \} \ \sum\limits_{(i, k) \in E} p(i, k) = \sum\limits_{(k, j) \in E} p(k, j)$, где $s$~--- источник, $t$~--- сток.
 \end{itemize}
 
 \index{Разрез} \textbf{Разрезом в сети~$(V, E)$} называется разбиение множества вершин на два подмножества $V$ и $\overline V$ таких, что $s \in X$, $t \in \overline X$, где $s$~--- источник, $t$~--- сток.
 
-\textbf{Пропускной способностью разреза} называется сумма $\displaystyle \sum_{\begin{smallmatrix}
+\textbf{Пропускной способностью разреза} называется сумма $\sum\limits_{\begin{smallmatrix}
 i \in X \\
 j \in \overline X
 \end{smallmatrix}} q(i, j)$.
 
-\textbf{Потоком разреза} называется сумма $\displaystyle \sum_{\begin{smallmatrix}
+\textbf{Потоком разреза} называется сумма $\sum\limits_{\begin{smallmatrix}
 i \in X \\
 j \in \overline X
 \end{smallmatrix}} p(i, j) -

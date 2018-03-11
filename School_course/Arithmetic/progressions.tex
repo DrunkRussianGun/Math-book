@@ -13,7 +13,7 @@ $\forall n \in \mathbb N \ a_n = a_1 + d(n - 1)$.
 \end{proofmathind}
 
 \begin{theorem}[характеристическое свойство арифметической прогрессии]
-$(a_n)$~--- арифметическая прогрессия $\Leftrightarrow \forall n \in \mathbb N \setminus \{ 1 \} \ a_n = \dfrac{a_{n-1} + a_{n+1}}2$.
+$(a_n)$~--- арифметическая прогрессия $\Leftrightarrow$ $\forall n \in \mathbb N \setminus \{ 1 \} \ a_n = \dfrac{a_{n-1} + a_{n+1}}2$.
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
@@ -41,7 +41,7 @@ $(a_n)$~--- арифметическая прогрессия $\Leftrightarrow \
 
 \begin{lemma}
 \begin{equation*}
-\forall i, j \in \mathbb N \ (i + j = n + 1 \Rightarrow a_i + a_j = a_1 + a_n)
+\forall i, j \in \mathbb N \ i + j = n + 1 \Rightarrow a_i + a_j = a_1 + a_n
 \end{equation*}
 \end{lemma}
 \begin{proof}
@@ -57,20 +57,20 @@ a_1 + a_n
 
 \begin{theorem}
 \begin{equation*}
-\sum_{i=1}^n a_i = \frac{a_1 + a_n}2 \cdot n
+\sum_{k=1}^n a_k = \frac{a_1 + a_n}2 \cdot n
 \end{equation*}
 \end{theorem}
 \begin{proof}
 \begin{equation*}
-2 \sum_{i=1}^n a_i =
-\sum_{i=1}^n (a_i + a_i) =
-\sum_{i=1}^n (a_i + a_{n-i+1}) \;
-\left| i + (n - i + 1) = n + 1 \right| =
-\sum_{i=1}^n (a_1 + a_n) =
+2 \sum_{k=1}^n a_k =
+\sum_{k=1}^n (a_k + a_k) =
+\sum_{k=1}^n (a_k + a_{n-k+1}) \;
+\left| k + (n - k + 1) = n + 1 \right| =
+\sum_{k=1}^n (a_1 + a_n) =
 n(a_1 + a_n) \Leftrightarrow
 \end{equation*}
 \begin{equation*}
-\Leftrightarrow \sum_{i=1}^n a_i = \frac{a_1 + a_n}2 \cdot n
+\Leftrightarrow \sum_{k=1}^n a_k = \frac{a_1 + a_n}2 \cdot n
 \end{equation*}
 \end{proof}
 
@@ -98,10 +98,10 @@ $(b_n)$~--- геометрическая прогрессия $\Leftrightarrow \
 	\sqrt{b_{n-1} b_{n+1}}
 	\end{equation*}
 	
-	\item $\Leftarrow$. Пусть $q = \frac{b_2}{b_1}$.
-	Докажем методом математической индукции, что $\forall n \in \mathbb N \ \frac{b_{n+1}}{b_n} = q$.
-		\indbase $\frac{b_2}{b_1} = q$ по определению.
-		\indstep Пусть $\frac{b_{n+1}}{b_n} = q$.
+	\item $\Leftarrow$. Пусть $q = \dfrac{b_2}{b_1}$.
+	Докажем методом математической индукции, что $\forall n \in \mathbb N \ \dfrac{b_{n+1}}{b_n} = q$.
+		\indbase $\dfrac{b_2}{b_1} = q$ по определению.
+		\indstep Пусть $\dfrac{b_{n+1}}{b_n} = q$.
 		\begin{equation*}
 		|b_{n+1}| = \sqrt{b_n b_{n+2}} \Leftrightarrow
 		b_{n+1}^2 = b_n b_{n+2} \Leftrightarrow
@@ -109,25 +109,25 @@ $(b_n)$~--- геометрическая прогрессия $\Leftrightarrow \
 		\end{equation*}
 		\indend
 		
-	Тогда $\forall n \in \mathbb N \ b_{n+1} = b_n q \Rightarrow (b_n)$~--- геометрическая прогрессия.
+	Тогда $\forall n \in \mathbb N \ b_{n+1} = b_n q$ $\Rightarrow$ $(b_n)$~--- геометрическая прогрессия.
 \end{enumerate}
 \end{proof}
 
 \begin{theorem}
 \begin{equation*}
-\sum_{i=1}^n b_i = \frac{b_1(q^n - 1)}{q - 1} = \frac{b_n q - b_1}{q - 1}, \ q \neq 1
+\sum_{k=1}^n b_k = \frac{b_1(q^n - 1)}{q - 1} = \frac{b_n q - b_1}{q - 1}, \ q \neq 1
 \end{equation*}
 \end{theorem}
 \begin{proof}
 \begin{equation*}
-(q - 1) \sum_{i=1}^n b_i =
-\sum_{i=1}^n (b_{i+1} - b_i) =
+(q - 1) \sum_{k=1}^n b_k =
+\sum_{k=1}^n (b_{k+1} - b_k) =
 b_{n+1} - b_1 \Leftrightarrow
-\sum_{i=1}^n b_i = \frac{b_n q - b_1}{q - 1} = \frac{b_1(q^n - 1)}{q - 1}
+\sum_{k=1}^n b_k = \frac{b_n q - b_1}{q - 1} = \frac{b_1(q^n - 1)}{q - 1}
 \end{equation*}
 \end{proof}
 
-Если $q = 1$, то очевидно, что $\displaystyle \sum_{i=1}^n b_i = b_1 n$.
+Если $q = 1$, то очевидно, что $\sum\limits_{k=1}^n b_k = b_1 n$.
 
 Геометрическая прогрессия называется \textbf{бесконечно убывающей}, если модуль её знаменателя меньше~$1$.
-В этом случае $\displaystyle \sum_{i=1}^\infty b_i = \frac{b_1}{1 - q}$.
+В этом случае $\sum\limits_{k=1}^\infty b_k = \frac{b_1}{1 - q}$.

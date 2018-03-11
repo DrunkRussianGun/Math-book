@@ -23,7 +23,7 @@ f_1 = \Phi_1(g_1, g_2, \ldots) \lAnd f_2 = \Phi_2(g_1, g_2, \ldots) \lAnd \ldots
 Свойства замыкания:
 \begin{enumerate}
 	\item $F \subseteq [F]$;
-	\item $[[F]] = [F]$, т.\,к. $[[F]]$~--- множество функций, реализуемых формулами над~$[F]$, которые реализуются формулами над~$F$;
+	\item $\bigl[ [F] \bigr] = [F]$, т.\,к. $\bigl[ [F] \bigr]$~--- множество функций, реализуемых формулами над~$[F]$, которые реализуются формулами над~$F$;
 	\item $F \subseteq K \Rightarrow [F] \subseteq [K]$, т.\,к. формула над~$F$ является формулой над~$K$.
 \end{enumerate}
 
@@ -217,7 +217,7 @@ K(\sigma_1, \ldots, \sigma_k) = 1 \lAnd f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \
 \begin{proof}
 Пусть $K = x_1 \land \ldots \land x_k$~--- простой импликант монотонной булевой функции~$f(x_1, \ldots, x_n)$, $f = K \lor f'$.
 Каждый импликант $f'$ должен содержать один из литералов $x_{k+1}, \ldots, x_n$, т.\,к. $K$~--- простой импликант.
-Тогда при $x_1 = \ldots = x_k = 1$, $x_{k+1} = \ldots = x_n = 0$ имеем $f(x_1, \ldots, x_n) = 1$, $f'(x_1, \ldots, x_n) = 0 \Rightarrow f \neq f' \Rightarrow$ из сокращённой ДНФ нельзя вычеркнуть ни один из конъюнктов, поэтому она тупиковая.
+Тогда при $x_1 = \ldots = x_k = 1$, $x_{k+1} = \ldots = x_n = 0$ имеем $f(x_1, \ldots, x_n) = 1$, $f'(x_1, \ldots, x_n) = 0 \Rightarrow f \neq f'$ $\Rightarrow$ из сокращённой ДНФ нельзя вычеркнуть ни один из конъюнктов, поэтому она тупиковая.
 \end{proof}
 
 \subsubsection{Класс \texorpdfstring{$L$}{} линейных функций}

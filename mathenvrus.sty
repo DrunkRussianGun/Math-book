@@ -6,20 +6,27 @@
 %	- \bigand — n-арная версия \land (печатается увеличенным символом);
 %	- \lAnd — знак конъюнкции для связывания высказываний;
 %	- \lOr — знак дизъюнкции для связывания высказываний;
+%
 %	- \Arg — печатает Arg в математической моде;
 %	- \grad — печатает grad в математической моде;
 %	- \sgn — печатает sgn в математической моде;
+%
 %	- \indbase (induction base) — оформление базы математической индукции;
 %	- \indstep (induction step) — оформление шага математической индукции;
-%	- \indend (induction end) — конец метода математической индукции.
+%	- \indend (induction end) — конец метода математической индукции;
+%
+%	- \series — печатает обозначение ряда в математической моде.
+%
 % - переопределённые команды:
 %	- \* — работает аналогично \opbr\cdot, но при отсутствии переноса строки ничего не делает;
 %	- \land — теперь печатает &.
+%
 % - новые окружения:
 %	- statement для утверждений;
 %	- lemma для лемм;
 %	- theorem для теорем;
 %	- consequent для следствий;
+%
 %	- proof[пояснение] для доказательств;
 %	- proofmathind для доказательств методом математической индукции;
 %	- proofcontra для доказательств методом от противного.
@@ -56,6 +63,8 @@
 	\end{itemize}%
 }
 
+\NewDocumentCommand\series{}{\sum\limits_{k=1}^\infty}
+
 \RenewDocumentCommand{\*}{}{%
 	\discretionary{\hbox{\ensuremath{\cdot}}}{\hbox{\ensuremath{\cdot}}}{}%
 }
@@ -69,9 +78,9 @@
 \RenewDocumentCommand{\@endtheorem}{}{\endgroup}
 
 \newtheorem{theorem}{Теорема}[section]
-\newtheorem{statement}{Утверждение}[section]
-\newtheorem{lemma}{Лемма}[section]
-\newtheorem{consequent}{Следствие}[section]
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{consequent}[theorem]{Следствие}
 
 \NewDocumentEnvironment{proof}{o}
 	{\par\textbf{Доказательство\IfNoValueTF{#1}{}{ #1}.}}

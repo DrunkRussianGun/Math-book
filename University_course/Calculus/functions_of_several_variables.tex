@@ -16,7 +16,7 @@
 
 \subsection{Непрерывность функции нескольких переменных}
 \index{Функция!нескольких переменных!непрерывная} Функция~$f(\overline x)$ называется \textbf{непрерывной в точке~$\overline x_0$}, если
-$\displaystyle \lim_{\rho(\overline x, \overline x_0) \to 0} f(\overline x) = f(\overline x_0)$.
+$\lim\limits_{\rho(\overline x, \overline x_0) \to 0} f(\overline x) = f(\overline x_0)$.
 
 Функция~$f(\overline x)$ называется \textbf{непрерывной на множестве}, если она непрерывна в~каждой точке этого множества.
 
@@ -65,7 +65,7 @@ a_k \Delta x_k + o(|\Delta x_k|)
 Если $f_{x_i x_j}''$ и~$f_{x_j x_i}''$ непрерывны, то $f_{x_i x_j}'' = f_{x_j x_i}''$.
 \end{theorem}
 
-\textbf{Дифференциалом функции~$f(\overline x)$ в точке~$\overline x_0$} называется величина $\displaystyle \sum_{k=1}^n f_{x_k}'(\overline x_0) dx_k$, являющаяся линейной частью приращения функции и обозначаемая $df(\overline x_0)$.
+\textbf{Дифференциалом функции~$f(\overline x)$ в точке~$\overline x_0$} называется величина $\sum\limits_{k=1}^n f_{x_k}'(\overline x_0) dx_k$, являющаяся линейной частью приращения функции и обозначаемая $df(\overline x_0)$.
 По аналогии с частными производными произвольного порядка вводятся дифференциалы произвольного порядка.
 
 \hyperref[eq:Taylor_series]{Формулу Тейлора} можно обобщить на случай нескольких переменных:
@@ -158,32 +158,21 @@ d^2f(x_0, y_0) = f_{xx}''(x_0, y_0)\,dx^2 + 2f_{xy}''(x_0, y_0)\,dx\,dy + f_{yy}
 
 \begin{theorem}
 \label{th:sufficient_condition_of_local_extremum}
-Пусть дана функция~$f(\overline x) = f(x_1, \ldots, x_n)$.
-Точка $\overline x_0 = (x_{10}, \ldots, x_{n0})$~--- точка локального экстремума $f(\overline x)$, если
-\begin{enumerate}
-	\item $\displaystyle f_{x_1}'(\overline x_0) = \ldots = f_{x_n}'(\overline x_0) = 0$
-	\item $\displaystyle \sum_{
-	\begin{smallmatrix}
-	i = \overline{1, n} \\
-	j = \overline{1, n}
-	\end{smallmatrix}
-	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j$ сохраняет знак.
-\end{enumerate}
-
-\begin{enumerate}
-	\item $\overline x_0$~--- точка локального минимума, если $\displaystyle \sum_{
+Пусть дана функция~$f(\overline x) = f(x_1, \ldots, x_n)$ и $f_{x_1}'(\overline x_0) = \ldots = f_{x_n}'(\overline x_0) = 0$ в некоторой точке~$\overline x_0 \opbr= (x_{10}, \ldots, x_{n0})$.
+\begin{itemize}
+	\item $\overline x_0$~--- точка локального минимума, если $\sum\limits_{
 	\begin{smallmatrix}
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
 	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j > 0$.
-	\item $\overline x_0$~--- точка локального максимума, если $\displaystyle \sum_{
+	\item $\overline x_0$~--- точка локального максимума, если $\sum\limits_{
 	\begin{smallmatrix}
 	i = \overline{1, n} \\
 	j = \overline{1, n}
 	\end{smallmatrix}
 	} f_{x_i x_j}''(\overline x_0)\,dx_i\,dx_j < 0$.
-\end{enumerate}
+\end{itemize}
 \end{theorem}
 \begin{proof}
 По \hyperref[eq:Taylor_series_for_several_variables]{формуле Тейлора}
@@ -280,7 +269,7 @@ r = \sqrt{\frac
 \begin{equation*}
 \begin{cases}
 g_1(x_1, \ldots, x_n) = 0 \\
-\vdots \\
+\ldots \\
 g_m(x_1, \ldots, x_n) = 0
 \end{cases}
 \end{equation*}

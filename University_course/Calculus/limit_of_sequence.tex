@@ -48,7 +48,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 \begin{enumerate}
 	\item Последовательность может иметь не более одного предела.
 	\begin{proof}
-	Пусть $\displaystyle a = \lim_{n \to \infty} x_n$, $\displaystyle b = \lim_{n \to \infty} x_n$.
+	Пусть $a = \lim\limits_{n \to \infty} x_n$, $b = \lim\limits_{n \to \infty} x_n$.
 	Тогда
 	\begin{equation*}
 	\forall \varepsilon > 0 \
@@ -65,7 +65,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	\item \begin{theorem}[о~двух милиционерах]
 	\index{Теорема!о двух милиционерах}
 	Пусть $\forall n \in \mathbb N \ x_n \leqslant y_n \leqslant z_n$.
-	Если $\displaystyle \lim_{n \to \infty} x_n = \lim_{n \to \infty} z_n = a$, то $\displaystyle \lim_{n \to \infty} y_n = a$.
+	Если $\lim\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} z_n = a$, то $\lim\limits_{n \to \infty} y_n = a$.
 	\end{theorem}
 	\begin{proof}
 	\begin{equation*}
@@ -78,7 +78,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	\end{equation*}
 	\end{proof}
 	
-	\item Если $\displaystyle \forall n \in \mathbb N \ x_n \geqslant 0, \ \lim_{n \to \infty} x_n = a$, то $a \geqslant 0$.
+	\item Если $\forall n \in \mathbb N \ x_n \geqslant 0 \lAnd \lim\limits_{n \to \infty} x_n = a$, то $a \geqslant 0$.
 	\begin{proofcontra}
 	Пусть $a < 0$.
 	\begin{equation*}
@@ -90,27 +90,27 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	Противоречие.
 	\end{proofcontra}
 	
-	\item Если $\displaystyle \lim_{n \to \infty} x_n = a$, то $\displaystyle \lim_{n \to \infty} |x_n| = |a|$.
+	\item Если $\lim\limits_{n \to \infty} x_n = a$, то $\lim\limits_{n \to \infty} |x_n| = |a|$.
 	\begin{proof}
 	\begin{equation*}
 	\begin{cases}
 	|a| - |x_n| \leqslant |a - x_n| \\
 	|x_n| - |a| \leqslant |x_n - a|
 	\end{cases}
-	\Rightarrow ||x_n| - |a|| \leqslant |x_n - a|
+	\Rightarrow \bigl| |x_n| - |a| \bigr| \leqslant |x_n - a|
 	\end{equation*}
 	
 	Тогда
 	\begin{equation*}
 	\lim_{n \to \infty} x_n = a \Rightarrow
-	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ ||x_n| - |a|| \leqslant |x_n - a| < \varepsilon \Rightarrow
+	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ \bigl| |x_n| - |a| \bigr| \leqslant |x_n - a| < \varepsilon \Rightarrow
 	\lim_{n \to \infty} |x_n| = |a|
 	\end{equation*}
 	\end{proof}
 	
 	\item Если последовательность~$(x_n)$ сходится, то она ограничена.
 	\begin{proof}
-	Пусть $\displaystyle \lim_{n \to \infty} x_n = a \Rightarrow \lim_{n \to \infty} |x_n| = |a|$.
+	Пусть $\lim\limits_{n \to \infty} x_n = a \Rightarrow \lim\limits_{n \to \infty} |x_n| = |a|$.
 	Получим:
 	\begin{equation*}
 	\exists n_0 \in \mathbb N \colon \forall n > n_0 \ ||x_n| - |a|| < 1 \Rightarrow |x_n| < |a| + 1
@@ -161,7 +161,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	\end{equation*}
 	\end{proof}
 	
-	\item Если $a \neq 0$, то $\displaystyle \lim_{n \to \infty} \frac1{x_n} = \frac1a$
+	\item Если $a \neq 0$, то $\lim\limits_{n \to \infty} \frac1{x_n} = \frac1a$
 	\begin{proof}
 	Покажем, что $\displaystyle \left| \frac1{x_n} - \frac1a \right| = \frac{|\alpha_n|}{|a||\alpha_n + a|}$~--- бесконечно малая величина.
 	\begin{equation*}
@@ -176,7 +176,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	Отсюда $\displaystyle \lim_{n \to \infty} \left( \frac1{x_n} - \frac1a \right) = 0 \Leftrightarrow \lim_{n \to \infty} \frac1{x_n} = \frac1a$.
 	\end{proof}
 	
-	\item Если $b \neq 0$, то $\displaystyle \lim_{n \to \infty} \frac{x_n}{y_n} = \frac{a}b$.
+	\item Если $b \neq 0$, то $\lim\limits_{n \to \infty} \frac{x_n}{y_n} = \frac{a}b$.
 	\begin{proof}
 	\begin{equation*}
 	\lim_{n \to \infty} \frac{x_n}{y_n} =
@@ -204,7 +204,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 		Рассмотрим множество~$A_2$, полученное из~$A_1$ удалением значений, принимаемых членами $x_{n_1 + 1}, x_{n_1 + 2}, \allowbreak \ldots, x_{n_2}$.
 		$A_2$ бесконечно и имеет предельную точку~$a$, поэтому в окрестности~$\breve U_\frac13(a)$ найдётся значение, принимаемое членом~$x_{n_3}$, причём $n_2 < n_3$.
 		
-		Продолжая, получим последовательность~$(x_{n_k}) \colon |x_{n_k} - a| < \dfrac1k$. По следствию~\ref{conseq:small_rational_exists} $\displaystyle \lim_{k \to \infty} x_{n_k} \opbr= a$.
+		Продолжая, получим последовательность~$(x_{n_k}) \colon |x_{n_k} - a| < \frac1k$. По следствию~\ref{conseq:small_rational_exists} $\lim\limits_{k \to \infty} x_{n_k} = a$.
 	\end{enumerate}
 	\end{proof}
 	
@@ -220,19 +220,20 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 	\end{equation*}
 	\end{proof}
 	
-	\item\index{Лемма!о~вложенных отрезках} \begin{lemma}[о~вложенных отрезках]
+	\item \begin{lemma}[о~вложенных отрезках]
+	\index{Лемма!о~вложенных отрезках}
 	\label{lemma:about_nested_intervals}
-	Пусть $(a_n), (b_n)$~--- последовательности концов последовательно вложенных друг в~друга отрезков (т.\,е. $[a_n; b_n] \subset [a_{n-1}; b_{n-1}]$), причём $\displaystyle \lim_{n \to \infty} (b_n - a_n) = 0$.
-	Тогда $\displaystyle \bigcap_{k=1}^\infty [a_k; b_k] = \{ a \}$.
+	Пусть $(a_n), (b_n)$~--- последовательности концов последовательно вложенных друг в~друга отрезков (т.\,е. $[a_n; b_n] \subset [a_{n-1}; b_{n-1}]$), причём $\lim\limits_{n \to \infty} (b_n - a_n) = 0$.
+	Тогда $\bigcap\limits_{k=1}^\infty [a_k; b_k] = \{ a \}$.
 	\end{lemma}
 	\begin{proof}
-	Очевидно, что $(a_n)$ монотонна и ограничена сверху, $(b_n)$ монотонна и ограничена снизу, тогда $\displaystyle \lim_{n \to \infty} a_n = a$, $\displaystyle \lim_{n \to \infty} b_n = b$.
+	Очевидно, что $(a_n)$ монотонна и ограничена сверху, $(b_n)$ монотонна и ограничена снизу, тогда $\lim\limits_{n \to \infty} a_n = a$, $\lim\limits_{n \to \infty} b_n = b$.
 	Имеем:
 	\begin{equation*}
 	b = \lim_{n \to \infty} b_n = \lim_{n \to \infty} (b_n - a_n + a_n) = \lim_{n \to \infty} (b_n - a_n) + \lim_{n \to \infty} a_n = a
 	\end{equation*}
 	
-	Отрезки последовательно вложены друг в~друга, поэтому $\displaystyle \bigcap_{k=1}^n [a_k; b_k] = [a_n; b_n]$.
+	Отрезки последовательно вложены друг в~друга, поэтому $\bigcap\limits_{k=1}^n [a_k; b_k] = [a_n; b_n]$.
 	\begin{equation*}
 	\bigcap_{k=1}^\infty [a_k; b_k] = \lim_{n \to \infty} \bigcap_{k=1}^n [a_k; b_k] = \lim_{n \to \infty} [a_n; b_n] = \{ a \}
 	\end{equation*}
@@ -241,9 +242,7 @@ $\exists a > 0 \colon \forall n \in \mathbb N \allowbreak |x_n| < a$.
 
 \subsection{Число Эйлера}
 \begin{statement}
-\begin{equation*}
-\exists \lim_{n \to \infty} \left( 1 + \frac1n \right)^n
-\end{equation*}
+$\exists \lim\limits_{n \to \infty} \left( 1 + \frac1n \right)^n$.
 \end{statement}
 \begin{proof}
 Рассмотрим последовательность~$(x_n) \colon$
@@ -263,7 +262,7 @@ x_n = \left( 1 + \frac1n \right)^n = 1 + \frac{n}n + \frac{n(n - 1)}{2n^2} + \fr
 Тогда $(x_n)$ сходится.
 \end{proof}
 
-\index{e@$e$} \index{Число!Эйлера} Число~$\displaystyle e = \lim_{n \to \infty} \left( 1 + \frac1n \right)^n = 2{,}718281828\ldots$ называется \textbf{числом Эйлера} (иногда \textbf{числом Непера}, или \textbf{неперовым числом}).
+\index{e@$e$} \index{Число!Эйлера} Число~$e = \lim\limits_{n \to \infty} \left( 1 + \frac1n \right)^n = 2{,}718281828\ldots$ называется \textbf{числом Эйлера} (иногда \textbf{числом Непера}, или \textbf{неперовым числом}).
 
 \subsection{Критерий Коши}
 \index{Последовательность!фундаментальная} Последовательность~$(x_n)$ называется \textbf{фундаментальной}, если
@@ -272,11 +271,12 @@ x_n = \left( 1 + \frac1n \right)^n = 1 + \frac{n}n + \frac{n(n - 1)}{2n^2} + \fr
 \end{equation*}
 
 \begin{theorem}[критерий Коши]
+\label{th:Cauchy_criterion}
 Последовательность сходится $\Leftrightarrow$ она фундаментальна.
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
-	\item $\Rightarrow$. Пусть $\displaystyle \lim_{n \to \infty} x_n = a$, тогда
+	\item $\Rightarrow$. Пусть $\lim\limits_{n \to \infty} x_n = a$, тогда
 	\begin{equation*}
 	\forall \varepsilon > 0 \ \exists n_0 \in \mathbb N \colon \forall n > n_0 \ |x_n - a| < \frac\varepsilon2
 	\end{equation*}
@@ -298,7 +298,7 @@ x_n = \left( 1 + \frac1n \right)^n = 1 + \frac{n}n + \frac{n(n - 1)}{2n^2} + \fr
 	
 	Значит, $\forall x \in \mathbb N \ |x_n| < \max \{ |x_1| + 1, |x_2| + 1, \ldots, |x_{n_0}| + 1 \}$, т.\,е. $(x_n)$ ограничена.
 	
-	Выберем из неё сходящуюся подпоследовательность~$\displaystyle (x_{n_k}): \lim_{k \to \infty} x_{n_k} = a$.
+	Выберем из неё сходящуюся подпоследовательность~$(x_{n_k}): \lim\limits_{k \to \infty} x_{n_k} = a$.
 	\begin{equation*}
 	\forall \varepsilon > 0 \ \exists k_0, n_1 \in \mathbb N \colon \forall k > k_0, n > n_1 \ |x_n - x_{n_k}| < \varepsilon \Rightarrow
 	\end{equation*}
