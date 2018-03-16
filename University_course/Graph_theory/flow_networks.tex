@@ -6,21 +6,94 @@
 \index{Поток} \textbf{Потоком в сети~$(V, E)$} называется функция~$p \colon E \to R^+$ такая, что
 \begin{itemize}
 	\item $\forall (i, j) \in E \ p(i, j) \leqslant q(i, j)$;
-	\item $\forall k \in V \setminus \{ s, t \} \ \sum\limits_{(i, k) \in E} p(i, k) = \sum\limits_{(k, j) \in E} p(k, j)$, где $s$~--- источник, $t$~--- сток.
+	\item $\forall k \in V \setminus \{ s, t \} \ \sum\limits_{(i, k) \in E} p(i, k) = \sum\limits_{(k, j) \in E} p(k, j)$.
 \end{itemize}
 
-\index{Разрез} \textbf{Разрезом в сети~$(V, E)$} называется разбиение множества вершин на два подмножества $V$ и $\overline V$ таких, что $s \in X$, $t \in \overline X$, где $s$~--- источник, $t$~--- сток.
+\index{Разрез} \textbf{Разрезом в сети~$(V, E)$} называется разбиение множества вершин на два подмножества $V$ и $\overline V$ таких, что $s \in X$, $t \in \overline X$.
 
-\textbf{Пропускной способностью разреза} называется сумма $\sum\limits_{\begin{smallmatrix}
-i \in X \\
-j \in \overline X
-\end{smallmatrix}} q(i, j)$.
+\textbf{Пропускной способностью разреза} называется сумма $\sum\limits_{i \in X, j \in \overline X} q(i, j)$.
 
-\textbf{Потоком разреза} называется сумма $\sum\limits_{\begin{smallmatrix}
-i \in X \\
-j \in \overline X
-\end{smallmatrix}} p(i, j) -
-\sum_{\begin{smallmatrix}
-i \in X \\
-j \in \overline X
-\end{smallmatrix}} p(j, i)$.
+\textbf{Величиной потока через разрез~$(X, \overline X)$} называется сумма $\sum\limits_{i \in X, j \in \overline X} p(i, j) -
+\sum\limits_{i \in X, j \in \overline X} p(j, i)$ и обозначается $p(X, \overline X)$.
+
+\begin{lemma}
+Величина потока через любой разрез одна и та же.
+\end{lemma}
+\begin{proof}
+Пусть $(X, \overline X)$~--- разрез сети~$(V, E)$, причём $s \neq j \in X$.
+Рассмотрим разрез~$(X \setminus \{ j \}, \overline X \cup \{ j \})$.
+\begin{equation*}
+p(X \setminus \{ j \}, \overline X \cup \{ j \}) = p(X, \overline X) +
+\sum_{i \in X} p(i, j) + \sum_{i \in \overline X} p(i, j) -
+\sum_{i \in X} p(j, i) - \sum_{i \in \overline X} (j, i) =
+\end{equation*}
+\begin{equation*}
+= p(X, \overline X) + \sum_{i \in V} p(i, j) - \sum_{i \in V} p(j, i) =
+p(X, \overline X)
+\end{equation*}
+\end{proof}
+
+Т.\,о., \textbf{величиной потока} называется величина потока через любой разрез и обозначается $|p|$.
+
+\begin{consequent}
+$\sum\limits_{i \in V} p(s, i) = \sum\limits_{i \in V} p(i, t)$.
+\end{consequent}
+
+\begin{lemma}
+Для любого потока~$p$ верно $\forall (X, \overline X) \ p(X, \overline X) \leqslant q(X, \overline X)$.
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+p(X, \overline X) =
+\sum_{i \in X, j \in \overline X} p(i, j) - \sum_{i \in X, j \in \overline X} p(j, i) \leqslant
+\sum_{i \in X, j \in \overline X} p(i, j) \leqslant
+\sum_{i \in X, j \in \overline X} q(i, j) =
+q(X, \overline X)
+\end{equation*}
+\end{proof}
+
+Разрез с минимальной пропускной способностью называется \textbf{минимальным разрезом}.
+
+Поток максимальной величины называется \textbf{максимальным потоком}.
+
+\begin{lemma}
+Если $p_0(X_0, \overline X_0) = q(X_0, \overline X_0)$, то $(X_0, \overline X_0)$~--- минимальный разрез, а $p_0$~--- максимальный поток.
+\end{lemma}
+\begin{proof}
+Пусть $p$~--- произвольный поток, $(X, \overline X)$~--- произвольный разрез.
+\begin{itemize}
+	\item $|p_0| = q(X_0, \overline X_0) \geqslant |p|$
+	\item $q(X_0, \overline X_0) = |p_0| \leqslant q(X, \overline X)$
+\end{itemize}
+\end{proof}
+
+\subsection{Алгоритмы нахождения максимального потока}
+\subsubsection{Алгоритм Форда"--~Фалкерсона}
+\index{Алгоритм!Форда---Фалкерсона}
+Изначально считаем, что $\forall i, j \in V \ p(i, j) = 0$.
+Также пометим источник~$s^{(-, \infty)}$.
+\begin{enumerate}
+	\item Помечаем вершины, смежные с помеченными, следующим образом: $i^{(x^\pm, \varepsilon)} \rightarrow j^{(i^+, \min(\varepsilon, q_{ij} - p_{ij}))}$, если $q_{ij} - p_{ij} > 0$, или $i^{(x^\pm, \varepsilon)} \leftarrow j^{(i^-, \min(\varepsilon, p_{ij}))}$, если $p_{ij} > 0$, где $i$~--- уже помеченная вершина.
+	Если сток не достигнут, то поток максимален, иначе пометили~$t^{(x^+, \delta)}$.
+	
+	\item Идём в обратном направлении.
+	Если в вершину $u$ пришли по $(i, u)$-дуге, то увеличиваем поток~$p(i, u)$ на~$\delta$, а если по $(u, i)$-дуге, то уменьшаем $p(i, u)$ на~$\delta$.
+	Т.\,о., величина потока увеличилась на~$\delta > 0$.
+\end{enumerate}
+
+Повторяя, увеличим поток до максимума, т.\,е. в какой-то момент не сможем пометить следующую вершину.
+Получим некоторый разрез~$(X, \overline X)$.
+
+\begin{lemma}
+Найденный поток максимален, а разрез минимален.
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+|p| = \sum_{i \in X, j \in \overline X} p(i, j) - \sum_{i \in X, j \in \overline X} p(j, i)
+\end{equation*}
+
+Т.\,к. из $i$ нельзя попасть в~$j$ и из~$j$ нельзя попасть в~$i$, где $i \in X$, $j \in \overline X$, то $p(i, j) = q(i, j)$, $p(j, i) = 0$, тогда
+\begin{equation*}
+|p| = \sum_{i \in X, j \in \overline X} q(i, j)
+\end{equation*}
+\end{proof}

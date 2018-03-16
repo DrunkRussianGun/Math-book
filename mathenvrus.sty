@@ -15,7 +15,7 @@
 %	- \indstep (induction step) — оформление шага математической индукции;
 %	- \indend (induction end) — конец метода математической индукции;
 %
-%	- \series — печатает обозначение ряда в математической моде.
+%	- \series[первый номер] — печатает обозначение ряда в математической моде.
 %
 % - переопределённые команды:
 %	- \* — работает аналогично \opbr\cdot, но при отсутствии переноса строки ничего не делает;
@@ -63,7 +63,7 @@
 	\end{itemize}%
 }
 
-\NewDocumentCommand\series{}{\sum\limits_{k=1}^\infty}
+\NewDocumentCommand\series{O{1}}{\sum\limits_{k=#1}^\infty}
 
 \RenewDocumentCommand{\*}{}{%
 	\discretionary{\hbox{\ensuremath{\cdot}}}{\hbox{\ensuremath{\cdot}}}{}%

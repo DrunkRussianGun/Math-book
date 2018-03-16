@@ -1,7 +1,7 @@
 \section{Числовые ряды}
 Пусть дана бесконечная последовательность~$(a_n)$, $S_n = \sum\limits_{k=1}^n a_k$.
 
-\index{Ряд} \textbf{Числовым рядом} называется совокупность последовательностей $(a_n)$ и $(S_n)$ и обозначается $\series a_k$.
+\index{Ряд!числовой} \textbf{Числовым рядом} называется совокупность последовательностей $(a_n)$ и $(S_n)$ и обозначается $\series a_k$.
 $S_n$ называется \textbf{частичной суммой числового ряда}.
 
 Если существует конечный предел~$\lim\limits_{n \to \infty} S_n = S$, то $S$ называется \textbf{суммой числового ряда}, а ряд называется \textbf{сходящимся}, иначе~--- \textbf{расходящимся}.
@@ -37,7 +37,7 @@ $S_n$ называется \textbf{частичной суммой числов�
 \end{enumerate}
 
 \subsection{Знакоположительные ряды}
-\index{Ряд!знакоположительный} Ряд называется \textbf{знакоположительным}, если все его члены положительны.
+\index{Ряд!знакоположительный} Числовой ряд называется \textbf{знакоположительным}, если все его члены положительны.
 
 \begin{lemma}
 \label{lemma:convergence_of_sign-positive_series}
@@ -96,7 +96,6 @@ a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 \end{proof}
 
 \begin{theorem}[д'Аламбера]
-\label{th:d'Alembert's_test}
 Пусть $\series a_k$~--- знакоположительный ряд, $\lim\limits_{n \to \infty} \frac{a_{n+1}}{a_n} = p$.
 Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
 \end{theorem}
@@ -137,15 +136,29 @@ a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
 \end{theorem}
 \begin{proof}
-Пусть $p < 1$.
-Выберём $\varepsilon > 0 \colon p + \varepsilon < 1$, тогда
-\begin{equation*}
-\exists N \in \mathbb N \colon \forall n > N \ \left| \sqrt[n]{a_n} - p \right| < \varepsilon \Rightarrow
-\sqrt[n]{a_n} < p + \varepsilon \Rightarrow
-a_n < (p + \varepsilon)^n \Rightarrow
-\frac{a_{n+1}}{a_n} < p + \varepsilon
-\end{equation*}
-
-Дальнейший ход доказательства совпадает с ходом доказательства теоремы~\ref*{th:d'Alembert's_test}.
-Для $p > 1$ аналогично.
+\begin{enumerate}
+	\item Пусть $p < 1$.
+	Выберём $\varepsilon > 0 \colon p + \varepsilon < 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \sqrt[n]{a_n} - p \right| < \varepsilon \Rightarrow
+	\sqrt[n]{a_n} < p + \varepsilon \Rightarrow
+	a_n < (p + \varepsilon)^n \Rightarrow
+	\frac{a_{n+1}}{a_n} < p + \varepsilon \Rightarrow
+	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} < 1
+	\end{equation*}
+	
+	Тогда по признаку д'Аламбера $\series a_k$ сходится.
+	
+	\item Пусть $p > 1$.
+	Выберём $\varepsilon > 0 \colon p - \varepsilon > 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \sqrt[n]{a_n} - p \right| < \varepsilon \Rightarrow
+	\sqrt[n]{a_n} > p - \varepsilon \Rightarrow
+	a_n > (p - \varepsilon)^n \Rightarrow
+	\frac{a_{n+1}}{a_n} > p - \varepsilon \Rightarrow
+	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} > 1
+	\end{equation*}
+	
+	Тогда по признаку д'Аламбера $\series a_k$ расходится.
+\end{enumerate}
 \end{proof}
