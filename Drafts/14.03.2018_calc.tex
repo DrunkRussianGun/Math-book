@@ -1,0 +1,95 @@
+\chapter{14.03.2018, математический анализ}
+\begin{theorem}[интегральный признак Коши]
+Пусть $\series a_k$~--- знакоположительный ряд.
+Если существует монотонная функция~$f(x) colon f(n) = a_n \lAnd \lim\limits_{x \to +\infty} f(x) = 0$, то $\series a_k$ сходится $\Leftrightarrow$ $\exists \int\limits_1^{+\infty} f(x)\,dx$.
+\end{theorem}
+\begin{proof}
+Площадь заштрихованной фигуры равна $1 a_1 + 1 a_2 + \ldots + 1 a_n$, а криволинейной трапеции~--- $\int\limits_1^{n+1} f(x)\,dx$, тогда
+$S_n > \int\limits_1^{n+1} f(x)\,dx$, $S_{n+1} - a_1 < \int\limits_1^{n+1} f(x)\,dx$.
+\begin{enumerate}
+	\item $\Leftarrow$. $\forall n \in \mathbb N \ S_n < a_1 + \int\limits_1^{n+1} f(x)\,dx < a_1 + \int\limits_1^{+\infty} f(x)\,dx$ $\Rightarrow$ $\series a_k$ сходится.
+	\item $\Rightarrow$. $\forall n \in \mathbb N \ \int_1^{n+1} f(x)\,dx < S_n < S \Rightarrow \exists \int\limits_1^{+\infty} f(x)\,dx$.
+\end{enumerate}
+\end{proof}
+
+\subsection{Знакопеременные ряды}
+\index{Ряд!знакопеременный}
+
+\begin{theorem}
+Если $\series |a_k|$ сходится, то $\series a_k$ тоже сходится.
+\end{theorem}
+\begin{proof}
+Пусть $(S_n)$ и $(\sigma_n)$~--- частичные суммы рядов $\series a_k$ и $\series |a_k|$ соответственно.
+По \hyperref[th:Cauchy_criterion]{критерию Коши}
+\begin{equation*}
+\forall \varepsilon > 0 \ \exists N \in \mathbb N \colon \forall m > N \ \forall k \geqslant 1 \ |\sigma_{m+k} - \sigma_m| < \varepsilon
+\end{equation*}
+
+Тогда
+\begin{equation*}
+|S_{m+k} - S_m| = |\sum_{i=1}^k a_{m+i}| \leqslant \sum_{i=1}^k |a_{m+i}| = |\sigma_{m+k} - \sigma_m| < \varepsilon
+\end{equation*}
+
+Значит, $\series a_k$ сходится.
+\end{proof}
+
+\begin{theorem}[признак Лейбница]
+Пусть $\series (-1)^{k-1} a_k$~--- знакочередующийся ряд.
+Если $\lim\limits_{n \to \infty} a_n = 0$, причём $(a_n)$~--- монотонная последовательность, то ряд сходится.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+S_{2n} = (a_1 - a_2) + (a_3 - a_4) + \ldots + (a_{2n-1} - a_{2n}) < S_{2n+2}
+\end{equation*}
+\begin{equation*}
+S_{2n} = a_1 - (a_2 - a_3) - (a_4 - a_5) - \ldots - (a_{2n-2} - a_{2n-1}) - a_{2n} < a_1
+\end{equation*}
+
+Тогда по свойству~\ref{st:monotonic_bounded_sequence} предела последовательности
+\begin{equation*}
+\lim_{n \to \infty} S_{2n} = S \Rightarrow
+\lim_{n \to \infty} S_{2n+1} =
+\lim_{n \to \infty} S_{2n} + \lim_{n \to \infty} a_{2n+1} =
+S \Rightarrow
+\lim_{n \to \infty} S_n = S
+\end{equation*}
+
+Значит, ряд сходится.
+\end{proof}
+
+\section{Функциональные ряды}
+\index{Ряд!функциональный} 
+
+\begin{theorem}[мажорантный признак сходимости]
+Если существует последовательность~$(a_n) \colon \forall n \in \mathbb N \ |f_n(x)| \leqslant a_n$, то $\series a_k$ сходится $\Rightarrow$ $\series f_k(x)$ сходится абсолютно.
+\end{theorem}
+
+\subsection{Степенные ряды}
+\index{Ряд!степенной} \textbf{Степенным} называется ряд вида $\series[0] c_k (x - x_0)^k$.
+
+\begin{theorem}[Абеля]
+\begin{itemize}
+	\item Если ряд $\series[0] c_k x^k$ сходится при $x = x_0$, то $\forall x \colon |x| < |x_0|$ он сходится абсолютно.
+	\item Если ряд $\series[0] c_k x^k$ расходится при $x = x_0$, то $\forall x \colon |x| > |x_0|$ он расходится.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+	\item $\lim\limits_{n \to \infty} c_n x_0^n = 0 \Rightarrow
+	\exists M > 0 \colon |c_n x_0^n| \leqslant M \Rightarrow
+	|c_n x^n| \leqslant M \left| \frac{x}{x_0} \right|^n$.
+	
+	Тогда $\series[0] M \left| \frac{x}{x_0} \right|^k$ сходится $\Rightarrow$ $\series[0] c_k x^k$ сходится абсолютно.
+	
+	\item Если бы $\exists x_1 \colon |x_1| > |x_0|$ $\lAnd$ $\series[0] c_k x_1^k$ сходится, то $\series[0] c_k x_0^k$ сходился бы, что противоречит условию.
+\end{itemize}
+\end{proof}
+
+\begin{consequent}
+$\exists R > 0 \colon$ при $|x| < R$ $\series[0] c_k x^k$ сходится, а при $|x| > R$ $\series[0] c_k x^k$ расходится.
+\end{consequent}
+
+$R$ называется \textbf{радиусом сходимости степенного ряда}.
+
+Рассмотрим ряд~$\series[0] |c_k x^k|$.
+По признаку д'Аламбера $\lim\limits_{n \to \infty} = \lim\limits_{n \to \infty} \left| \frac{c_{n+1}}{c_n} \cdot |x| \right| \ldots$

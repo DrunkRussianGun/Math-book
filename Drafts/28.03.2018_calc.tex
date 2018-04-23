@@ -1,0 +1,45 @@
+\chapter{28.03.2018, математический анализ}
+\subsection{Тригонометрические ряды Фурье}
+Представим функцию~$f(x)$ на отрезке~$\left[ -\frac{T}2; \frac{T}2 \right]$ в виде
+\begin{equation*}
+f(x) = \frac{a_0}2 + \series a_n \cos \frac{2 \pi n}T\,x + \series b_n \sin \frac{2 \pi n}T\,x
+\end{equation*}
+
+\textbf{Скалярным произведением функций $f(x)$ и $g(x)$} называется $\langle f(x), g(x) \rangle = \int\limits_{-\frac{T}2}^{\frac{T}2} f(x)g(x)\,dx$.
+
+Проверим, что функции $1$, $\cos \frac{2 \pi n}T\,x$ и $\sin \frac{2 \pi n}T\,x$ попарно ортогональны:
+\begin{itemize}
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi n}T\,x\,dx =
+	\frac{T}{2 \pi n} \left. \sin \frac{2 \pi n}T\,x \right|_{-\frac{T}2}^{\frac{T}2} = 0$
+	
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \sin \frac{2 \pi n}T\,x\,dx =
+	-\frac{T}{2 \pi n} \left. \cos \frac{2 \pi n}T\,x \right|_{-\frac{T}2}^{\frac{T}2} = 0$
+	
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi m}T\,x \cos \frac{2 \pi n}T\,x\,dx =
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi (m - n)}T\,x +
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi (m + n)}T\,x = 0$, $m \neq n$
+	
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \sin \frac{2 \pi m}T\,x \sin \frac{2 \pi n}T\,x\,dx =
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi (m - n)}T\,x -
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi (m + n)}T\,x = 0$, $m \neq n$
+	
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \cos \frac{2 \pi m}T\,x \sin \frac{2 \pi n}T\,x\,dx =
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \sin \frac{2 \pi (m + n)}T\,x +
+	\frac12 \int_{-\frac{T}2}^{\frac{T}2} \sin \frac{2 \pi (m - n)}T\,x = 0$
+\end{itemize}
+
+Найдём квадраты этих функций:
+\begin{itemize}
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} 1^2\,dx = T$
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \cos^2 \frac{2 \pi n}T\,x\,dx = \frac{T}2$
+	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \sin^2 \frac{2 \pi n}T\,x\,dx = \frac{T}2$
+\end{itemize}
+
+Тогда можно найти коэффициенты:
+\begin{itemize}
+	\item $\displaystyle a_k = \frac2T \int_{-\frac{T}2}^{\frac{T}2} f(x) \cos \frac{2 \pi k}T\,x\,dx$
+	\item $\displaystyle b_k = \frac2T \int_{-\frac{T}2}^{\frac{T}2} f(x) \sin \frac{2 \pi k}T\,x\,dx$
+\end{itemize}
+
+Причём если $f(x)$ чётна, то $b_k = 0$.
+Если же $f(x)$ нечётна, то $a_k = 0$.

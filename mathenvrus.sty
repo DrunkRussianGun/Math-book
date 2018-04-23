@@ -9,6 +9,7 @@
 %
 %	- \Arg — печатает Arg в математической моде;
 %	- \grad — печатает grad в математической моде;
+%	- \rank — печатает rank в математической моде;
 %	- \sgn — печатает sgn в математической моде;
 %
 %	- \indbase (induction base) — оформление базы математической индукции;
@@ -34,7 +35,7 @@
 \usepackage[intlimits]{amsmath}
 \usepackage{amsfonts, amssymb}
 \usepackage{scalerel} % увеличение размера символов
-\usepackage{xparse} % продвинутое создание окружений
+\usepackage{xparse}
 
 \NewDocumentCommand\opbr{m}{%
 	#1\nobreak\discretionary{}{\hbox{\ensuremath{#1}}}{}%
@@ -50,6 +51,7 @@
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}
+\DeclareMathOperator\rank{rank}
 \DeclareMathOperator\sgn{sgn}
 	
 \NewDocumentCommand\indbase{}{%

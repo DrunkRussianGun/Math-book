@@ -1,0 +1,22 @@
+% Стилевой файл
+% - новые команды:
+%	- drawaxis{левая граница}{правая граница}{нижняя граница}{верхняя граница} — рисует координатные
+%	  оси и обрезает рисунок по ним;
+%	- printcoordsonaxis[параметры линий]{координаты (без скобок)}{надпись для x}[параметры надписи для x]{надпись для y}[параметры надписи для y] —
+%	  печатает указанные подписи на координатных осях для заданной точки
+
+\usepackage{xparse}
+
+\usepackage{tikz}
+\usetikzlibrary{angles, chains, intersections, matrix, scopes, quotes}
+\NewDocumentCommand\drawaxis{mmmm}{
+	\def\left_x{#1} \def\right_x{#2}
+	\def\bottom_y{#3} \def\top_y{#4}
+	\draw[->, >=stealth, name path=x_axis] (\left_x, 0) -- (\right_x, 0) node[below] {$x$};
+	\draw[->, >=stealth, name path=y_axis] (0, \bottom_y) -- (0, \top_y) node[left] {$y$};
+	\clip (\left_x, \top_y) rectangle (\right_x, \bottom_y)
+}
+\NewDocumentCommand\printcoordsonaxis{O{dashed}mgO{below}gO{left}}{
+	\draw[#1] \IfValueT{#3}{(#2) -- (#2 |- 0,0) node[#4] {$#3$}}
+		\IfValueT{#5}{(#2) -- (#2 -| 0,0) node[#6] {$#5$}}
+}

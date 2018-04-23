@@ -1,0 +1,84 @@
+\chapter{30.03.2018, дискретная математика}
+Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
+\begin{enumerate}
+	\item $s \delta(x) = t \Leftrightarrow \varphi(s) \delta'(x) = \varphi(t)$;
+	\item $\varphi(s_1) = s_2$;
+	\item $t \in F \Leftrightarrow \varphi(t) \in F'$.
+\end{enumerate}
+
+\begin{statement}
+Если два минимальных автомата распознают один и тот же язык, то они изоморфны.
+\end{statement}
+\begin{proof}
+Пусть $\alpha \in \{ \alpha_1, \ldots, \alpha_n \}$, причём $S = \{ s_1 \delta(\alpha) \} \lAnd S' = \{ s_2 \delta'(\alpha) \}$.
+В каждом из автоматов нет эквивалентных состояний, поэтому можно построить биекцию~$\varphi(s_1 \delta(\alpha)) = s_2 \delta'(\alpha)$.
+Тогда $s_1 \delta(\alpha) \in F \Leftrightarrow \alpha \in L \Leftrightarrow s_1' \delta'(\alpha) \in F$.
+\end{proof}
+
+Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, тогда $\rank L_1 = m \lAnd \rank L_2 = n$.
+\begin{enumerate}
+	\item Докажем, что $\rank L_1 = \rank \overline L_1$.
+	\begin{proof}
+	\begin{equation*}
+	\alpha \not\sim_{L_1} \beta \Leftrightarrow
+	\exists \gamma \colon \alpha \gamma \in L_1 \lAnd \beta \gamma \notin L_1 \Leftrightarrow
+	\alpha \gamma \notin \overline L_1 \lAnd \beta \gamma \in \overline L_1 \Leftrightarrow
+	\alpha \not\sim_{\overline L_1} \beta
+	\end{equation*}
+	\begin{equation*}
+	\alpha \not\sim_{L_1} \beta \Leftrightarrow
+	\exists \gamma \colon \alpha \gamma \in L_1 \lAnd \beta \gamma \notin L_1 \Leftrightarrow
+	\alpha \gamma \notin \overline L_1 \lAnd \beta \gamma \in \overline L_1 \Leftrightarrow
+	\alpha \not\sim_{\overline L_1} \beta
+	\end{equation*}
+	\end{proof}
+	
+	\item Докажем, что $\rank L_1 \cap L_2 \leqslant mn$.
+	\begin{proof}
+	Пусть $\alpha_1, \ldots, \alpha_m$ и $\beta_1, \ldots, \beta_n$~--- базисы $L_1$ и $L_2$ соответственно.
+	Тогда
+	\begin{equation*}
+	\forall \gamma \in X^* \ \exists \alpha_i, \beta_j \colon \alpha_i \sim_{L_1} \gamma \lAnd \beta_j \sim_{L_2} \gamma
+	\end{equation*}
+	
+	Пусть $\gamma_{ij}$
+	\begin{itemize}
+		\item $\gamma \Theta \in L_1 \Leftrightarrow
+		\alpha_i \Theta \in L_1 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_1$;
+		\item $\gamma \Theta \in L_2 \Leftrightarrow
+		\beta_j \Theta \in L_2 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_2$;
+		\item $\gamma \Theta \in L_1 \cap L_2 \Leftrightarrow
+		\alpha_i \Theta \in L_1 \lAnd \beta_j \in L_2 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_1 \cap L_2$.
+	\end{itemize}
+	\end{proof}
+	
+	Пусть автомат~$A = (S \times S', X, \delta'', s_0, F'')$.
+\end{enumerate}
+
+\begin{lemma}[о накачке]
+Если $L$ распознаётся конечным автоматом, то $\exists n \in \mathbb N \colon (\forall \alpha \in X^* \colon |\alpha| > n) \exists \alpha_1, \alpha_2, \alpha_3 \colon \alpha = \alpha_1 \alpha_2 \alpha_3$, причём
+\begin{enumerate}	
+	\item $\alpha_2 \neq \lambda$;
+	\item $\alpha \in L \Rightarrow \forall i \ \alpha_1 \alpha_2^i \alpha_3 \in L$;
+	\item $\alpha_1 \alpha_2| \leqslant n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Пусть в конечном автомате $n$~состояний, $|\alpha| = k \geqslant n \lAnd \alpha = x_1 \ldots x_k$.
+Среди состояний $s_1 \delta(\lambda), s_1 \delta(x_1), s_1 \delta(x_1 x_2), \ldots, s_1 \delta(x_1 \ldots x_n)$ найдутся два совпадающих, т.\,е.
+$\exists l, m \colon 0 \leqslant l < m \leqslant n \lAnd s_1 \delta(x_1 \ldots x_l) = s_1 \delta(x_1 \ldots x_m) = s'$.
+Пусть $\alpha_1 = x_1 \ldots x_l$, $\alpha_2 = x_{l+1} \ldots x_m$, $\alpha_3 = x_{m+1} \ldots x_k$, тогда $s_1 \delta(\alpha_1) = s', s_1 \delta(\alpha_1 \alpha_2) = s', \delta(\alpha_1, \alpha_2^i = s', s_1 \delta(\alpha_1 \alpha_2^i \alpha_3) = s' \delta(\alpha_3) = s''$.
+\end{proof}
+
+\begin{consequent}
+Если $\forall n \in \mathbb N \ \exists \alpha \colon |\alpha| \in n$, причём для любых слов $\alpha_1, \alpha_2, \alpha_3$:
+\begin{enumerate}
+	\item $\alpha_2 \neq \lambda$;
+	\item $\alpha \in L \lAnd \exists i \ \alpha_1 \alpha_2^i \alpha_3 \notin L$;
+	\item $\alpha_1 \alpha_2| \leqslant n$.
+\end{enumerate}
+то $L$ не распознаётся конечным автоматом.
+\end{consequent}

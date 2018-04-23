@@ -1,0 +1,66 @@
+\chapter{23.03.2018, дискретная математика}
+\begin{theorem}
+\begin{enumerate}
+	\item Язык~$L$ распознаётся конечным автоматом с $n$~состояниями $\Leftrightarrow$ $\rank L \leqslant n$.
+	\item Если $\rank L = n$, то существует конечный автомат с $n$~состояниями, который распознаёт~$L$, и никакой конечный автомат с меньшим числом состояний не распознаёт~$L$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item Язык~$L$ распознаётся конечным автоматом~$A = (X, S, \delta, s_1, F)$ с $n$~состояниями.
+	Рассмотрим слова $\alpha_1, \ldots, \alpha_{n+1} \in X^*$.
+	Хотя бы два из состояний $s_1 \delta(\alpha_1), \ldots, s_1 \delta(\alpha_{n+1})$ совпадают.
+	
+	Пусть $s_1 \delta(\alpha_i) = s_1 \delta(\alpha_j)$, где $i \neq j$.
+	\begin{equation*}
+	s_1 \delta(\alpha_i \gamma) =
+	s_1 \delta(\alpha_i) \delta(\gamma) =
+	s_1 \delta(\alpha_j) \delta(\gamma) =
+	s_1 \delta(\alpha_j \gamma) \Rightarrow
+	(\alpha_i \gamma \in L \Leftrightarrow \alpha_j \gamma \in L)
+	\end{equation*}
+	
+	Т.\,о., среди $n + 1$~состояний всегда найдётся пара неразличимых, значит, $\rank L \leqslant n$.
+	
+	\item Пусть $A = (X, S, \delta, s_1, F)$, где $S = \{ [\alpha] \mid \alpha \in X^* \}$, $\delta \colon [\alpha] \delta(x) = [\alpha x]$, $s_1 = [\lambda]$, $F = \{ [\alpha] \mid \alpha \in L \}$,
+	тогда $s_1 \delta(\alpha) = [\alpha] \in F \Leftrightarrow \alpha \in L$.
+	
+	Пусть существует конечный автомат с $k$~состояниями, где $k < n$.
+\end{enumerate}
+\end{proof}
+
+\textbf{Базисом языка~$L$} называется множество~$W \subseteq X^*$ такое, что:
+\begin{enumerate}
+	\item Все слова из~$W$ попарно различимы.
+	\item Любое другое слово неотличимо от одного из слов множества~$W$.
+\end{enumerate}
+
+\begin{theorem}
+Множество~$W$~--- базис $\Leftrightarrow$
+\begin{enumerate}
+	\item Все слова из~$W$ попарно различимы.
+	\item $\lambda \in W$
+	\item $\forall \alpha \in W \ \forall x \in X \ \exists \beta \in W \colon \alpha x \sim \beta$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Докажем пункт~2 по индукции.
+	\indbase $d$
+	\indstep Пусть доказано для $|\alpha| \leqslant k$.
+	Рассмотрим $\beta \colon |\beta| = k \lAnd \beta \sim \gamma \in W$.
+	$\beta x \sim \gamma x \sim \delta \in W$.
+	\indend
+\end{proof}
+
+Два состояния $s$ и $s'$ называются \textbf{эквивалентными относительно автомата~$A = (X, S, \delta, s_1, F)$}, если $\forall \alpha \in X^* \ s \delta(\alpha) \in F \Leftrightarrow s' \delta(\alpha) \in F$.
+
+Автомат называется \textbf{связным}, если $\forall s \in S \exists \alpha \in X^* \ s_1 \delta(\alpha) = s$.
+
+Автомат называется \textbf{приведённым}, если в нём нет эквивалентных состояний.
+
+Пусть задан автомат~$A = (X, S, \delta, s_1, F)$.
+Рассмотрим автомат~$A_m = (X, S_m, \delta_m, s_m, F_m)$, где $S_m = S/\sim = \{ [s] \mid s \in S \}$, $\delta_m \colon [s] \delta(x) = [s \delta(x)]$, $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,
+тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$.
+
+$s \sim_{k+1} s' \Leftrightarrow
+s \sim_k s' \lAnd \forall x \in X \ s \delta(x) \sim_k s' \delta(x)$

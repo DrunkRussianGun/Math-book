@@ -9,31 +9,7 @@
 \usepackage[unicode,colorlinks=true]{hyperref} % ссылки в оглавлении
 \usepackage{array} % таблицы
 
-\usepackage{xparse}
-
-\usepackage{tikz}
-\usetikzlibrary{angles, chains, intersections, matrix, scopes, quotes}
-\NewDocumentCommand\drawaxis{mmmm}{%
-	%{левая граница}
-	%{правая граница}
-	%{нижняя граница}
-	%{верхняя граница}
-	\def\left_x{#1} \def\right_x{#2}
-	\def\bottom_y{#3} \def\top_y{#4}
-	\draw[->, >=stealth, name path=x_axis] (\left_x, 0) -- (\right_x, 0) node[below] {$x$};
-	\draw[->, >=stealth, name path=y_axis] (0, \bottom_y) -- (0, \top_y) node[left] {$y$};
-	\clip (\left_x, \top_y) rectangle (\right_x, \bottom_y)
-}
-\NewDocumentCommand\printcoordsonaxis{O{dashed}mgO{below}gO{left}}{%
-	%[параметры линий]
-	%{координаты (без скобок)}
-	%{надпись для x}
-	%[параметры надписи для x]
-	%{надпись для y}
-	%[параметры надписи для y]
-	\draw[#1] \IfValueT{#3}{(#2) -- (#2 |- 0,0) node[#4] {$#3$}}
-		\IfValueT{#5}{(#2) -- (#2 -| 0,0) node[#6] {$#5$}}
-}
+\usepackage{tikzext}
 
 \usepackage{float}
 \usepackage{wrapfig}

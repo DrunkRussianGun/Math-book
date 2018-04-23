@@ -1,0 +1,38 @@
+\chapter{13.04.2018, дискретная математика}
+Построим ДКА по НКА~$(S, X, \delta_N, s_1, F)$, не содержащему пустых переходов, где $\delta_N \colon S \times X \to 2^S$:
+$(2^S, X, \delta_D, s_1, F')$, где
+$F' = \{ M \mid M \subseteq S \lAnd M \cap F \neq \varnothing \}$,
+$M \delta_D(x) = \bigcup\limits_{i=1}^k \delta_N(m_i, x)$,
+$M = \{ m_1, \ldots, m_k \}$.
+
+Докажем, что $\delta_D(s_1, \alpha) = \delta_N(s_1, \alpha)$, методом математической индукции:
+	\indbase $\delta_D(s_1, \lambda) = s_1$, $\delta_N(s_1, \lambda) = \{ s_1 \}$.
+	\indstep Пусть доказано для слов~$\beta \colon |\beta| = n$.
+	Рассмотрим $\alpha \colon |\alpha| = n + 1$.
+	Предположим, что $\delta_N(s_1, \beta) = \{ m_1, \ldots, m_k \}$, тогда $\delta_D(s_1, \beta x) = \bigcup\limits_{i=1}^k \delta_D(m_i, x) \lAnd
+	\delta_N(s_1, \beta x) = \bigcup\limits_{i=1}^k \delta_N(m_i, x) \Rightarrow
+	\delta_D(s_1, \alpha) = \delta_N(s_1, \alpha)$.
+	\indend
+
+Построим НКА без пустых переходов по НКА~$(S, X, \delta, s_1, F)$, содержащему пустые переходы, где $\delta \colon S \times (X \cup \{ \lambda \}) \to 2^S$:
+$(S, X, \delta', s_1, F')$, где
+$F' = \{ s \mid \delta(s, \lambda^k) = s' \lAnd s' \in F \}$,
+$\delta'(s, a) = s'$ при $\delta(s, \lambda^k a) = s'$.
+
+\textbf{Замыканием состояния $s$ НКА} называется множество~$\{ s' \mid \delta(s, \lambda^k) = s' \}$ и обозначается~$[s]$.
+
+Построим ДКА по НКА, содержащему пустые переходы, где $\delta \colon S \times (X \cup \{ \lambda \}) \to 2^S$:
+$(T, X, \delta', [s_1], F')$, где
+$T = \{ M \mid M \subseteq 2^S \lAnd [M] = M \}$,
+$F = \{ M \mid M \in T \lAnd M \cap F \neq \varnothing \}$,
+$\delta'(\{ m_1, \ldots, m_k \}, x) = \bigcup\limits_{i=1}^k [\delta(m_i, x)]$.
+
+Докажем, что $\delta(s_1, w) = \delta'([s_1], w)$, методом математической индукции:
+	\indbase $\delta(s_1, \lambda) = [s_1] \lAnd \delta'([s_1], \lambda) = [s_1] \Rightarrow
+	\delta(s_1, \lambda) = \delta'([s_1], \lambda)$
+	\indstep Пусть доказано для слов~$\beta \colon |\beta| = n$.
+	Рассмотрим $\alpha \colon |\alpha| = n + 1$.
+	$\delta(s_1, \beta x) = \bigcup_{i=1}^k [\delta(m_i, x)] \lAnd
+	\delta'([s_1], \beta x) = \bigcup_{i=1}^k [\delta(m_i, x)] \Rightarrow
+	\delta(s_1, \beta x) = \delta'([s_1], \beta x)$
+	\indend

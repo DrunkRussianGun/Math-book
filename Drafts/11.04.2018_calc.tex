@@ -1,0 +1,48 @@
+\chapter{11.04.2018, математический анализ}
+\subsection{Уравнение в полных дифференциалах}
+\textbf{Уравнением в полных дифференциалах} называется уравнение вида $y' = -\frac{M(x, y)}{N(x, y)}$.
+Если $M_y' = N_x'$, то $M(x, y) = F_x' \lAnd N(x, y) = F_y'$, тогда
+\begin{equation*}
+y' = -\frac{M(x, y)}{N(x, y)} \Leftrightarrow
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+Пусть $M_y' \neq N_x'$, но $\exists \mu(x, y) \colon (\mu \cdot M)_y' = (\mu \cdot N)_x'$, тогда
+\begin{equation*}
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+\mu(x, y) M(x, y)\,dx + \mu(x, y) N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+$\mu(x, y)$ называется \textbf{интегрирующим множителем}.
+
+\section{Линейное уравнение первого порядка}
+\textbf{Линейным дифференциальным уравнением первого порядка} называется уравнение вида $y' = a(x) y + b(x)$.
+
+Рассмотрим \textbf{метод вариации произвольной постоянной}.
+\begin{enumerate}
+	\item Решим уравнение
+	\begin{equation*}
+	y_0' = a(x) y_0 \Leftrightarrow
+	\frac{dy_0}{y_0} = a(x)\,dx \Rightarrow
+	\ln y_0 = \varphi(x) + \ln C \Rightarrow
+	y_0 = C e^{\varphi(x)}
+	\end{equation*}
+	
+	\item Подставим $y = C(x) e^{\varphi(x)}$ в исходное уравнение:
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} + C(x) e^{\varphi(x)} \varphi'(x) = a(x) C(x) e^{\varphi(x)} + b(x)
+	\end{equation*}
+	
+	$y_0 = Ce^{\varphi(x)} \Rightarrow C e^{\varphi(x)} \varphi'(x) = a(x) C e^{\varphi(x)}$, тогда получим
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} = b(x) \Leftrightarrow
+	C'(x) = b(x) e^{-\varphi(x)} \Leftrightarrow
+	C(x) = \int b(x) e^{-\varphi(x)}
+	\end{equation*}
+\end{enumerate}
+
+Тогда $y = C(x) e^{\varphi(x)}$.
