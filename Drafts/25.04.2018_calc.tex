@@ -1,0 +1,55 @@
+\chapter{25.04.2018, математический анализ}
+Рассмотрим $F(y, y', y'') = 0$.
+Пусть $y'(x) = z(y)$, тогда $y''(x) = \frac{dy'}{dx} = \frac{dy'}{dy} \cdot \frac{dy}{dx} = z' \cdot z$ и $F(y, y', y'') = 0 \Leftrightarrow F(y, z, z' \cdot z) = 0$.
+
+\subsection{Линейные дифференциальные уравнения с постоянными коэффициентами}
+\textbf{Линейным дифференциальным уравнением $n$"=го порядка} называется уравнение вида $y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)$.
+
+Введём функции $y_0 = y, y_1 = y', \ldots, y_{n-1} = y^{(n-1)}$, тогда
+\begin{equation*}
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x) \Leftrightarrow
+\begin{cases}
+y_0' = y_1 \\
+y_1' = y_2 \\
+\ldots \\
+y_{n-1}' = f(x) - a_0 y_0 - a_1 y_1 - \ldots - a_{n-1} y_{n-1}
+\end{cases}
+\end{equation*}
+
+Введём вектор-функцию $Y(x) =
+\begin{Vmatrix}
+y_0 \\
+y_1 \\
+\ldots \\
+y_{n-1}
+\end{Vmatrix}$, тогда $Y' = A Y + F$, где $A =
+\begin{Vmatrix}
+0 & 1 & 0 & \ldots & 0 \\
+0 & 0 & 1 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+-a_0 & -a_1 & \ldots -a_{n-1}
+\end{Vmatrix}$, $F =
+\begin{Vmatrix}
+0 \\
+0 \\
+\ldots \\
+f(x)
+\end{Vmatrix}$
+
+Уравнение можно решить методом итераций: $Y_k(x) = Y_0 + \int\limits_{x_0}^x (A Y_{k-1}(t) + F(t))\,dt$.
+
+\textbf{Определителем Вронского}, или \textbf{вронскианом}, называется определитель
+\begin{equation*}
+\begin{vmatrix}
+\tilde y_0(x_0) & \tilde y_1(x_0) & \ldots & \tilde y_{n-1}(x_0) \\
+\tilde y_0'(x_0) & \tilde y_1'(x_0) & \ldots & \tilde y_{n-1}'(x_0) \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\tilde y_0^{(n-1)}(x_0) & \tilde y_1^{(n-1)}(x_0) & \ldots & \tilde y_{n-1}^{(n-1)}(x_0) \\
+\end{vmatrix}
+\end{equation*}
+где $\tilde y_1, \ldots, \tilde y_n$~--- частные решения уравнения.
+
+\begin{statement}
+Если решения $\tilde y_0, \ldots, \tilde y_{n-1}$ 
+\end{statement}
+

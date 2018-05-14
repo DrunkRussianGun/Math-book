@@ -73,7 +73,7 @@ q(X, \overline X)
 Изначально считаем, что $\forall i, j \in V \ p(i, j) = 0$.
 Также пометим источник~$s^{(-, \infty)}$.
 \begin{enumerate}
-	\item Помечаем вершины, смежные с помеченными, следующим образом: $i^{(x^\pm, \varepsilon)} \rightarrow j^{(i^+, \min(\varepsilon, q_{ij} - p_{ij}))}$, если $q_{ij} - p_{ij} > 0$, или $i^{(x^\pm, \varepsilon)} \leftarrow j^{(i^-, \min(\varepsilon, p_{ij}))}$, если $p_{ij} > 0$, где $i$~--- уже помеченная вершина.
+	\item Помечаем вершины, смежные с помеченными, следующим образом: $i^{(x^\pm, \varepsilon)} \rightarrow j^{(i^+, \min(\varepsilon, q_{ij} - p_{ij}))}$, если $q_{ij} - p_{ij} \opbr> 0$, или $i^{(x^\pm, \varepsilon)} \leftarrow j^{(i^-, \min(\varepsilon, p_{ij}))}$, если $p_{ij} > 0$, где $i$~--- уже помеченная вершина.
 	Если сток не достигнут, то поток максимален, иначе пометили~$t^{(x^+, \delta)}$.
 	
 	\item Идём в обратном направлении.
@@ -95,5 +95,56 @@ q(X, \overline X)
 Т.\,к. из $i$ нельзя попасть в~$j$ и из~$j$ нельзя попасть в~$i$, где $i \in X$, $j \in \overline X$, то $p(i, j) = q(i, j)$, $p(j, i) = 0$, тогда
 \begin{equation*}
 |p| = \sum_{i \in X, j \in \overline X} q(i, j)
+\end{equation*}
+\end{proof}
+
+\subsubsection{Алгоритм Эдмондса"--~Карпа}
+\index{Алгоритм!Эдмондса---Карпа}
+Путь~$(s = v_1, \ldots, v_{k+1} = t)$ в сети~$(V, E)$ называется \textbf{увеличивающим}, если $\forall i \in \{ 1, \ldots, k \} \ \varepsilon(v_i, v_{i+1}) > 0$, где $\varepsilon(v_i, v_{i+1}) = \begin{cases}
+q(v_i, v_{i+1}) - p(v_i, v_{i+1}), \ (v_i, v_{i+1}) \in E \\
+p(v_{i+1}, v_i), \ (v_{i+1}, v_i) \in E
+\end{cases}$
+
+Введём $\delta = \min\limits_{0 \leqslant i \leqslant k} \varepsilon(v_i, v_{i+1})$, тогда новое значение потока в сети равно
+$\begin{cases}
+p(v_i, v_{i+1}) + \delta, \ (v_i, v_{i+1}) \in E \\
+p(v_{i+1}, v_i) - \delta, \ (v_{i+1}, v_i) \in E
+\end{cases}$
+
+Рассмотрим случай, когда до~$t$ не существует увеличивающего пути.
+Пусть $X$~--- множество вершин, до которых существует увеличивающий путь, $u \in X$, $v \notin X$.
+Если $(u, v) \in E$, то $q(u, v) = p(u, v)$, а если $(v, u) \in E$, то $p(v, u) = 0$, тогда
+\begin{equation*}
+p(X, \overline X) =
+\sum_{u \in V, v \in \overline X} p(u, v) - \sum_{u \in V, v \in \overline X} p(v, u) =
+\sum_{u \in V, v \in \overline X} q(u, v)
+\end{equation*}
+
+\begin{lemma}
+В ходе работы алгоритма Эдмондса"--~Карпа кратчайший $(s, t)$"=путь не уменьшается.
+\end{lemma}
+\begin{proofcontra}
+Рассмотрим самую близкую к~$s$ вершину~$v$, для которой кратчайший путь~$(s, \ldots, u, v)$ уменьшается, тогда для вершины~$u$ кратчайший $(s, u)$"=путь не уменьшается.
+Пусть $d_u$ и $d_v$~--- длины кратчайших $(s, u)$- и $(s, v)$"=путей соответственно на предыдущем шаге, а $d_u'$ и $d_v'$~--- на текущем.
+\begin{equation*}
+d_v > d_v' = d_u' + 1 \geqslant d_u + 1 \Rightarrow d_v \geqslant d_u + 2
+\end{equation*}
+
+Значит, на предыдущем шаге не было дуги~$(u, v)$, тогда не было и кратчайшего $(s, v)$"=пути.
+Противоречие.
+\end{proofcontra}
+
+Назовём дугу~$(v_i, v_{i+1})$ \textbf{критической}, если $\varepsilon(v_i, v_{i+1}) = \delta$.
+
+\begin{lemma}
+Каждая дуга может быть критической на увеличивающем пути порядка $\frac{|V|}2$~раз.
+\end{lemma}
+\begin{proof}
+Пусть дуга~$(u, v)$ критическая на шагах $t_1$ и $t_2$.
+Если она была использована как прямая два раза, то между этими использованиями она должна была быть использована как обратная (на шаге~$t_3$), тогда
+\begin{equation*}
+d_v(t_2) = d_u(t_2) + 1 \geqslant
+d_u(t_3) + 1 = d_v(t_3) + 2 \geqslant
+d_v(t_1) + 2
 \end{equation*}
 \end{proof}

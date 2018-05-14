@@ -1,0 +1,55 @@
+\chapter{11.05.2018, дискретная математика}
+Алгоритм построения КС-грамматики по регулярному выражению:\\
+$\varnothing \colon S \to S$\\
+$\lambda \colon S \to \lambda$\\
+$a \colon S \to a$\\
+$+ \colon (V_1 \cup V_2 \cup \{ S \}, X, S, P_1 \cup P_2 \cup P_0)$, где $P_0 = \{ S \to S_1, S \to S_2 \}$\\
+$\cdot \colon P_0 = \{ S \to S_1 S_2 \}$\\
+$\vphantom{s}^* \colon (V \cup \{ S \}, X, S, \{ S \to \lambda, S \to S S_1 \})$
+
+\index{Машина Тьюринга} \textbf{Машиной Тьюринга} называется набор~$(Q, X, \delta, q_1, q_0)$, где\\
+$Q$~--- множество состояний;\\
+$X$~--- алфавит;\\
+$\delta \colon Q \times X \to Q \times X \times \{ L, S, R \}$~--- функция перехода;\\
+$q_1 \in Q$~--- начальное состояние;\\
+$q_0 \in Q$~--- состояние остановки.
+
+$x_1 x_2 \ldots x_{i-1} q_i x_i x_{i+1} \ldots x_n$ называется \textbf{конфигурацией машины Тьюринга}, где $x_1 x_2 \ldots x_n$~--- текущее слово, $q_i$~--- текущее состояние, $x_i$~--- текущий символ.
+
+Язык называется \textbf{вычислимым}, если существует машина Тьюринга, которая при чтении слова из этого языка останавливается на не пустом символе, а при чтении слова не из этого языка~--- на пустом.
+
+\begin{theorem}
+Любой регулярный язык вычислим.
+\end{theorem}
+\begin{proof}
+Пусть дан автомат~$(Q, X, \delta_A, q_1, F)$.
+Рассмотрим машину Тьюринга~$(Q \cup \{ q_0 \}, X, \delta_M, q_1, q_0)$, где\\
+$\begin{cases}
+\delta_M(q, x) = (\delta_A(q, x), \bullet, R), \ x \neq \bullet \\
+\delta_M(q, x) =
+	\begin{cases}
+	(q_0, a, S), \ q \in F \\
+	(q_0, \bullet, S), \ q \notin F
+	\end{cases}
+\end{cases}$
+\end{proof}
+
+\begin{statement}
+Язык $\{ a^n b^n \mid n \geqslant 0 \}$ вычислим.
+\end{statement}
+\begin{proof}
+Рассмотрим машину Тьюринга с функцией перехода
+\begin{equation*}
+\begin{matrix}
+  & a & b & \bullet \\
+q_1 & q_2 \bullet R & q_0 \bullet S & q_0 a S \\
+q_2 & q_2 a R & q_2 b R & q_3 \bullet L \\
+q_3 & q_0 \bullet S & q_4 \bullet L & q_0 \bullet S \\
+q_4 & q_4 a L & q_4 b L & q_1 \bullet R
+\end{matrix}
+\end{equation*}
+\end{proof}
+
+Функция $f(x_1, \ldots, x_n)$ называется \textbf{правильно вычислимой}, если $q_1 1^{x_1 + 1} \bullet 1^{x_2 + 1} \bullet \ldots \bullet 1^{x_n + 1} \to q_0 1^{f(x_1, \ldots, x_n)}$.
+
+Функция $f(x_1, \ldots, x_n)$ называется вычислимой, если после чтения $q_1 1^{x_1 + 1} \bullet \ldots \bullet 1^{x_n + 1}$ на ленте $f(x_1, \ldots, x_n)$ единиц.
