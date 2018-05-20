@@ -1,20 +1,4 @@
 \section{Детерминированные конечные автоматы}
-\index{Алфавит} \textbf{Алфавитом} называется конечное непустое множество и обозначим через~$X$.
-\index{Буква} Его элементы называются \textbf{буквами}.
-\index{Слово} Конечная последовательность букв называется \textbf{словом}, а его \textbf{длиной}~--- количество букв в слове с учётом повторений.
-
-Слово, не содержащее букв, называется \textbf{пустым} и обозначается~$\lambda$, $\varepsilon$ или $e$.
-
-Множество из всех слов алфавита~$X$ обозначается~$X^*$.
-
-\textbf{Конкатенацией слов} $\alpha = x_1 x_2 \ldots x_n$ и $\beta = y_1 y_2 \ldots y_m$ называется слово $\alpha \cdot \beta = x_1 \ldots x_n y_1 \ldots y_m$.
-
-\textbf{Степенью слова}~$\alpha = x_1 \ldots x_n$ называется слово~$\alpha^n = \alpha \cdot \alpha \cdot \ldots \cdot \alpha$, где $n \in \mathbb N$.
-$\alpha^0 = \lambda$.
-
-\index{Язык} \textbf{Языком} называется множество $L \subseteq X^*$.
-Язык, не содержащий слов, называется \textbf{пустым}.
-
 \index{Конечный автомат!детерминированный} \textbf{Детерминированным конечным автоматом} называется набор~$(S, X, \delta, s_1, F)$, где\\
 $S$~--- конечное множество \textbf{состояний};\\
 $X$~--- алфавит;\\
@@ -31,6 +15,7 @@ $F$~--- множество \textbf{допускающих состояний}.
 
 Запись $\delta^*(s, \alpha)$ несколько громоздка, поэтому вместо неё обычно используется запись $s \delta(\alpha)$.
 
+\subsection{Распознаваемость языков}
 Говорят, что конечный автомат~$(S, X, \delta, s_1, F)$ \textbf{распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \in F$.
 
 \begin{statement}
@@ -85,6 +70,8 @@ s_1 \delta(a^j) \delta(b^i) \in F$.
 \alpha \sim \gamma$.
 \end{proof}
 
+Фактор"=класс слова~$\alpha$ относительно неразличимости обозначается~$[\alpha]$.
+
 \begin{statement}
 $\alpha \sim \beta \Rightarrow \forall \gamma \in X^* \ \alpha \gamma \sim \beta \gamma$.
 \end{statement}
@@ -93,12 +80,13 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \alpha (\gamma \Theta) \in L \Leftrightarrow
 \beta (\gamma \Theta) \in L \Leftrightarrow
 (\beta \gamma) \Theta \in L \Rightarrow
-\alpha \gamma \sim \beta \gamma$
+\alpha \gamma \sim \beta \gamma$.
 \end{proof}
 
 \textbf{Рангом языка~$L$} называется количество элементов в фактор"=множестве относительно неразличимости слов и языка~$L$ и обозначается~$\rank L$.
 
-\begin{theorem}
+\index{Теорема!Майхилла---Нероуда}
+\begin{theorem}[Майхилла"--~Нероуда]
 \begin{enumerate}
 	\item Язык~$L$ распознаётся конечным автоматом с $n$~состояниями $\Leftrightarrow$ $\rank L \leqslant n$.
 	\item Если $\rank L = n$, то существует конечный автомат с $n$~состояниями, который распознаёт~$L$, и никакой конечный автомат с меньшим числом состояний не распознаёт~$L$.
@@ -124,7 +112,9 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 	\item Пусть $A = (X, S, \delta, s_1, F)$, где $S = \{ [\alpha] \mid \alpha \in X^* \}$, $\delta \colon [\alpha] \delta(x) = [\alpha x]$, $s_1 = [\lambda]$, $F = \{ [\alpha] \mid \alpha \in L \}$,
 	тогда $s_1 \delta(\alpha) = [\alpha] \in F \Leftrightarrow \alpha \in L$.
 	
-	Пусть существует конечный автомат с $k$~состояниями, где $k < n$.
+	Пусть $L$ распознаётся конечным автоматом с $k$~состояниями, где $k < n$.
+	Тогда $n = \rank L \leqslant k$.
+	Противоречие.
 \end{enumerate}
 \end{proof}
 
@@ -138,8 +128,8 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 Множество~$W$~--- базис языка $\Leftrightarrow$
 \begin{enumerate}
 	\item Все слова из~$W$ попарно различимы.
-	\item $\lambda \in W$
-	\item $\forall \alpha \in W \ \forall x \in X \ \exists \beta \in W \colon \alpha x \sim \beta$
+	\item $\lambda \in W$.
+	\item $\forall \alpha \in W \ \forall x \in X \ \exists \beta \in W \colon \alpha x \sim \beta$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -156,7 +146,87 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 
 \index{Конечный автомат!связный} Автомат называется \textbf{связным}, если $\forall s \in S \ \exists \alpha \in X^* \ s_1 \delta(\alpha) = s$.
 
-\index{Конечный автомат!приведённый} Автомат называется \textbf{приведённым}, если в нём нет эквивалентных состояний.
+\index{Конечный автомат!приведённый} \index{Конечный автомат!минимальный} Автомат называется \textbf{приведённым}, или \textbf{минимальным}, если в нём нет эквивалентных состояний.
 
 Пусть задан автомат~$A = (X, S, \delta, s_1, F)$.
 Рассмотрим автомат~$A_m = (X, S_m, \delta_m, s_m, F_m)$, где $S_m = \{ [s] \mid s \in S \}$, $\delta_m \colon [s] \delta(x) = [s \delta(x)]$, $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$, тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
+
+Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
+\begin{enumerate}
+	\item $s \delta(x) = t \Leftrightarrow \varphi(s) \delta'(x) = \varphi(t)$;
+	\item $\varphi(s_1) = s_2$;
+	\item $t \in F \Leftrightarrow \varphi(t) \in F'$.
+\end{enumerate}
+
+\begin{statement}
+Если два минимальных автомата распознают один и тот же язык, то они изоморфны.
+\end{statement}
+\begin{proof}
+Пусть $\alpha \in \{ \alpha_1, \ldots, \alpha_n \}$, причём $S = \{ s_1 \delta(\alpha) \mid \alpha \in \{ \alpha_1, \ldots, \alpha_n \} \} \opbr\lAnd S' \opbr= \{ s_2 \delta'(\alpha) \mid \alpha \opbr\in \{ \alpha_1, \ldots, \alpha_n \} \}$.
+В каждом из автоматов нет эквивалентных состояний, поэтому можно построить биекцию $\varphi(s_1 \delta(\alpha)) \opbr= s_2 \delta'(\alpha)$.
+Тогда $s_1 \delta(\alpha) \in F \Leftrightarrow \alpha \in L \Leftrightarrow s_1' \delta'(\alpha) \in F$.
+\end{proof}
+
+Исследуем распознаваемость дополнения, пересечения и объединения языков.
+Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, $\rank L_1 = m \lAnd \rank L_2 = n$.
+\begin{enumerate}
+	\item Докажем, что $\rank L_1 = \rank \overline L_1$.
+	\begin{proof}
+	$\alpha \not\sim_{L_1} \beta \Leftrightarrow
+	\exists \gamma \colon \alpha \gamma \in L_1 \lAnd \beta \gamma \notin L_1 \Leftrightarrow
+	\alpha \gamma \notin \overline L_1 \lAnd \beta \gamma \in \overline L_1 \Leftrightarrow
+	\alpha \not\sim_{\overline L_1} \beta$.
+	\end{proof}
+	
+	\item Докажем, что $\rank L_1 \cap L_2 \leqslant mn$.
+	\begin{proof}
+	Пусть $\alpha_1, \ldots, \alpha_m$ и $\beta_1, \ldots, \beta_n$~--- базисы $L_1$ и $L_2$ соответственно.
+	Тогда
+	\begin{equation*}
+	\forall \gamma \in X^* \ \exists \alpha_i, \beta_j \colon \alpha_i \sim_{L_1} \gamma \lAnd \beta_j \sim_{L_2} \gamma
+	\end{equation*}
+	
+	Пусть $\gamma_{ij} \colon \alpha_i \sim_{L_1} \gamma_{ij} \lAnd \beta_j \sim_{L_2} \gamma_{ij}$, тогда $\forall \Theta \in X^*$
+	\begin{itemize}
+		\item $\gamma \Theta \in L_1 \Leftrightarrow
+		\alpha_i \Theta \in L_1 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_1$;
+		\item $\gamma \Theta \in L_2 \Leftrightarrow
+		\beta_j \Theta \in L_2 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_2$.
+	\end{itemize}
+	
+	Отсюда $\gamma \Theta \in L_1 \cap L_2 \Leftrightarrow
+	\alpha_i \Theta \in L_1 \lAnd \beta_j \in L_2 \Leftrightarrow
+	\gamma_{ij} \Theta \in L_1 \cap L_2$.
+	\end{proof}
+	
+	\item Аналогично доказывается, что $\rank L_1 \cup L_2 \leqslant mn$.
+\end{enumerate}
+
+\index{Лемма!о накачке}
+\begin{lemma}[о накачке]
+Если $L$ распознаётся конечным автоматом, то $\exists n \in \mathbb N \colon (\forall \alpha \in X^* \colon |\alpha| > n) \ \allowbreak \exists \alpha_1, \alpha_2, \alpha_3 \colon \alpha = \alpha_1 \alpha_2 \alpha_3$, причём
+\begin{enumerate}	
+	\item $\alpha_2 \neq \lambda$;
+	\item $\alpha \in L \Rightarrow \forall i \ \alpha_1 \alpha_2^i \alpha_3 \in L$;
+	\item $|\alpha_1 \alpha_2| \leqslant n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Пусть в конечном автомате $n$~состояний, $|\alpha| = k \geqslant n \lAnd \alpha = x_1 \ldots x_k$.
+Среди состояний $s_1 \delta(\lambda), s_1 \delta(x_1), s_1 \delta(x_1 x_2), \ldots, s_1 \delta(x_1 \ldots x_n)$ найдутся два совпадающих, т.\,е.
+$\exists l, m \colon 0 \leqslant l < m \leqslant n \lAnd s_1 \delta(x_1 \ldots x_l) \opbr= s_1 \delta(x_1 \ldots x_m) \opbr= s'$.
+
+Пусть $\alpha_1 = x_1 \ldots x_l$, $\alpha_2 = x_{l+1} \ldots x_m$, $\alpha_3 = x_{m+1} \ldots x_k$, $s_1 \delta(\alpha_1) = s'$, тогда $s_1 \delta(\alpha_1 \alpha_2) = s' \opbr\Rightarrow s_1 \delta(\alpha_1 \alpha_2^i) = s' \opbr\Rightarrow s_1 \delta(\alpha) = s_1 \delta(\alpha_1 \alpha_2 \alpha_3) = s' \delta(\alpha_3) = s_1 \delta(\alpha_1 \alpha_2^i \alpha_3)$.
+\end{proof}
+
+\begin{consequent}
+Если $\forall n \in \mathbb N \ \exists \alpha \colon |\alpha| \in n$, причём для любых слов $\alpha_1, \alpha_2, \alpha_3$:
+\begin{enumerate}
+	\item $\alpha_2 \neq \lambda$;
+	\item $\alpha \in L \lAnd \exists i \ \alpha_1 \alpha_2^i \alpha_3 \notin L$;
+	\item $|\alpha_1 \alpha_2| \leqslant n$.
+\end{enumerate}
+то $L$ не распознаётся конечным автоматом.
+\end{consequent}

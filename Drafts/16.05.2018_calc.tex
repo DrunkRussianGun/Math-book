@@ -1,0 +1,113 @@
+\chapter{16.05.2018, математический анализ}
+Пусть дифференциальному уравнению $y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0$ соответствует характеристическое уравнение $k^n + a_{n-1} k^{n-1} + \ldots + a_1 k + a_0 = 0$.
+
+\begin{proof}
+$y'' + a_1 y' + a_0 y = 0$
+
+Пусть $k_1 = k_2$, тогда $k_1^2 + a_1 k_1 + a_0 = 0 \lAnd 2k_1 + a_1 = 0$.
+Подставим $y = C_1 e^{k_1 x} + C_2 x e^{k_1 x}$:
+\begin{equation*}
+e^{k_1 x} (C_1 k_1^2 + 2 C_2 k_1 + C_2 x k_1^2 + C_1 a_1 k_1 + C_2 a_1 + C_2 a_1 k_1 x + C_1 a_0 + C_2 a_0 x) = 0 \Leftrightarrow
+C_1 (k_1^2 + a_1 k_1 + a_0) + C_2 (2k_1 + a_1) + C_2 x (k_1^2 + a_1 k_1 + a_0) = 0 \Leftrightarrow
+0 = 0
+\end{equation*}
+\end{proof}
+
+Пусть $k_1 = \alpha + i \beta$, $k_2 = \alpha - i \beta$, тогда, используя $e^{it} = \cos t + i \sin t$, получим
+\begin{equation*}
+y(x) = C_{10} e^{(\alpha + i \beta) x} + C_{20} e^{(\alpha - i \beta) x} =
+e^{\alpha x} (C_{10} e^{i \beta x} + C_{20} e^{-i \beta x}) =
+e^{\alpha x} ((C_{10} + C_{20}) \cos \beta x + i(C_{10} - C_{20}) \sin \beta x) =
+e^{\alpha x} (C_1 \cos \beta x + C_2 \sin \beta x)
+\end{equation*}
+
+\subsection{Линейные дифференциальные уравнения с постоянными коэффициентами}
+Рассмотрим следующие методы решения уравнений вида $y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)$.
+
+\subsubsection{Метод вариации произвольных постоянных}
+\begin{enumerate}
+	\item Найдём решение $y_0 = C_1 \tilde y_1 + C_2 \tilde y_2 + \ldots + C_n \tilde y_n$ уравнения $y_0^{(n)} + a_{n-1} y_0^{(n-1)} + \ldots + a_1 y_0' + a_0 y_0 = 0$.
+	
+	\item Решением исходного уравнения будет $y(x) = C_1(x) \tilde y_1 + \ldots + C_n(x) \tilde y_n$.
+	
+	\item Найдём $C_1(x), \ldots, C_n(x)$, решая систему
+	\begin{equation*}
+	\begin{cases}
+	C_1'(x) \tilde y_1 + \ldots + C_n'(x) \tilde y_n = 0 \\
+	C_1'(x) \tilde y_1' + \ldots + C_n'(x) \tilde y_n' = 0 \\
+	C_1'(x) \tilde y_1'' + \ldots + C_n'(x) \tilde y_n'' = 0 \\
+	\ldots \\
+	C_1'(x) \tilde y_1^{(n-1)} + \ldots + C_n'(x) \tilde y_n^{(n-1)} = f(x) \\
+	\end{cases}
+	\end{equation*}
+	и интегрируя $C_1'(x), \ldots, C_n'(x)$.
+\end{enumerate}
+\begin{proof}
+Пусть дано уравнение $y'' + a_1 y' + a_0 = f(x)$ и $y_0(x) = C_1 \tilde y_1 + C_2 \tilde y_2$, тогда
+\begin{equation*}
+y(x) = C_1(x) \tilde y_1 + C_2(x) \tilde y_2
+\end{equation*}
+\begin{equation*}
+y'(x) = C_1'(x) \tilde y_1 + C_1(x) \tilde y_1' + C_2'(x) \tilde y_2 + C_2(x) \tilde y_2'
+\end{equation*}
+\begin{equation*}
+y''(x) = C_1''(x) \tilde y_1 + 2 C_1' \tilde y_1' + C_1(x) \tilde y_1'' +
+C_2''(x) \tilde y_2 + 2 C_2' \tilde y_2' + C_2(x) \tilde y_2''
+\end{equation*}
+
+Подставим в уравнение:
+\begin{equation*}
+C_1''(x) \tilde y_1 + 2 C_1' \tilde y_1' + C_1(x) \tilde y_1'' +
+C_2''(x) \tilde y_2 + 2 C_2' \tilde y_2' + C_2(x) \tilde y_2'' +
+a (C_1'(x) \tilde y_1 + C_1(x) \tilde y_1' + C_2'(x) \tilde y_2 + C_2(x) \tilde y_2') +
+b (C_1(x) \tilde y_1 + C_2(x) \tilde y_2) = f(x) \Leftrightarrow
+C_1 (\tilde y_1'' + a \tilde y_1' + b \tilde y_1) +
+C_2 (\tilde y_2'' + a \tilde y_2' + b \tilde y_2) +
+C_1''(x) \tilde y_1 + 2 C_1' \tilde y_1' + C_2''(x) \tilde y_2 + 2 C_2' \tilde y_2' +
+a (C_1'(x) \tilde y_1 + C_2'(x) \tilde y_2) = f(x)
+\end{equation*}
+
+Решим систему
+\begin{equation*}
+\begin{cases}
+C_1'(x) \tilde y_1 + C_2'(x) \tilde y_2 = 0 \\
+C_1'(x) \tilde y_1' + C_2'(x) \tilde y_2' = f(x)
+\end{cases}
+\end{equation*}
+тогда
+\begin{equation*}
+C_1''(x) \tilde y_1 + C_1' \tilde y_1' + C_2''(x) \tilde y_2 + C_2' \tilde y_2' = 0
+\end{equation*}
+
+Подставляя в уравнение, получим $f(x) = f(x)$.
+\end{proof}
+
+\subsubsection{Метод неопределённых коэффициентов}
+Уравнение $y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)$ можно решить методом неопределённых коэффициентов, если
+\begin{equation*}
+f(x) = \sum_j e^{\alpha_j x} (P_j(x) \cos \beta_j x + Q_j(x) \sin \beta_j x)
+\end{equation*}
+
+Тогда решение имеет вид
+\begin{equation*}
+\sum_j e^{\alpha_j x} (T_j(x) \cos \beta_j x + R_j(x) \sin \beta_j x)\,x^{s_j}
+\end{equation*}
+где $s_j$~--- кратность корня.
+
+\subsection{Системы линейных дифференциальных уравнений с постоянными коэффициентами}
+Решим систему
+\begin{equation*}
+\begin{cases}
+y_1' = a y_1 + b y_2 \\
+y_2' = c y_1 + d y_2
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+y_1'' = a y_1' + b y_2' \Rightarrow
+y_1'' = a y_1' + b(c y_1 + d y_2) \Rightarrow
+y_1'' = a y_1' + b c y_1 + d(y_1' - a y_1) \Rightarrow
+y_1'' = (a + d) y_1' + (bc - ad)y = 0
+\end{equation*}
+
+Т.\,о., система свелась к уравнению.
