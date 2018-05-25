@@ -1,0 +1,100 @@
+\chapter{23.05.2018, математический анализ}
+\begin{equation*}
+\begin{cases}
+y_1' = a y_1 + b y_2 \\
+y_0' = c y_1 + d y_2
+\end{cases}
+\end{equation*}
+
+Известно, что $y_1 = L e^{kx}$, $y_2 = M e^{kx}$, тогда
+\begin{equation*}
+\begin{cases}
+Lk = aL + bM \\
+Mk = cL + dM
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+L (a - k) + M b = 0 \\
+L c + M (d - k) = 0
+\end{cases}
+\end{equation*}
+
+Если $\begin{vmatrix}
+a - k & b \\
+c & d - k
+\end{vmatrix} \neq 0$, то получим единственное решение~--- нулевое.
+Тогда
+\begin{equation*}
+(a - k)(d - k) - bc = 0 \Leftrightarrow
+k^2 - k (a + d) + ad - bc = 0
+\end{equation*}
+
+Получили характеристическое уравнение.
+
+Решим системы
+\begin{equation*}
+\begin{cases}
+L (a - k_i) + M b = 0 \\
+L c + M (d - k_i) = 0
+\end{cases}
+\end{equation*}
+где $k_i$~--- $i$-й корень характеристического уравнения, причём в каждой системе одно из уравнений можно убрать, т. к. главный определитель равен нулю.
+Возьмём частные решения $(L_1, M_1), (L_2, M_2)$, тогда
+\begin{equation*}
+y_1 = C_1 L_1 e^{k_1 x} + C_2 L_2 e^{k_2 x}
+\end{equation*}
+\begin{equation*}
+y_0 = C_1 M_1 e^{k_1 x} + C_2 M_2 e^{k_2 x}
+\end{equation*}
+
+\subsection{Неоднородные системы}
+\begin{equation*}
+\begin{cases}
+y_1' = a y_1 + b y_2 + f_1 \\
+y_2' = c y_1 + d y_2 + f_2
+\end{cases}
+\end{equation*}
+
+Решая соответствующую однородную систему, получим
+\begin{equation*}
+y_10 = C_1 \tilde y_1 + C_2 \tilde y_2
+\end{equation*}
+\begin{equation*}
+y_20 = D_1 \tilde y_1 + D_2 \tilde y_2
+\end{equation*}
+где $D_1$ и $D_2$ линейно связаны с $C_1$ и $C_2$ сооветственно.
+
+Тогда
+\begin{equation*}
+y_1 = C_1(x) \tilde y_1 + C_2(x) \tilde y_2
+\end{equation*}
+\begin{equation*}
+y_2 = D_1(x) \tilde y_1 + D_2(x) \tilde y_2
+\end{equation*}
+
+Подставляя в систему, получим
+\begin{equation*}
+\begin{cases}
+C_1'(x) \tilde y_1 + C_2'(x) \tilde y_2 + C_1(x) \tilde y_1' + C_2(x) \tilde y_2' =
+a(C_1(x) \tilde y_1 + C_2(x) \tilde y_2) + b(D_1(x) \tilde y_1 + D_2(x) \tilde y_2) + f_1(x) \\
+D_1'(x) \tilde y_1 + D_2'(x) \tilde y_2 + D_1(x) \tilde y_1' + D_2(x) \tilde y_2' =
+c(C_1(x) \tilde y_1 + C_2(x) \tilde y_2) + d(D_1(x) \tilde y_1 + D_2(x) \tilde y_2) + f_2(x)
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+C_1'(x) \tilde y_1 + C_2'(x) \tilde y_2 = f_1(x) \\
+D_1'(x) \tilde y_1 + D_2'(x) \tilde y_2 = f_2(x)
+\end{cases}
+\end{equation*}
+
+Решая, получим $C_1'(x)$ и $C_2'(x)$, откуда найдём $C_1(x)$ и $C_2(x)$.
+
+\section{Приближённое решение дифференциальных уравнений}
+\subsection{Решение с помощью степенного ряда}
+Рассмотрим уравнение~$y^{(n)} = F(x, y, y', \ldots, y^{(n-1)})$ с начальными условиями $y(x_0) = y_0, y'(x_0) = y_1, \ldots, y^{(n-1)}(x_0) = y_{n-1}$.
+Найдём его решение в окрестности точки~$x_0$:
+\begin{equation*}
+y(x) = y_0 + y_1(x - x_0) + \frac{y_2}{2!} (x - x_0)^2 + \ldots + \frac{y^{(n-1)}}{(n - 1)!} (x - x_0)^{n-1} + \frac{F(x_0, y_0, y_1, \ldots, y_{n-1})}{n!} (x - x_0)^n + c_{n+1} (x - x_0)^{n+1} + \ldots
+\end{equation*}
+
+Неизвестные коэффициенты можно определить подстановкой в исходное уравнение или его дифференцированием и подстановкой начальных условий.

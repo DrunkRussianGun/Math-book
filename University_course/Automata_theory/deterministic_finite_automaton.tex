@@ -6,6 +6,8 @@ $\delta \colon S \times X \to S$~--- \textbf{функция перехода};\\
 $s_1$~--- \textbf{начальное состояние};\\
 $F$~--- множество \textbf{допускающих состояний}.
 
+Конечный автомат~$(S, X, \delta, s_1, F)$ удобно представлять в виде графа, в котором вершины представляют состояния автомата, а дуги показывают, между какими состояниями возможен переход и по каким буквам.
+
 Функция перехода по буквам определяет функцию~$\delta^* \colon S \times X^* \to S$ перехода по словам:
 \begin{enumerate}
 	\item $\delta^*(s, x) = \delta(s, x)$
@@ -94,7 +96,7 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
-	\item Язык~$L$ распознаётся конечным автоматом~$A = (X, S, \delta, s_1, F)$ с $n$~состояниями.
+	\item Пусть язык~$L$ распознаётся конечным автоматом~$A = (X, S, \delta, s_1, F)$ с $n$~состояниями.
 	Рассмотрим слова $\alpha_1, \ldots, \alpha_{n+1} \opbr\in X^*$.
 	Хотя бы два из состояний $s_1 \delta(\alpha_1), \ldots, s_1 \delta(\alpha_{n+1})$ совпадают.
 	
@@ -142,14 +144,14 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \end{enumerate}
 \end{proof}
 
-Два состояния $s$ и $s'$ называются \textbf{эквивалентными относительно автомата~$A = (X, S, \delta, s_1, F)$}, если $\forall \alpha \opbr\in X^* \ s \delta(\alpha) \in F \Leftrightarrow s' \delta(\alpha) \in F$.
+Два состояния $s$ и $s'$ называются \textbf{эквивалентными относительно автомата~$A = (S, X, \delta, s_1, F)$}, если $\forall \alpha \in X^* \ \allowbreak s \delta(\alpha) \in F \Leftrightarrow s' \delta(\alpha) \in F$.
 
 \index{Конечный автомат!связный} Автомат называется \textbf{связным}, если $\forall s \in S \ \exists \alpha \in X^* \ s_1 \delta(\alpha) = s$.
 
 \index{Конечный автомат!приведённый} \index{Конечный автомат!минимальный} Автомат называется \textbf{приведённым}, или \textbf{минимальным}, если в нём нет эквивалентных состояний.
 
-Пусть задан автомат~$A = (X, S, \delta, s_1, F)$.
-Рассмотрим автомат~$A_m = (X, S_m, \delta_m, s_m, F_m)$, где $S_m = \{ [s] \mid s \in S \}$, $\delta_m \colon [s] \delta(x) = [s \delta(x)]$, $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$, тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
+Пусть задан автомат~$A = (S, X, \delta, s_1, F)$.
+Рассмотрим автомат~$A_m = (S_m, X, \delta_m, s_m, F_m)$, где $S_m = \{ [s] \mid s \in S \}$, $\delta_m \colon [s] \delta(x) = [s \delta(x)]$, $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$, тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
 
 Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
 \begin{enumerate}
@@ -230,3 +232,11 @@ $\exists l, m \colon 0 \leqslant l < m \leqslant n \lAnd s_1 \delta(x_1 \ldots x
 \end{enumerate}
 то $L$ не распознаётся конечным автоматом.
 \end{consequent}
+
+\begin{statement}
+Если непустой язык распознаётся автоматом с $n$~состояниями, то он содержит слово длины не больше~$n$.
+\end{statement}
+\begin{proof}
+Если автомат распознаёт слово, то в соответствующем графе есть путь из начального состояния в допускающее, а значит, есть и простой путь.
+В графе $n$~вершин, тогда длина простого пути не больше~$n$, а ему соответствует слово длины не больше~$n$.
+\end{proof}
