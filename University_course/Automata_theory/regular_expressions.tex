@@ -1,0 +1,58 @@
+\section{Регулярные выражения}
+\index{Регулярное выражение} \textbf{Регулярным выражением} называются:
+\begin{enumerate}
+	\item $\varnothing$, $\lambda$, $x$, где $x$~--- буква, и задают языки $\varnothing$, $\{ \lambda \}$, $\{ x \}$ соответственно;
+	\item $L \cup M$, $L \cdot M$, $L^*$, где $L, M$~--- регулярные выражения, и задают языки $L_1 \cup M_1$, $L_1 M_1$ и $L_1^*$ соответственно, где $L_1, M_1$~--- языки, задаваемые $L$ и $M$ соответственно.
+\end{enumerate}
+
+Приоритет операций в порядке возрастания слева направо: $\cup$, $\cdot$, $\vphantom{L}^*$.
+
+Допустимы записи $L + M$ и $LM$ вместо $L \cup M$ и $L \cdot M$ соответственно.
+
+\index{Язык!регулярный} Язык называется \textbf{регулярным}, если он может быть задан регулярным выражением.
+
+\index{Теорема!Клини}
+\begin{theorem}[Клини]
+Язык~$L$ распознаётся конечным автоматом $\Leftrightarrow$ он регулярный.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Leftarrow$. Можно построить автоматы, распознающие языки $\varnothing$, $\{ \lambda \}$, $\{ x \}$, а также их объединение, конкатенацию и итерацию.
+	\item $\Rightarrow$. Пусть состояния автомата пронумерованы от $1$ до $n$, $L_{ij}^{(k)} = \{ \alpha = x_1 \ldots x_p \mid i \delta(\alpha) = j \lAnd \forall q \in \mathbb N \ \allowbreak q < p \opbr\Rightarrow \delta(x_1 \ldots x_q) \leqslant k \}$.
+		\indbase $L_{ij}^{(0)} =
+		\begin{cases}
+		x_{q_1} + \ldots + x_{q_m}, \ i \neq j \\
+		x_{q_1} + \ldots + x_{q_m} + \lambda, \ i = j
+		\end{cases}$\\
+		где $x_{q_1}, \ldots, x_{q_m}$~--- буквы, по котором возможен переход из $i$ в $j$.
+		\indstep $L_{ij}^{(k+1)} = L_{ij}^{(k)} + L_{i\,k+1}^{(k)} \left( L_{k+1\,k+1}^{(k)} \right)^* L_{k+1\,j}^{(k)}$
+		\indend
+		
+	Т.\,о., язык $L_{ij}^{(n)} = L$ задаётся регулярным выражением.
+\end{enumerate}
+\end{proof}
+
+\subsection{Алгебраические законы}
+Пусть $L, M, N$~--- регулярные выражения.
+
+Законы объединения:
+\begin{enumerate}
+	\item Коммутативность: $L + M = M + L$
+	\item Ассоциативность: $(L + M) + N = L + (M + N)$
+	\item Идемпотентность: $L + L = L$
+	\item Существование единичного элемента: $L + \varnothing = L$
+\end{enumerate}
+
+Законы конкатенации:
+\begin{enumerate}
+	\item Ассоциативность: $(LM)N = L(MN)$
+	\item Дистрибутивность относительно объединения: $L(M + N) = LM + LN$, $(L + M)N = LN + MN$
+	\item Существование нулевого элемента: $L \varnothing = \varnothing L = \varnothing$
+	\item Существование единичного элемента: $L \lambda = \lambda L = L$
+\end{enumerate}
+
+Законы итерации:
+\begin{enumerate}
+	\item Идемпотентность: $(L^*)^* = L^*$
+	\item $(\lambda + L)^* = L^*$
+\end{enumerate}

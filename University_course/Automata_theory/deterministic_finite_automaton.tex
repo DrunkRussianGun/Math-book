@@ -3,17 +3,17 @@
 $S$~--- конечное множество \textbf{состояний};\\
 $X$~--- алфавит;\\
 $\delta \colon S \times (X \cup \{ \lambda \}) \to S$~--- \textbf{функция перехода}, причём $\forall k > 0 \ s \delta(\lambda^k) = s$;\\
-$s_1$~--- \textbf{начальное состояние};\\
-$F$~--- множество \textbf{допускающих состояний}.
+$s_1 \in S$~--- \textbf{начальное состояние};\\
+$F \subseteq S$~--- множество \textbf{допускающих состояний}.
 
 Конечный автомат~$(S, X, \delta, s_1, F)$ удобно представлять в виде графа, в котором вершины представляют состояния автомата, а дуги показывают, между какими состояниями возможен переход и по каким буквам.
 
 Функция перехода по буквам определяет функцию~$\delta^* \colon S \times X^* \to S$ перехода по словам:
 \begin{enumerate}
 	\item $\delta^*(s, x) = \delta(s, x)$
-	\item $\delta^*(s, \alpha x) = \delta^*(\delta^*(s, \alpha), x)$
+	\item $\delta^*(s, \alpha x) = \delta(\delta^*(s, \alpha), x)$
 \end{enumerate}
-где $s$~--- состояние, $x$~--- буква, $\alpha$~--- слово.
+где $\alpha \in X^*$, $x \in X \cup \{ \lambda \}$.
 
 Запись $\delta^*(s, \alpha)$ несколько громоздка, поэтому вместо неё обычно используется запись $s \delta(\alpha)$.
 
@@ -151,7 +151,11 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \index{Конечный автомат!приведённый} \index{Конечный автомат!минимальный} Автомат называется \textbf{приведённым}, или \textbf{минимальным}, если в нём нет эквивалентных состояний.
 
 Пусть задан автомат~$A = (S, X, \delta, s_1, F)$.
-Рассмотрим автомат~$A_m = (S_m, X, \delta_m, s_m, F_m)$, где $S_m = \{ [s] \mid s \in S \}$, $\delta_m \colon [s] \delta(x) = [s \delta(x)]$, $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$, тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
+Рассмотрим автомат~$A_m = (S_m, X, \delta_m, s_m, F_m)$, где\\
+$S_m = \{ [s] \mid s \in S \}$,\\
+$\delta_m \colon [s] \delta(x) = [s \delta(x)]$,\\
+$s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,\\
+тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
 
 Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
 \begin{enumerate}

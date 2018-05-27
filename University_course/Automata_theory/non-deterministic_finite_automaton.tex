@@ -2,20 +2,20 @@
 \index{Конечный автомат!недетерминированный} \index{Сокращения!НКА} \textbf{Недетерминированным конечным автоматом}, или \textbf{НКА}, называется набор~$(S, X, \delta, s_1, F)$, где\\
 $S$~--- конечное множество состояний;\\
 $X$~--- конечный алфавит;\\
-$\delta \colon S \times (X \cup \{ \lambda \}) \to Y$~--- функция перехода, где $Y \subseteq 2^S$;\\
+$\delta \colon S \times (X \cup \{ \lambda \}) \to 2^S$~--- функция перехода;\\
 $s_1 \in S$~--- начальное состояние;\\
 $F \subseteq S$~--- множество допускающих состояний.
 
-Функция~$\delta$ определяет функцию~$\delta^* \colon S \times X^* \to Y$:
+Функция~$\delta$ определяет функцию~$\delta^* \colon S \times X^* \to 2^S$:
 \begin{enumerate}
 	\item $\delta^*(s, x) = \delta(s, x)$
-	\item $\delta^*(s, \alpha x) = \delta^*(\delta^*(s, \alpha), x)$
+	\item $\delta^*(s, \alpha x) = \bigcup\limits_{s' \in \delta^*(s, \alpha)} \delta(s', x)$
 \end{enumerate}
-где $s \in S$, $x \in X \cup \{ \lambda \}$, $\alpha \in X^*$, $Y \subseteq 2^S$.
+где $s \in S$, $x \in X \cup \{ \lambda \}$, $\alpha \in X^*$.
 
 Допустима запись $s \delta(\alpha)$ вместо $\delta^*(s, \alpha)$.
 
-\index{Конкатенация!языков} \textbf{Конкатенацией языков $L_1$ и $L_2$} называется язык~$\{ \alpha \beta \mid \alpha \in L_1 \lAnd \beta \in L_2 \}$ и обозначается $L_1 L_2$.
+\index{Конкатенация!языков} \textbf{Конкатенацией языков $L_1$ и $L_2$} называется язык~$\{ \alpha \beta \mid \alpha \in L_1 \lAnd \beta \in L_2 \}$ и обозначается $L_1 \cdot L_2 = L_1 L_2$.
 
 \index{Степень!языка} \textbf{$n$-й степенью языка~$L$} называется $L^n = \underbrace{L L \ldots L}_n$.
 
@@ -48,7 +48,7 @@ s_1, \ s \notin S \lAnd x = \lambda
 
 Пусть язык~$L$ распознаётся НКА~$(S, X, \delta, s_1, F)$.
 Тогда ДКА~$(T, X, \delta', [s_1], F')$ тоже распознаёт $L$, где\\
-$T = \{ M \mid M = \{ m_1, \ldots, m_k \} \subseteq 2^S \lAnd \bigcup\limits_{i=1}^k [m_i] = M \}$,\\
+$T = \{ M \mid M = \{ m_1, \ldots, m_k \} \subseteq S \lAnd \bigcup\limits_{i=1}^k [m_i] = M \}$,\\
 $\delta'(\{ m_1, \ldots, m_k \}, x) = \bigcup\limits_{i=1}^k [\delta(m_i, x)]$,\\
 $F' = \{ M \mid M \in T \lAnd M \cap F \neq \varnothing \}$.
 \begin{proofmathind}
