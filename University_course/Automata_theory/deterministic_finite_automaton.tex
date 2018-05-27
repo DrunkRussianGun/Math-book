@@ -1,8 +1,8 @@
 \section{Детерминированные конечные автоматы}
-\index{Конечный автомат!детерминированный} \textbf{Детерминированным конечным автоматом} называется набор~$(S, X, \delta, s_1, F)$, где\\
+\index{Конечный автомат!детерминированный} \index{Сокращения!ДКА} \textbf{Детерминированным конечным автоматом}, или \textbf{ДКА}, называется набор~$(S, X, \delta, s_1, F)$, где\\
 $S$~--- конечное множество \textbf{состояний};\\
 $X$~--- алфавит;\\
-$\delta \colon S \times X \to S$~--- \textbf{функция перехода};\\
+$\delta \colon S \times (X \cup \{ \lambda \}) \to S$~--- \textbf{функция перехода}, причём $\forall k > 0 \ s \delta(\lambda^k) = s$;\\
 $s_1$~--- \textbf{начальное состояние};\\
 $F$~--- множество \textbf{допускающих состояний}.
 
@@ -11,14 +11,14 @@ $F$~--- множество \textbf{допускающих состояний}.
 Функция перехода по буквам определяет функцию~$\delta^* \colon S \times X^* \to S$ перехода по словам:
 \begin{enumerate}
 	\item $\delta^*(s, x) = \delta(s, x)$
-	\item $\delta^*(s, \alpha x) = \delta(\delta(s, \alpha), x)$
+	\item $\delta^*(s, \alpha x) = \delta^*(\delta^*(s, \alpha), x)$
 \end{enumerate}
 где $s$~--- состояние, $x$~--- буква, $\alpha$~--- слово.
 
 Запись $\delta^*(s, \alpha)$ несколько громоздка, поэтому вместо неё обычно используется запись $s \delta(\alpha)$.
 
 \subsection{Распознаваемость языков}
-Говорят, что конечный автомат~$(S, X, \delta, s_1, F)$ \textbf{распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \in F$.
+Говорят, что ДКА~$(S, X, \delta, s_1, F)$ \textbf{распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \in F$.
 
 \begin{statement}
 Любой конечный язык распознаётся конечным автоматом.
@@ -170,7 +170,7 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \end{proof}
 
 Исследуем распознаваемость дополнения, пересечения и объединения языков.
-Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, $\rank L_1 = m \lAnd \rank L_2 = n$.
+Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, $\rank L_1 = m$ и $\rank L_2 = n$.
 \begin{enumerate}
 	\item Докажем, что $\rank L_1 = \rank \overline L_1$.
 	\begin{proof}

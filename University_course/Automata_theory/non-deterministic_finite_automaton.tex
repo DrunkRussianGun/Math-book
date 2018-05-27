@@ -1,20 +1,30 @@
 \section{Недетерминированные конечные автоматы}
-\index{Конечный автомат!недетерминированный} \textbf{Недетерминированным конечным автоматом} называется набор~$(S, X, \delta, s_1, F)$, где\\
+\index{Конечный автомат!недетерминированный} \index{Сокращения!НКА} \textbf{Недетерминированным конечным автоматом}, или \textbf{НКА}, называется набор~$(S, X, \delta, s_1, F)$, где\\
 $S$~--- конечное множество состояний;\\
 $X$~--- конечный алфавит;\\
 $\delta \colon S \times (X \cup \{ \lambda \}) \to Y$~--- функция перехода, где $Y \subseteq 2^S$;\\
 $s_1 \in S$~--- начальное состояние;\\
 $F \subseteq S$~--- множество допускающих состояний.
 
-Говорят, что недетерминированный автомат \textbf{распознаёт язык~$L$}, если при чтении слова из языка~$L$ хотя бы один из получившихся путей приводит в допускающее состояние.
+Функция~$\delta$ определяет функцию~$\delta^* \colon S \times X^* \to Y$:
+\begin{enumerate}
+	\item $\delta^*(s, x) = \delta(s, x)$
+	\item $\delta^*(s, \alpha x) = \delta^*(\delta^*(s, \alpha), x)$
+\end{enumerate}
+где $s \in S$, $x \in X \cup \{ \lambda \}$, $\alpha \in X^*$, $Y \subseteq 2^S$.
 
-\index{Конкатенация} \textbf{Конкатенацией языков $L_1$ и $L_2$} называется язык~$\{ \alpha \beta \mid \alpha \in L_1 \lAnd \beta \in L_2 \}$ и обозначается $L_1 L_2$.
+Допустима запись $s \delta(\alpha)$ вместо $\delta^*(s, \alpha)$.
 
-\index{Степень} \textbf{$n$-й степенью языка~$L$} называется $L^n = \underbrace{L L \ldots L}_n$.
+\index{Конкатенация!языков} \textbf{Конкатенацией языков $L_1$ и $L_2$} называется язык~$\{ \alpha \beta \mid \alpha \in L_1 \lAnd \beta \in L_2 \}$ и обозначается $L_1 L_2$.
 
-\index{Итерация} \index{Звёздочка Клини} \textbf{Итерацией}, или \textbf{звёздочкой Клини}, языка $L$ называется $L^* = \bigcup\limits_{n=0}^\infty L^n$.
+\index{Степень!языка} \textbf{$n$-й степенью языка~$L$} называется $L^n = \underbrace{L L \ldots L}_n$.
 
-Если языки $L_1$ и $L_2$ распознаются автоматами $(S_1, X, \delta_1, s_1, F_1)$ и $(S_2, X, \delta_2, s_2, F_2)$ соответственно, тогда автомат~$(S_1 \cup S_2, X, \delta, s_1, F_2)$ распознаёт язык $L_1 L_2$, где
+\index{Итерация} \index{Звёздочка Клини} \textbf{Итерацией}, или \textbf{звёздочкой Клини}, \textbf{языка~$L$} называется $L^* = \bigcup\limits_{n=0}^\infty L^n$.
+
+\subsection{Распознаваемость языков}
+Говорят, что НКА \textbf{распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \cap F \neq \varnothing$.
+
+Если языки $L_1$ и $L_2$ распознаются НКА $(S_1, X, \delta_1, s_1, F_1)$ и $(S_2, X, \delta_2, s_2, F_2)$ соответственно, тогда автомат~$(S_1 \opbr\cup S_2, \allowbreak X, \allowbreak \delta, \allowbreak s_1, \allowbreak F_2)$ распознаёт язык $L_1 L_2$, где
 \begin{equation*}
 s \delta(x) =
 \begin{cases}
@@ -24,7 +34,7 @@ s_2, \ s \in F_1 \lAnd x = \lambda
 \end{cases}
 \end{equation*}
 
-Если $L$ распознаётся автоматом~$(S, X, \delta, s_1, F)$, то $(S \cup \{ s_0 \}, X, \delta_1, s_0, F \cup \{ s_0 \})$ распознаёт $L^*$, где
+Если $L$ распознаётся НКА~$(S, X, \delta, s_1, F)$, то $(S \cup \{ s_0 \}, X, \delta_1, s_0, F \cup \{ s_0 \})$ распознаёт $L^*$, где
 \begin{equation*}
 s(\delta_1) =
 \begin{cases}
@@ -32,3 +42,25 @@ s \delta(x), \ s \in S \\
 s_1, \ s \notin S \lAnd x = \lambda
 \end{cases}
 \end{equation*}
+
+\subsection{Построение ДКА по НКА}
+\index{Замыкание} \textbf{Замыканием состояния~$s$} некоторого НКА называется множество~$\{ s' \mid s \delta(\lambda^k) = s' \}$ и обозначается~$[s]$.
+
+Пусть язык~$L$ распознаётся НКА~$(S, X, \delta, s_1, F)$.
+Тогда ДКА~$(T, X, \delta', [s_1], F')$ тоже распознаёт $L$, где\\
+$T = \{ M \mid M = \{ m_1, \ldots, m_k \} \subseteq 2^S \lAnd \bigcup\limits_{i=1}^k [m_i] = M \}$,\\
+$\delta'(\{ m_1, \ldots, m_k \}, x) = \bigcup\limits_{i=1}^k [\delta(m_i, x)]$,\\
+$F' = \{ M \mid M \in T \lAnd M \cap F \neq \varnothing \}$.
+\begin{proofmathind}
+	\indbase $s_1 \delta(\lambda^k) = [s_1] \lAnd [s_1] \delta'(\lambda^k) = [s_1] \Rightarrow
+	s_1 \delta(\lambda^k) = [s_1] \delta'(\lambda^k)$
+	\indstep Пусть доказано для слов~$\alpha$ длины~$n$, $s_1 \delta(\alpha) = \{ m_1, \ldots, m_k \}$.
+	\begin{equation*}
+	s_1 \delta(\alpha x) = \bigcup_{i=1}^k [\delta(m_i, x)] \lAnd
+	[s_1] \delta'(\alpha x) = \bigcup_{i=1}^k [\delta(m_i, x)] \Rightarrow
+	s_1 \delta(\alpha x) = [s_1] \delta'(\alpha x)
+	\end{equation*}
+	\indend
+	
+Т.\,о., $\forall \alpha \in X^* \ s_1 \delta(\alpha) = [s_1] \delta'(\alpha)$.
+\end{proofmathind}
