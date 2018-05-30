@@ -37,7 +37,7 @@ $S_n$ называется \textbf{частичной суммой числов�
 \end{enumerate}
 
 \subsection{Знакоположительные ряды}
-\index{Ряд!знакоположительный} Числовой ряд называется \textbf{знакоположительным}, если все его члены положительны.
+\index{Ряд!числовой!знакоположительный} Числовой ряд называется \textbf{знакоположительным}, если все его члены положительны.
 
 \begin{lemma}
 \label{lemma:convergence_of_sign-positive_series}
@@ -50,8 +50,7 @@ $S_n$ называется \textbf{частичной суммой числов�
 \end{enumerate}
 \end{proof}
 
-\begin{theorem}[сравнения]
-\label{th:direct_comparison_test1}
+\begin{theorem}[признак сравнения]
 Пусть даны знакоположительные ряды $\series a_k$ и $\series b_k$, $\forall n \in \mathbb N \ a_n \leqslant b_n$.
 \begin{itemize}
 	\item Если $\series b_k$ сходится, то $\series a_k$ тоже сходится.
@@ -73,7 +72,8 @@ $S_n$ называется \textbf{частичной суммой числов�
 \end{itemize}
 \end{proof}
 
-\begin{theorem}[сравнения]
+\index{Признак!предельный п. сравнения}
+\begin{theorem}[предельный признак сравнения]
 Пусть даны знакоположительные ряды $\series a_k$ и $\series b_k$, $\lim\limits_{n \to \infty} \frac{a_n}{b_n} = c$.
 Если $0 < c < \infty$, то $\series a_k$ сходится $\Leftrightarrow$ $\series b_k$ сходится.
 \end{theorem}
@@ -88,14 +88,15 @@ $S_n$ называется \textbf{частичной суммой числов�
 a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 \end{equation*}
 
-По теореме~\ref*{th:direct_comparison_test1} получим:
+По признаку сравнения получим:
 \begin{itemize}
 	\item Если $\series a_k$ сходится, то $\series \frac{2 a_k}c$ сходится $\Rightarrow$ $\series b_k$ сходится.
 	\item Если $\series b_k$ сходится, то $\series \frac32 b_k c$ сходится $\Rightarrow$ $\series a_k$ сходится.
 \end{itemize}
 \end{proof}
 
-\begin{theorem}[д'Аламбера]
+\index{Признак!Д'Аламбера}
+\begin{theorem}[признак Д'Аламбера]
 Пусть $\series a_k$~--- знакоположительный ряд, $\lim\limits_{n \to \infty} \frac{a_{n+1}}{a_n} = p$.
 Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
 \end{theorem}
@@ -131,6 +132,7 @@ a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 \end{enumerate}
 \end{proof}
 
+\index{Признак!радикальный п. Коши}
 \begin{theorem}[радикальный признак Коши]
 Пусть $\series a_k$~--- знакоположительный ряд и $\exists \lim\limits_{n \to \infty} \sqrt[n]{a_n} = p$.
 Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
@@ -147,7 +149,7 @@ a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} < 1
 	\end{equation*}
 	
-	Тогда по признаку д'Аламбера $\series a_k$ сходится.
+	Тогда по признаку Д'Аламбера $\series a_k$ сходится.
 	
 	\item Пусть $p > 1$.
 	Выберём $\varepsilon > 0 \colon p - \varepsilon > 1$, тогда
@@ -159,6 +161,151 @@ a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
 	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} > 1
 	\end{equation*}
 	
-	Тогда по признаку д'Аламбера $\series a_k$ расходится.
+	Тогда по признаку Д'Аламбера $\series a_k$ расходится.
 \end{enumerate}
+\end{proof}
+
+\index{Признак!интегральный п. Коши}
+\begin{theorem}[интегральный признак Коши]
+Пусть $\series a_k$~--- знакоположительный ряд.
+Если существует монотонная функция~$f(x) \colon f(n) = a_n \lAnd \lim\limits_{x \to +\infty} f(x) = 0$, то $\series a_k$ сходится $\Leftrightarrow$ $\exists \int\limits_1^{+\infty} f(x)\,dx$.
+\end{theorem}
+\begin{proof}
+Рассмотрим отрезок~$[1; n + 1]$.
+Площадь синей фигуры на нём равна $a_1 + a_2 + \ldots + a_n = S_n$, красной~--- $a_2 + \ldots + a_{n+1} = S_{n+1} - a_1$, а криволинейной трапеции~--- $S = \int\limits_1^{n+1} f(x)\,dx$, тогда $S_{n+1} - a_1 < S < S_n$.
+\begin{enumerate}
+	\item \begin{minipage}[t]{105mm}\noindent
+	Пусть $\exists \int\limits_1^{+\infty} f(x)\,dx$, тогда
+	\begin{equation*}
+	\forall n \in \mathbb N \ S_{n+1} - a_1 < S \Rightarrow
+	S_n < S_{n+1} < a_1 + S < a_1 + \int\limits_1^{+\infty} f(x)\,dx
+	\end{equation*}
+	
+	Получили, что $S_n$ ограничена, значит, $\exists \lim\limits_{n \to \infty} S_n$, т.\,к. $S_n$ возрастает.
+	Отсюда $\series a_k$ сходится.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{68mm}\noindent
+	\begin{flushright}
+	\begin{tikzpicture}
+	\drawaxis{-0.5}{6}{-0.5}{3};
+	\draw[name path=curve] (0.5, 2.5) coordinate (a) .. controls (1.75, 1.2) .. (6, 0.7) coordinate (b);
+	
+	% Рисуем прямоугольники в начале
+	\coordinate (prev) at (a);
+	\foreach \i/\x in {1/1, 2/1.5} {
+		\getordinate{x\i}{\x}{curve};
+		\draw[red] (0, 0 -| x\i) -- (x\i) -- (x\i -| prev);
+		\draw[blue] (x\i) -- (prev -| x\i) -- (prev);
+		\coordinate (prev) at (x\i);
+	}
+	\getordinate{x3}{2}{curve};
+	\draw[blue] (0, 0 -| a) -- (a)
+		(x2) -- (x2 -| x3);
+	\draw[red] (x2 |- x3) -- (x3);
+	
+	% Рисуем чёрточки на Ox
+	\foreach \x in {1, 2, 3}
+		\draw (\x/2, 0) -- +(0, -0.1) node[below] {$\x$} -- +(0, 0.1);
+	
+	% Рисуем прямоугольник в середине
+	\getordinate{xn1}{3.5}{curve};
+	\getordinate{xn2}{4}{curve};
+	\draw[red] (xn1) -- (0, 0 -| xn1)
+		(0, 0 -| xn2) -- (xn2) -- (xn1 |- xn2);
+	\draw[blue] (xn1) -- (xn1 -| xn2) -- (xn2);
+	
+	% Рисуем чёрточки на Ox
+	\draw (xn1 |- 0, 0) -- +(0, -0.1) node[below] {$\scriptstyle n \vphantom1$} -- +(0, 0.1)
+		(xn2 |- 0, 0) -- +(0, -0.1) node[below] {$\scriptstyle n + 1$} -- +(0, 0.1);
+	
+	% Подписываем точки
+	\draw (a) node[above] {$\scriptstyle a_1$}
+		(xn1) node[above] {$\scriptstyle a_n$};
+	\end{tikzpicture}
+	\end{flushright}
+	\end{minipage}
+	
+	\item Пусть $\int\limits_1^{+\infty} f(x)\,dx = \infty$, тогда
+	\begin{equation*}
+	\forall n \in \mathbb N \ S < S_n \lAnd
+	\lim\limits_{n \to \infty} S = +\infty \Rightarrow
+	\lim\limits_{n \to \infty} S_n = +\infty
+	\end{equation*}
+	
+	Значит, $\series a_k$ расходится.
+\end{enumerate}
+\end{proof}
+
+\begin{consequent}
+\label{conseq:series_1_div_k}
+Ряд~$\series \frac1{k^\alpha}$ расходится при~$\alpha \leqslant 1$ и сходится при~$\alpha > 1$.
+\end{consequent}
+\begin{proof}
+Это следует из утверждения~\ref{st:improper_int_1_div_x}.
+\end{proof}
+
+\subsection{Знакопеременные ряды}
+\index{Ряд!числовой!знакопеременный} Числовой ряд называется \textbf{знакопеременным}, если он содержит как положительные, так и отрицательные члены.
+
+\index{Ряд!числовой!знакочередующийся} Числовой ряд называется \textbf{знакочередующимся}, если его любые два последовательных члена имеют разные знаки.
+
+\begin{theorem}
+Если $\series |a_k|$ сходится, то $\series a_k$ тоже сходится.
+\end{theorem}
+\begin{proof}
+Пусть $S_n$ и $\sigma_n$~--- частичные суммы рядов $\series a_k$ и $\series |a_k|$ соответственно.
+По \hyperref[th:Cauchy_criterion]{критерию Коши}
+\begin{equation*}
+\forall \varepsilon > 0 \
+\exists N \in \mathbb N \colon
+\forall m > N \ \forall k \geqslant 1 \
+|\sigma_{m+k} - \sigma_m| < \varepsilon
+\end{equation*}
+
+Тогда
+\begin{equation*}
+|S_{m+k} - S_m| = |\sum_{i=1}^k a_{m+i}| \leqslant \sum_{i=1}^k |a_{m+i}| = |\sigma_{m+k} - \sigma_m| < \varepsilon
+\end{equation*}
+
+Значит, $\series a_k$ сходится.
+\end{proof}
+
+Говорят, что знакопеременный ряд~$\series a_k$:
+\begin{itemize}
+	\item \textbf{сходится абсолютно}, если $\series |a_k|$ сходится;
+	\item \textbf{сходится условно}, если $\series a_k$ сходится, но $\series |a_k|$ расходится;
+	\item \textbf{расходится} в остальных случаях.
+\end{itemize}
+
+\index{Признак!Лейбница}
+\begin{theorem}[признак Лейбница]
+Пусть $\series (-1)^{k-1} a_k$~--- знакочередующийся ряд, где $a_k > 0$.
+Если $\lim\limits_{n \to \infty} a_n = 0$, причём $(a_n)$~--- монотонно убывающая последовательность, то ряд сходится.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+S_{2n} = (a_1 - a_2) + (a_3 - a_4) + \ldots + (a_{2n-1} - a_{2n}) < S_{2n+2}
+\end{equation*}
+\begin{equation*}
+S_{2n} = a_1 - (a_2 - a_3) - (a_4 - a_5) - \ldots - (a_{2n-2} - a_{2n-1}) - a_{2n} < a_1
+\end{equation*}
+
+Тогда по свойству~\ref{st:monotonic_bounded_sequence} предела последовательности
+\begin{equation*}
+\lim_{n \to \infty} S_{2n} = S \Rightarrow
+\lim_{n \to \infty} S_{2n+1} =
+\lim_{n \to \infty} S_{2n} + \lim_{n \to \infty} a_{2n+1} =
+S \Rightarrow
+\lim_{n \to \infty} S_n = S
+\end{equation*}
+
+Значит, ряд сходится.
+\end{proof}
+
+\begin{consequent}
+Ряд~$\series \frac{(-1)^k}{k^\alpha}$ расходится при $\alpha \leqslant 0$, условно сходится при $0 < \alpha \leqslant 1$ и абсолютно сходится при $\alpha > 1$.
+\end{consequent}
+\begin{proof}
+Это следует из следствия~\ref{conseq:series_1_div_k}.
 \end{proof}

@@ -20,13 +20,8 @@
 \coordinate (x6) at (b);
 
 % разбиваем фигуру на части
-\def\getpoint#1#2{% {имя точки}{значение x}
-	\path[name path=vertical] (#2, \bottom_y) -- (#2, \top_y);
-	\path[name intersections={of=curve and vertical, by=i}]
-		(i) coordinate (#1);
-}
 \foreach \i/\x in {1/1, 2/1.5, 3/2.5, 4/3.75, 5/4.6}
-	\getpoint{x\i}{\x};
+	\getordinate{x\i}{\x}{curve};
 \printcoordsonaxis[solid]{x1}{x_1};
 \printcoordsonaxis[solid]{x2}{x_2};
 \foreach \i in {3, 4}
@@ -35,9 +30,8 @@
 
 % приближаем её прямоугольниками
 \coordinate (prev) at (x0);
-\foreach \i/\x in {1/0.75, 2/1.25, 3/1.75, 4/3.25, 5/4.3, 6/5}
-{
-	\getpoint{e\i}{\x};
+\foreach \i/\x in {1/0.75, 2/1.25, 3/1.75, 4/3.25, 5/4.3, 6/5} {
+	\getordinate{e\i}{\x}{curve};
 	\printcoordsonaxis{e\i}{};
 	
 	\draw[dashed] (prev) -- (prev |- e\i) -- (e\i -| x\i) -- (x\i);

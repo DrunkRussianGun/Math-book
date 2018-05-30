@@ -4,6 +4,8 @@
 %	  оси и обрезает рисунок по ним;
 %	- printcoordsonaxis[параметры линий]{координаты (без скобок)}{надпись для x}[параметры надписи для x]{надпись для y}[параметры надписи для y] —
 %	  печатает указанные подписи на координатных осях для заданной точки
+%	- getordinate{имя новой точки}{x0}{имя линии} — получить точку пересечения заданной линии
+%	  с прямой x = x0
 
 \usepackage{xparse}
 
@@ -19,4 +21,9 @@
 \NewDocumentCommand\printcoordsonaxis{O{dashed}mgO{below}gO{left}}{
 	\draw[#1] \IfValueT{#3}{(#2) -- (#2 |- 0,0) node[#4] {$#3$}}
 		\IfValueT{#5}{(#2) -- (#2 -| 0,0) node[#6] {$#5$}}
+}
+\NewDocumentCommand\getordinate{mmm}{
+	\path[name path=vertical] (#2, \bottom_y) -- (#2, \top_y);
+	\path[name intersections={of=#3 and vertical, by=i}]
+		(i) coordinate (#1);
 }
