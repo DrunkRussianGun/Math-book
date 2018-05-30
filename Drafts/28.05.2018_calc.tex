@@ -1,0 +1,75 @@
+\subsection{Метод Эйлера}
+$y_{k+1} = y_k + f(x_k, y_k) (x_{k+1} - x_k)$
+
+Можно улучшить точность:
+$y_{k+1} = y_k + f($
+
+Метод приближённого решения дифференциального уравнения высшего порядка заключается в его сведении к системе линейных уравнений.
+
+\subsection{Графический метод}
+Приближённые решения уравнения вида $y' = f(x, y)$ можно получить графическим методом, находя изоклины~--- линии, на которых производная функции не меняет значение.
+По ним можно получить представление о том, какую форму имеет кривая.
+
+Рассмотрим \textbf{динамическую систему}
+\begin{equation*}
+\begin{cases}
+\dot x = f(x, y, t) \\
+\dot y = g(x, y, t)
+\end{cases}
+\end{equation*}
+
+Если
+$\begin{cases}
+f(a, b, t) = 0 \\
+g(a, b, t) = 0
+\end{cases}$, то $(a, b)$ называется \textbf{точкой покоя}, или \textbf{положением равновесия}.
+
+Исследуем систему
+\begin{equation*}
+\begin{cases}
+\dot x = ax + by \\
+\dot y = cx + dy
+\end{cases}
+\end{equation*}
+
+Для неё $(0, 0)$~--- точка покоя.
+
+Решая уравнение
+$\begin{vmatrix}
+a - k & b \\
+c & d - k
+\end{vmatrix} = 0$, получим корни $k_1$ и $k_2$.
+
+Тогда
+\begin{enumerate}
+	\item Если $k_1, k_2 \in \mathbb R$, то
+	\begin{equation*}
+	x = C_1 e^{k_1 t} + C_2 e^{k_2 t} \\
+	y = C_1\,\frac{k_1 - a}b\,e^{k_1 t} + C_2\,\frac{k_2 - a}b\,e^{k_2 t}
+	\end{equation*}
+	
+	\begin{itemize}
+		\item Если $k_1, k_2 < 0$, то $(0, 0)$~--- устойчивый узел.
+		\item Если $k_1, k_2 > 0$, то $(0, 0)$~--- неустойчивый узел.
+		\item Если $k_1 < 0 < k_2$, то $(0, 0)$~--- седло.
+	\end{itemize}
+	
+	\item Если $k_{1,2} = \alpha \pm i \beta$, то
+	\begin{equation*}
+	\begin{cases}
+	x = C_1 e^{\alpha t} \cos \beta t + C_2 e^{\alpha t} \sin \beta t \\
+	y = \left( \frac{\alpha - a}b\,C_1 + \frac\beta{b}\,C_2 \right) e^{\alpha t} \cos \beta t + C_2 e^{\alpha t} \sin \beta t
+	\end{cases}
+	\end{equation*}
+	
+	\begin{itemize}
+		\item Если $\alpha < 0$, то $(0, 0)$~--- устойчивый фокус.
+		\item Если $\alpha > 0$, то $(0, 0)$~--- неустойчивый фокус.
+		\item Если $\alpha = 0$, то $(0, 0)$~--- центр.
+	\end{itemize}
+	
+	\item Если $k_1 = k_2 = \alpha \in R$, то
+	\begin{equation*}
+	x = 
+	\end{equation*}
+\end{enumerate}
