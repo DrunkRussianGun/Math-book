@@ -1,0 +1,60 @@
+\section{Функциональные ряды}
+\index{Ряд!функциональный} \textbf{Функциональным} называется ряд, все члены которого~--- функции.
+
+\index{Признак!мажорантный п. сходимости}
+\begin{theorem}[мажорантный признак сходимости]
+Если существует последовательность~$(a_n) \colon \forall n \in \mathbb N \ \allowbreak |f_n(x)| \leqslant a_n$, то $\series a_k$ сходится $\Rightarrow$ $\series f_k(x)$ сходится абсолютно.
+\end{theorem}
+
+\subsection{Степенные ряды}
+\index{Ряд!степенной} \textbf{Степенным} называется ряд вида $\series[0] c_k (x - x_0)^k$.
+
+Из ряда~$\series[0] c_k (x - x_0)^k$ заменой $x' = x - x_0$ можно получить ряд~$\series[0] c_k (x')^k$, поэтому далее будем рассматривать только ряды вида $\series[0] c_k x^k$.
+
+\index{Теорема!Абеля}
+\begin{theorem}[Абеля]
+\begin{itemize}
+	\item Если ряд $\series[0] c_k x^k$ сходится при $x = x_0$, то $\forall x \colon |x| < |x_0|$ он сходится абсолютно.
+	\item Если ряд $\series[0] c_k x^k$ расходится при $x = x_0$, то $\forall x \colon |x| > |x_0|$ он расходится.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+	\item Пусть $\series[0] c_k x_0^k$ сходится, тогда
+	\begin{equation*}
+	\lim_{n \to \infty} c_n x_0^n = 0 \Rightarrow
+	\exists M > 0 \colon \forall n \in \mathbb N \ |c_n x_0^n| \leqslant M \Rightarrow
+	|c_n x^n| \leqslant M \left| \frac{x}{x_0} \right|^n
+	\end{equation*}
+	
+	$\left| \frac{x}{x_0} \right| < 1$ $\Rightarrow$ $\series[0] M \left| \frac{x}{x_0} \right|^k$ сходится $\Rightarrow$ $\series[0] c_k x^k$ сходится абсолютно.
+	
+	\item Пусть $\series[0] c_k x_0^k$ расходится.
+	Если $\exists x_1 \colon |x_1| > |x_0|$ $\lAnd$ $\series[0] c_k x_1^k$ сходится, то $\series[0] c_k x_0^k$ сходится.
+	Противоречие.
+\end{itemize}
+\end{proof}
+
+\begin{consequent}
+Существует $R > 0$ такое, что $\series[0] c_k x^k$ сходится при $|x| < R$ и расходится при $|x| > R$.
+\end{consequent}
+
+$R$ называется \textbf{радиусом сходимости степенного ряда}.
+
+Рассмотрим ряд~$\series[0] |c_k x^k|$.
+\begin{itemize}
+	\item $\lim\limits_{n \to \infty} \left| \frac{c_{n+1} x^{n+1}}{c_n x^n} \right| =
+	\lim\limits_{n \to \infty} \left| \frac{c_{n+1}}{c_n}\,x \right|$
+	
+	По \hyperref[th:d'Alembert's_ratio_test]{признаку Д'Аламбера} $\lim\limits_{n \to \infty} \left| \frac{c_{n+1}}{c_n}\,x \right| < 1$, если ряд сходится, и $\lim\limits_{n \to \infty} \left| \frac{c_{n+1}}{c_n}\,x \right| > 1$, если расходится.
+	Тогда $\lim\limits_{n \to \infty} \left| \frac{c_{n+1}}{c_n}\,R \right| = 1$.
+	Отсюда получим
+	\begin{equation*}
+	R = \lim_{n \to \infty} \frac{|c_n|}{|c_{n+1}|}
+	\end{equation*}
+	
+	\item Аналогично по \hyperref[th:Cauchy's_radical_test]{радикальному признаку Коши} получим $\lim\limits_{n \to \infty} \sqrt[n]{c_n R^n} = 1$, тогда
+	\begin{equation*}
+	R = \lim_{n \to \infty} \frac1{\sqrt[n]{c_n}}
+	\end{equation*}
+\end{itemize}

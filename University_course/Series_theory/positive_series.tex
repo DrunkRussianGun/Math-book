@@ -1,0 +1,211 @@
+\section{Знакоположительные ряды}
+\index{Ряд!знакоположительный} Ряд называется \textbf{знакоположительным}, если все его члены положительны.
+
+\begin{lemma}
+\label{lemma:convergence_of_sign-positive_series}
+Знакоположительный ряд сходится $\Leftrightarrow$ последовательность его частных сумм ограничена.
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Пусть $\exists \lim\limits_{n \to \infty} S_n = S$, тогда $\forall n \in N \ S_n \leqslant S$.
+	\item $\Leftarrow$. Пусть $\exists T > 0 \colon \forall n \in \mathbb N \ S_n \leqslant T$, тогда по свойству~\ref{st:monotonic_bounded_sequence} предела последовательности ряд сходится.
+\end{enumerate}
+\end{proof}
+
+\subsection{Признаки сходимости}
+\begin{theorem}[признак сравнения]
+Пусть даны знакоположительные ряды $\series a_k$ и $\series b_k$, $\forall n \in \mathbb N \ a_n \leqslant b_n$.
+\begin{itemize}
+	\item Если $\series b_k$ сходится, то $\series a_k$ тоже сходится.
+	\item Если $\series a_k$ расходится, то $\series b_k$ тоже расходится.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Пусть $(\sigma_n)$ и $(S_n)$~--- частичные суммы рядов $\series a_k$ и $\series b_k$ соответственно.
+\begin{itemize}
+	\item Пусть $\series b_k$ сходится.
+	\begin{equation*}
+	\exists T > 0 \colon \forall n \in N \ S_n \leqslant T \Rightarrow
+	\sigma_n \leqslant S_n < T
+	\end{equation*}
+	
+	По лемме~\ref*{lemma:convergence_of_sign-positive_series} $\series a_k$ сходится.
+	
+	\item Если $\series a_k$ расходится, то $\series b_k$ тоже расходится, что легко доказывается методом от противного.
+\end{itemize}
+\end{proof}
+
+\index{Признак!предельный п. сравнения}
+\begin{theorem}[предельный признак сравнения]
+Пусть даны знакоположительные ряды $\series a_k$ и $\series b_k$, $\lim\limits_{n \to \infty} \frac{a_n}{b_n} = c$.
+Если $0 < c < \infty$, то $\series a_k$ сходится $\Leftrightarrow$ $\series b_k$ сходится.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\forall \varepsilon > 0 \exists N \in \mathbb N \colon \forall k > N \ \left| \frac{a_k}{b_k} - L \right| < \varepsilon
+\end{equation*}
+
+Пусть $\varepsilon = \frac{c}2$, тогда
+\begin{equation*}
+\exists N_0 \in \mathbb N \colon \forall k > N_0 \ c - \frac{c}2 < \frac{a_k}{b_k} < \frac{c}2 + c \Rightarrow
+a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
+\end{equation*}
+
+По признаку сравнения получим:
+\begin{itemize}
+	\item Если $\series a_k$ сходится, то $\series \frac{2 a_k}c$ сходится $\Rightarrow$ $\series b_k$ сходится.
+	\item Если $\series b_k$ сходится, то $\series \frac32 b_k c$ сходится $\Rightarrow$ $\series a_k$ сходится.
+\end{itemize}
+\end{proof}
+
+\index{Признак!Д'Аламбера}
+\begin{theorem}[признак Д'Аламбера]
+\label{th:d'Alembert's_ratio_test}
+Пусть $\series a_k$~--- знакоположительный ряд, $\lim\limits_{n \to \infty} \frac{a_{n+1}}{a_n} = p$.
+Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item Пусть $p < 1$.
+	Выберём $\varepsilon > 0 \colon p + \varepsilon < 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \frac{a_{n+1}}{a_n} - p \right| < \varepsilon \Rightarrow
+	\frac{a_{n+1}}{a_n} < p + \varepsilon \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \frac{a_{N+2}}{a_{N+1}} < p + \varepsilon \lAnd \frac{a_{N+3}}{a_{N+2}} < p + \varepsilon \Rightarrow
+	a_{N+3} < (p + \varepsilon) a_{N+2} < (p + \varepsilon)^2 a_{N+1} \Rightarrow
+	a_{N+k} < (p + \varepsilon)^{k-1} a_{N+1}
+	\end{equation*}
+	
+	$\series (p + \varepsilon)^{k-1} a_{N+1}$ сходится $\Rightarrow$ $\series a_{N+k}$ сходится $\Rightarrow$ $\series a_k$ сходится.
+	
+	\item Пусть $p > 1$.
+	Выберём $\varepsilon > 0 \colon p - \varepsilon > 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \frac{a_{n+1}}{a_n} - p \right| < \varepsilon \Rightarrow
+	\frac{a_{n+1}}{a_n} > p - \varepsilon \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow \frac{a_{N+2}}{a_{N+1}} > p - \varepsilon \lAnd \frac{a_{N+3}}{a_{N+2}} > p - \varepsilon \Rightarrow
+	a_{N+3} > (p - \varepsilon) a_{N+2} > (p - \varepsilon)^2 a_{N+1} \Rightarrow
+	a_{N+k} > (p - \varepsilon)^{k-1} a_{N+1}
+	\end{equation*}
+	
+	$\series (p - \varepsilon)^{k-1} a_{N+1}$ расходится $\Rightarrow$ $\series a_{N+k}$ расходится $\Rightarrow$ $\series a_k$ расходится.
+\end{enumerate}
+\end{proof}
+
+\index{Признак!радикальный п. Коши}
+\begin{theorem}[радикальный признак Коши]
+\label{th:Cauchy's_radical_test}
+Пусть $\series a_k$~--- знакоположительный ряд и $\exists \lim\limits_{n \to \infty} \sqrt[n]{a_n} = p$.
+Если $p < 1$, то $\series a_k$ сходится, а если $p > 1$, то расходится.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item Пусть $p < 1$.
+	Выберём $\varepsilon > 0 \colon p + \varepsilon < 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \sqrt[n]{a_n} - p \right| < \varepsilon \Rightarrow
+	\sqrt[n]{a_n} < p + \varepsilon \Rightarrow
+	a_n < (p + \varepsilon)^n \Rightarrow
+	\frac{a_{n+1}}{a_n} < p + \varepsilon \Rightarrow
+	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} < 1
+	\end{equation*}
+	
+	Тогда по признаку Д'Аламбера $\series a_k$ сходится.
+	
+	\item Пусть $p > 1$.
+	Выберём $\varepsilon > 0 \colon p - \varepsilon > 1$, тогда
+	\begin{equation*}
+	\exists N \in \mathbb N \colon \forall n > N \ \left| \sqrt[n]{a_n} - p \right| < \varepsilon \Rightarrow
+	\sqrt[n]{a_n} > p - \varepsilon \Rightarrow
+	a_n > (p - \varepsilon)^n \Rightarrow
+	\frac{a_{n+1}}{a_n} > p - \varepsilon \Rightarrow
+	\lim_{n \to \infty} \frac{a_{n+1}}{a_n} > 1
+	\end{equation*}
+	
+	Тогда по признаку Д'Аламбера $\series a_k$ расходится.
+\end{enumerate}
+\end{proof}
+
+\index{Признак!интегральный п. Коши}
+\begin{theorem}[интегральный признак Коши]
+Пусть $\series a_k$~--- знакоположительный ряд.
+Если существует монотонная функция~$f(x) \colon f(n) = a_n \lAnd \lim\limits_{x \to +\infty} f(x) = 0$, то $\series a_k$ сходится $\Leftrightarrow$ $\exists \int\limits_1^{+\infty} f(x)\,dx$.
+\end{theorem}
+\begin{proof}
+Рассмотрим отрезок~$[1; n + 1]$.
+Площадь синей фигуры на нём равна $a_1 + a_2 + \ldots + a_n = S_n$, красной~--- $a_2 + \ldots + a_{n+1} = S_{n+1} - a_1$, а криволинейной трапеции~--- $S = \int\limits_1^{n+1} f(x)\,dx$, тогда $S_{n+1} - a_1 < S < S_n$.
+\begin{enumerate}
+	\item \begin{minipage}[t]{105mm}\noindent
+	Пусть $\exists \int\limits_1^{+\infty} f(x)\,dx$, тогда
+	\begin{equation*}
+	\forall n \in \mathbb N \ S_{n+1} - a_1 < S \Rightarrow
+	S_n < S_{n+1} < a_1 + S < a_1 + \int\limits_1^{+\infty} f(x)\,dx
+	\end{equation*}
+	
+	Получили, что $S_n$ ограничена, значит, $\exists \lim\limits_{n \to \infty} S_n$, т.\,к. $S_n$ возрастает.
+	Отсюда $\series a_k$ сходится.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{68mm}\noindent
+	\begin{flushright}
+	\begin{tikzpicture}
+	\drawaxis{-0.5}{6}{-0.5}{3};
+	\draw[name path=curve] (0.5, 2.5) coordinate (a) .. controls (1.75, 1.2) .. (6, 0.7) coordinate (b);
+	
+	% Рисуем прямоугольники в начале
+	\coordinate (prev) at (a);
+	\foreach \i/\x in {1/1, 2/1.5} {
+		\getordinate{x\i}{\x}{curve};
+		\draw[red] (0, 0 -| x\i) -- (x\i) -- (x\i -| prev);
+		\draw[blue] (x\i) -- (prev -| x\i) -- (prev);
+		\coordinate (prev) at (x\i);
+	}
+	\getordinate{x3}{2}{curve};
+	\draw[blue] (0, 0 -| a) -- (a)
+		(x2) -- (x2 -| x3);
+	\draw[red] (x2 |- x3) -- (x3);
+	
+	% Рисуем чёрточки на Ox
+	\foreach \x in {1, 2, 3}
+		\draw (\x/2, 0) -- +(0, -0.1) node[below] {$\x$} -- +(0, 0.1);
+	
+	% Рисуем прямоугольник в середине
+	\getordinate{xn1}{3.5}{curve};
+	\getordinate{xn2}{4}{curve};
+	\draw[red] (xn1) -- (0, 0 -| xn1)
+		(0, 0 -| xn2) -- (xn2) -- (xn1 |- xn2);
+	\draw[blue] (xn1) -- (xn1 -| xn2) -- (xn2);
+	
+	% Рисуем чёрточки на Ox
+	\draw (xn1 |- 0, 0) -- +(0, -0.1) node[below] {$\scriptstyle n \vphantom1$} -- +(0, 0.1)
+		(xn2 |- 0, 0) -- +(0, -0.1) node[below] {$\scriptstyle n + 1$} -- +(0, 0.1);
+	
+	% Подписываем точки
+	\draw (a) node[above] {$\scriptstyle a_1$}
+		(xn1) node[above] {$\scriptstyle a_n$};
+	\end{tikzpicture}
+	\end{flushright}
+	\end{minipage}
+	
+	\item Пусть $\int\limits_1^{+\infty} f(x)\,dx = \infty$, тогда
+	\begin{equation*}
+	\forall n \in \mathbb N \ S < S_n \lAnd
+	\lim\limits_{n \to \infty} S = +\infty \Rightarrow
+	\lim\limits_{n \to \infty} S_n = +\infty
+	\end{equation*}
+	
+	Значит, $\series a_k$ расходится.
+\end{enumerate}
+\end{proof}
+
+\begin{consequent}
+\label{conseq:series_1_div_k}
+Ряд~$\series \frac1{k^\alpha}$ расходится при~$\alpha \leqslant 1$ и сходится при~$\alpha > 1$.
+\end{consequent}
+\begin{proof}
+Это следует из утверждения~\ref{st:improper_int_1_div_x}.
+\end{proof}

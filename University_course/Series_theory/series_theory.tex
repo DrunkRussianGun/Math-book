@@ -1,0 +1,36 @@
+Пусть дана бесконечная последовательность~$(a_n)$, $S_n = \sum\limits_{k=1}^n a_k$.
+
+\index{Ряд} \textbf{Рядом} называется совокупность последовательностей $(a_n)$ и $(S_n)$ и обозначается $\series a_k$.
+$S_n$ называется \textbf{$n$-й частичной суммой ряда}.
+
+Если существует конечный предел~$\lim\limits_{n \to \infty} S_n = S$, то $S$ называется \textbf{суммой ряда}, а ряд называется \textbf{сходящимся}, иначе~--- \textbf{расходящимся}.
+
+Свойства рядов:
+\begin{enumerate}
+	\item Ряд~$\series a_k$ сходится $\Rightarrow$ $\lim\limits_{n \to \infty} a_n = 0$.
+	\begin{proof}
+	\begin{equation*}
+	a_n = S_n - S_{n-1}
+	\left| \text{По \hyperref[th:Cauchy_criterion]{критерию Коши}} \right| \Rightarrow
+	\lim_{n \to \infty} a_n = \lim_{n \to \infty} (S_n - S_{n-1}) = 0
+	\end{equation*}
+	\end{proof}
+	
+	\item Если ряды $\series a_k = S$ и $\series b_k = \sigma$, то $\series (\alpha a_k + \beta b_k) = \alpha S + \beta \sigma$.
+	\begin{proof}
+	\begin{equation*}
+	\lim_{n \to \infty} \sum_{k=1}^n (\alpha a_k + \beta b_k) =
+	\lim_{n \to \infty} (\alpha \sum_{k=1}^n a_k + \beta \sum_{k=1}^n b_k) =
+	\alpha S + \beta \sigma
+	\end{equation*}
+	\end{proof}
+	
+	\item $\forall N \in \mathbb N$ $\series a_{k+N}$ сходится $\Leftrightarrow$ $\series a_k$ сходится.
+	\begin{proof}
+	$\sigma_n = S_{n+N} - S_N$, тогда
+	\begin{equation*}
+	\exists \lim_{n \to \infty} \sigma_n = \lim_{n \to \infty} S_n - S_N \Leftrightarrow
+	\exists \lim_{n \to \infty} S_n
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
