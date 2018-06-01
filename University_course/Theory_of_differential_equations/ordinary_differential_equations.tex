@@ -25,7 +25,7 @@ y' = f(x)g(y) \Leftrightarrow
 \int \frac{dy}{g(y)} = \int f(x)\,dx
 \end{equation*}
 
-\subsection{Однородное уравнение первого порядка}
+\subsection{Однородные уравнения первого порядка}
 \index{Уравнения!дифференциальные!однородные} \textbf{Однородным дифференциальным уравнением первого порядка} называется уравнение вида
 \begin{equation*}
 y' = F \left( \frac{y}x \right)
@@ -40,3 +40,167 @@ p' = \frac{F(p) - p}x
 \end{equation*}
 
 Решив его, найдём $p$, а затем $y$.
+
+\subsection{Логистические уравнения}
+\index{Уравнения!логистические} \index{Уравнения!Ферхюльста} Уравнение, характеризующее рост численности некоторой популяции (например, рыб в водоёме) при отсутствии внешнего влияния, называется \textbf{логистическим}, или \textbf{уравнением Ферхюльста}, и имеет вид~$y' = k \bigl( 1 - \frac{y}r \bigr) y$, где $y(t)$~--- зависимость численности популяции от времени, $k$~--- скорость роста численности, $r$~--- максимально возможная численность.
+
+Решая его, получим
+\begin{equation*}
+y' = k(1 - \frac{y}r)y \Leftrightarrow
+\frac{r\,dy}{(r - y)y} = k\,dt \Leftrightarrow
+\frac1{r - y}\,dy + \frac1y\,dy = k\,dt \Rightarrow
+\ln \left| \frac{y}{r - y} \right| = kt + \ln C \Rightarrow
+\left| \frac{r}{r - y} - 1 \right| = C e^{kt}
+\end{equation*}
+
+Проанализируем результат:
+\begin{equation*}
+\lim_{t \to +\infty} \left| \frac{r}{r - y} - 1 \right| = +\infty \Rightarrow
+\lim_{t \to +\infty} \frac1{r - y} = \pm\infty \Rightarrow
+\lim_{t \to +\infty} y = r
+\end{equation*}
+
+Учитывая, что $y' = k \bigl( 1 - \frac{y}r \bigr) y$, видим, что $y$ возрастает к~$r$ при $y(0) < r$ и убывает к~$r$ при $y(0) > r$.
+
+\subsubsection{Логистические уравнения с квотой отлова}
+Пусть численность популяции уменьшается под воздействием внешних факторов на фиксированную величину, называемую \textbf{квотой отлова} (например, определённое число рыб вылавливается из водоёма).
+Тогда уравнение примет вид~$y' = k \bigl( 1 - \frac{y}r \bigr) y - b$, где $b$~--- квота отлова.
+
+Преобразуя его, получим
+\begin{equation*}
+y' = k \left( 1 - \frac{y}r \right) y - b \Leftrightarrow
+-ry' = ky^2 - kry + rb \Rightarrow
+-\int \frac{r\,dy}{ky^2 - kry + rb} = t \Leftrightarrow
+-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2 + r\left( \frac{b}k - \frac{r}4 \right)} = kt
+\end{equation*}
+
+Рассмотрим следующие случаи:
+\begin{enumerate}
+	\item Пусть $\frac{b}k - \frac{r}4 < 0$, тогда
+	$\left( y - \frac{r}2 \right)^2 + r\left( \frac{b}k - \frac{r}4 \right) = (y - y_1)(y - y_2)$, где
+	$y_1 = \frac{r}2 - \sqrt{\frac{r(r - 4b)}{4k}}$,
+	$y_2 = \frac{r}2 + \sqrt{\frac{r(r - 4b)}{4k}}$.
+	
+	Получим
+	\begin{equation*}
+	-\int \frac{r\,dy}{(y - y_1)(y - y_2)} = kt \Leftrightarrow
+	\frac{r}{y_2 - y_1} \left( \int \frac{dy}{y - y_1} - \int \frac{dy}{y - y_2} \right) = kt \Rightarrow
+	\frac{r}{y_2 - y_1} \ln \left| \frac{y - y_1}{y - y_2} \right| = kt + C
+	\end{equation*}
+	
+	Проанализируем результат:
+	\begin{equation*}
+	\lim_{t \to +\infty} \ln \left| \frac{y - y_1}{y - y_2} \right| = +\infty \Rightarrow
+	\lim_{t \to +\infty} \left| \frac{y - y_1}{y - y_2} \right| = +\infty \Rightarrow
+	\lim_{t \to +\infty} y = y_2
+	\end{equation*}
+	
+	Дифференцируя, получим
+	\begin{equation*}
+	-\frac{ry'}{(y - y_1)(y - y_2)} = k
+	\end{equation*}
+	
+	Значит,
+	\begin{itemize}
+		\item $y$ бесконечно убывает при $y(0) < y_1$;
+		\item $y$ возрастает к~$y_2$ при $y_1 < y(0) < y_2$;
+		\item $y$ убывает к~$y_2$ при $y(0) > y_2$.
+	\end{itemize}
+	
+	\item Пусть $\frac{b}k - \frac{r}4 = 0$, тогда
+	\begin{equation*}
+	-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2} = kt \Rightarrow
+	\frac{r}{y - \frac{r}2} = kt + C \Rightarrow
+	y = \frac{r}{kt + C} + \frac{r}2 \Rightarrow
+	\lim_{t \to +\infty} y = \frac{r}2 \lAnd y' < 0
+	\end{equation*}
+	
+	Значит,
+	\begin{itemize}
+		\item $y$ бесконечно убывает при $y(0) < \frac{r}2$;
+		\item $y$ убывает к~$\frac{r}2$ при $y(0) > \frac{r}2$.
+	\end{itemize}
+	
+	\item Пусть $\frac{b}k - \frac{r}4 > 0$, тогда
+	\begin{equation*}
+	-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2 + \left( \sqrt\frac{r(4b - rk)}{4k} \right)^2} = kt \Rightarrow
+	-\sqrt\frac{rk}{4b - rk} \arctg (2y - r)\sqrt\frac{k}{r(4b - rk)} = kt + C \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow (2y - r)\sqrt\frac{k}{r(4b - rk)} = -\tg (kt + C) \sqrt{\frac{4b}{rk} - 1} \Leftrightarrow
+	y = \frac{r}2 - \sqrt{\frac{4br}{k} - r^2}\tg (kt + C) \sqrt{\frac{4b}{rk} - 1}
+	\end{equation*}
+	
+	Значит, $y$ бесконечно убывает вне зависимости от начальных условий.
+\end{enumerate}
+
+\subsection{Уравнения в полных дифференциалах}
+\index{Уравнения!дифференциальные!в полных дифференциалах} \textbf{Уравнением в полных дифференциалах} называется уравнение вида
+\begin{equation*}
+y' = -\frac{M(x, y)}{N(x, y)}
+\end{equation*}
+
+Если $M_y' = N_x'$, то $M(x, y) = F_x'$, $N(x, y) = F_y'$, тогда
+\begin{equation*}
+y' = -\frac{M(x, y)}{N(x, y)} \Leftrightarrow
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+Пусть $M_y' \neq N_x'$, но $\exists \mu(x, y) \colon (\mu \cdot M)_y' = (\mu \cdot N)_x'$, тогда
+\begin{equation*}
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+\mu(x, y) M(x, y)\,dx + \mu(x, y) N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+\index{Множитель!интегрирующий} $\mu(x, y)$ называется \textbf{интегрирующим множителем}.
+
+\subsection{Линейное уравнение первого порядка}
+\index{Уравнения!дифференциальные!линейные} \textbf{Линейным дифференциальным уравнением первого порядка} называется уравнение вида
+\begin{equation*}
+y' = a(x) y + b(x)
+\end{equation*}
+
+\index{Метод!вариации произвольной постоянной} Решим его \textbf{методом вариации произвольной постоянной}.
+\begin{enumerate}
+	\item Решим уравнение
+	\begin{equation*}
+	y_0' = a(x) y_0 \Leftrightarrow
+	\frac{dy_0}{y_0} = a(x)\,dx \Rightarrow
+	\ln y_0 = \varphi(x) + \ln C \Rightarrow
+	y_0 = C e^{\varphi(x)}
+	\end{equation*}
+	
+	\item Подставим $y = C(x) e^{\varphi(x)}$ в исходное уравнение:
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} + C(x) e^{\varphi(x)} \varphi'(x) = a(x) C(x) e^{\varphi(x)} + b(x)
+	\end{equation*}
+	
+	$y_0 = Ce^{\varphi(x)} \Rightarrow C e^{\varphi(x)} \varphi'(x) = a(x) C e^{\varphi(x)}$, тогда получим
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} = b(x) \Leftrightarrow
+	C'(x) = b(x) e^{-\varphi(x)} \Leftrightarrow
+	C(x) = \int b(x) e^{-\varphi(x)}\,dx
+	\end{equation*}
+\end{enumerate}
+
+Тогда $y = C(x) e^{\varphi(x)}$.
+
+\subsection{Уравнение Бернулли}
+\index{Уравнения!Бернулли} \textbf{Уравнением Бернулли} называется уравнение вида
+\begin{equation*}
+y' = a(x) y + b(x) y^n, \ n \neq 1
+\end{equation*}
+
+Пусть $\frac1{y^{n-1}} = z$, тогда
+\begin{equation*}
+y' = a(x) y + b(x) y^n \Leftrightarrow
+\frac{y'}{y^n} = a(x) y^{1-n} + b(x) \Leftrightarrow
+\frac{z'}{1 - n} = a(x) z + b(x)
+\end{equation*}
+
+Т.\,о., решение уравнения Бернулли сводится к решению линейного уравнения.
+Решив его, найдём $z$, а затем $y$.
