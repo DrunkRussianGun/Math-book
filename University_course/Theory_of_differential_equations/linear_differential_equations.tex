@@ -1,0 +1,276 @@
+\section{Линейные дифференциальные уравнения с постоянными коэффициентами}
+\index{Уравнения!дифференциальные!линейные} \textbf{Линейным дифференциальным уравнением $n$-го порядка с постоянными коэффициентами} называется уравнение вида
+\begin{equation}
+\label{eq:linear_differential_equation}
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)
+\end{equation}
+
+Введём функции $y_0 = y$, $y_1 = y'$, \ldots, $y_{n-1} = y^{(n-1)}$, тогда
+\begin{equation*}
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x) \Leftrightarrow
+\begin{cases}
+y_0' = y_1 \\
+y_1' = y_2 \\
+\ldots \\
+y_{n-1}' = f(x) - a_0 y_0 - a_1 y_1 - \ldots - a_{n-1} y_{n-1}
+\end{cases}
+\end{equation*}
+
+\index{Теорема!единственности}
+\begin{theorem}[единственности решения дифференциального уравнения]
+Если заданы начальные условия $y(x_0) = y_{00}$, $y'(x_0) = y_{10}$, \ldots, $y^{(n-1)}(x_0) = y_{n-1\,0}$, то уравнение~(\ref*{eq:linear_differential_equation}) имеет единственное решение в окрестности~$(x_0 - d; x_0 + d)$.
+\end{theorem}
+\begin{proof}
+Введём вектор-функцию $Y(x) =
+\begin{Vmatrix}
+y_0 \\
+y_1 \\
+\ldots \\
+y_{n-1}
+\end{Vmatrix}$
+и получим уравнение $Y' = A Y + F$, где
+\begin{equation*}
+A =
+\begin{Vmatrix}
+0 & 1 & 0 & \ldots & 0 \\
+0 & 0 & 1 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+-a_0 & -a_1 & -a_2 & \ldots & -a_{n-1}
+\end{Vmatrix}, \
+F =
+\begin{Vmatrix}
+0 \\
+0 \\
+\ldots \\
+f(x)
+\end{Vmatrix}
+\end{equation*}
+
+Аналогично теореме~\ref{th:differential_equation_has_single_solution} можно доказать, что единственное решение этого уравнения можно получить методом итераций:
+\begin{equation*}
+Y_k(x) = Y_0 + \int\limits_{x_0}^x (A Y_{k-1}(t) + F(t))\,dt
+\end{equation*}
+\end{proof}
+
+\subsection{Однородное дифференциальное уравнение}
+\index{Уравнения!дифференциальные!однородные} Если для уравнения~\ref{eq:linear_differential_equation} $f(x) = 0$, то оно называется \textbf{однородным} и принимает вид
+\begin{equation}
+\label{eq:homogeneous_differential_equation}
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0
+\end{equation}
+иначе оно называется \textbf{неоднородным}.
+
+\begin{statement}
+Если $y_1$ и $y_2$~--- частные решения однородного дифференциального уравнения, то $\alpha y_1 \opbr+ \beta y_2$~--- также частное решение, где $\alpha, \beta \in \mathbb R$.
+\end{statement}
+
+Т.\,о., общее решение однородного уравнения имеет вид $y(x) = C_1 y_1 + \ldots + C_n y_n$.
+Тогда начальные условия $y(x_0) = y_{00}$, $y'(x_0) = y_{10}$, \ldots, $y^{(n-1)}(x_0) = y_{n-1\,0}$ можно записать в виде системы уравнений относительно $C_1, \ldots, C_n$:
+\begin{equation*}
+\begin{cases}
+C_1 y_1(x_0) + \ldots + C_n y_n(x_0) = y_{00} \\
+C_1 y_1'(x_0) + \ldots + C_n y_n'(x_0) = y_{10} \\
+\ldots \\
+C_1 y_1^{(n-1)}(x_0) + \ldots + C_n y_n^{(n-1)}(x_0) = y_{n-1\,0}
+\end{cases}
+\end{equation*}
+
+Чтобы получить решение задачи Коши, главный определитель этой системы должен быть отличен от нуля.
+
+\index{Вронскиан} \index{Определитель!Вронского} \textbf{Определителем Вронского}, или \textbf{вронскианом}, называется определитель
+\begin{equation*}
+W(x) =
+\begin{vmatrix}
+y_1 & y_2 & \ldots & y_n \\
+y_1' & y_2' & \ldots & y_n' \\
+\vdots & \vdots & \ddots & \vdots \\
+y_1^{(n-1)} & y_2^{(n-1)} & \ldots & y_n^{(n-1)}
+\end{vmatrix}
+\end{equation*}
+где $y_1, \ldots, y_n$~--- частные решения уравнения~(\ref*{eq:homogeneous_differential_equation}).
+
+Частные решения $y_1, y_2, \ldots, y_n$ уравнения~(\ref*{eq:homogeneous_differential_equation}) называются \textbf{линейно зависимыми}, если
+\begin{equation*}
+\exists \alpha_1, \ldots, \alpha_n \in \mathbb R \colon
+\alpha_1 y_1 + \ldots + \alpha_n y_n = 0 \lAnd
+\alpha_1^2 + \ldots + \alpha_n^2 \neq 0
+\end{equation*}
+иначе~--- \textbf{линейно независимыми}.
+
+\begin{statement}
+Если частные решения~$y_1, y_2, \ldots, y_n$ однородного дифференциального уравнения линейно независимы, то соответствующий определитель Вронского~$W \neq 0$.
+\end{statement}
+\begin{proofcontra}
+Пусть $W(x_0) = 0$, тогда система
+\begin{equation*}
+\begin{cases}
+C_1 y_1(x_0) + \ldots + C_n y_n(x_0) = 0 \\
+C_1 y_1'(x_0) + \ldots + C_n y_n'(x_0) = 0 \\
+\ldots \\
+C_1 y_1^{(n-1)}(x_0) + \ldots + C_n y_n^{(n-1)}(x_0) = 0
+\end{cases}
+\end{equation*}
+имеет нетривиальное решение данного уравнения, удовлетворяющее начальным условиям $y(x_0) = 0$, \ldots, $y^{(n-1)}(x_0) \opbr= 0$.
+Но при этом существует и тривиальное решение, что противоречит теореме единственности.
+\end{proofcontra}
+
+\index{Уравнения!характеристические} Найдём частные решения уравнения~(\ref*{eq:homogeneous_differential_equation}).
+Подставив $y(x) = e^{kx}$, получим \textbf{характеристическое уравнение}:
+\begin{equation*}
+(k^n + a_{n-1} k^{n-1} + \ldots + a_1 k + a_0) e^{kx} = 0 \Leftrightarrow
+k^n + a_{n-1} k^{n-1} + \ldots + a_1 k + a_0 = 0
+\end{equation*}
+
+Его корням~$k_1, \ldots, k_n$ сопоставим линейно независимые частные решения~$y_1, y_2, \ldots, y_n$, тогда общим решением будет
+\begin{equation*}
+y(x) = C_1 y_1 + C_2 y_2 + \ldots + C_n y_n
+\end{equation*}
+
+\begin{enumerate}
+	\item \textbf{Простой вещественный корень}
+	
+	Простому вещественному корню~$k_1$ соответствует решение~$y(x) = e^{k_1 x}$.
+	При этом определитель Вронского имеет вид
+	\begin{equation*}
+	\begin{vmatrix}
+	e^{k_1 x} & \ldots & e^{k_n x} \\
+	k_1 e^{k_1 x} & \ldots & k_n e^{k_n x} \\
+	\vdots & \ddots & \vdots \\
+	k_1^{n-1} e^{k_1 x} & \ldots & k_n^{n-1} e^{k_n x} \\
+	\end{vmatrix}
+	= e^{(k_1 + \ldots + k_n) x} \cdot
+	\begin{vmatrix}
+	1 & \ldots & 1 \\
+	k_1 & \ldots & k_n \\
+	\vdots & \ddots & \vdots \\
+	k_1^{n-1} & \ldots & k_n^{n-1}
+	\end{vmatrix} \neq 0
+	\end{equation*}
+	
+	\item \textbf{Кратный вещественный корень}
+	
+	Вещественному корню~$k_1$ кратности~$m$ соответствуют решения~$y(x) = x^j e^{k_1 x}$, где $j = 0, \ldots, m - 1$.
+	Для доказательства прежде всего нужно заметить, что $k_1$ является корнем также и для любого из многочленов~$(k^n + a_{n-1} k^{n-1} + \ldots + a_1 k + a_0)^{(j)}$.
+	
+	Докажем, что решение $y(x) = x e^{k_1 x}$ удовлетворяет уравнению.
+	\begin{equation*}
+	(k_1^n x + n k_1^{n-1} + a_{n-1} (k_1^{n-1} x + (n - 1) k_1^{n-2}) + \ldots + a_1 (k_1 x + 1) + a_0 x) e^{k_1 x} = 0 \Leftrightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Leftrightarrow (k_1^n + a_{n-1} k_1^{n-1} + \ldots + a_1 k_1 + a_0) x + (n k_1^{n-1} + a_{n-1} (n - 1) k_1^{n-2} + \ldots + a_1) = 0 \Leftrightarrow
+	0 = 0
+	\end{equation*}
+	
+	То же аналогично доказывается для решений~$y(x) = x^j e^{k_1 x}$, где $j = 2, \ldots, m - 1$.
+	
+	\item \textbf{Простые сопряжённые комплексные корни}
+	
+	Комплексным корням $\alpha - i \beta$ и $\alpha + i \beta$ соответствуют решения~$y_1(x) = e^{(\alpha - i \beta) x}$ и $y_2(x) = e^{(\alpha + i \beta) x}$.
+	Однако, чтобы избежать комплексных чисел в решении, используют решения $y_1(x) = e^{\alpha x} \cos \beta x$ и $y_2(x) = e^{\alpha x} \sin \beta x$.
+	
+	Используя \hyperref[eq:Euler's_formula]{формулу Эйлера}, покажем, что $C_1 e^{(\alpha - i \beta) x} + C_2 e^{(\alpha + i \beta) x} = D_1 e^{\alpha x} \cos \beta x + D_2 e^{\alpha x} \sin \beta x$.
+	\begin{equation*}
+	C_1 e^{(\alpha - i \beta) x} + C_2 e^{(\alpha + i \beta) x} =
+	e^{\alpha x} (C_1 e^{i \beta x} + C_2 e^{-i \beta x}) =
+	\end{equation*}
+	\begin{equation*}
+	= e^{\alpha x} ((C_1 + C_2) \cos \beta x + i(C_1 - C_2) \sin \beta x) =
+	D_1 e^{\alpha x} \cos \beta x + D_2 e^{\alpha x} \sin \beta x
+	\end{equation*}
+	
+	\item \textbf{Кратные комплексные корни}
+	
+	Комплексным корням $\alpha - i \beta$ и $\alpha + i \beta$ кратности~$m$ соответствуют решения $y_1(x) = x^j e^{\alpha x} \cos \beta x$ и $y_2(x) \opbr= x^j e^{\alpha x} \sin \beta x$, где $j = 0, \ldots, m - 1$.
+\end{enumerate}
+
+\subsection{Неоднородное дифференциальное уравнение}
+\index{Уравнения!дифференциальные!неоднородные}
+Рассмотрим уравнение
+\begin{equation}
+\label{eq:heterogeneous_differential_equation}
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)
+\end{equation}
+
+Ему соответствует однородное уравнение $y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0$.
+
+\begin{statement}
+Общее решение уравнения~(\ref*{eq:heterogeneous_differential_equation}) равно сумме его частного решения и общего решения соответствующего однородного уравнения.
+\end{statement}
+
+\subsubsection{Метод вариации произвольной постоянной}
+\index{Метод!вариации произвольной постоянной}
+\begin{enumerate}
+	\item Найдём решение $y_0(x) = C_1 y_1 + \ldots + C_n y_n$ соответствующего однородного уравнения, тогда решением исходного уравнения будет $y(x) = C_1(x) y_1 + \ldots + C_n(x) y_n$.
+	
+	\item Найдём $C_1(x), \ldots, C_n(x)$, решая систему
+	\begin{equation*}
+	\begin{cases}
+	C_1'(x) y_1 + \ldots + C_n'(x) y_n = 0 \\
+	C_1'(x) y_1' + \ldots + C_n'(x) y_n' = 0 \\
+	\ldots \\
+	C_1'(x) y_1^{(n-1)} + \ldots + C_n'(x) y_n^{(n-1)} = f(x) \\
+	\end{cases}
+	\end{equation*}
+	и интегрируя полученные $C_1'(x), \ldots, C_n'(x)$.
+\end{enumerate}
+\begin{proof}[(для случая $n = 2$)]
+Пусть дано уравнение $y'' + a_1 y' + a_0 = f(x)$ и $y_0(x) = C_1 y_1 + C_2 y_2$, тогда
+\begin{equation*}
+y(x) = C_1(x) y_1 + C_2(x) y_2 \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow y'(x) = C_1'(x) y_1 + C_1(x) y_1' + C_2'(x) y_2 + C_2(x) y_2' \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow y''(x) = C_1''(x) y_1 + 2 C_1'(x) y_1' + C_1(x) y_1'' +
+C_2''(x) y_2 + 2 C_2'(x) y_2' + C_2(x) y_2''
+\end{equation*}
+
+Подставим в уравнение:
+\begin{equation*}
+C_1''(x) y_1 + 2 C_1'(x) y_1' + C_1(x) y_1'' +
+C_2''(x) y_2 + 2 C_2'(x) y_2' + C_2(x) y_2'' + \vphantom{1}
+\end{equation*}
+\begin{equation*}
+\vphantom{1} + a_1 (C_1'(x) y_1 + C_1(x) y_1' + C_2'(x) y_2 + C_2(x) y_2') +
+a_0 (C_1(x) y_1 + C_2(x) y_2) = f(x) \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow C_1(x) (y_1'' + a_1 y_1' + a_0 y_1) +
+C_2(x) (y_2'' + a_1 y_2' + a_0 y_2) + \vphantom{1}
+\end{equation*}
+\begin{equation*}
+\vphantom{1} + a_1 (C_1'(x) y_1 + C_2'(x) y_2) +
+(C_1''(x) y_1 + 2 C_1'(x) y_1' + C_2''(x) y_2 + 2 C_2'(x) y_2') = f(x) \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\left| \text{$y_1$ и $y_2$~--- частные решения однородного уравнения} \right|
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow a_1 (C_1'(x) y_1 + C_2'(x) y_2) +
+(C_1''(x) y_1 + 2 C_1'(x) y_1' + C_2''(x) y_2 + 2 C_2'(x) y_2') = f(x)
+\end{equation*}
+
+Из системы
+\begin{equation*}
+\begin{cases}
+C_1'(x) y_1 + C_2'(x) y_2 = 0 \\
+C_1'(x) y_1' + C_2'(x) y_2' = f(x)
+\end{cases}
+\Rightarrow C_1''(x) y_1 + C_1'(x) y_1' + C_2''(x) y_2 + C_2'(x) y_2' = 0
+\end{equation*}
+
+Подставляя эти равенства в уравнение, получим $f(x) = f(x)$.
+\end{proof}
+
+\subsubsection{Метод неопределённых коэффициентов}
+\index{Метод!неопределённых коэффициентов} Метод неопределённых коэффициентов применим в том случае, если
+\begin{equation*}
+f(x) = \sum_j e^{\alpha_j x} (M_j(x) \cos \beta_j x + N_j(x) \sin \beta_j x)
+\end{equation*}
+где $M_j(x), N_j(x)$~--- многочлены.
+Тогда частное решение уравнения имеет вид
+\begin{equation*}
+\tilde y(x) = \sum_j x^{s_j} e^{\alpha_j x} (P_j(x) \cos \beta_j x + Q_j(x) \sin \beta_j x)
+\end{equation*}
+где $s_j$~--- кратность корня~$\alpha + i \beta$ характеристического уравнения, $P_j(x), Q_j(x)$~--- многочлены степени~$\max \{ \deg M_j(x), \allowbreak \deg N_j(x) \}$ с неопределёнными коэффициентами, которые находятся подстановкой~$\tilde y(x)$ в уравнение~(\ref*{eq:heterogeneous_differential_equation}).

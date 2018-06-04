@@ -32,6 +32,36 @@
 \end{enumerate}
 \end{proof}
 
+Можно предложить и другой способ построения регулярного выражения по автомату, основанный на представлении автомата в виде графа и заключающийся в последовательном удалении его вершин.
+Перед удалением вершины все пути, проходящие через неё, нужно упростить, как показано на рисунке ниже (удаляемая вершина выделена красным).
+Так повторяется до того момента, когда в автомате останется только начальное и одно допускающее состояние.
+
+\begin{center}\noindent
+\begin{tikzpicture}[>=latex, minimum size=6mm]
+\begin{scope}[circle]
+\node (start) at (0, 0) [draw] {};
+\node (middle) at (2, -1) [draw, red] {};
+\node (end) at (4, 0) [draw] {};
+\end{scope}
+\draw[->] (start.east) -- node[above] {$X$} (end.west);
+\draw[->] (start.south east) -- node[below] {$A$} (middle.north west);
+\draw[->] (middle.south) ++(0, -4mm) coordinate (loop)
+	(middle.south west) to[out=-90, in=180] (loop) node[below] {$B$}
+	to[out=0, in=-90] (middle.south east);
+\draw[->] (middle.north east) -- node[below] {$C$} (end.south west);
+
+\node at (5.5, -0.5) [draw, single arrow, minimum height=1cm] {};
+
+\begin{scope}[xshift=7cm]
+\begin{scope}[circle]
+\node (start) at (0, 0) [draw] {};
+\node (end) at (4, 0) [draw] {};
+\end{scope}
+\draw[->] (start.east) -- node[above] {$X + AB^*C$} (end.west);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
 \subsection{Алгебраические законы}
 Пусть $L, M, N$~--- регулярные выражения.
 
