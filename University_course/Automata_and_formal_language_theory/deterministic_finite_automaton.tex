@@ -2,7 +2,7 @@
 \index{Конечный автомат!детерминированный} \index{Сокращения!ДКА} \textbf{Детерминированным конечным автоматом}, или \textbf{ДКА}, называется набор~$(S, X, \delta, s_1, F)$, где\\
 $S$~--- конечное множество \textbf{состояний};\\
 $X$~--- алфавит;\\
-$\delta \colon S \times (X \cup \{ \lambda \}) \to S$~--- \textbf{функция перехода}, причём $\forall k > 0 \ s \delta(\lambda^k) = s$;\\
+$\delta \colon S \times (X \cup \{ \lambda \}) \to S$~--- \textbf{функция перехода}, причём $\delta(s, \lambda) = s$;\\
 $s_1 \in S$~--- \textbf{начальное состояние};\\
 $F \subseteq S$~--- множество \textbf{допускающих состояний}.
 
@@ -46,7 +46,7 @@ s', \ \alpha \notin S \setminus \{ s' \}
 \end{theorem}
 \begin{proofcontra}
 Пусть $L$ распознаётся конечным автоматом~$A = (S, X, \delta, s_1, F)$ с $n$~состояниями.
-Тогда какие-то из состояний $s_1, s_1 \delta(a), s_1 \delta(aa), \ldots, s_1 \delta(a^{n-1}), s_1 \delta(a^n)$ совпадают.
+Тогда какие"~то из состояний $s_1, s_1 \delta(a), s_1 \delta(aa), \ldots, s_1 \delta(a^{n-1}), s_1 \delta(a^n)$ совпадают.
 Пусть $s_1 \delta(a^i) \opbr= s_1 \delta(a^j)$, тогда $s_1 \delta(a^i) \delta(b^i) \in F \Rightarrow
 s_1 \delta(a^j) \delta(b^i) \in F$.
 Значит, $a^j b^i \in L$.
@@ -72,8 +72,6 @@ s_1 \delta(a^j) \delta(b^i) \in F$.
 \alpha \sim \gamma$.
 \end{proof}
 
-Фактор"=класс слова~$\alpha$ относительно неразличимости обозначается~$[\alpha]$.
-
 \begin{statement}
 $\alpha \sim \beta \Rightarrow \forall \gamma \in X^* \ \alpha \gamma \sim \beta \gamma$.
 \end{statement}
@@ -84,6 +82,8 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 (\beta \gamma) \Theta \in L \Rightarrow
 \alpha \gamma \sim \beta \gamma$.
 \end{proof}
+
+Фактор"=класс слова~$\alpha$ относительно неразличимости обозначается~$[\alpha]$.
 
 \textbf{Рангом языка~$L$} называется количество элементов в фактор"=множестве относительно неразличимости слов и языка~$L$ и обозначается~$\rank L$.
 
@@ -96,7 +96,7 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \end{theorem}
 \begin{proof}
 \begin{enumerate}
-	\item Пусть язык~$L$ распознаётся конечным автоматом~$A = (X, S, \delta, s_1, F)$ с $n$~состояниями.
+	\item Пусть язык~$L$ распознаётся конечным автоматом~$A = (S, X, \delta, s_1, F)$ с $n$~состояниями.
 	Рассмотрим слова $\alpha_1, \ldots, \alpha_{n+1} \opbr\in X^*$.
 	Хотя бы два из состояний $s_1 \delta(\alpha_1), \ldots, s_1 \delta(\alpha_{n+1})$ совпадают.
 	
@@ -109,9 +109,12 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 	(\alpha_i \gamma \in L \Leftrightarrow \alpha_j \gamma \in L)
 	\end{equation*}
 	
-	Т.\,о., среди $n + 1$~состояний всегда найдётся пара неразличимых, значит, $\rank L \leqslant n$.
+	Т.\,о., среди любых $n + 1$~состояний всегда найдётся пара неразличимых, значит, $\rank L \leqslant n$.
 	
-	\item Пусть $A = (X, S, \delta, s_1, F)$, где $S = \{ [\alpha] \mid \alpha \in X^* \}$, $\delta \colon [\alpha] \delta(x) = [\alpha x]$, $s_1 = [\lambda]$, $F = \{ [\alpha] \mid \alpha \in L \}$,
+	\item Пусть $A = (S, X, \delta, [\lambda], F)$, где\\
+	$S = \{ [\alpha] \mid \alpha \in X^* \}$,\\
+	$\delta \colon [\alpha] \delta(x) = [\alpha x]$,\\
+	$F = \{ [\alpha] \mid \alpha \in L \}$,\\
 	тогда $s_1 \delta(\alpha) = [\alpha] \in F \Leftrightarrow \alpha \in L$.
 	
 	Пусть $L$ распознаётся конечным автоматом с $k$~состояниями, где $k < n$.
@@ -120,11 +123,7 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 \end{enumerate}
 \end{proof}
 
-\textbf{Базисом языка~$L$} называется множество~$W \subseteq X^*$ такое, что:
-\begin{enumerate}
-	\item Все слова из~$W$ попарно различимы.
-	\item Любое другое слово неотличимо от одного из слов множества~$W$.
-\end{enumerate}
+\index{Базис!языка} \textbf{Базисом языка~$L$} называется множество~$W \subseteq X^*$ такое, что все слова в нём попарно различимы, а любое другое слово неотличимо от одного из слов множества~$W$.
 
 \begin{theorem}
 Множество~$W$~--- базис языка $\Leftrightarrow$
@@ -150,14 +149,14 @@ $\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
 
 \index{Конечный автомат!приведённый} \index{Конечный автомат!минимальный} Автомат называется \textbf{приведённым}, или \textbf{минимальным}, если в нём нет эквивалентных состояний.
 
-Пусть задан автомат~$A = (S, X, \delta, s_1, F)$.
-Рассмотрим автомат~$A_m = (S_m, X, \delta_m, s_m, F_m)$, где\\
+Пусть задан автомат~$A = (S, X, \delta, s_1, F)$, распознающий язык~$L$.
+Рассмотрим автомат~$A_m = (S_m, X, \delta_m, [s_1], F_m)$, где\\
 $S_m = \{ [s] \mid s \in S \}$,\\
 $\delta_m \colon [s] \delta(x) = [s \delta(x)]$,\\
-$s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,\\
-тогда $[s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ приведённый.
+$F_m = \{ [s] \mid s \in F \}$,\\
+тогда $\forall \alpha \in L \ [s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ распознаёт~$L$.
 
-Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
+\index{Конечный автомат!изоморфный} Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
 \begin{enumerate}
 	\item $s \delta(x) = t \Leftrightarrow \varphi(s) \delta'(x) = \varphi(t)$;
 	\item $\varphi(s_1) = s_2$;
@@ -176,7 +175,7 @@ $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,\\
 Исследуем распознаваемость дополнения, пересечения и объединения языков.
 Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, $\rank L_1 = m$ и $\rank L_2 = n$.
 \begin{enumerate}
-	\item Докажем, что $\rank L_1 = \rank \overline L_1$.
+	\item $\rank L_1 = \rank \overline L_1$.
 	\begin{proof}
 	$\alpha \not\sim_{L_1} \beta \Leftrightarrow
 	\exists \gamma \colon \alpha \gamma \in L_1 \lAnd \beta \gamma \notin L_1 \Leftrightarrow
@@ -184,7 +183,7 @@ $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,\\
 	\alpha \not\sim_{\overline L_1} \beta$.
 	\end{proof}
 	
-	\item Докажем, что $\rank L_1 \cap L_2 \leqslant mn$.
+	\item $\rank L_1 \cap L_2 \leqslant mn$.
 	\begin{proof}
 	Пусть $\alpha_1, \ldots, \alpha_m$ и $\beta_1, \ldots, \beta_n$~--- базисы $L_1$ и $L_2$ соответственно.
 	Тогда
@@ -204,7 +203,7 @@ $s_m = [s_1]$, $F_m = \{ [s] \mid s \in F \}$,\\
 	
 	Отсюда $\gamma \Theta \in L_1 \cap L_2 \Leftrightarrow
 	\alpha_i \Theta \in L_1 \lAnd \beta_j \in L_2 \Leftrightarrow
-	\gamma_{ij} \Theta \in L_1 \cap L_2$.
+	\gamma_{ij} \Theta \in L_1 \cap L_2$, тогда $y_{11}, y_{12}, \ldots, y_{mn}$~--- базис языка~$L_1 \cap L_2$.
 	\end{proof}
 	
 	\item Аналогично доказывается, что $\rank L_1 \cup L_2 \leqslant mn$.

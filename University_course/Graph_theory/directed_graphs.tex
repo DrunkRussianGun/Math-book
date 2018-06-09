@@ -73,7 +73,8 @@ $(u, v) \in E_1 \Leftrightarrow (\varphi(u), \varphi(v)) \in E_2$, иначе~--
 
 Ориентированный граф называется \textbf{слабо связным}, если связно его основание.
 
-\begin{theorem}
+\index{Теорема!Роббинса}
+\begin{theorem}[Роббинса]
 Связный неориентированный граф обладает сильно связной ориентацией $\Leftrightarrow$ он не содержит мостов.
 \end{theorem}
 \begin{proof}
@@ -163,17 +164,14 @@ a_{ij} =
 
 \textbf{Весом дуги~$e \in E$} называется $w(e)$.
 
-\textbf{Весом пути} называется сумма весов входящих в него дуг.
+\textbf{Весом}, или \textbf{длиной}, \textbf{пути} называется сумма весов входящих в него дуг.
 
 $(u, v)$"=путь называется \textbf{кратчайшим}, если он имеет наименьший вес среди всех $(u, v)$"=путей.
 
 Наименьший вес среди всех $(u, v)$"=путей называется \textbf{расстоянием между вершинами $u$ и $v$} и обозначается $d(u, v)$.
 
 \begin{statement}
-\begin{equation*}
-d(u, v) \leqslant d(u, k) + d(k, v)
-\end{equation*}
-причём $d(u, v) = d(u, k) + d(k, v)$ $\Leftrightarrow$ $k$ лежит на одном из кратчайших $(u, v)$"=путей.
+$d(u, v) \leqslant d(u, k) + d(k, v)$, причём $d(u, v) = d(u, k) + d(k, v)$ $\Leftrightarrow$ $k$ лежит на одном из кратчайших $(u, v)$"=путей.
 \end{statement}
 \begin{proof}
 Пусть $p_1$ и $p_2$~--- кратчайшие $(u, k)$"=путь и $(k, v)$"=путь соответственно.
@@ -184,8 +182,8 @@ d(u, v) \leqslant d(u, k) + d(k, v)
 Пусть дан граф~$(V, E)$ и вес~$w \colon E \to R^+$.
 
 \subsubsection{Алгоритм Дейкстры}
-\index{Алгоритм!Дейкстры} Алгоритм Дейкстры ищет длины кратчайших путей между некоторой вершиной и всеми остальными.
-Каждой вершине~$v$ сопоставим метки~$l(v) \geqslant d(u, v)$.
+\index{Алгоритм!Дейкстры} Алгоритм Дейкстры ищет длины кратчайших путей между некоторой вершиной~$u$ и всеми остальными.
+Каждой вершине~$v$ на шаге~$i$ сопоставим метки~$l_i(v) \geqslant d(u, v)$.
 \begin{enumerate}
 	\item[0.] $l_0(u) = 0$, $\forall v \in V \ v \neq u \Rightarrow l_0(v) = \infty$
 	\item[k.] Пусть $m$~--- непосещённая вершина с минимальным~$l_{k-1}(m)$.
@@ -200,20 +198,18 @@ d(u, v) \leqslant d(u, k) + d(k, v)
 \end{theorem}
 \begin{proofmathind}
 	\indbase $n = 0$: $v = u$, $0 = l_0(v) = d(u, u) = 0$.
-	\indstep Пусть для $n \leqslant k$ $l_k(v) = d(u, v)$.
-	Пусть $(u, \ldots, x, y, \ldots, v)$~--- кратчайший $(u, v)$"=путь, причём $y$~--- первая непосещённая вершина, $v$~--- вершина, посещённая на шаге~$k + 1$, тогда
+	\indstep Пусть для $k \leqslant n$ $l_k(v) = d(u, v)$, $(u, \ldots, x, y, \ldots, z)$~--- кратчайший $(u, z)$"=путь, причём $y$~--- первая непосещённая вершина, $z$~--- вершина, посещённая на шаге~$k + 1$, тогда
 	\begin{equation*}
-	l_{k+1}(v) \leqslant l_{k+1}(y) = \min \{ l_k(y), l_k(x) + w(x, y) \} \leqslant l_k(x) + w(x, y) = d(u, x) + w(x, y) = d(u, y) \leqslant d(u, v)
+	l_{k+1}(z) \leqslant l_{k+1}(y) = \min \{ l_k(y), l_k(x) + w(x, y) \} \leqslant l_k(x) + w(x, y) = d(u, x) + w(x, y) = d(u, y) \leqslant d(u, z)
 	\end{equation*}
 	\begin{equation*}
-	l_{k+1}(v) \leqslant d(u, v) \lAnd d(u, v) \leqslant l_{k+1}(v) \Rightarrow l_{k+1}(v) = d(u, v)
+	l_{k+1}(z) \leqslant d(u, z) \lAnd d(u, z) \leqslant l_{k+1}(z) \Rightarrow l_{k+1}(z) = d(u, z)
 	\end{equation*}
 	\indend
 \end{proofmathind}
 
 \subsubsection{Алгоритм Флойда"--~Уоршелла}
-\index{Алгоритм!Флойда---Уоршелла}
-Обозначим через~$d_k(i, j)$ длину кратчайшего $(i, j)$"=пути с промежуточными вершинами из множества~$\{ 1, 2, \ldots, k \}$.
+\index{Алгоритм!Флойда---Уоршелла} Обозначим через~$d_k(i, j)$ длину кратчайшего $(i, j)$"=пути с промежуточными вершинами из множества~$\{ 1, 2, \ldots, k \}$.
 Тогда
 \begin{equation*}
 d_0(i, j) =

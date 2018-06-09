@@ -13,7 +13,7 @@
 
 \textbf{Пропускной способностью разреза} называется сумма $\sum\limits_{i \in X, j \in \overline X} q(i, j)$.
 
-\textbf{Величиной потока через разрез~$(X, \overline X)$} называется сумма $\sum\limits_{i \in X, j \in \overline X} p(i, j) -
+\textbf{Величиной потока~$p$ через разрез~$(X, \overline X)$} называется сумма $\sum\limits_{i \in X, j \in \overline X} p(i, j) -
 \sum\limits_{i \in X, j \in \overline X} p(j, i)$ и обозначается $p(X, \overline X)$.
 
 \begin{lemma}
@@ -33,7 +33,7 @@ p(X, \overline X)
 \end{equation*}
 \end{proof}
 
-Т.\,о., \textbf{величиной потока} называется величина потока через любой разрез и обозначается $|p|$.
+Т.\,о., \textbf{величиной потока~$p$} называется его величина через любой разрез и обозначается $|p|$.
 
 \begin{consequent}
 $\sum\limits_{i \in V} p(s, i) = \sum\limits_{i \in V} p(i, t)$.
@@ -71,13 +71,18 @@ q(X, \overline X)
 \subsubsection{Алгоритм Форда"--~Фалкерсона}
 \index{Алгоритм!Форда---Фалкерсона}
 Изначально считаем, что $\forall i, j \in V \ p(i, j) = 0$.
-Также пометим источник~$s^{(-, \infty)}$.
+Также пометим источник~$s$ меткой~$(-, \infty)$.
 \begin{enumerate}
-	\item Помечаем вершины, смежные с помеченными, следующим образом: $i^{(x^\pm, \varepsilon)} \rightarrow j^{(i^+, \min(\varepsilon, q_{ij} - p_{ij}))}$, если $q_{ij} - p_{ij} \opbr> 0$, или $i^{(x^\pm, \varepsilon)} \leftarrow j^{(i^-, \min(\varepsilon, p_{ij}))}$, если $p_{ij} > 0$, где $i$~--- уже помеченная вершина.
-	Если сток не достигнут, то поток максимален, иначе пометили~$t^{(x^+, \delta)}$.
+	\item Пусть вершина~$i$ имеет метку~$(x^\pm, \varepsilon)$.
+	\begin{itemize}
+		\item Если $(i, j) \in E$ и $q(i, j) - p(i, j) > 0$, то присваиваем $j$ метку~$(i^+, \min \{\varepsilon, q(i, j) - p(i, j)\})$.
+		\item Если $(j, i) \in E$ и $p(i, j) > 0$, то присваиваем $j$ метку~$(i^-, \min \{\varepsilon, p(i, j)\})$.
+	\end{itemize}
+	
+	Если сток не достигнут, то поток максимален, иначе сток имеет метку$(x^+, \delta)$.
 	
 	\item Идём в обратном направлении.
-	Если в вершину $u$ пришли по $(i, u)$-дуге, то увеличиваем поток~$p(i, u)$ на~$\delta$, а если по $(u, i)$-дуге, то уменьшаем $p(i, u)$ на~$\delta$.
+	Если вершина~$u$ имеет метку~$(x^+, \varepsilon)$, то увеличиваем поток~$p(i, u)$ на~$\delta$, а если $(x^-, \varepsilon)$, то уменьшаем $p(i, u)$ на~$\delta$.
 	Т.\,о., величина потока увеличилась на~$\delta > 0$.
 \end{enumerate}
 

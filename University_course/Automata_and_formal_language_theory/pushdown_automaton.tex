@@ -18,11 +18,19 @@ $F \subseteq S$~--- множество допускающих состояний
 \end{enumerate}
 где $s \in S$, $x \in X \cup \{ \lambda \}$, $\alpha \in X^*$, $Z \in \Gamma$.
 
+Иными словами, при каждом переходе текущий магазинный символ стирается, вместо него записывается последовательность новых символов, определяемая функцией перехода, и в качестве текущего берётся её первый символ.
+
 Говорят, что автомат с магазинной памятью \textbf{распознаёт язык~$L$}:
 \begin{itemize}
 	\item \textbf{по конечному состоянию}, если $\alpha \in L \Leftrightarrow \delta(s_1, \alpha, Z_0) = (s_f, \gamma)$, где $s_f \in F$, $\gamma \in \Gamma^*$;
 	\item \textbf{по пустому магазину}, если $\alpha \in L \Leftrightarrow \exists \beta, \gamma \colon \alpha = \beta \gamma \lAnd \delta(s_1, \beta, Z_0) = (s, \lambda)$, где $s \in S$.
+	
+	Т.\,е. $\alpha$ распознаётся автоматом, если в процессе его чтения при одном из переходов магазин стал пустым.
 \end{itemize}
+
+\begin{statement}
+Множество языков, распознаваемых МП"=автоматами по конечному состоянию, совпадает со множеством языков, распознаваемых МП"=автоматами по пустому магазину.
+\end{statement}
 
 \subsection{Распознаваемость языков}
 \begin{statement}
@@ -34,10 +42,10 @@ $S = \{ s_0, s_1, s_2 \}$,\\
 $X = \{ a, b \}$,\\
 $\Gamma = \{ A, Z \}$,\\
 $\delta$ задаётся переходами\\
-$s_0 \delta(a, Z) = (s_0, AZ)$,\\
-$s_0 \delta(a, A) = (s_0, AA)$,\\
-$s_0 \delta(b, A) = (s_1, \lambda)$,\\
+$s_0 \delta(a, Z) = (s_0, AZ)$,
+$s_0 \delta(a, A) = (s_0, AA)$,
+$s_0 \delta(b, A) = (s_1, \lambda)$,
 $s_0 \delta(\lambda, Z) = (s_1, Z)$,\\
-$s_1 \delta(b, A) = (s_1, \lambda)$,\\
+$s_1 \delta(b, A) = (s_1, \lambda)$,
 $s_1 \delta(\lambda, Z) = (s_2, Z)$.
 \end{proof}
