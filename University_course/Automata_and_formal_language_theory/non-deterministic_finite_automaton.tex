@@ -46,6 +46,7 @@ s_1, \ s \notin S \lAnd x = \lambda
 \end{equation*}
 
 \subsection{Построение ДКА по НКА}
+\label{sect:automaton_determination}
 \index{Замыкание} \textbf{Замыканием состояния~$s$} некоторого НКА называется множество~$\{ s' \mid s \delta(\lambda^k) = s' \}$ и обозначается~$[s]$.
 
 Пусть язык~$L$ распознаётся НКА~$(S, X, \delta, s_1, F)$.
@@ -124,7 +125,7 @@ $F' = \{ M \mid M \in T \lAnd M \cap F \neq \varnothing \}$.
 	\end{proof}
 \end{enumerate}
 
-Через~$d(A)$ обозначим операцию детерминизации автомата~$A$.
+Через~$d(A)$ обозначим операцию детерминизации автомата~$A$, описанную в разделе~\ref{sect:automaton_determination}.
 
 \index{Теорема!Бржозовского}
 \begin{theorem}[Бржозовского]
