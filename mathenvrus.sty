@@ -7,6 +7,9 @@
 %	- \lAnd — знак конъюнкции для связывания высказываний;
 %	- \lOr — знак дизъюнкции для связывания высказываний;
 %
+%	- \updownarrows — печатает стрелку вверх и за ней стрелку вниз (напр., для обозначения
+%	  противоположно направленных векторов)
+%
 %	- \Arg — печатает Arg в математической моде;
 %	- \grad — печатает grad в математической моде;
 %	- \pr — печатает pr в математической моде;
@@ -43,12 +46,14 @@
 }
 
 \NewDocumentCommand\mult{}{\mathrel{\raise -0.6mm\hbox{\vdots}}}
-\NewDocumentCommand\notmult{}{\mathrel{{\mkern -0.2mu\not}\mult}}
+\NewDocumentCommand\notmult{}{\hspace{-3pt}\mathrel{\not\hspace{3pt}\mult}}
 
 \RenewDocumentCommand\land{}{\mathbin{\&}}
 \NewDocumentCommand\bigand{}{\mathop{\scalerel*{\&}{\sum}}}
 \NewDocumentCommand\lAnd{}{\mathrel{\&}}
 \NewDocumentCommand\lOr{}{\mathrel{\lor}}
+
+\NewDocumentCommand\updownarrows{}{\mathrel\uparrow\hspace{-0.1em}\downarrow}
 
 \DeclareMathOperator\Arg{Arg}
 \DeclareMathOperator\grad{grad}
@@ -87,7 +92,7 @@
 \newtheorem{consequent}[theorem]{Следствие}
 
 \NewDocumentEnvironment{proof}{o}
-	{\par\textbf{Доказательство\IfNoValueTF{#1}{}{ #1}.}}
+	{\par\textbf{Доказательство\IfNoValueTF{#1}{.\ }{\ #1.}}}
 	{$\scriptstyle\blacksquare$}
 \NewDocumentEnvironment{proofmathind}{}
 	{\par\textbf{Доказательство методом математической индукции.}}

@@ -27,7 +27,7 @@
 	|c_n x^n| \leqslant M \left| \frac{x}{x_0} \right|^n
 	\end{equation*}
 	
-	$\left| \frac{x}{x_0} \right| < 1$ $\Rightarrow$ $\series[0] M \left| \frac{x}{x_0} \right|^k$ сходится $\Rightarrow$ $\series[0] c_k x^k$ сходится абсолютно.
+	$|x| < |x_0| \Rightarrow \left| \frac{x}{x_0} \right| < 1$ $\Rightarrow$ $\series[0] M \left| \frac{x}{x_0} \right|^k$ сходится $\Rightarrow$ $\series[0] c_k x^k$ сходится абсолютно.
 	
 	\item Пусть $\series[0] c_k x_0^k$ расходится.
 	Если $\exists x_1 \colon |x_1| > |x_0|$ $\lAnd$ $\series[0] c_k x_1^k$ сходится, то $\series[0] c_k x_0^k$ сходится.
@@ -173,7 +173,7 @@ f(x) = \series[0] \frac{f^{(k)}}{k!}\,x^k
 	
 	Если $0 < x < 1$, то $|R_n(x)| \leqslant \frac{|x|^{n+1}}{(n + 1)!} \Rightarrow \lim\limits_{n \to \infty} R_n(x) = 0$.
 	
-	Для $-1 < x < 0$ также $\lim\limits_{n \to \infty} R_n(x) = 0$.
+	Для $-1 < x < 0$ также можно показать, что $\lim\limits_{n \to \infty} R_n(x) = 0$, используя другую форму представления~$R_n(x)$.
 	
 	Тогда при $x \in (-1; 1)$
 	\begin{equation*}
@@ -240,7 +240,7 @@ f(x) = \series[0] \frac{f^{(k)}}{k!}\,x^k
 	\item $\displaystyle \int_{-\frac{T}2}^{\frac{T}2} \sin^2 \frac{2 \pi n}T\,x\,dx = \frac{T}2$
 \end{itemize}
 
-Тогда, умножив обе части равенства~\ref*{eq:Fourier_series} на выражение~$M$ и проинтегрировав на отрезке~$\left[ -\frac{T}2; \frac{T}2 \right]$, получим:
+Тогда, умножив обе части равенства~(\ref*{eq:Fourier_series}) на выражение~$M$ и проинтегрировав на отрезке~$\left[ -\frac{T}2; \frac{T}2 \right]$, получим:
 \begin{itemize}
 	\item Для $M = 1$:
 	\begin{equation*}

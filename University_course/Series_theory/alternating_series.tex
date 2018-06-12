@@ -7,21 +7,21 @@
 Если $\series |a_k|$ сходится, то $\series a_k$ тоже сходится.
 \end{theorem}
 \begin{proof}
-Пусть $S_n$ и $\sigma_n$~--- частичные суммы рядов $\series a_k$ и $\series |a_k|$ соответственно.
+Пусть $\sigma_n$ и $S_n$~--- частичные суммы рядов $\series a_k$ и $\series |a_k|$ соответственно.
 По \hyperref[th:Cauchy_criterion]{критерию Коши}
 \begin{equation*}
 \forall \varepsilon > 0 \
 \exists N \in \mathbb N \colon
-\forall m > N \ \forall k \geqslant 1 \
-|\sigma_{m+k} - \sigma_m| < \varepsilon
+\forall m > N,\, k \geqslant 1 \
+|S_{m+k} - S_m| < \varepsilon
 \end{equation*}
 
 Тогда
 \begin{equation*}
-|S_{m+k} - S_m| =
+|\sigma_{m+k} - \sigma_m| =
 \left| \sum_{i=1}^k a_{m+i} \right| \leqslant
 \sum_{i=1}^k |a_{m+i}| =
-|\sigma_{m+k} - \sigma_m| < \varepsilon
+|S_{m+k} - S_m| < \varepsilon
 \end{equation*}
 
 Значит, $\series a_k$ сходится.

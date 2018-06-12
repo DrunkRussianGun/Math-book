@@ -15,24 +15,20 @@
 \subsection{Признаки сходимости}
 \begin{theorem}[признак сравнения]
 Пусть даны знакоположительные ряды $\series a_k$ и $\series b_k$, $\forall n \in \mathbb N \ a_n \leqslant b_n$.
-\begin{itemize}
+\begin{enumerate}
 	\item Если $\series b_k$ сходится, то $\series a_k$ тоже сходится.
 	\item Если $\series a_k$ расходится, то $\series b_k$ тоже расходится.
-\end{itemize}
+\end{enumerate}
 \end{theorem}
 \begin{proof}
 Пусть $(\sigma_n)$ и $(S_n)$~--- частичные суммы рядов $\series a_k$ и $\series b_k$ соответственно.
-\begin{itemize}
-	\item Пусть $\series b_k$ сходится.
-	\begin{equation*}
-	\exists T > 0 \colon \forall n \in N \ S_n \leqslant T \Rightarrow
-	\sigma_n \leqslant S_n < T
-	\end{equation*}
-	
+\begin{enumerate}
+	\item Пусть $\series b_k$ сходится, тогда $\exists T > 0 \colon \forall n \in N \ S_n \leqslant T \Rightarrow
+	\sigma_n \leqslant S_n < T$.
 	По лемме~\ref*{lemma:convergence_of_sign-positive_series} $\series a_k$ сходится.
 	
-	\item Если $\series a_k$ расходится, то $\series b_k$ тоже расходится, что легко доказывается методом от противного.
-\end{itemize}
+	\item Очевидно.
+\end{enumerate}
 \end{proof}
 
 \index{Признак!предельный п. сравнения}
@@ -42,19 +38,19 @@
 \end{theorem}
 \begin{proof}
 \begin{equation*}
-\forall \varepsilon > 0 \exists N \in \mathbb N \colon \forall k > N \ \left| \frac{a_k}{b_k} - L \right| < \varepsilon
+\forall \varepsilon > 0 \ \exists N \in \mathbb N \colon \forall k > N \ \left| \frac{a_k}{b_k} - c \right| < \varepsilon
 \end{equation*}
 
 Пусть $\varepsilon = \frac{c}2$, тогда
 \begin{equation*}
-\exists N_0 \in \mathbb N \colon \forall k > N_0 \ c - \frac{c}2 < \frac{a_k}{b_k} < \frac{c}2 + c \Rightarrow
-a_k < \frac32 b_k c \lAnd b_k < \frac{2 a_k}c
+\exists N_0 \in \mathbb N \colon \forall k > N_0 \ c - \frac{c}2 < \frac{a_k}{b_k} < c + \frac{c}2 \Rightarrow
+a_k < \frac{3c}2 b_k \lAnd b_k < \frac2c a_k
 \end{equation*}
 
 По признаку сравнения получим:
 \begin{itemize}
-	\item Если $\series a_k$ сходится, то $\series \frac{2 a_k}c$ сходится $\Rightarrow$ $\series b_k$ сходится.
-	\item Если $\series b_k$ сходится, то $\series \frac32 b_k c$ сходится $\Rightarrow$ $\series a_k$ сходится.
+	\item Если $\series a_k$ сходится, то $\series \frac2c a_k$ сходится $\Rightarrow$ $\series b_k$ сходится.
+	\item Если $\series b_k$ сходится, то $\series \frac{3c}2 b_k$ сходится $\Rightarrow$ $\series a_k$ сходится.
 \end{itemize}
 \end{proof}
 
