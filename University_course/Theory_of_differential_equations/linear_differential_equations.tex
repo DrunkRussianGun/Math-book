@@ -2,40 +2,40 @@
 \index{Уравнения!дифференциальные!линейные} \textbf{Линейным дифференциальным уравнением $n$"~го порядка с постоянными коэффициентами} называется уравнение вида
 \begin{equation}
 \label{eq:linear_differential_equation}
-y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)
+y^{(n)} + a_n y^{(n-1)} + \ldots + a_2 y' + a_1 y = f(x)
 \end{equation}
 
-Введём функции $y_0 = y$, $y_1 = y'$, \ldots, $y_{n-1} = y^{(n-1)}$, тогда
+Введём функции $y_1 = y$, $y_2 = y'$, \ldots, $y_n = y^{(n-1)}$, тогда
 \begin{equation*}
-y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x) \Leftrightarrow
+y^{(n)} + a_n y^{(n-1)} + \ldots + a_2 y' + a_1 y = f(x) \Leftrightarrow
 \begin{cases}
-y_0' = y_1 \\
 y_1' = y_2 \\
+y_2' = y_3 \\
 \ldots \\
-y_{n-1}' = f(x) - a_0 y_0 - a_1 y_1 - \ldots - a_{n-1} y_{n-1}
+y_n' = f(x) - a_1 y_1 - a_2 y_2 - \ldots - a_n y_n
 \end{cases}
 \end{equation*}
 
 \index{Теорема!единственности}
 \begin{theorem}[единственности решения дифференциального уравнения]
-Если заданы начальные условия $y(x_0) = y_{00}$, $y'(x_0) = y_{10}$, \ldots, $y^{(n-1)}(x_0) = y_{n-1\,0}$, то уравнение~(\ref*{eq:linear_differential_equation}) имеет единственное решение в окрестности~$(x_0 - d; x_0 + d)$.
+Если заданы начальные условия $y(x_0) = y_{10}$, $y'(x_0) = y_{20}$, \ldots, $y^{(n-1)}(x_0) = y_{n0}$, то уравнение~(\ref*{eq:linear_differential_equation}) имеет единственное решение в окрестности~$(x_0 - d; x_0 + d)$.
 \end{theorem}
 \begin{proof}
 Введём вектор-функцию $Y(x) =
 \begin{Vmatrix}
-y_0 \\
 y_1 \\
+y_2 \\
 \ldots \\
-y_{n-1}
-\end{Vmatrix}$
-и получим уравнение $Y' = A Y + F$, где
+y_n
+\end{Vmatrix}$, где $y_1 = y$, $y_2 = y'$, \ldots, $y_n = y^{(n-1)}$,
+и получим уравнение $Y'(x) = A Y(x) + F(x)$ с начальным условием $Y(x) = Y_0$, где
 \begin{equation*}
 A =
 \begin{Vmatrix}
 0 & 1 & 0 & \ldots & 0 \\
 0 & 0 & 1 & \ldots & 0 \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
--a_0 & -a_1 & -a_2 & \ldots & -a_{n-1}
+-a_1 & -a_2 & -a_3 & \ldots & -a_n
 \end{Vmatrix}, \
 F =
 \begin{Vmatrix}
@@ -43,17 +43,122 @@ F =
 0 \\
 \ldots \\
 f(x)
+\end{Vmatrix}, \
+Y_0 =
+\begin{Vmatrix}
+y_{10} \\
+y_{20} \\
+\ldots \\
+y_{n0}
 \end{Vmatrix}
 \end{equation*}
 
-Аналогично теореме~\ref{th:differential_equation_has_single_solution} можно доказать, что единственное решение этого уравнения можно получить методом итераций:
+Запишем интегральное уравнение:
 \begin{equation*}
-Y_k(x) = Y_0 + \int\limits_{x_0}^x (A Y_{k-1}(t) + F(t))\,dt
+Y'(x) = A Y(x) + F(x) \Rightarrow
+Y(x) = Y_0 + \int\limits_{x_0}^x (A Y(t) + F(t))\,dt \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow \begin{Vmatrix}
+y_1(x) \\
+y_2(x) \\
+\ldots \\
+y_n(x)
+\end{Vmatrix} =
+\begin{Vmatrix}
+y_{10} + \int\limits_{x_0}^x y_2(t)\,dt \\
+y_{20} + \int\limits_{x_0}^x y_3(t)\,dt \\
+\ldots \\
+y_{n0} + \int\limits_{x_0}^x (f(t) - a_1 y_1(t) - a_2 y_2(t) - \ldots - a_n y_n(t))\,dt \\
+\end{Vmatrix}
+\end{equation*}
+
+Используя метод итераций, получим
+\begin{equation*}
+\begin{Vmatrix}
+y_{1k}(x) \\
+y_{2k}(x) \\
+\ldots \\
+y_{nk}(x)
+\end{Vmatrix} =
+\begin{Vmatrix}
+y_{10} + \int\limits_{x_0}^x y_{2\,k-1}(t)\,dt \\
+y_{20} + \int\limits_{x_0}^x y_{3\,k-1}(t)\,dt \\
+\ldots \\
+y_{n0} + \int\limits_{x_0}^x (f(t) - a_1 y_{1\,k-1}(t) - a_2 y_{2\,k-1}(t) - \ldots - a_n y_{n\,k-1}(t))\,dt \\
+\end{Vmatrix} \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \begin{Vmatrix}
+y_{1\,k+1}(x) - y_{1k}(x) \\
+y_{2\,k+1}(x) - y_{2k}(x) \\
+\ldots \\
+y_{n\,k+1}(x) - y_{nk}(x)
+\end{Vmatrix} =
+\begin{Vmatrix}
+\int\limits_{x_0}^x (y_{2k}(t) - y_{2\,k-1}(t))\,dt \\
+\int\limits_{x_0}^x (y_{3k}(t) - y_{3\,k-1}(t))\,dt \\
+\ldots \\
+-\int\limits_{x_0}^x (a_1 (y_{1k}(t) - y_{1\,k-1}(t)) + a_2 (y_{2k}(t) - y_{2\,k-1}(t)) - \ldots - a_n (y_{nk}(t) - y_{n\,k-1}(t)))\,dt \\
+\end{Vmatrix}
+\end{equation*}
+
+По свойству~\ref{st:inequality_of_Riemann_integral} интеграла Римана имеем
+\begin{equation*}
+\max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i\,k+1}(x) - y_{ik}(x)| \leqslant
+d \cdot \max \left\lbrace 1, \sum_{j=1}^n |a_j| \right\rbrace \cdot \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{ik}(x) - y_{i\,k-1}(x)|
+\end{equation*}
+
+Пусть $d, q \colon q = d \max \left\lbrace 1, \sum\limits_{j=1}^n |a_j| \right\rbrace < 1$, тогда
+\begin{equation*}
+\max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{ik}(x) - y_{i\,k-1}(x)| \leqslant
+q \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i\,k-1}(x) - y_{i\,k-2}(x)| \leqslant \ldots \leqslant
+q^{k-1} \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i1}(x) - y_{i0}| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \forall m \geqslant 1 \ \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i\,k+m}(x) - y_{ik}(x)| =
+\end{equation*}
+\begin{equation*}
+= \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |(y_{i\,k+m}(x) - y_{i\,k+m-1}(x)) + (y_{i\,k+m-1}(x) - y_{i\,k+m-2}(x)) + \ldots + (y_{i\,k+1}(x) - y_{ik}(x))| \leqslant
+\end{equation*}
+\begin{equation*}
+\leqslant \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i\,k+m}(x) - y_{i\,k+m-1}(x)| + \ldots +
+\max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i\,k+1}(x) - y_{ik}(x)| \leqslant
+\end{equation*}
+\begin{equation*}
+\leqslant (q^{k+m-1} + q^{k+m-2} + \ldots + q^k) \frac{1 - q^m}{1 - q} \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i1}(x) - y_{i0}| =
+\end{equation*}
+\begin{equation*}
+= q^k \frac{1 - q^m}{1 - q} \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i1}(x) - y_{i0}| <
+\frac{q^k}{1 - q} \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_{i1}(x) - y_{i0}|
+\end{equation*}
+
+По \hyperref[th:Cauchy_criterion]{признаку Коши} получим
+\begin{equation*}
+\forall \varepsilon > 0,\, \forall i \in \mathbb N \colon 1 \leqslant i \leqslant n \
+\exists N \in \mathbb N \colon \forall k > N,\, m \geqslant 1 \
+\max_{|x - x_0| < d} |y_{i\,k+m}(x) - y_{ik}(x)| < \varepsilon \Rightarrow
+\exists \lim_{k \to \infty} Y_k(x) = \tilde Y(x)
+\end{equation*}
+
+Докажем единственность решения.
+Пусть существуют два решения $Y(x)$ и $\tilde Y(x)$, тогда
+\begin{equation*}
+|Y(x) - \tilde Y(x)| = \left|\int_{x_0}^x A(Y(t) - \tilde Y(t))\,dt\right| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_i(x) - \tilde y_i(x)| \leqslant
+q \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_i(x) - \tilde y_i(x)| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \max_{1 \leqslant i \leqslant n} \max_{|x - x_0| < d} |y_i(x) - \tilde y_i(x)| \leqslant 0 \Rightarrow
+\forall i \in \mathbb N \colon 1 \leqslant i \leqslant n \ y_i(x) = \tilde y_i(x) \Rightarrow
+Y(x) = \tilde Y(x)
 \end{equation*}
 \end{proof}
 
 \subsection{Однородное дифференциальное уравнение}
-\index{Уравнения!дифференциальные!однородные} Если для уравнения~\ref{eq:linear_differential_equation} $f(x) = 0$, то оно называется \textbf{однородным} и принимает вид
+\index{Уравнения!дифференциальные!однородные} Если для уравнения~(\ref{eq:linear_differential_equation}) $f(x) = 0$, то оно называется \textbf{однородным} и принимает вид
 \begin{equation}
 \label{eq:homogeneous_differential_equation}
 y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0
@@ -196,6 +301,17 @@ y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = f(x)
 \begin{statement}
 Общее решение уравнения~(\ref*{eq:heterogeneous_differential_equation}) равно сумме его частного решения и общего решения соответствующего однородного уравнения.
 \end{statement}
+\begin{proof}
+Пусть $y_0$~--- общее решение однородного уравнения, $\tilde y$~--- частное решение данного неоднородного уравнения, тогда
+\begin{equation*}
+(y_0 + \tilde y)^{(n)} + a_{n-1} (y_0 + \tilde y)^{(n-1)} + \ldots + a_1 (y_0 + \tilde y)' + a_0 (y_0 + \tilde y) = f(x) \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow (y_0^{(n)} + a_{n-1} y_0^{(n-1)} + \ldots + a_1 y_0' + a_0 y_0) +
+(\tilde y^{(n)} + a_{n-1} \tilde y^{(n-1)} + \ldots + a_1 \tilde y' + a_0 \tilde y) = f(x) \Rightarrow
+f(x) = f(x)
+\end{equation*}
+\end{proof}
 
 \subsubsection{Метод вариации произвольной постоянной}
 \index{Метод!вариации произвольной постоянной}
@@ -229,18 +345,18 @@ C_2''(x) y_2 + 2 C_2'(x) y_2' + C_2(x) y_2''
 Подставим в уравнение:
 \begin{equation*}
 C_1''(x) y_1 + 2 C_1'(x) y_1' + C_1(x) y_1'' +
-C_2''(x) y_2 + 2 C_2'(x) y_2' + C_2(x) y_2'' + \vphantom{1}
+C_2''(x) y_2 + 2 C_2'(x) y_2' + C_2(x) y_2'' + {}
 \end{equation*}
 \begin{equation*}
-\vphantom{1} + a_1 (C_1'(x) y_1 + C_1(x) y_1' + C_2'(x) y_2 + C_2(x) y_2') +
+{} + a_1 (C_1'(x) y_1 + C_1(x) y_1' + C_2'(x) y_2 + C_2(x) y_2') +
 a_0 (C_1(x) y_1 + C_2(x) y_2) = f(x) \Leftrightarrow
 \end{equation*}
 \begin{equation*}
 \Leftrightarrow C_1(x) (y_1'' + a_1 y_1' + a_0 y_1) +
-C_2(x) (y_2'' + a_1 y_2' + a_0 y_2) + \vphantom{1}
+C_2(x) (y_2'' + a_1 y_2' + a_0 y_2) + {}
 \end{equation*}
 \begin{equation*}
-\vphantom{1} + a_1 (C_1'(x) y_1 + C_2'(x) y_2) +
+{} + a_1 (C_1'(x) y_1 + C_2'(x) y_2) +
 (C_1''(x) y_1 + 2 C_1'(x) y_1' + C_2''(x) y_2 + 2 C_2'(x) y_2') = f(x) \Leftrightarrow
 \end{equation*}
 \begin{equation*}

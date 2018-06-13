@@ -46,7 +46,7 @@ p' = \frac{F(p) - p}x
 
 Решая его, получим
 \begin{equation*}
-y' = k(1 - \frac{y}r)y \Leftrightarrow
+y' = k \left(1 - \frac{y}r\right) y \Leftrightarrow
 \frac{r\,dy}{(r - y)y} = k\,dt \Leftrightarrow
 \frac1{r - y}\,dy + \frac1y\,dy = k\,dt \Rightarrow
 \ln \left| \frac{y}{r - y} \right| = kt + \ln C \Rightarrow
@@ -209,18 +209,18 @@ y' = a(x) y + b(x) y^n \Leftrightarrow
 \index{Теорема!единственности}
 \begin{theorem}[единственности решения дифференциального уравнения]
 \label{th:differential_equation_has_single_solution}
-Пусть $y'(x) = f(x, y(x))$, $y(x_0) = y_0$, причём в некоторой окрестности точки~$x_0$ $\exists M > 0 \colon |f(x, y_1) - f(x, y_2)| \leqslant M |y_1 - y_2|$, тогда уравнение имеет единственное решение в окрестности~$(x_0 - d; x_0 + d)$.
+Пусть $y'(x) = f(x, y(x))$, $y(x_0) = y_0$, причём в некоторой окрестности точки~$x_0$ $\exists M > 0 \colon |f(x, y_1) - f(x, y_2)| \leqslant M |y_1 - y_2|$, тогда уравнение имеет единственное решение в некоторой окрестности~$(x_0 - d; x_0 + d)$.
 \end{theorem}
 \begin{proof}
 $y'(x) = f(x, y(x)) \Rightarrow
-y(x) = \int\limits_{x_0}^x f(t, y(t))\,dt + y_0$.
+y(x) = y_0 + \int\limits_{x_0}^x f(t, y(t))\,dt$.
 
 Воспользуемся методом итераций:\\
-$\displaystyle y_1(x) = \int\limits_{x_0}^x f(x, y_0)\,dx + y_0$\\
+$\displaystyle y_1(x) = y_0 + \int\limits_{x_0}^x f(t, y_0)\,dt$\\
 \ldots\\
-$\displaystyle y_n(x) = \int\limits_{x_0}^x f(x, y_{n-1}(x))\,dx + y_0$
+$\displaystyle y_n(x) = y_0 + \int\limits_{x_0}^x f(x, y_{n-1}(t))\,dt$
 \begin{equation*}
-y_{n+1}(x) - y_n(x) = \int\limits_{x_0}^x (f(x, y_n(x)) - f(x, y_{n-1}(x)))\,dx
+y_{n+1}(x) - y_n(x) = \int\limits_{x_0}^x (f(t, y_n(t)) - f(t, y_{n-1}(t)))\,dt
 \end{equation*}
 
 По свойству~\ref{st:inequality_of_Riemann_integral} интеграла Римана и условию $|f(x, y_1) - f(x, y_2)| \leqslant M |y_1 - y_2|$ имеем
@@ -230,17 +230,16 @@ d \max_{|x - x_0| < d} |f(x, y_n(x)) - f(x, y_{n-1}(x))| \leqslant
 dM \max_{|x - x_0| < d} |y_n(x) - y_{n-1}(x)|
 \end{equation*}
 
-Пусть $q = dM < 1$, тогда
+Пусть $d, q \colon q = dM < 1$ тогда
 \begin{equation*}
 \max_{|x - x_0| < d} |y_n(x) - y_{n-1}(x)| \leqslant
 q \max_{|x - x_0| < d} |y_{n-1}(x) - y_{n-2}(x)| \leqslant \ldots \leqslant
 q^{n-1} \max_{|x - x_0| < d} |y_1(x) - y_0|
 \end{equation*}
 
-Тогда
+Отсюда
 \begin{equation*}
-\forall k \geqslant 1 \
-\max_{x \in [a; b]} |y_{n+k}(x) - y_n(x)| =
+\forall k \geqslant 1 \ \max_{|x - x_0| < d} |y_{n+k}(x) - y_n(x)| =
 \end{equation*}
 \begin{equation*}
 = \max_{|x - x_0| < d} |(y_{n+k}(x) - y_{n+k-1}(x)) +
@@ -260,28 +259,27 @@ q^n \cdot \frac{1 - q^k}{1 - q} \max_{|x - x_0| < d} |y_1(x) - y_0| <
 
 По \hyperref[th:Cauchy_criterion]{признаку Коши} получим
 \begin{equation*}
-\forall \varepsilon > 0 \ \exists N \in \mathbb N \colon \forall n > N \ \forall k \geqslant 1 \
-\max_{x \in [a; b]} |y_{n+k}(x) - y_n(x)| < \varepsilon \Rightarrow
+\forall \varepsilon > 0 \ \exists N \in \mathbb N \colon \forall n > N,\, k \geqslant 1 \
+\max_{|x - x_0| < d} |y_{n+k}(x) - y_n(x)| < \varepsilon \Rightarrow
 \exists \lim_{n \to \infty} y_n(x) = \tilde y(x)
 \end{equation*}
 
-Докажем единственность решения методом от противного.
-Пусть существует два различных решения $y(x)$ и $\tilde y(x)$.
+Докажем единственность решения.
+Пусть существуют два решения $y(x)$ и $\tilde y(x)$.
 \begin{equation*}
 |y(x) - \tilde y(x)| =
-\left| \int_{x_0}^x (f(x, y(x)) - f(x, \tilde y(x)))\,dx \right| \Rightarrow
+\left| \int_{x_0}^x (f(t, y(t)) - f(t, \tilde y(t)))\,dt \right| \Rightarrow
 \end{equation*}
 \begin{equation*}
 \Rightarrow \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant
-d \cdot \max_{|x - x_0| < d} |f(x, y(x)) - f(x, \tilde y(x))| <
+d \cdot \max_{|x - x_0| < d} |f(x, y(x)) - f(x, \tilde y(x))| \leqslant
 d M \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \Rightarrow
 \end{equation*}
 \begin{equation*}
-\Rightarrow \max_{|x - x_0| < d} |y(x) - \tilde y(x)| < q \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \Rightarrow
-\max_{|x - x_0| < d} |y(x) - \tilde y(x)| < 0
+\Rightarrow \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant q \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \Rightarrow
+\max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant 0 \Rightarrow
+y(x) = \tilde y(x)
 \end{equation*}
-
-Противоречие, значит, решение единственно.
 \end{proof}
 
 \subsection{Понижение порядка дифференциального уравнения}
