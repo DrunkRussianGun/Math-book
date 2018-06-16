@@ -13,9 +13,10 @@
 
 \index{Теорема!Абеля}
 \begin{theorem}[Абеля]
+Если при $x = x_0$ ряд $\series[0] c_k x^k$
 \begin{itemize}
-	\item Если ряд $\series[0] c_k x^k$ сходится при $x = x_0$, то $\forall x \colon |x| < |x_0|$ он сходится абсолютно.
-	\item Если ряд $\series[0] c_k x^k$ расходится при $x = x_0$, то $\forall x \colon |x| > |x_0|$ он расходится.
+	\item сходится, то $\forall x \colon |x| < |x_0|$ он сходится абсолютно;
+	\item расходится, то $\forall x \colon |x| > |x_0|$ он расходится.
 \end{itemize}
 \end{theorem}
 \begin{proof}
@@ -171,7 +172,12 @@ f(x) = \series[0] \frac{f^{(k)}}{k!}\,x^k
 	\frac{x^{n+1}}{(1 + \Theta x)^{n+1-\alpha}}
 	\end{equation*}
 	
-	Если $0 < x < 1$, то $|R_n(x)| \leqslant \frac{|x|^{n+1}}{(n + 1)!} \Rightarrow \lim\limits_{n \to \infty} R_n(x) = 0$.
+	Если $0 < x < 1$, то
+	\begin{equation*}
+	\lim_{n \to \infty} \frac{|\alpha (\alpha - 1) \cdot \ldots \cdot (\alpha - n)|}{(n + 1)!}\,|x|^{n+1} = 0 \Rightarrow
+	\lim_{n \to \infty} |R_n(x)| = 0 \Rightarrow
+	\lim_{n \to \infty} R_n(x) = 0
+	\end{equation*}
 	
 	Для $-1 < x < 0$ также можно показать, что $\lim\limits_{n \to \infty} R_n(x) = 0$, используя другую форму представления~$R_n(x)$.
 	

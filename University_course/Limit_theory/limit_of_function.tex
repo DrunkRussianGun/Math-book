@@ -13,7 +13,7 @@
 	
 	Число~$b$ называется \textbf{пределом функции~$f(x)$ в точке~$a$}, если
 	\begin{equation*}
-	\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \ (|x - a| < \delta \Rightarrow |f(x) - b| < \varepsilon)
+	\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \in \mathbb R \ |x - a| < \delta \Rightarrow |f(x) - b| < \varepsilon
 	\end{equation*}
 \end{enumerate}
 
@@ -32,12 +32,12 @@
 	Докажем методом от противного, что условия определения~(2) выполняются.
 	Пусть
 	\begin{equation*}
-	\exists \varepsilon_0 > 0 \colon \forall \delta > 0 \ \exists x_0 \colon |x_0 - a| < \delta \lAnd |f(x_0) - b| \geqslant \varepsilon_0
+	\exists \varepsilon_0 > 0 \colon \forall \delta > 0 \ \exists x_0 \in \mathbb R \colon |x_0 - a| < \delta \lAnd |f(x_0) - b| \geqslant \varepsilon_0
 	\end{equation*}
 	
 	Тогда
 	\begin{equation*}
-	\forall n \in \mathbb N \ \exists x_n \colon |x_n - a| < \frac1n \lAnd |f(x_n) - b| \geqslant \varepsilon_0
+	\forall n \in \mathbb N \ \exists x_n \in \mathbb R \colon |x_n - a| < \frac1n \lAnd |f(x_n) - b| \geqslant \varepsilon_0
 	\end{equation*}
 	
 	Получили последовательность $(x_n) \colon \lim\limits_{n \to \infty} x_n = a \lAnd \lim\limits_{n \to \infty} f(x_n) \neq b$.
@@ -47,15 +47,15 @@
 
 Также определяются односторонние пределы.
 
-Число~$b$ называется \textbf{левым пределом}, или \textbf{пределом слева}, \textbf{функции~$f(x)$ в точке~$a$}, если
+Число~$b$ называется \textbf{левым пределом} (\textbf{пределом слева}) \textbf{функции~$f(x)$ в точке~$a$}, если
 \begin{equation*}
-\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \ (0 < a - x < \delta \Rightarrow |f(x) - b| < \varepsilon)
+\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \in \mathbb R \ 0 < a - x < \delta \Rightarrow |f(x) - b| < \varepsilon
 \end{equation*}
 и обозначается $\lim\limits_{x \to a-0} f(x)$.
 
-Число~$b$ называется \textbf{правым пределом}, или \textbf{пределом справа}, \textbf{функции~$f(x)$ в точке~$a$}, если
+Число~$b$ называется \textbf{правым пределом} (\textbf{пределом справа}) \textbf{функции~$f(x)$ в точке~$a$}, если
 \begin{equation*}
-\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \ (0 < x - a < \delta \Rightarrow |f(x) - b| < \varepsilon)
+\forall \varepsilon > 0 \ \exists \delta > 0 \colon \forall x \in \mathbb R \ 0 < x - a < \delta \Rightarrow |f(x) - b| < \varepsilon
 \end{equation*}
 и обозначается $\lim\limits_{x \to a+0} f(x)$.
 
@@ -71,9 +71,9 @@
 	\item \index{Теорема!о двух милиционерах}
 	\begin{theorem}[о двух милиционерах]
 	\label{th:about_two_policemen}
-	Если в окрестности точки~$a$ $f(x) \leqslant g(x) \leqslant h(x)$, $\lim\limits_{x \to a} f(x) \opbr= \lim\limits_{x \to a} h(x) \opbr= b$, то $\lim\limits_{x \to a} g(x) = b$.
+	Если в окрестности точки~$a$ $f(x) \leqslant g(x) \leqslant h(x) \lAnd \lim\limits_{x \to a} f(x) \opbr= \lim\limits_{x \to a} h(x) \opbr= b$, то $\lim\limits_{x \to a} g(x) = b$.
 	\end{theorem}
-	\item Если в окрестности точки~$a$ $f(x) \geqslant 0$, $\lim\limits_{x \to a} f(x) = b$, то $b \geqslant 0$.
+	\item Если в окрестности точки~$a$ $f(x) \geqslant 0 \lAnd \lim\limits_{x \to a} f(x) = b$, то $b \geqslant 0$.
 	\item $\lim\limits_{x \to a} f(x) = b \Rightarrow \lim\limits_{x \to a} |f(x)| = |b|$.
 \end{enumerate}
 
@@ -98,7 +98,7 @@
 	
 	Число~$a$ называется \textbf{пределом функции~$f(x)$ на бесконечности}, если
 	\begin{equation*}
-	\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \ (|x| > M \Rightarrow |f(x) - b| < \varepsilon)
+	\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \in \mathbb R \ |x| > M \Rightarrow |f(x) - b| < \varepsilon
 	\end{equation*}
 \end{enumerate}
 
@@ -119,7 +119,7 @@
 	Докажем методом от противного, что условия определения~(2) выполняются.
 	Пусть
 	\begin{equation*}
-	\exists \varepsilon_0 > 0 \colon \forall M > 0 \ \exists x_0 \colon |x_0| > M \lAnd |f(x_0) - a| \geqslant \varepsilon_0
+	\exists \varepsilon_0 > 0 \colon \forall M > 0 \ \exists x_0 \in \mathbb R \colon |x_0| > M \lAnd |f(x_0) - a| \geqslant \varepsilon_0
 	\end{equation*}
 	
 	Тогда
@@ -136,17 +136,15 @@
 \begin{enumerate}
 	\item \textbf{Определение по Гейне}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если $\lim\limits_{n \to \infty} f(x_n) = a$ для любой последовательности~$(x_n) \colon \lim\limits_{n \to \infty} x_n = +\infty \ (\lim\limits_{n \to \infty} x_n = -\infty)$.
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс/минус бесконечности}, если $\lim\limits_{n \to \infty} f(x_n) = a$ для любой последовательности~$(x_n) \colon \lim\limits_{n \to \infty} x_n = \pm\infty$.
 	
 	\item \textbf{Определение по Коши}
 	
-	Число~$a$ называется \textbf{пределом функции~$f(x)$ на плюс (минус) бесконечности}, если
-	\begin{equation*}
-	\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \ (x > M \Rightarrow |f(x) - b| < \varepsilon)
-	\end{equation*}
-	\begin{equation*}
-	(\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \ (x < -M \Rightarrow |f(x) - b| < \varepsilon))
-	\end{equation*}
+	Число~$a$ называется \textbf{пределом функции~$f(x)$ на}:
+	\begin{itemize}
+		\item \textbf{плюс бесконечности}, если $\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \in \mathbb R \ x > M \Rightarrow |f(x) - b| < \varepsilon$;
+		\item \textbf{минус бесконечности}, если $\forall \varepsilon > 0 \ \exists M > 0 \colon \forall x \in \mathbb R \ x < -M \Rightarrow |f(x) - b| < \varepsilon$.
+	\end{itemize}
 \end{enumerate}
 
 Предел функции на бесконечности обладает теми же свойствами, что и предел функции в~точке.
@@ -160,8 +158,7 @@
 \lim_{x \to 0} \frac{\sin x}x = 1
 \end{equation*}
 \end{statement}
-\begin{wrapfigure}{r}{0pt}
-\noindent
+\begin{wrapfigure}{r}{0pt}\noindent
 \shorthandoff{"}
 \begin{tikzpicture}[scale=3]
 \clip (-0.15, -0.2) rectangle (1.6, 1.1);

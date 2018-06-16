@@ -177,8 +177,8 @@ a_{r\, j_r} x_{j_r} + \ldots + a_{r\, j_n} x_{j_n} = b_r \\
 \end{cases}
 \end{equation}
 где $a_{1\, j_1}, \ldots, a_{r\, j_r} \neq 0$.
-Без ограничения общности можно считать, что в~базисный минор основной матрицы системы~(\ref*{eq:Gaussian_elimination(2)}) входят только коэффициенты при переменных~$x_{j_1}, \ldots, x_{j_r}$, называемых \textbf{главными (зависимыми)}.
-Остальные переменные называются \textbf{свободными (независимыми)}.
+Без ограничения общности можно считать, что в~базисный минор основной матрицы системы~(\ref*{eq:Gaussian_elimination(2)}) входят только коэффициенты при переменных~$x_{j_1}, \ldots, x_{j_r}$, называемых \textbf{главными} (\textbf{зависимыми}).
+Остальные переменные называются \textbf{свободными} (\textbf{независимыми}).
 
 Если $\exists i > r \colon b_i \neq 0$, то система несовместна.
 Пусть $\forall i > r \ b_i = 0$. Тогда получим систему
@@ -240,8 +240,7 @@ b_n
 
 \index{Формула!Крамера}
 Т.\,о., получим решение системы:
-\begin{equation}
-\label{eq:Cramer's_formula}
+\begin{equation*}
 x_i = \frac{\displaystyle \sum_{j=1}^n A_{ji} b_j}{|A|} =
 \frac1{{|A|}} \cdot
 \begin{vmatrix}
@@ -250,10 +249,10 @@ a_{21} & \cdots & a_{2\, i-1} & b_{2} & a_{2\, i+1} & \cdots & a_{2n} \\
 \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & \cdots & a_{n\, i-1} & b_{n} & a_{n\, i+1} & \cdots & a_{nn} \\
 \end{vmatrix}, \ i = 1, 2, \ldots, n
-\end{equation}
+\end{equation*}
 \end{proof}
 
-Полученные формулы~(\ref*{eq:Cramer's_formula}) называется \textbf{формулами Крамера}.
+Полученные формулы называются \textbf{формулами Крамера}.
 
 % beta
 \subsection{Фундаментальная система решений}

@@ -174,21 +174,7 @@ x_2 & y_2
 \subsection{Смешанное произведение}
 \index{Произведение!смешанное} \textbf{Смешанным произведением векторов $\overline a$, $\overline b$ и $\overline c$} называется скалярное произведение вектора~$\overline c$ и векторного произведения~$[\overline a\,\overline b]$ и обозначается $[\overline a\,\overline b] \overline c$.
 
-\begin{statement}
-$[\overline a\,\overline b] \overline c = \pm V$, где $\pm V$~--- объём параллелепипеда, построенного на векторах $\overline a$, $\overline b$, $\overline c$, взятый со знаком плюс, если тройка $(\overline a, \overline b, \overline c)$ правая, или со знаком минус, если она левая.
-\end{statement}
-\begin{proof}
-Пусть $|[\overline a\,\overline b]| = S$, $\overline g \upuparrows [\overline a\,\overline b]$, $|\overline g| = 1$, тогда
-\begin{equation*}
-|[\overline a\,\overline b] \overline c| =
-S(\overline g\,\overline c) =
-S \cdot |\overline c| \cdot \cos \psi =
-S \cdot (\pm h) = \pm V
-\end{equation*}
-где $h$~--- высота параллелепипеда.
-\end{proof}
-
-\begin{center}\noindent
+\begin{wrapfigure}[1]{r}{0pt}\noindent
 \shorthandoff{"}
 \begin{tikzpicture}[scale=0.7]
 % рисуем векторы и нижнюю часть параллелепипеда
@@ -209,7 +195,20 @@ S \cdot (\pm h) = \pm V
 \draw pic[draw, "$\psi$", angle eccentricity=1.5, angle radius=7mm] {angle = C--O--G};
 \end{tikzpicture}
 \shorthandon{"}
-\end{center}
+\end{wrapfigure}
+\begin{statement}
+$[\overline a\,\overline b] \overline c = \pm V$, где $\pm V$~--- объём параллелепипеда, построенного на векторах $\overline a$, $\overline b$, $\overline c$, взятый со знаком плюс, если тройка $(\overline a, \overline b, \overline c)$ правая, или со знаком минус, если она левая.
+\end{statement}
+\begin{proof}
+Пусть $|[\overline a\,\overline b]| = S$, $\overline g \upuparrows [\overline a\,\overline b]$, $|\overline g| = 1$, тогда
+\begin{equation*}
+|[\overline a\,\overline b] \overline c| =
+S(\overline g\,\overline c) =
+S \cdot |\overline c| \cdot \cos \psi =
+S \cdot (\pm h) = \pm V
+\end{equation*}
+где $h$~--- высота параллелепипеда.
+\end{proof}
 
 \begin{statement}
 $[\overline a\,\overline b] \overline c = 0$ $\Leftrightarrow$ $\overline a, \overline b, \overline c$ компланарны.

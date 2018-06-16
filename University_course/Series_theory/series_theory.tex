@@ -9,10 +9,10 @@ $S_n$ называется \textbf{$n$-й частичной суммой ряд
 \begin{enumerate}
 	\item Ряд~$\series a_k$ сходится $\Rightarrow$ $\lim\limits_{n \to \infty} a_n = 0$.
 	\begin{proof}
-	$a_n = S_n - S_{n-1} \;
-	\left| \text{По \hyperref[th:Cauchy_criterion]{критерию Коши}} \right| \Rightarrow
+	$a_n = S_n - S_{n-1} \Rightarrow
 	\lim\limits_{n \to \infty} a_n = 
-	\lim\limits_{n \to \infty} (S_n - S_{n-1}) = 0$.
+	\lim\limits_{n \to \infty} (S_n - S_{n-1}) \;
+	\left| \text{По \hyperref[th:Cauchy_criterion]{критерию Коши}} \right| = 0$.
 	\end{proof}
 	
 	\item Если ряды $\series a_k = S$ и $\series b_k = \sigma$, то $\series (\alpha a_k + \beta b_k) = \alpha S + \beta \sigma$.
@@ -24,8 +24,9 @@ $S_n$ называется \textbf{$n$-й частичной суммой ряд
 	
 	\item $\forall N \in \mathbb N$ $\series a_{k+N}$ сходится $\Leftrightarrow$ $\series a_k$ сходится.
 	\begin{proof}
+	Пусть $\sigma_n = \sum\limits_{k=1}^n a_{k+N}$, $S_n = \sum\limits_{k=1}^n a_k$.
 	$\sigma_n = S_{n+N} - S_N$, тогда
-	$\exists \lim\limits_{n \to \infty} \sigma_n = \lim\limits_{n \to \infty} S_n - S_N \Leftrightarrow
+	$\exists \lim\limits_{n \to \infty} \sigma_n = \lim\limits_{n \to \infty} S_n - S_N \opbr\Leftrightarrow
 	\exists \lim\limits_{n \to \infty} S_n$.
 	\end{proof}
 \end{enumerate}
