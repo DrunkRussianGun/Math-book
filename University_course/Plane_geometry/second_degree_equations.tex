@@ -1,0 +1,210 @@
+\section{Уравнения второй степени}
+\label{sect:second_degree_equations_on_plane}
+Уравнение вида $a_{11} x^2 + 2 a_{12} xy + a_{22} y^2 + 2 a_{13} x + 2 a_{23} y + a_{33} = 0$, где $x, y$~--- переменные, называется \textbf{уравнением второй степени}.
+Одночлены $a_{11} x^2, 2 a_{12} xy, a_{22} y^2$ называются \textbf{старшими}, а остальные~--- \textbf{линейными}.
+
+\textbf{Инвариантами} называются следующие определители:
+\begin{enumerate}
+	\item $I_1 = a_{11} + a_{22}$
+	
+	\item $I_2 =
+	\begin{vmatrix}
+	a_{11} & a_{12} \\
+	a_{12} & a_{22}
+	\end{vmatrix}$
+	
+	\item $I_3 =
+	\begin{vmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{12} & a_{22} & a_{23} \\
+	a_{13} & a_{23} & a_{33}
+	\end{vmatrix}$
+\end{enumerate}
+
+Преобразуем кривую, задаваемую данным уравнением.
+\begin{itemize}
+	\item Применим параллельный перенос на вектор~$(a, b)$ и получим
+	\begin{equation*}
+	a_{11} (x + a)^2 + 2 a_{12} (x + a)(y + b) + a_{22} (y + b)^2 + 2 a_{13} (x + a) + 2 a_{23} (y + b) + a_{33} = 0 \Leftrightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Leftrightarrow a_{11} x^2 + 2 a_{12} xy + a_{22} y^2 +
+	2 (a_{11} a + a_{12} b + a_{13}) x + 2 (a_{12} a + a_{22} b + a_{23}) y +
+	a_{11} a^2 + 2 a_{12} ab + a_{22} b^2 + 2 a_{13} a + 2 a_{23} b + a_{33} = 0
+	\end{equation*}
+	
+	\item Применим поворот на угол~$\alpha$ и получим
+	\begin{equation*}
+	a_{11} (x \cos \alpha + y \sin \alpha)^2 - 2 a_{12} (x \cos \alpha + y \sin \alpha) (x \sin \alpha - y \cos \alpha) + a_{22} (x \sin \alpha - y \cos \alpha)^2 + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + 2 a_{13} (x \cos \alpha + y \sin \alpha) - 2 a_{23} (x \sin \alpha - y \cos \alpha) + a_{33} = 0 \Leftrightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Leftrightarrow (a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha) x^2 +
+	(a_{11} \sin 2\alpha + 2 a_{12} \cos 2\alpha - a_{22} \sin 2\alpha) xy + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha) y^2 +
+	2 (a_{13} \cos \alpha - a_{23} \sin \alpha) x + 2 (a_{13} \sin \alpha + a_{23} \cos \alpha) y + a_{33} = 0
+	\end{equation*}
+\end{itemize}
+
+В дальнейшем при преобразованиях новые коэффициенты в уравнении могут обозначаться $a_{11}', a_{12}', \ldots$ или же для удобства записи $a_{11}, a_{12}, \ldots$
+
+\begin{theorem}
+$I_1$, $I_2$, $I_3$ не меняются при параллельном переносе и поворотах.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+	\item Вычислим новые значения инвариантов:
+	\begin{equation*}
+	a_{11} + a_{22} = I_1
+	\end{equation*}
+	\begin{equation*}
+	\begin{vmatrix}
+	a_{11} & a_{12} \\
+	a_{12} & a_{22}
+	\end{vmatrix} = I_2
+	\end{equation*}
+	\begin{equation*}
+	\begin{vmatrix}
+	a_{11} & a_{12} & a_{11} a + a_{12} b + a_{13} \\
+	a_{12} & a_{22} & a_{12} a + a_{22} b + a_{23} \\
+	a_{11} a + a_{12} b + a_{13} & a_{12} a + a_{22} b + a_{23} & a_{11} a^2 + 2 a_{12} ab + a_{22} b^2 + 2 a_{13} a + 2 a_{23} b + a_{33}
+	\end{vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= (a_{11} a + a_{12} b + a_{13}) (a_{12}^2 a + a_{12} a_{22} b + a_{12} a_{23} - a_{11} a_{22} a - a_{12} a_{22} b - a_{13} a_{22}) - {}
+	\end{equation*}
+	\begin{equation*}
+	{} - (a_{12} a + a_{22} b + a_{23}) (a_{11} a_{12} a + a_{11} a_{22} b + a_{11} a_{23} - a_{11} a_{12} a - a_{12}^2 b - a_{12} a_{13}) + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (a_{11} a^2 + 2 a_{12} ab + a_{22} b^2 + 2 a_{13} a + 2 a_{23} b + a_{33}) (a_{11} a_{22} - a_{12}^2) =
+	\end{equation*}
+	\begin{equation*}
+	= a_{12} a_{13} a_{23} - a_{13}^2 a_{22} - a_{11} a_{23}^2 + a_{12} a_{13} a_{23} + a_{11} a_{22} a_{33} - a_{12}^2 a_{33} =
+	\begin{vmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{12} & a_{22} & a_{23} \\
+	a_{13} & a_{23} & a_{33}
+	\end{vmatrix} = I_3
+	\end{equation*}
+	
+	\item Вычислим новые значения инвариантов:
+	\begin{equation*}
+	a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha +
+	a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha =
+	a_{11} + a_{22} = I_1
+	\end{equation*}
+	\begin{equation*}
+	\begin{vmatrix}
+	a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha & \frac12 a_{11} \sin 2\alpha + a_{12} \cos 2\alpha - \frac12 a_{22} \sin 2\alpha \\
+	\frac12 a_{11} \sin 2\alpha + a_{12} \cos 2\alpha - \frac12 a_{22} \sin 2\alpha & a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha
+	\end{vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= (a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha) (a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha) - {}
+	\end{equation*}
+	\begin{equation*}
+	{} - \left(\frac12 a_{11} \sin 2\alpha + a_{12} \cos^2 \alpha - a_{12} \sin^2 \alpha - \frac12 a_{22} \sin 2\alpha\right)^2 =
+	\end{equation*}
+	\begin{equation*}
+	= \frac14 (a_{11}^2 - 4 a_{12}^2 + a_{22}^2 - a_{11}^2 - a_{22}^2 + 2 a_{11} a_{22} + 2 a_{12}^2) \sin^2 2\alpha +
+	(a_{11} a_{22} - a_{12}^2) \cos^4 \alpha + (a_{11} a_{22} - a_{12}^2) \sin^4 \alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (a_{11} a_{12} - a_{12} a_{22} - a_{11} a_{12} + a_{12} a_{22}) \cos^2 \alpha \sin 2\alpha +
+	(a_{12} a_{22} - a_{11} a_{12} + a_{11} a_{12} - a_{12} a_{22}) \sin^2 \alpha \sin 2\alpha =
+	\end{equation*}
+	\begin{equation*}
+	= -\frac12 a_{12}^2 (\sin^2 2\alpha + 2 \cos^4 \alpha + 2 \sin^4 \alpha) +
+	\frac12 a_{11} a_{22} (\sin^2 2\alpha + 2\cos^4 \alpha + 2\sin^4 \alpha) =
+	a_{11} a_{22} - a_{12}^2 =
+	\begin{vmatrix}
+	a_{11} & a_{12} \\
+	a_{12} & a_{22}
+	\end{vmatrix} = I_2
+	\end{equation*}
+\end{itemize}
+\end{proof}
+
+Если $I_2 \neq 0$, то $\exists! (x_0, y_0) \colon
+\begin{cases}
+a_{11} x_0 + a_{12} y_0 + a_{13} = 0 \\
+a_{12} x_0 + a_{22} y_0 + a_{23} = 0
+\end{cases}$ и систему координат можно перенести на вектор~$(x_0, y_0)$, получив уравнение
+\begin{equation*}
+a_{11} x^2 + 2 a_{12} xy + a_{22} y^2 + a_{33} = 0
+\end{equation*}
+
+В таком случае кривая называется \textbf{центральной}, а точка~$(x_0, y_0)$~--- её \textbf{центром}.
+
+Найдём такой угол~$\varphi$, что $a_{12}' = 0$ при повороте на этот угол.
+\begin{enumerate}
+	\item Пусть $a_{11} \neq a_{22}$, тогда
+	\begin{equation*}
+	a_{11} \sin 2\varphi + 2 a_{12} \cos 2\varphi - a_{22} \sin 2\varphi = 0 \Leftrightarrow
+	2 a_{12} \cos 2\varphi = (a_{22} - a_{11}) \sin 2\varphi \Leftrightarrow
+	\varphi = \frac12 \arctg \frac{2 a_{12}}{a_{22} - a_{11}}
+	\end{equation*}
+	
+	\item Пусть $a_{11} = a_{22}$, тогда $2 a_{12} \cos 2\varphi = 0 \Leftrightarrow
+	\varphi = \frac\pi4$.
+\end{enumerate}
+                                                              
+Т.\,о., далее можно ограничиться рассмотрением уравнений вида $a_{11} x^2 + a_{22} y^2 + 2 a_{13} x + 2 a_{23} y + a_{33} = 0$.
+\begin{enumerate}
+	\item Пусть $I_2 < 0$, тогда после параллельного переноса получим уравнение
+	\begin{equation*}
+	a_{11} x^2 + a_{22} y^2 + a_{33} = 0 \Leftrightarrow
+	\frac{x^2}{a_{22}} + \frac{y^2}{a_{11}} = -\frac{a_{33}}{a_{11} a_{22}}
+	\end{equation*}
+	а также $a_{11} a_{22} = I_2 < 0$.
+	\begin{itemize}
+		\item Если $a_{33} \neq 0$, то получим гиперболу:
+		$\displaystyle \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$
+		\item Если $a_{33} = 0$, то получим две прямые, проходящие через~$(0, 0)$:
+		$\displaystyle \frac{x^2}{a^2} - \frac{y^2}{b^2} = 0 \Leftrightarrow
+		y = \pm\frac{b}a\,x$
+	\end{itemize}
+	
+	\item Пусть $I_2 = 0$, тогда $a_{11} a_{22} = 0$.
+	Т.\,к. уравнение второго порядка, то $a_{11} = 0 \lAnd a_{22} > 0$.
+	Получим
+	\begin{equation*}
+	a_{22} y^2 + 2 a_{13} x + 2 a_{23} y + a_{33} = 0 \Leftrightarrow
+	a_{22} \left(y + \frac{a_{23}}{a_{22}}\right)^2 + 2 a_{13} x + a_{33} - \frac{a_{23}^2}{a_{22}} = 0 \Rightarrow
+	a_{22} y^2 + 2 a_{13} x + a_{33} = 0
+	\end{equation*}
+	\begin{itemize}
+		\item Пусть $a_{13} = 0$, тогда $a_{22} y^2 + a_{33} = 0$.
+		\begin{itemize}
+			\item Если $a_{22} a_{33} \leqslant 0$, то получим две параллельные прямые:
+			$\displaystyle \frac{y^2}{b^2} = 1 \Leftrightarrow
+			y = \pm b$
+			\item Если $a_{22} a_{33} > 0$, то получим пустое множество:
+			$\displaystyle \frac{y^2}{b^2} = -1$
+		\end{itemize}
+		
+		\item Пусть $a_{13} \neq 0$, тогда получим параболу
+		\begin{equation*}
+		a_{22} y^2 + 2 a_{13} x + a_{33} = 0 \Leftrightarrow
+		y^2 + \frac{2 a_{13}}{a_{22}} \left(x + \frac{a_{33}}{2 a_{13}}\right) = 0 \Rightarrow
+		y^2 = 2px
+		\end{equation*}
+	\end{itemize}
+	
+	\item Пусть $I_2 > 0$, тогда после параллельного переноса получим уравнение $a_{11} x^2 + a_{22} y^2 + a_{33} = 0$, а также $a_{11} a_{22} = I_2 > 0$.
+	\begin{itemize}
+		\item Если $a_{11} a_{33} \leqslant 0$, то получим эллипс:
+		$\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$
+		\item Если $a_{11} a_{33} > 0$, то получим пустое множество:
+		$\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = -1$
+	\end{itemize}
+\end{enumerate}
+
+\begin{theorem}
+Для канонической формы кривой второго порядка $a_{11}$ и $a_{22}$~--- корни характеристического многочлена $I_2$.
+\end{theorem}

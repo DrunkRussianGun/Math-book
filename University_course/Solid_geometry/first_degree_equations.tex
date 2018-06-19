@@ -1,0 +1,98 @@
+\section{Уравнения первой степени}
+Уравнение вида~$Ax + By + Cz + D = 0$, где $x, y, z$~--- переменные, называется \textbf{уравнением первой степени}.
+
+\begin{theorem}
+\begin{itemize}
+	\item Любое уравнение первой степени задаёт плоскость.
+	\item Любая плоскость задаётся уравнением первой степени.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+	\item Пусть $(x_0, y_0, x_0)$~--- решение уравнения $Ax + By + Cz + D = 0$, $\overline m = (x - x_0, y - y_0, z_0)$, $\overline n = (A, B, C)$, тогда $A(x - x_0) + B(y - y_0) + C(z - z_0) = 0 \Leftrightarrow \overline n \perp \overline m$.
+	Т.\,о., $\overline m$ независимо от значений $x, y, z$ всегда лежит в одной и той же плоскости.
+	
+	\item Пусть $(x_0, y_0, z_0)$~--- некоторая точка плоскости~$\pi$, вектор~$\overline n = (A, B, C) \perp \pi$, тогда $\forall (x, y, z) \in \pi \ A(x - x_0) + B(y - y_0) + C(z - z_0) = 0 \Leftrightarrow Ax + By + Cz - (Ax_0 + By_0 + Cz_0) = 0$.
+\end{itemize}
+\end{proof}
+
+\index{Уравнения!плоскости} Т.\,о., уравнение
+\begin{equation*}
+Ax + By + Cz + D = 0
+\end{equation*}
+называется \textbf{общим уравнением плоскости}.
+Если хотя бы один из коэффициентов равен нулю, то уравнение называется \textbf{неполным}.
+
+\index{Нормаль} Вектор, перпендикулярный плоскости, называется \textbf{нормальным вектором} (\textbf{нормалью}) плоскости.
+
+Пусть $(A, B, C)$~--- нормаль плоскости, $(x_0, 0, 0), (0, y_0, 0), (0, 0, z_0), (x_1, y_1, z_1), (x_2, y_2, z_2), (x_3, y_3, z_3)$~--- точки, лежащие на ней.
+
+Тогда плоскость задаётся уравнением
+\begin{equation*}
+A(x - x_1) + B(y - y_1) + C(z - z_1) = 0
+\end{equation*}
+
+Также плоскость можно задать уравнением
+\begin{equation*}
+\begin{vmatrix}
+x - x_1 & y - y_1 & z - z_1 \\
+x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
+x_3 - x_1 & y_3 - y_1 & z_3 - z_1
+\end{vmatrix} = 0
+\end{equation*}
+
+\textbf{Уравнением плоскости в отрезках} называется уравнение
+\begin{equation*}
+\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = 1
+\end{equation*}
+
+\textbf{Нормальным} (\textbf{нормированным}) \textbf{уравнением плоскости} называется уравнение
+\begin{equation*}
+x \cos \alpha + y \cos \beta + z \cos \gamma - p = 0
+\end{equation*}
+где $\cos \alpha, \cos \beta, \cos \gamma$~--- направляющие косинусы вектора~$(A, B, C)$, $p$~--- расстояние от начала координат до плоскости.
+\begin{proof}
+Пусть $\overline n = (\cos \alpha, \cos \beta, \cos \gamma)$, $OM$~--- перпендикуляр, опущенный из начала координат~$O$ на плоскость, тогда $M = (p \cos \alpha, p \cos \beta, p \cos \gamma)$.
+\begin{equation*}
+(x - p \cos \alpha) \cos \alpha + (y - p \cos \beta) \cos \beta + (z - p \cos \gamma) \cos \gamma = 0 \Leftrightarrow
+x \cos \alpha + y \cos \beta + z \cos \gamma - p = 0
+\end{equation*}
+\end{proof}
+
+Пусть две плоскости заданы уравнениями $\alpha_1 \colon A_1 x + B_1 y + C_1 z + D_1 = 0$ и $\alpha_2 \colon A_2 x + B_2 y + C_2 z + D_2 = 0$, тогда:
+\begin{itemize}
+	\item $\displaystyle \alpha_1 = \alpha_2 \Leftrightarrow
+	\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2} = \frac{D_1}{D_2}$;
+	\item $\displaystyle \alpha_1 \parallel \alpha_2 \Leftrightarrow
+	\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}$;
+	\item $\displaystyle \alpha_1 \perp \alpha_2 \Leftrightarrow
+	A_1 A_2 + B_1 B_2 + C_1 C_2 = 0$;
+	\item $\displaystyle \angle(\alpha_1, \alpha_2) = \arccos \frac{|A_1 A_2 + B_1 B_2 + C_1 C_2|}{\sqrt{A_1^2 + B_1^2 + C_1^2} \cdot \sqrt{A_2^2 + B_2^2 + C_2^2}}$.
+\end{itemize}
+
+Пусть задана плоскость $x \cos \alpha + y \cos \beta + z \cos \gamma - p = 0$ и точка~$M(x_0, y_0, z_0)$.
+
+\index{Отклонение} \textbf{Отклонением точки от плоскости} называется расстояние между ними со знаком плюс, если начало координат и точка находятся с разных сторон плоскости, иначе со знаком минус, и равно $\delta = x_0 \cos \alpha + y_0 \cos \beta + z_0 \cos \gamma - p$.
+
+Расстояние между точкой и плоскостью равно $|\delta|$.
+
+\subsection{Уравнения, задающие прямую}
+\index{Уравнения!прямой} \textbf{Общим уравнением прямой} называется
+\begin{equation*}
+\begin{cases}
+A_1 x + B_1 y + C_1 z + D_1 = 0 \\
+A_2 x + B_2 y + C_2 z + D_2 = 0
+\end{cases}
+\end{equation*}
+
+Пусть $(a, b, c)$~--- направляющий вектор прямой, $(x_1, y_1, z_1), (x_2, y_2, z_2)$~--- точки, лежащие на ней.
+
+\textbf{Каноническим уравнением прямой} называется уравнение
+\begin{equation*}
+\frac{x - x_1}a = \frac{y - y_1}b = \frac{z - z_1}c
+\end{equation*}
+
+Также прямую можно задать уравнением
+\begin{equation*}
+\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} = \frac{z - z_1}{z_2 - z_1}
+\end{equation*}

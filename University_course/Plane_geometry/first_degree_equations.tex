@@ -1,0 +1,138 @@
+\section{Уравнения первой степени}
+Уравнение вида~$Ax + By + C = 0$, где $x, y$~--- переменные, называется \textbf{уравнением первой степени}.
+
+\begin{theorem}
+\begin{itemize}
+	\item Любое уравнение первой степени задаёт прямую на плоскости.
+	\item Любая прямая на плоскости задаётся уравнением первой степени.
+\end{itemize}
+\end{theorem}
+
+\begin{wrapfigure}[3]{r}{0pt}\noindent
+\shorthandoff{"}
+\begin{tikzpicture}[>=latex]
+\drawaxis{-0.5}{4}{-0.5}{3};
+
+\def\nangle{45}
+\draw[->] (0, 0) coordinate (O) -- node[above left] {$\overline n$} (\nangle:1.5) coordinate (N);
+\draw (1, 0) coordinate (X)
+	pic[draw, "$\Theta$", angle eccentricity=1.5, angle radius=5mm] {angle = X--O--N};
+
+\draw[->] (1.5, \top_y) --
+	++(\nangle - 90:0.5) node {$\bullet$} node[above right] {$\scriptstyle (x_0, y_0)$} --
+	node[above right] {$\overline m$}
+	++(\nangle - 90:2) coordinate (X) node {$\bullet$} node[above right] {$\scriptstyle (x, y)$};
+\draw (X) -- ++(\nangle - 90:1);
+\end{tikzpicture}
+\shorthandon{"}
+\end{wrapfigure}
+
+\begin{proof}
+\begin{itemize}
+	\item Пусть $(x_0, y_0)$~--- решение уравнения $Ax + By + C = 0$, $\overline m = (x - x_0, y - y_0)$, $\overline n = (A, B)$, тогда $A(x - x_0) + B(y - y_0) = 0 \Leftrightarrow \overline n \perp \overline m$.
+	Т.\,о., $\overline m$ независимо от значений $x, y$ всегда лежит на одной и той же прямой.
+	
+	\item Пусть $(x_0, y_0)$~--- некоторая точка прямой~$l$, вектор~$\overline n = (A, B) \perp l$, тогда $\forall (x, y) \in l \ \allowbreak A(x - x_0) + B(y - y_0) = 0 \Leftrightarrow Ax + By - (Ax_0 + By_0) = 0$.
+\end{itemize}
+\end{proof}
+
+\index{Уравнения!прямой} Т.\,о., уравнение
+\begin{equation*}
+Ax + By + C = 0
+\end{equation*}
+называется \textbf{общим уравнением прямой}.
+Если хотя бы один из коэффициентов равен нулю, то уравнение называется \textbf{неполным}.
+
+\index{Нормаль} Вектор, перпендикулярный прямой, называется \textbf{нормальным вектором} (\textbf{нормалью}) прямой.
+
+Вектор, лежащий на прямой, называется \textbf{направляющим вектором прямой}.
+
+Пусть $(a, b)$~--- направляющий вектор прямой, $(x_0, 0), (0, y_0), (x_1, y_1), (x_2, y_2)$~--- точки, лежащие на ней, прямая образует угол~$\varphi$ с положительным направлением оси~$Ox$, $\Theta$~--- угол между нормалью прямой и положительным направлением оси~$Ox$
+
+Если $(A, B)$~--- нормаль прямой, то она задаётся уравнением
+\begin{equation*}
+A(x - x_1) + B(y - y_1) = 0
+\end{equation*}
+
+\textbf{Каноническим уравнением прямой} называется уравнение
+\begin{equation*}
+\frac{x - x_1}a = \frac{y - y_1}b
+\end{equation*}
+
+Также прямую можно задать уравнениями
+\begin{equation*}
+\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} \Leftrightarrow
+\begin{vmatrix}
+x - x_0 & y - y_0 \\
+x_1 - x_0 & y_1 - y_0
+\end{vmatrix} = 0
+\end{equation*}
+
+\textbf{Параметрическим уравнением прямой} называется уравнение
+\begin{equation*}
+\begin{cases}
+x = x_1 + at \\
+y = y_1 + bt
+\end{cases}
+\end{equation*}
+\begin{proof}
+Каноническое уравнение можно записать в виде $(x - x_1, y - y_1) = t \cdot (a, b)$.
+Записав его покоординатно, получим параметрическое уравнение.
+\end{proof}
+
+\textbf{Уравнением прямой в отрезках} называется уравнение
+\begin{equation*}
+\frac{x}{x_0} + \frac{y}{y_0} = 1
+\end{equation*}
+
+\textbf{Уравнением прямой с угловым коэффициентом} называется уравнение
+\begin{equation*}
+y = kx + y_0
+\end{equation*}
+где $k = \tg \varphi$.
+\begin{proof}
+Если $B \neq 0$, то $Ax + B(y - y_0) = 0 \Leftrightarrow
+y = -\frac{A}B\,x + y_0$.
+
+Докажем, что $-\frac{A}B = \tg \varphi$:
+\begin{equation*}
+\tg \Theta = \frac{B}A \Leftrightarrow
+\tg \left(\varphi - \frac\pi2\right) = \frac{B}A \Leftrightarrow
+-\ctg \varphi = \frac{B}A \Leftrightarrow
+\tg \varphi = -\frac{A}B
+\end{equation*}
+\end{proof}
+
+\textbf{Нормальным} (\textbf{нормированным}) \textbf{уравнением прямой} называется уравнение
+\begin{equation*}
+x \cos \Theta + y \sin \Theta - p = 0
+\end{equation*}
+где $p$~--- расстояние от начала координат до прямой.
+\begin{proof}
+Пусть $\overline n = (\cos \Theta, \sin \Theta)$, $OM$~--- перпендикуляр, опущенный из начала координат~$O$ на прямую, тогда $M = (p \cos \Theta, p \sin \Theta)$.
+\begin{equation*}
+(x - p \cos \Theta) \cos \Theta + (y - p \sin \Theta) \sin \Theta = 0 \Leftrightarrow
+x \cos \Theta + y \sin \Theta - p = 0
+\end{equation*}
+\end{proof}
+
+Пусть две прямые заданы уравнениями $l_1 \colon A_1 x + B_1 y + C_1 = 0$ и $l_2 \colon A_2 x + B_2 y + C_2 = 0$, тогда:
+\begin{itemize}
+	\item $\displaystyle l_1 = l_2 \Leftrightarrow
+	\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}$;
+	\item $\displaystyle l_1 \parallel l_2 \Leftrightarrow
+	\frac{A_1}{A_2} = \frac{B_1}{B_2} \Leftrightarrow
+	\begin{vmatrix}
+	A_1 & B_1 \\
+	A_2 & B_2
+	\end{vmatrix} = 0$;
+	\item $\displaystyle l_1 \perp l_2 \Leftrightarrow
+	A_1 A_2 + B_1 B_2 = 0$;
+	\item $\displaystyle \angle(l_1, l_2) = \arccos \frac{|A_1 A_2 + B_1 B_2|}{\sqrt{A_1^2 + B_1^2} \cdot \sqrt{A_2^2 + B_2^2}}$.
+\end{itemize}
+
+Пусть задана прямая $x \cos \varphi + y \sin \varphi - p = 0$ и точка~$M(x_0, y_0)$.
+
+\index{Отклонение} \textbf{Отклонением точки от прямой} называется расстояние между ними со знаком плюс, если начало координат и точка находятся с разных сторон прямой, иначе со знаком минус, и равно $\delta = x_0 \cos \varphi + y_0 \sin \varphi - p$.
+
+Расстояние между точкой и прямой равно $|\delta|$.

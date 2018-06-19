@@ -5,6 +5,16 @@
 
 Заметим, что тройки $(\overline a, \overline b, \overline c)$, $(\overline b, \overline c, \overline a)$, $(\overline c, \overline a, \overline b)$ всегда имеют одну ориентацию.
 
+\subsection{Скалярное произведение}
+\index{Произведение!скалярное} Пусть $\overline a = (x_1, y_1, z_1)$, $\overline b = (x_2, y_2, z_2)$.
+Заметим, что $\overline i^2 = \overline j^2 = \overline k^2 = 1$, $\overline i\,\overline j = \overline i\,\overline k = \overline j\,\overline k = 0$.
+Тогда
+\begin{equation*}
+\overline a\,\overline b =
+(x_1 \overline i + y_1 \overline j + z_1 \overline k)(x_2 \overline i + y_2 \overline j + z_2 \overline k) =
+x_1 x_2 + y_1 y_2 + z_1 z_2
+\end{equation*}
+
 \subsection{Векторное произведение}
 \index{Произведение!векторное} \textbf{Векторным произведением векторов $\overline a$ и $\overline b$} называется вектор~$\overline c$ такой, что:
 \begin{itemize}
@@ -174,7 +184,11 @@ x_2 & y_2
 \subsection{Смешанное произведение}
 \index{Произведение!смешанное} \textbf{Смешанным произведением векторов $\overline a$, $\overline b$ и $\overline c$} называется скалярное произведение вектора~$\overline c$ и векторного произведения~$[\overline a\,\overline b]$ и обозначается $[\overline a\,\overline b] \overline c$.
 
-\begin{wrapfigure}[1]{r}{0pt}\noindent
+\begin{statement}
+$[\overline a\,\overline b] \overline c = \pm V$, где $\pm V$~--- объём параллелепипеда, построенного на векторах $\overline a$, $\overline b$, $\overline c$, взятый со знаком плюс, если тройка $(\overline a, \overline b, \overline c)$ правая, или со знаком минус, если она левая.
+\end{statement}
+
+\noindent\begin{wrapfigure}{r}{0pt}\noindent
 \shorthandoff{"}
 \begin{tikzpicture}[scale=0.7]
 % рисуем векторы и нижнюю часть параллелепипеда
@@ -196,9 +210,6 @@ x_2 & y_2
 \end{tikzpicture}
 \shorthandon{"}
 \end{wrapfigure}
-\begin{statement}
-$[\overline a\,\overline b] \overline c = \pm V$, где $\pm V$~--- объём параллелепипеда, построенного на векторах $\overline a$, $\overline b$, $\overline c$, взятый со знаком плюс, если тройка $(\overline a, \overline b, \overline c)$ правая, или со знаком минус, если она левая.
-\end{statement}
 \begin{proof}
 Пусть $|[\overline a\,\overline b]| = S$, $\overline g \upuparrows [\overline a\,\overline b]$, $|\overline g| = 1$, тогда
 \begin{equation*}
