@@ -69,18 +69,18 @@ $[\overline a\,\overline b] = \overline 0 \Leftrightarrow
 		\begin{equation*}
 		[\overline a\,\overline c] = 
 		|\overline a| \cdot |\overline c| \cdot \cos \angle(\overline a, \overline e) \cdot \overline g =
-		\pr_{\overline e} \overline a \cdot |\overline c| \cdot \overline g
+		|\pr_{\overline e} \overline a| \cdot |\overline c| \cdot \overline g
 		\end{equation*}
 		\begin{equation*}
 		[\overline b\,\overline c] = 
 		|\overline b| \cdot |\overline c| \cdot \cos \angle(\overline b, \overline e) \cdot \overline g =
-		\pr_{\overline e} \overline a \cdot |\overline c| \cdot \overline g
+		|\pr_{\overline e} \overline b| \cdot |\overline c| \cdot \overline g
 		\end{equation*}
 		\begin{equation*}
 		[(\overline a + \overline b)\,\overline c] =
-		\pr_{\overline e} (\overline a + \overline b) \cdot |\overline c| \cdot \overline g =
-		\pr_{\overline e} \overline a \cdot |\overline c| \cdot \overline g +
-		\pr_{\overline e} \overline b \cdot |\overline c| \cdot \overline g =
+		|\pr_{\overline e} (\overline a + \overline b)| \cdot |\overline c| \cdot \overline g =
+		|\pr_{\overline e} \overline a| \cdot |\overline c| \cdot \overline g +
+		|\pr_{\overline e} \overline b| \cdot |\overline c| \cdot \overline g =
 		[\overline a\,\overline c] + [\overline b\,\overline c]
 		\end{equation*}
 		
@@ -142,7 +142,8 @@ $[\overline a\,\overline b] = \overline 0 \Leftrightarrow
 		\draw[->] (O) -- node[above] {$\overline a + \overline b$}
 				(4, 0, 0) coordinate (C) node[above right] {$C$};
 		\draw (C) -- (A)
-			(B) -- (C) -- (6, -1, 0) coordinate (D) node[right] {$D$} -- (B);
+			(B) -- (C) -- (6, -1, 0) coordinate (D) node[right] {$D$}
+				-- node[below] {$\overline a + \overline b$} (B);
 		\draw[->] (O) -- node[left] {$\overline c$} (1, 2, 1) coordinate (H) node[left] {$H$};
 		\end{tikzpicture}
 		\end{flushright}
