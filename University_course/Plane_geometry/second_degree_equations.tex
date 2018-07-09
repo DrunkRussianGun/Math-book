@@ -57,7 +57,7 @@ $I_1$, $I_2$, $I_3$ не меняются при параллельном пер
 \end{theorem}
 \begin{proof}
 \begin{itemize}
-	\item Вычислим новые значения инвариантов:
+	\item Вычислим новые значения инвариантов после параллельного переноса:
 	\begin{equation*}
 	a_{11} + a_{22} = I_1
 	\end{equation*}
@@ -92,7 +92,7 @@ $I_1$, $I_2$, $I_3$ не меняются при параллельном пер
 	\end{vmatrix} = I_3
 	\end{equation*}
 	
-	\item Вычислим новые значения инвариантов:
+	\item Вычислим новые значения инвариантов после поворота:
 	\begin{equation*}
 	a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha +
 	a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha =
@@ -126,6 +126,91 @@ $I_1$, $I_2$, $I_3$ не меняются при параллельном пер
 	a_{11} & a_{12} \\
 	a_{12} & a_{22}
 	\end{vmatrix} = I_2
+	\end{equation*}
+	\begin{equation*}
+	\begin{vmatrix}
+	a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha & \frac12 a_{11} \sin 2\alpha + a_{12} \cos 2\alpha - \frac12 a_{22} \sin 2\alpha & a_{13} \cos \alpha - a_{23} \sin \alpha \\
+	\frac12 a_{11} \sin 2\alpha + a_{12} \cos 2\alpha - \frac12 a_{22} \sin 2\alpha & a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha & a_{13} \sin \alpha + a_{23} \cos \alpha \\
+	a_{13} \cos \alpha - a_{23} \sin \alpha & a_{13} \sin \alpha + a_{23} \cos \alpha & a_{33}
+	\end{vmatrix} =
+	\end{equation*}
+	\begin{equation*}
+	= (a_{13} \cos \alpha - a_{23} \sin \alpha) \cdot
+	\begin{vmatrix}
+	\frac12 a_{11} \sin 2\alpha + a_{12} \cos^2 \alpha - a_{12} \sin^2 \alpha - \frac12 a_{22} \sin 2\alpha & a_{13} \cos \alpha - a_{23} \sin \alpha \\
+	a_{11} \sin^2 \alpha + a_{12} \sin 2\alpha + a_{22} \cos^2 \alpha & a_{13} \sin \alpha + a_{23} \cos \alpha
+	\end{vmatrix} - {}
+	\end{equation*}
+	\begin{equation*}
+	{} - (a_{13} \sin \alpha + a_{23} \cos \alpha) \cdot
+	\begin{vmatrix}
+	a_{11} \cos^2 \alpha - a_{12} \sin 2\alpha + a_{22} \sin^2 \alpha & a_{13} \cos \alpha - a_{23} \sin \alpha \\
+	\frac12 a_{11} \sin 2\alpha + a_{12} \cos^2 \alpha - a_{12} \sin^2 \alpha - \frac12 a_{22} \sin 2\alpha & a_{13} \sin \alpha + a_{23} \cos \alpha \\
+	\end{vmatrix}
+	+ a_{33} I_2 =
+	\end{equation*}
+	\begin{equation*}
+	= \frac12 (a_{13} \cos \alpha - a_{23} \sin \alpha) \cdot
+	((\cancel{a_{11} a_{13}} - \cancel{a_{12} a_{23}} - a_{22} a_{13} - \cancel{a_{11} a_{13}} + \cancel2 a_{12} a_{23}) \sin \alpha \sin 2\alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (a_{11} a_{23} + \cancel{a_{12} a_{13}} - \cancel{a_{22} a_{23}} - \cancel2 a_{12} a_{13} + \cancel{a_{22} a_{23}}) \cos \alpha \sin 2\alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + 2(a_{12} a_{23} - a_{13} a_{22}) \cos^3 \alpha -
+	2(a_{12} a_{13} - a_{11} a_{23}) \sin^3 \alpha) + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + \frac12 (a_{13} \sin \alpha + a_{23} \cos \alpha) \cdot
+	((\cancel2 a_{12} a_{13} - \cancel{a_{22} a_{23}} - a_{11} a_{23} - \cancel{a_{12} a_{13}} + \cancel{a_{22} a_{23}}) \sin \alpha \sin 2\alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (\cancel{-a_{11} a_{13}} + \cancel2 a_{12} a_{23} + \cancel{a_{11} a_{13}} - \cancel{a_{12} a_{23}} - a_{22} a_{13}) \cos \alpha \sin 2\alpha - {}
+	\end{equation*}
+	\begin{equation*}
+	{} - 2(a_{11} a_{23} - a_{12} a_{13}) \cos^3 \alpha -
+	2(a_{22} a_{13} - a_{12} a_{23}) \sin^3 \alpha) + a_{33} I_2 =
+	\end{equation*}
+	\begin{equation*}
+	= \frac14 (a_{12} a_{13} a_{23} - a_{13}^2 a_{22} - a_{11} a_{23}^2 + a_{12} a_{13} a_{23} - a_{11} a_{23}^2 + a_{12} a_{13} a_{23} + a_{12} a_{13} a_{23} - a_{13}^2 a_{22}) \sin^2 2\alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + (a_{12} a_{13} a_{23} - a_{13}^2 a_{22} + a_{12} a_{13} a_{23} - a_{11} a_{23}^2) \cos^4 \alpha +
+	(a_{12} a_{13} a_{23} - a_{11} a_{23}^2 + a_{12} a_{13} a_{23} - a_{13}^2 a_{22}) \sin^4 \alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + \frac12 (a_{13} a_{22} a_{23} - a_{12} a_{23}^2 - a_{12} a_{13}^2 + a_{11} a_{13} a_{23} - a_{11} a_{13} a_{23} + a_{12} a_{13}^2 - a_{13} a_{22} a_{23} + a_{12} a_{23}^2) \sin^2 \alpha \sin 2\alpha + {}
+	\end{equation*}
+	\begin{equation*}
+	{} + \frac12 (a_{11} a_{13} a_{23} - a_{12} a_{13}^2 - a_{12} a_{23}^2 + a_{13} a_{22} a_{23} + a_{12} a_{23}^2 - a_{13} a_{22} a_{23} - a_{11} a_{13} a_{23} - a_{12} a_{13}^2) \cos^2 \alpha \sin 2\alpha + a_{33} I_2 =
+	\end{equation*}
+	\begin{equation*}
+	= (2a_{12} a_{13} a_{23} - a_{13}^2 a_{22} - a_{11} a_{23}^2) \left(\sin^4 \alpha + \frac12 \sin^2 2\alpha + \cos^4 \alpha\right) + a_{33} I_2 =
+	\end{equation*}
+	\begin{equation*}
+	= a_{13} (a_{12} a_{23} - a_{13} a_{22}) + a_{23} (a_{12} a_{13} - a_{11} a_{23}) + a_{33} I_2 =
+	\end{equation*}
+	\begin{equation*}
+	= a_{13} \cdot
+	\begin{vmatrix}
+	a_{12} & a_{13} \\
+	a_{22} & a_{23}
+	\end{vmatrix} -
+	a_{23} \cdot
+	\begin{vmatrix}
+	a_{11} & a_{13} \\
+	a_{12} & a_{23}
+	\end{vmatrix} +
+	a_{33} \cdot
+	\begin{vmatrix}
+	a_{11} & a_{12} \\
+	a_{12} & a_{22}
+	\end{vmatrix} =
+	\begin{vmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{12} & a_{22} & a_{23} \\
+	a_{13} & a_{23} & a_{33}
+	\end{vmatrix} = I_3
 	\end{equation*}
 \end{itemize}
 \end{proof}
