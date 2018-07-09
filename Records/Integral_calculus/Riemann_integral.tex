@@ -283,10 +283,7 @@ V = \lim_{d \to 0} \sum_{i=1}^n S(\xi_i) \Delta x_i =
 \begin{equation*}
 \int_a^b f(x)\,dx \approx \sum_{i=1}^n f(x_i) (x_i - x_{i-1})
 \end{equation*}
-
-\subsubsection{Формула трапеций}
-\begin{wrapfigure}[6]{r}{0pt}
-\noindent
+\begin{wrapfigure}{r}{0pt}\noindent
 \begin{tikzpicture}
 \drawaxis{-0.5}{4}{-0.5}{3};
 \draw (0.5, 0.75) coordinate (x0) to[out=80, in=-135] (0.85, 1.5) coordinate (x1)
@@ -305,6 +302,8 @@ V = \lim_{d \to 0} \sum_{i=1}^n S(\xi_i) \Delta x_i =
 	\draw[dashed] (prev) -- (x\i) coordinate (prev);
 \end{tikzpicture}
 \end{wrapfigure}
+
+\subsubsection{Формула трапеций}
 \index{Формула!трапеций} Разобьём отрезок~$[a; b]$ на $n$~частей точками $a = x_0 < x_1 < \ldots < x_n = b$ и построим отрезки, соединяющие точки $(x_{i-1}, f(x_{i-1}))$ и $(x_i, f(x_i))$, где $i = 1, \ldots, n$.
 Площадь получившейся фигуры приближённо равна площади всей криволинейной трапеции.
 Т.\,о., получим \textbf{формулу трапеций} (\textbf{средних прямоугольников}):
