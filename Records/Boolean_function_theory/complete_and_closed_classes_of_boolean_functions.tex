@@ -1,0 +1,278 @@
+\section{Полнота и замкнутость классов булевых функций}
+Множество~$F$ булевых функций (также называемое \textbf{классом}) называется \textbf{полным}, если любая булева функция реализуется формулой над~$F$.
+
+Множество, состоящее из всех булевых функций, обозначается $P_2$.
+
+\begin{theorem}
+Если $F = \{ f_1, f_2, \ldots \}$~--- полный набор булевых функций, $G = \{ g_1, g_2, \ldots \}$~--- набор булевых функций, причём каждая функция из~$F$ реализуется формулой над~$G$, то $G$~--- полный набор.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+f_1 = \Phi_1(g_1, g_2, \ldots) \lAnd f_2 = \Phi_2(g_1, g_2, \ldots) \lAnd \ldots \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \forall f = \Phi(f_1, f_2, \ldots) =
+\Phi(\Phi_1(g_1, g_2, \ldots), \Phi_2(g_1, g_2, \ldots), \ldots) =
+\Phi(g_1, g_2, \ldots)
+\end{equation*}
+
+Значит, $G$~--- полный набор.
+\end{proof}
+
+\index{Замыкание} \textbf{Замыканием} множества~$F$ булевых функций называется множество всех булевых функций, реализуемых формулами над~$F$, и обозначается $[F]$.
+Свойства замыкания:
+\begin{enumerate}
+	\item $F \subseteq [F]$;
+	\item $\bigl[ [F] \bigr] = [F]$, т.\,к. $\bigl[ [F] \bigr]$~--- множество функций, реализуемых формулами над~$[F]$, которые реализуются формулами над~$F$;
+	\item $F \subseteq K \Rightarrow [F] \subseteq [K]$, т.\,к. формула над~$F$ является формулой над~$K$.
+\end{enumerate}
+
+\begin{statement}
+Множество~$F$ булевых функций полно $\Leftrightarrow [F] = P_2$.
+\end{statement}
+
+\subsection{Класс \texorpdfstring{$T_0$}{} функций, сохраняющих константу 0}
+\begin{equation*}
+T_0 = \{ f(x_1, \ldots, x_n) \mid f(0, \ldots, 0) = 0 \}
+\end{equation*}
+\begin{proof}[замкнутости]
+Пусть $f, f_1, \ldots, f_n \in T_0$, тогда
+\begin{equation*}
+\Phi =
+f(f_1(0, \ldots, 0), \ldots, f_n(0, \ldots, 0)) =
+f(0, \ldots, 0) = 0
+\end{equation*}
+
+Значит, $\Phi$ реализует функцию из~$T_0$.
+\end{proof}
+
+$T_0$ содержит $\dfrac{2^{2^n}}2 = 2^{2^n - 1}$~функций от $n$~переменных.
+
+\subsection{Класс \texorpdfstring{$T_1$}{} функций, сохраняющих константу 1}
+\begin{equation*}
+T_1 = \{ f(x_1, \ldots, x_n) \mid f(1, \ldots, 1) = 1 \}
+\end{equation*}
+\begin{proof}[замкнутости]
+Пусть $f, f_1, \ldots, f_n \in T_1$, тогда
+\begin{equation*}
+\Phi =
+f(f_1(1, \ldots, 1), \ldots, f_n(1, \ldots, 1)) =
+f(1, \ldots, 1) = 1
+\end{equation*}
+
+Значит, $\Phi$ реализует функцию из~$T_1$.
+\end{proof}
+
+$T_1$ содержит $\dfrac{2^{2^n}}2 = 2^{2^n - 1}$~функций от $n$~переменных.
+
+\subsection{Класс \texorpdfstring{$S$}{} самодвойственных функций}
+\index{Функция!булева!самодвойственная} Булева функция~$f$ называется \textbf{самодвойственной}, если $f^* = f$.
+\begin{equation*}
+S = \{ f(x_1, \ldots, x_n) \mid
+f(x_1, \ldots, x_n) = f^*(x_1, \ldots, x_n) \} \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow S = \{ f(x_1, \ldots, x_n) \mid
+f(x_1, \ldots, x_n) = \overline f(\overline{x_1}, \ldots, \overline{x_n}) \}
+\end{equation*}
+\begin{proof}[замкнутости]
+Пусть $f, f_1, \ldots, f_n \in S$, тогда $\Phi = f(f_1, \ldots, f_n) = f^*(f_1^*, \ldots, f_n^*) = \Phi^*$, значит, $\Phi$ реализует функцию из~$S$.
+\end{proof}
+
+$S$ содержит $2^{2^{n-1}} = \sqrt{2^{2^n}}$~функций от $n$~переменных.
+
+\begin{lemma}[о несамодвойственной функции]
+Если булева функция $f \notin S$, то подстановкой $x, \overline x$ вместо переменных можно получить константу.
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+f(x_1, \ldots, x_n) \notin S \Leftrightarrow
+\exists \alpha_1, \ldots, \alpha_n \colon
+f(\alpha_1, \ldots, \alpha_n) \neq \overline f(\overline{\alpha_1}, \ldots, \overline{\alpha_n})
+\end{equation*}
+
+Подставим в~$f$ $x^{\alpha_i}$ вместо $x_i$.
+\begin{enumerate}
+	\item При $x = 0$ получим $f(0^{\alpha_1}, \ldots, 0^{\alpha_n}) =
+	f(\overline{\alpha_1}, \ldots, \overline{\alpha_n}) =
+	f(\alpha_1, \ldots, \alpha_n)$.
+	
+	\item При $x = 1$ получим $f(1^{\alpha_1}, \ldots, 1^{\alpha_n}) =
+	f(\alpha_1, \ldots, \alpha_n)$.
+\end{enumerate}
+
+$f(0^{\alpha_1}, \ldots, 0^{\alpha_n}) = f(1^{\alpha_1}, \ldots, 1^{\alpha_n})$, значит, $f(x^{\alpha_1}, \ldots, x^{\alpha_n})$~--- константа.
+\end{proof}
+
+\subsection{Класс \texorpdfstring{$M$}{} монотонных функций}
+Введём отношение~$\preccurlyeq$: $\overline\alpha = (\alpha_1, \ldots, \alpha_n) \preccurlyeq \overline\beta = (\beta_1, \ldots, \beta_n) \Leftrightarrow
+\alpha_1 \leqslant \beta_1 \lAnd \ldots \lAnd \alpha_n \leqslant \beta_n$.
+
+\index{Функция!булева!монотонная} Булева функция~$f$ называется \textbf{монотонной}, если
+$\forall \overline\alpha, \overline\beta \
+\overline\alpha \preccurlyeq \overline\beta \Rightarrow f(\overline\alpha) \leqslant f(\overline\beta)$.
+\begin{equation*}
+M = \{ f(x_1, \ldots, x_n) \mid
+\forall \overline\alpha, \overline\beta \
+\overline\alpha \preccurlyeq \overline\beta \Rightarrow f(\overline\alpha) \leqslant f(\overline\beta) \} \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow M = \{ f(x_1, \ldots, x_n) \mid
+(\forall i \ \alpha_i \leqslant \beta_i) \Rightarrow f(\alpha_1, \ldots, \alpha_n) \leqslant f(\beta_1, \ldots, \beta_n) \}
+\end{equation*}
+\begin{proof}[замкнутости]
+Пусть $f, f_1, \ldots, f_n \in S$, $\Phi = f(f_1, \ldots, f_n)$.
+\begin{equation*}
+\overline\alpha \preccurlyeq \overline\beta \Rightarrow
+f(\overline\alpha) \leqslant f(\overline\beta) \land
+f_1(\overline\alpha) \leqslant f_1(\overline\beta) \land \ldots \land
+f_n(\overline\alpha) \leqslant f_n(\overline\beta) \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow (f_1(\overline\alpha), \ldots, f_n(\overline\alpha)) \preccurlyeq (f_1(\overline\beta), \ldots, f_n(\overline\beta)) \Rightarrow
+f(f_1(\overline\alpha), \ldots, f_n(\overline\alpha)) \leqslant f(f_1(\overline\beta), \ldots, f_n(\overline\beta))
+\end{equation*}
+
+Значит, $\Phi$ реализует функцию из~$M$.
+\end{proof}
+
+\begin{consequent}
+Если некоторая ДНФ для булевой функции~$f$ не содержит отрицаний, то $f$ монотонна.
+\end{consequent}
+\begin{proof}
+ДНФ без отрицаний — это формула над~$\{ \land, \lor \}$.
+$\land, \lor$~--- монотонные функции, значит, ДНФ без отрицаний тоже монотонна, тогда и $f$ монотонна.
+\end{proof}
+
+\begin{lemma}[о немонотонной функции]
+Если булева функция~$f \notin M$, то подстановкой $0, 1, x$ вместо переменных можно получить $\overline x$.
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+f(x_1, \ldots, x_n) \notin M \Leftrightarrow
+\exists \overline\alpha, \overline\beta \colon
+\overline\alpha \preccurlyeq \overline\beta \lAnd f(\overline\alpha) \nleqslant f(\overline\beta) \Leftrightarrow
+f(\overline\alpha) = 1 \lAnd f(\overline\beta) = 0
+\end{equation*}
+\begin{enumerate}
+	\item Пусть $\overline\alpha$ и $\overline\beta$ отличаются в нескольких позициях:
+	$\overline\alpha = (\ldots, \gamma_1, \ldots, \gamma_2, \ldots, \gamma_k, \ldots)$, где
+	$\gamma_1, \ldots, \gamma_k$~--- позиции, в которых $\overline\alpha$ и $\overline\beta$ отличаются, тогда $\gamma_1 = \gamma_2 = \ldots = \gamma_k = 0$.
+	
+	Рассматривая эти позиции, введём наборы значений
+	\begin{equation*}
+	\overline\alpha_0 = \overline\alpha = (\ldots, 0, \ldots, 0, \ldots, 0, \ldots), \
+	\overline\alpha_1 = (\ldots, 1, \ldots, 0, \ldots, 0, \ldots),
+	\end{equation*}
+	\begin{equation*}
+	\overline\alpha_2 = (\ldots, 1, \ldots, 1, \ldots, 0, \ldots), \ \ldots, \
+	\overline\alpha_k = (\ldots, 1, \ldots, 1, \ldots, 1, \ldots)
+	\end{equation*}
+	
+	Легко показать методом от противного, что $f(\overline\alpha) > f(\overline\beta) \Rightarrow
+	\exists 0 \leqslant i < k \colon f(\overline\alpha_i) > f(\overline\alpha_{i+1})$.
+	Т.\,о., этот случай сведён к следующему случаю.
+	
+	\item Пусть $\overline\alpha$ и $\overline\beta$ отличаются только в одной позиции.
+	\begin{equation*}
+	f(\alpha_1, \ldots, \alpha_{i-1}, 0, \alpha_{i+1}, \ldots, \alpha_n) = 1, \
+	f(\alpha_1, \ldots, \alpha_{i-1}, 1, \alpha_{i+1}, \ldots, \alpha_n) = 0 \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow f(\alpha_1, \ldots, \alpha_{i-1}, x, \alpha_{i+1}, \ldots, \alpha_n) = \overline x
+	\end{equation*}
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Если булева функция~$f \in M$ и $K$~--- простой импликант $f$, то $K$ не содержит отрицаний.
+\end{theorem}
+\begin{proofcontra}
+Пусть дана $f(x_1, \ldots, x_n, y)$, $K = x_1^{\sigma_1} \cdot \ldots \cdot x_k^{\sigma_k} \overline y$.
+\begin{equation*}
+K(\sigma_1, \ldots, \sigma_k, 0) = 1 \Rightarrow
+f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, 0) = 1 \Rightarrow
+f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, 1) = 1
+\end{equation*}
+
+Пусть $K' = x_1^{\sigma_1} \land \ldots \land x_k^{\sigma_k} \Rightarrow
+K(\sigma_1, \ldots, \sigma_k) = 1 \lAnd f(\sigma_1, \ldots, \sigma_k, x_{k+1}, \ldots, x_n, y) = 1 \Rightarrow$ $K'$~--- импликант $f$ $\Rightarrow$ $K$ не является простым импликантом $f$.
+Противоречие.
+\end{proofcontra}
+
+\begin{theorem}
+Булева функция $f \in M \Leftrightarrow$ сокращённая ДНФ для неё не содержит отрицаний.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$. Простые импликанты $f$ не содержат отрицаний.
+	Сокращённая ДНФ~--- дизъюнкция простых импликантов, значит, она не содержит отрицаний.
+	\item $\Leftarrow$. $f \in M$ как функция, реализуемая формулой над монотонными функциями.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Сокращённая ДНФ для монотонной булевой функции является тупиковой.
+\end{theorem}
+\begin{proof}
+Пусть $K = x_1 \land \ldots \land x_k$~--- простой импликант монотонной булевой функции~$f(x_1, \ldots, x_n)$, $f = K \lor f'$.
+Каждый импликант $f'$ должен содержать один из литералов $x_{k+1}, \ldots, x_n$, т.\,к. $K$~--- простой импликант.
+Тогда при $x_1 = \ldots = x_k = 1$, $x_{k+1} = \ldots = x_n = 0$ имеем $f(x_1, \ldots, x_n) = 1$, $f'(x_1, \ldots, x_n) = 0 \Rightarrow f \neq f'$ $\Rightarrow$ из сокращённой ДНФ нельзя вычеркнуть ни один из конъюнктов, поэтому она тупиковая.
+\end{proof}
+
+\subsubsection{Класс \texorpdfstring{$L$}{} линейных функций}
+\index{Функция!булева!линейная} Булева функция~$f$ называется \textbf{линейной}, если она реализуется формулой над~$\{ +, 1 \}$.
+\begin{equation*}
+L = \{ f(x_1, \ldots, x_n) \mid
+f(x_1, \ldots, x_n) = a_0 + a_1 x_1 + \ldots + a_n x_n, \ a_i \in B \}
+\end{equation*}
+\begin{proof}[замкнутости]
+Пусть
+\begin{equation*}
+f(x_1, \ldots, x_n) = c_0 + c_1 x_1 + \ldots + c_n x_n,
+\end{equation*}
+\begin{equation*}
+f_1(x_1, \ldots, x_n) = c_{10} + c_{11} x_1 + \ldots + c_{1n} x_n, \ \ldots, \
+f_n(x_1, \ldots, x_n) = c_{n0} + c_{n1} x_1 + \ldots + c_{nn} x_n
+\end{equation*}
+\begin{equation*}
+\Phi
+= f(f_1, \ldots, f_n) =
+c_0 + c_1(c_{10} + c_{11} x_1 + \ldots + c_{1n} x_n) + \ldots + c_n(c_{n0} + c_{n1} x_1 + \ldots + c_{nn} x_n) =
+\end{equation*}
+\begin{equation*}
+= c_0 + c_1 c_{10} + \ldots + c_n c_{n0} + (c_1 c_{11} + \ldots + c_n c_{n1}) x_1 + \ldots + (c_1 c_{1n} + \ldots + c_n c_{nn}) x_n
+\end{equation*}
+
+Значит, $\Phi$ реализует функцию из~$L$.
+\end{proof}
+
+$L$ содержит $2^{n+1}$~функций от $n$~переменных.
+
+\begin{lemma}[о нелинейной функции]
+Если булева функция~$f \notin L$, то подстановкой $0, 1, x, y, \overline x, \overline y$ вместо переменных и, возможно, инверсией значения $f$ можно получить $x \land y$.
+\end{lemma}
+\begin{proof}
+$f \notin L$, тогда без ограничения общности можно считать, что $f$ содержит $x_1 x_2$.
+Пусть
+\begin{equation*}
+f(x_1, \ldots, x_n) = x_1 x_2 f_1(x_3, \ldots, x_n) + x_1 f_2(x_2, x_3, \ldots, x_n) + x_2 f_3(x_1, x_3, \ldots, x_n) + f_4(x_3, \ldots, x_n) \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \exists \alpha_3, \ldots, \alpha_n \colon f_1(\alpha_3, \ldots, \alpha_n) = 1
+\end{equation*}
+
+Рассмотрим
+\begin{equation*}
+\varphi(x_1, x_2) = f(x_1, x_2, \alpha_3, \ldots, \alpha_n) = x_1 x_2 + \alpha x_1 + \beta x_2 + \gamma,
+\end{equation*}
+\begin{equation*}
+\psi(x_1, x_2) = \varphi(x_1 + \beta, x_2 + \alpha) + \alpha\beta + \gamma =
+\end{equation*}
+\begin{equation*}
+= x_1 x_2 + \alpha x_1 + \beta x_2 + \alpha\beta + \alpha x_1 + \alpha\beta + \beta x_2 + \alpha\beta + \gamma + \alpha\beta + \gamma =
+x_1 x_2
+\end{equation*}
+
+$\psi$ получена из~$\varphi$ подстановкой $x, y, \overline x, \overline y$ и, возможно, инверсией значения $\varphi$, которая, в свою очередь, получена из~$f$ подстановкой $0, 1$.
+\end{proof}

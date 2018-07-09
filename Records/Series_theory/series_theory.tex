@@ -1,0 +1,52 @@
+Пусть дана бесконечная последовательность~$(a_n)$, $S_n = \sum\limits_{k=1}^n a_k$.
+
+\index{Ряд} \textbf{Рядом} называется совокупность последовательностей $(a_n)$ и $(S_n)$ и обозначается $\series a_k$.
+$S_n$ называется \textbf{$n$-й частичной суммой ряда}.
+
+Если существует конечный предел~$\lim\limits_{n \to \infty} S_n = S$, то $S$ называется \textbf{суммой ряда}, а ряд называется \textbf{сходящимся}, иначе~--- \textbf{расходящимся}.
+
+Свойства рядов:
+\begin{enumerate}
+	\item Ряд~$\series a_k$ сходится $\Rightarrow$ $\lim\limits_{n \to \infty} a_n = 0$.
+	\begin{proof}
+	$a_n = S_n - S_{n-1} \Rightarrow
+	\lim\limits_{n \to \infty} a_n = 
+	\lim\limits_{n \to \infty} (S_n - S_{n-1}) \;
+	\left| \text{По \hyperref[th:Cauchy_criterion]{критерию Коши}} \right| = 0$.
+	\end{proof}
+	
+	\item Если ряды $\series a_k = S$ и $\series b_k = \sigma$, то $\series (\alpha a_k + \beta b_k) = \alpha S + \beta \sigma$.
+	\begin{proof}
+	$\lim\limits_{n \to \infty} \sum\limits_{k=1}^n (\alpha a_k + \beta b_k) =
+	\lim\limits_{n \to \infty} \left(\alpha \sum\limits_{k=1}^n a_k + \beta \sum\limits_{k=1}^n b_k\right) =
+	\alpha S + \beta \sigma$.
+	\end{proof}
+	
+	\item $\forall N \in \mathbb N$ $\series a_{k+N}$ сходится $\Leftrightarrow$ $\series a_k$ сходится.
+	\begin{proof}
+	Пусть $\sigma_n = \sum\limits_{k=1}^n a_{k+N}$, $S_n = \sum\limits_{k=1}^n a_k$.
+	$\sigma_n = S_{n+N} - S_N$, тогда
+	$\exists \lim\limits_{n \to \infty} \sigma_n = \lim\limits_{n \to \infty} S_n - S_N \opbr\Leftrightarrow
+	\exists \lim\limits_{n \to \infty} S_n$.
+	\end{proof}
+\end{enumerate}
+
+\index{Ряд!гармонический} \textbf{Гармоническим} называется ряд $\series \frac1k$.
+
+\begin{statement}
+Гармонический ряд расходится.
+\end{statement}
+\begin{proof}
+\begin{equation*}
+S_{2^n} = 1 + \frac12 +
+\left( \frac13 + \frac14 \right) +
+\left( \frac15 + \ldots + \frac18 \right) + \ldots +
+\left( \frac1{2^{n-1} + 1} + \ldots + \frac1{2^n} \right) >
+1 + \frac12 + \frac24 + \frac48 + \ldots + \frac{2^{n-1}}{2^n} =
+\frac{n}2 + 1 \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \lim_{n \to \infty} S_{2^n} = +\infty \Rightarrow
+\lim_{n \to \infty} S_n = +\infty
+\end{equation*}
+\end{proof}

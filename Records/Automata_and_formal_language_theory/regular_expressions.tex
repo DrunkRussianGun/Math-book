@@ -1,0 +1,88 @@
+\section{Регулярные выражения}
+\index{Регулярное выражение} \textbf{Регулярным выражением} называются:
+\begin{enumerate}
+	\item $\varnothing$, $\lambda$, $x$, где $x$~--- буква, и задают языки $\varnothing$, $\{ \lambda \}$, $\{ x \}$ соответственно;
+	\item $L \cup M$, $L \cdot M$, $L^*$, где $L, M$~--- регулярные выражения, и задают языки $L_1 \cup M_1$, $L_1 M_1$ и $L_1^*$ соответственно, где $L_1, M_1$~--- языки, задаваемые $L$ и $M$ соответственно.
+\end{enumerate}
+
+Приоритет операций в порядке возрастания слева направо: $\cup$, $\cdot$, $\vphantom{L}^*$.
+
+Допустимы записи $L + M$ и $LM$ вместо $L \cup M$ и $L \cdot M$ соответственно.
+
+\index{Язык!регулярный} Язык называется \textbf{регулярным}, если он может быть задан регулярным выражением, иначе~--- \textbf{нерегулярным}.
+
+\index{Теорема!Клини}
+\begin{theorem}[Клини]
+Язык~$L$ распознаётся конечным автоматом $\Leftrightarrow$ он регулярный.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Leftarrow$. Можно построить автоматы, распознающие языки $\varnothing$, $\{ \lambda \}$, $\{ x \}$, а также их объединение, конкатенацию и итерацию.
+	\item $\Rightarrow$. Пусть состояния автомата пронумерованы от $1$ до $n$, $L_{ij}^{(k)} = \{ \alpha = x_1 \ldots x_p \mid i \delta(\alpha) = j \lAnd \forall q \in \mathbb N \ \allowbreak q < p \opbr\Rightarrow \delta(x_1 \ldots x_q) \leqslant k \}$.
+		\indbase $L_{ij}^{(0)} =
+		\begin{cases}
+		x_{q_1} + \ldots + x_{q_m}, \ i \neq j \\
+		x_{q_1} + \ldots + x_{q_m} + \lambda, \ i = j
+		\end{cases}$\\
+		где $x_{q_1}, \ldots, x_{q_m}$~--- буквы, по котором возможен переход из $i$ в $j$.
+		\indstep $L_{ij}^{(k+1)} = L_{ij}^{(k)} + L_{i\,k+1}^{(k)} \left( L_{k+1\,k+1}^{(k)} \right)^* L_{k+1\,j}^{(k)}$
+		\indend
+		
+	Т.\,о., язык $L_{ij}^{(n)} = L$ задаётся регулярным выражением.
+\end{enumerate}
+\end{proof}
+
+Можно предложить и другой способ построения регулярного выражения по автомату, основанный на представлении автомата в виде графа и заключающийся в последовательном удалении его вершин.
+Перед удалением вершины все пути, проходящие через неё, нужно упростить, как показано на рисунке ниже (удаляемая вершина выделена красным).
+Так повторяется до того момента, когда в автомате останется только начальное и одно допускающее состояние.
+
+\begin{center}\noindent
+\begin{tikzpicture}[>=latex, minimum size=6mm]
+\begin{scope}[circle]
+\node (start) at (0, 0) [draw] {};
+\node (middle) at (2, -1) [draw, red] {};
+\node (end) at (4, 0) [draw] {};
+\end{scope}
+\draw[->] (start.east) -- node[above] {$X$} (end.west);
+\draw[->] (start.south east) -- node[below] {$A$} (middle.north west);
+\draw[->] (middle.south) ++(0, -4mm) coordinate (loop)
+	(middle.south west) to[out=-90, in=180] (loop) node[below] {$B$}
+	to[out=0, in=-90] (middle.south east);
+\draw[->] (middle.north east) -- node[below] {$C$} (end.south west);
+
+\node at (5.5, -0.5) [draw, single arrow, minimum height=1cm] {};
+
+\begin{scope}[xshift=7cm]
+\begin{scope}[circle]
+\node (start) at (0, 0) [draw] {};
+\node (end) at (4, 0) [draw] {};
+\end{scope}
+\draw[->] (start.east) -- node[above] {$X + AB^*C$} (end.west);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Алгебраические законы}
+Пусть $L, M, N$~--- регулярные выражения.
+
+Законы объединения:
+\begin{enumerate}
+	\item Коммутативность: $L + M = M + L$
+	\item Ассоциативность: $(L + M) + N = L + (M + N)$
+	\item Идемпотентность: $L + L = L$
+	\item Существование единичного элемента: $L + \varnothing = L$
+\end{enumerate}
+
+Законы конкатенации:
+\begin{enumerate}
+	\item Ассоциативность: $(LM)N = L(MN)$
+	\item Дистрибутивность относительно объединения: $L(M + N) = LM + LN$, $(L + M)N = LN + MN$
+	\item Существование нулевого элемента: $L \varnothing = \varnothing L = \varnothing$
+	\item Существование единичного элемента: $L \lambda = \lambda L = L$
+\end{enumerate}
+
+Законы итерации:
+\begin{enumerate}
+	\item Идемпотентность: $(L^*)^* = L^*$
+	\item $(\lambda + L)^* = L^*$
+\end{enumerate}

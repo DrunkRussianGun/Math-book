@@ -1,0 +1,133 @@
+\section{Прогрессии}
+\subsection{Арифметическая прогрессия}
+\index{Прогрессия!арифметическая} \textbf{Арифметической прогрессией} называется последовательность~$(a_n)$, если $\exists d \colon \forall n \in \mathbb N \ a_{n+1} = a_n + d$.
+$d$ называется \textbf{разностью арифметической прогрессии}.
+Если $d < 0$, то прогрессия называется \textbf{убывающей}, а если $d > 0$, то \textbf{возрастающей}.
+
+\begin{statement}
+$\forall n \in \mathbb N \ a_n = a_1 + d(n - 1)$.
+\end{statement}
+\begin{proofmathind}
+	\indbase $a_1 = a_1 + d \cdot (1 - 1)$
+	\indstep Пусть $a_n = a_1 + d(n - 1)$, тогда $a_{n+1} = a_n + d = a_1 + dn$. \indend
+\end{proofmathind}
+
+\begin{theorem}[характеристическое свойство арифметической прогрессии]
+$(a_n)$~--- арифметическая прогрессия $\Leftrightarrow$ $\forall n \in \mathbb N \setminus \{ 1 \} \ a_n = \dfrac{a_{n-1} + a_{n+1}}2$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$.
+	\begin{equation*}
+	a_n = \frac{a_1 + d(n - 1)}2 + \frac{a_1 + d(n - 1)}2 =
+	\frac{a_1 + d(n - 2) + a_1 + dn}2 =
+	\frac{a_{n-1} + a_{n+1}}2
+	\end{equation*}
+	
+	\item $\Leftarrow$. Пусть $d = a_2 - a_1$.
+	Докажем методом математической индукции, что $\forall n \in \mathbb N \ a_{n+1} - a_n = d$.
+		\indbase $a_2 - a_1 = d$ по определению.
+		\indstep Пусть $a_{n+1} - a_n = d$.
+		\begin{equation*}
+		a_{n+1} = \frac{a_n + a_{n+2}}2 \Leftrightarrow
+		2 a_{n+1} = a_n + a_{n+2} \Leftrightarrow
+		a_{n+2} - a_{n+1} = a_{n+1} - a_n = d
+		\end{equation*}
+		\indend
+		
+	Тогда $\forall n \in \mathbb N \ a_{n+1} = a_n + d \Rightarrow (a_n)$~--- арифметическая прогрессия.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+\begin{equation*}
+\forall i, j \in \mathbb N \ i + j = n + 1 \Rightarrow a_i + a_j = a_1 + a_n
+\end{equation*}
+\end{lemma}
+\begin{proof}
+\begin{equation*}
+a_i + a_j =
+a_1 + d(i - 1) + a_1 + d(j - 1) =
+2 a_1 + d(i + j - 2) =
+2 a_1 + d(n + 1 - 2) =
+a_1 + a_1 + d(n - 1) =
+a_1 + a_n
+\end{equation*}
+\end{proof}
+
+\begin{theorem}
+\begin{equation*}
+\sum_{k=1}^n a_k = \frac{a_1 + a_n}2 \cdot n
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+2 \sum_{k=1}^n a_k =
+\sum_{k=1}^n (a_k + a_k) =
+\sum_{k=1}^n (a_k + a_{n-k+1}) \;
+\left| k + (n - k + 1) = n + 1 \right| =
+\sum_{k=1}^n (a_1 + a_n) =
+n(a_1 + a_n) \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow \sum_{k=1}^n a_k = \frac{a_1 + a_n}2 \cdot n
+\end{equation*}
+\end{proof}
+
+\subsection{Геометрическая прогрессия}
+\index{Прогрессия!геометрическая} \textbf{Геометрической прогрессией} называется последовательность~$(b_n)$, если $b_1 \neq 0 \lAnd \exists q \neq 0 \colon \forall n \in \mathbb N \ b_{n+1} = b_n q$.
+$q$~называется \textbf{знаменателем геометрической прогрессии}.
+
+\begin{statement}
+$\forall n \in \mathbb N \ b_n = b_1 q^{n-1}$
+\end{statement}
+\begin{proofmathind}
+	\indbase $b_1 = b_1 q^{1-1}$
+	\indstep Пусть $b_n = b_1 q^{n-1}$, тогда $b_{n+1} = b_n q = b_1 q^n$. \indend
+\end{proofmathind}
+
+\begin{theorem}[характеристическое свойство геометрической прогрессии]
+$(b_n)$~--- геометрическая прогрессия $\Leftrightarrow \forall n \in \mathbb N \setminus \{ 1 \} \ |b_n| = \sqrt{b_{n-1} b_{n+1}} \neq 0$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Rightarrow$.
+	\begin{equation*}
+	|b_n| = \sqrt{b_n^2} =
+	\sqrt{b_1 q^{n-2} b_1 q^n} =
+	\sqrt{b_{n-1} b_{n+1}}
+	\end{equation*}
+	
+	\item $\Leftarrow$. Пусть $q = \dfrac{b_2}{b_1}$.
+	Докажем методом математической индукции, что $\forall n \in \mathbb N \ \dfrac{b_{n+1}}{b_n} = q$.
+		\indbase $\dfrac{b_2}{b_1} = q$ по определению.
+		\indstep Пусть $\dfrac{b_{n+1}}{b_n} = q$.
+		\begin{equation*}
+		|b_{n+1}| = \sqrt{b_n b_{n+2}} \Leftrightarrow
+		b_{n+1}^2 = b_n b_{n+2} \Leftrightarrow
+		\frac{b_{n+2}}{b_{n+1}} = \frac{b_{n+1}}{b_n} = q
+		\end{equation*}
+		\indend
+		
+	Тогда $\forall n \in \mathbb N \ b_{n+1} = b_n q$ $\Rightarrow$ $(b_n)$~--- геометрическая прогрессия.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+\begin{equation*}
+\sum_{k=1}^n b_k = \frac{b_1(q^n - 1)}{q - 1} = \frac{b_n q - b_1}{q - 1}, \ q \neq 1
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+(q - 1) \sum_{k=1}^n b_k =
+\sum_{k=1}^n (b_{k+1} - b_k) =
+b_{n+1} - b_1 \Leftrightarrow
+\sum_{k=1}^n b_k = \frac{b_n q - b_1}{q - 1} = \frac{b_1(q^n - 1)}{q - 1}
+\end{equation*}
+\end{proof}
+
+Если $q = 1$, то очевидно, что $\sum\limits_{k=1}^n b_k = b_1 n$.
+
+Геометрическая прогрессия называется \textbf{бесконечно убывающей}, если модуль её знаменателя меньше~$1$.
+В этом случае $\sum\limits_{k=1}^\infty b_k = \frac{b_1}{1 - q}$.

@@ -1,0 +1,313 @@
+\section{Интеграл Римана}
+Пусть на отрезке~$[a; b]$ определена функция~$f(x)$.
+Рассмотрим разбиение~$R = (x_0, x_1, \ldots, x_n)$ этого отрезка, где $a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
+Среди длин подынтервалов $\Delta x_i = x_i - x_{i-1}$, где $i = 1, \ldots, n$, найдём диаметр $d = \max \{ \Delta x_1, \Delta x_2, \ldots, \Delta x_n \}$ разбиения.
+Выберём множество точек $\xi = \{ \xi_1, \ldots, \xi_n \}$, где $\xi_i \in [x_{i-1}; x_i]$, $i = 1, \ldots, n$.
+
+\begin{wrapfigure}[10]{r}{0pt}
+\noindent
+\begin{tikzpicture}
+\drawaxis{-0.5}{7}{-0.5}{4};
+\draw[name path=curve] (0.5, 1.5) coordinate (a) to[out=60, in=180] (1.25, 2)
+	to[out=0, in=135] (2, 1.6)
+	to[out=-45, in=180] (2.75, 1)
+	to[out=0, in=-120] (4.5, 3)
+	to[out=60, in=135] (5.5, 3) coordinate (b) node[above right] {$y = f(x)$};
+\printcoordsonaxis[solid]{a}{a};
+\printcoordsonaxis[solid]{b}{b};
+
+\coordinate (x0) at (a);
+\coordinate (x6) at (b);
+
+% разбиваем фигуру на части
+\foreach \i/\x in {1/1, 2/1.5, 3/2.5, 4/3.75, 5/4.6}
+	\getordinate{x\i}{\x}{curve};
+\printcoordsonaxis[solid]{x1}{x_1};
+\printcoordsonaxis[solid]{x2}{x_2};
+\foreach \i in {3, 4}
+	\printcoordsonaxis[solid]{x\i}{};
+\printcoordsonaxis[solid]{x5}{x_{n-1}};
+
+% приближаем её прямоугольниками
+\coordinate (prev) at (x0);
+\foreach \i/\x in {1/0.75, 2/1.25, 3/1.75, 4/3.25, 5/4.3, 6/5} {
+	\getordinate{e\i}{\x}{curve};
+	\printcoordsonaxis{e\i}{};
+	
+	\draw[dashed] (prev) -- (prev |- e\i) -- (e\i -| x\i) -- (x\i);
+	
+	\coordinate (prev) at (x\i);
+}
+\end{tikzpicture}
+\end{wrapfigure}
+
+\textbf{Интегральной суммой Римана} называется сумма $\sigma(f, R, \xi) \opbr= \sum\limits_{i=1}^n f(\xi_i) \Delta x_i$.
+
+Рассмотрим криволинейную трапецию~$M$, ограниченную прямыми $y = 0$, $x = a$, $x = b$ и кривой $y = f(x)$. Пусть $S$~--- площадь $M$, $S_1, \ldots, S_n$~--- площади трапеций, на которые разбивается $M$ прямыми $x = x_1$, \ldots, $x = x_{n-1}$, тогда
+\begin{equation*}
+S = \sum_{i=1}^n S_i \approx \sum_{i=1}^n f(\xi_i) \Delta x_i = \sigma(f, R, \xi)
+\end{equation*}
+
+Т.\,о., интегральная сумма Римана приближённо равна площади соответствующей криволинейной трапеции.
+
+\index{Интеграл!Римана} \index{Интеграл!определённый} Если независимо от выбора $\xi$ $\exists \lim\limits_{d \to 0} \sigma(f, R, \xi)$, то значение предела~$\lim\limits_{d \to 0} \sigma(f, R, \xi)$ называется \textbf{интегралом Римана} (\textbf{определённым интегралом}) и обозначается $\int\limits_a^b f(x)\,dx$.
+$f(x)$ называется \textbf{интегрируемой по Риману на~$[a; b]$}.
+
+Интеграл Римана $\int\limits_a^b f(x)\,dx$ численно равен площади трапеции, ограниченной прямыми $y = 0$, $x = a$, $x = b$ и кривой $y = f(x)$.
+
+\begin{theorem}
+Любая непрерывная функция интегрируема по Риману.
+\end{theorem}
+
+\subsection{Свойства интеграла Римана}
+\begin{enumerate}
+	\item \label{st:b_a_integral} $\int\limits_a^b f(x)\,dx = -\int\limits_b^a f(x)\,dx$
+	\begin{proof}
+	Пусть $R' = (x_0' = b, x_1' = x_{n-1}, \ldots, x_{n-1}' = x_1, x_n' = a)$.
+	\begin{equation*}
+	\sigma(f, R, \xi) =
+	\sum_{i=1}^n f(\xi_i) (x_i - x_{i-1}) =
+	-\sum_{i=1}^n f(\xi_i) (x_i' - x_{i-1}') =
+	-\sigma(f, R', \xi)
+	\end{equation*}
+	
+	Тогда $\int\limits_a^b f(x)\,dx =
+	\lim\limits_{d \to 0} \sigma(f, R, \xi) =
+	\lim\limits_{d \to 0} -\sigma(f, R', \xi) =
+	-\lim\limits_{d \to 0} \sigma(f, R, \xi) =
+	-\int\limits_b^a f(x)\,dx$.
+	\end{proof}
+	
+	\item Линейность: $\int\limits_a^b (\alpha f(x) + \beta g(x))\,dx = 
+	\alpha \int\limits_a^b f(x)\,dx + \beta \int\limits_a^b g(x)\,dx$
+	\begin{proof}
+	\begin{equation*}
+	\sigma(\alpha f(x) + \beta g(x), R, \xi) =
+	\sum_{i=1}^n (\alpha f(\xi_i) + \beta g(\xi_i)) \Delta x_i =
+	\end{equation*}
+	\begin{equation*}
+	= \alpha \sum_{i=1}^n f(\xi_i) \Delta x_i + \beta \sum_{i=1}^n g(\xi_i) \Delta x_i =
+	\alpha \sigma(f(x), R, \xi) + \beta \sigma(g(x), R, \xi)
+	\end{equation*}
+	
+	Тогда $\int\limits_a^b (\alpha f(x) + \beta g(x))\,dx =
+	\lim\limits_{d \to 0} \sigma(\alpha f(x) + \beta g(x), R, \xi) =
+	\lim\limits_{d \to 0} \alpha \sigma(f(x), R, \xi) + \lim\limits_{d \to 0} \beta \sigma(g(x), R, \xi) \opbr=
+	\alpha \int\limits_a^b f(x)\,dx \opbr+ \beta \int\limits_a^b g(x)\,dx$.
+	\end{proof}
+	
+	\item Аддитивность: $\int\limits_a^b f(x)\,dx = \int\limits_a^c f(x)\,dx + \int\limits_c^b f(x)\,dx$
+	\begin{proof}
+	\begin{enumerate}
+		\item Пусть $c \in [a; b]$, $\int\limits_a^b f(x)\,dx = \lim\limits_{d \to 0} \sigma(f(x), R, \xi)$, причём $c = x_k \in R$, а также\\
+		$R_1 = (a = x_0, \ldots, x_k = c)$, $R_2 = (c = x_k, \ldots, x_n = b)$,\\
+		$\lambda_1 = \{ \xi_1, \ldots, \xi_k \}$, $\lambda_2 = \{ \xi_{k+1}, \ldots, \xi_n \}$.
+		\begin{equation*}
+		\sigma(f(x), R, \xi) =
+		\sum_{i=1}^n f(\xi_i) \Delta x_i =
+		\sum_{i=1}^k f(\xi_i) \Delta x_i + \sum_{i=k+1}^n f(\xi_i) \Delta x_i =
+		\sigma(f(x), R_1, \lambda_1) + \sigma(f(x), R_2, \lambda_2)
+		\end{equation*}
+		
+		Тогда $\int\limits_a^b f(x)\,dx =
+		\lim\limits_{d \to 0} \sigma(f(x), R, \xi) =
+		\lim\limits_{d \to 0} (\sigma(f(x), R_1, \lambda_1) + \sigma(f(x), R_2, \lambda_2)) =
+		\int\limits_a^c f(x)\,dx + \int\limits_c^b f(x)\,dx$.
+		
+		\item Для остальных случаев свойство легко доказывается с использованием свойства~\ref*{st:b_a_integral} и уже рассмотренного случая.
+		Например, пусть $f(x)$ интегрируема на~$[c; b]$, $a \in [c; b]$, тогда
+		\begin{equation*}
+		\int_c^b f(x)\,dx = \int_c^a f(x)\,dx + \int_a^b f(x)\,dx \Leftrightarrow
+		\int_a^b f(x)\,dx = -\int_c^a f(x)\,dx + \int_c^b f(x)\,dx \Leftrightarrow
+		\end{equation*}
+		\begin{equation*}
+		\Leftrightarrow \int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx
+		\end{equation*}
+	\end{enumerate}
+	\end{proof}
+	
+	\item Невырожденность: $\int\limits_a^b dx = b - a$
+	\begin{proof}
+	Пусть $f(x) = 1$.
+	\begin{equation*}
+	\sigma(f, R, \xi) =
+	\sum_{i=1}^n f(\xi_i) \Delta x_i =
+	\sum_{i=1}^n \Delta x_i =
+	-x_0 + x_1 - x_1 + x_2 - \ldots - x_{n-2} + x_{n-1} - x_{n-1} + x_n =
+	x_n - x_0 =
+	b - a
+	\end{equation*}
+	
+	Тогда $\int\limits_a^b dx =
+	\lim\limits_{d \to 0} \sigma(f, R, \xi) =
+	\lim\limits_{d \to 0} (b - a) =
+	b - a$.
+	\end{proof}
+	
+	\item Если $f(x) \geqslant 0$ при $x \in [a; b]$, то $\int\limits_a^b f(x)\,dx \geqslant 0$
+	
+	\item Если $f(x) \leqslant g(x)$ при $x \in [a; b]$, то $\int\limits_a^b f(x)\,dx \leqslant \int\limits_a^b g(x)\,dx$
+	\begin{proof}
+	\begin{equation*}
+	f(x) \leqslant g(x) \Leftrightarrow
+	g(x) - f(x) \geqslant 0 \Rightarrow
+	\int_a^b (g(x) - f(x))\,dx \geqslant 0 \Leftrightarrow
+	\int_a^b g(x)\,dx - \int_a^b f(x)\,dx \geqslant 0 \Leftrightarrow
+	\int_a^b f(x)\,dx \leqslant \int_a^b g(x)\,dx
+	\end{equation*}
+	\end{proof}
+	
+	\item \label{st:inequality_of_Riemann_integral}
+	Если $m = \min\limits_{x \in [a; b]} f(x)$, $M = \max\limits_{x \in [a; b]} f(x)$, то $m(b - a) \leqslant \int\limits_a^b f(x)\,dx \leqslant M(b - a)$
+	
+	\item \index{Теорема!о среднем}
+	\begin{theorem}[о среднем]
+	Если $f(x)$ непрерывна на~$[a; b]$, то $\exists x_0 \in [a; b] \colon \int\limits_a^b f(x)\,dx = f(x_0)(b - a)$.
+	\end{theorem}
+	\begin{proof}
+	Пусть $m = \min\limits_{x \in [a; b]} f(x)$, $M = \max\limits_{x \in [a; b]} f(x)$, тогда
+	\begin{equation*}
+	m(b - a) \leqslant \int\limits_a^b f(x)\,dx \leqslant M(b - a) \Leftrightarrow
+	m \leqslant \frac1{b - a} \int\limits_a^b f(x)\,dx \leqslant M
+	\end{equation*}
+	
+	По \hyperref[th:intermediate_value]{теореме о промежуточном значении}
+	$\exists x_0 \colon f(x_0) = \frac1{b - a} \int\limits_a^b f(x)\,dx \Leftrightarrow
+	\int\limits_a^b f(x)\,dx = f(x_0)(b - a)$.
+	\end{proof}
+\end{enumerate}
+
+Методы вычисления определённого интеграла:
+\begin{enumerate}
+	\item \index{Метод!замены переменной} \textbf{Замена переменной}
+	
+	Если $\varphi(t) \colon [\alpha; \beta] \to [a; b]$~--- монотонная функция, то $\int\limits_a^b f(x)\,dx =
+	\int\limits_\alpha^\beta f(\varphi(t)) \varphi'(t)\,dt$
+	
+	\item \index{Метод!интегрирования по частям} \textbf{Интегрирование по частям}
+	
+	$\int\limits_a^b u(x) v'(x)\,dx = \left. (u(x) v(x)) \right|_a^b - \int\limits_a^b u'(x) v(x)\,dx$
+\end{enumerate}
+
+\subsection{Формула Ньютона"--~Лейбница}
+\index{Теорема!Ньютона---Лейбница}
+\begin{theorem}[Ньютона"--~Лейбница]
+Если функция~$f(x)$ непрерывна на~$[a; b]$, $\Phi(x)$~--- её первообразная, то
+\begin{equation}
+\label{eq:Newton-Leibniz_formula}
+\int_a^b f(x)\,dx = \left. \Phi(x) \right|_a^b = \Phi(b) - \Phi(a)
+\end{equation}
+\end{theorem}
+\index{Формула!Ньютона---Лейбница} Равенство~(\ref*{eq:Newton-Leibniz_formula}) называется \textbf{формулой Ньютона"--~Лейбница}.
+\begin{proof}
+Пусть $I(t) = \int\limits_a^t f(x)\,dx$, тогда $I(a) = 0$, $I(b) = \int\limits_a^b f(x)\,dx$.
+\begin{equation*}
+I(t + \Delta t) - I(t) =
+\int_a^{t+\Delta t} f(x)\,dx - \int_a^t f(x)\,dx =
+\int_t^{t + \Delta t} f(x)\,dx \;
+\left| \text{По теореме о среднем} \right| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \exists \Theta \colon 0 \leqslant \Theta \leqslant 1 \lAnd I(t + \Delta t) - I(t) = f(t + \Theta \Delta t) \Delta t \Rightarrow
+\lim_{\Delta t \to 0} \frac{I(t + \Delta t) - I(t)}{\Delta t} = \lim_{\Delta t \to 0} f(t + \Theta \Delta t) \Rightarrow
+I'(t) = f(t)
+\end{equation*}
+
+Тогда $I(x)$~--- первообразная функции~$f(x)$, значит, $\Phi(a) = I(a) + C$, $\Phi(b) = I(b) + C$.
+\begin{equation*}
+\Phi(b) - \Phi(a) = I(b) - I(a) = \int_a^b f(x)\,dx
+\end{equation*}
+\end{proof}
+
+\subsection{Приложения интеграла Римана}
+\subsubsection{Вычисление площади плоской фигуры}
+Пусть фигура, расположенная над отрезком~$[a; b]$, заключена между кривыми $y = f_1(x)$ и $y = f_2(x)$, причём $f_1(a) = f_2(a) \lAnd f_1(b) = f_2(b) \lAnd \forall x \in (a; b) \ f_1(x) < f_2(x)$.
+Тогда площадь этой фигуры равна
+\begin{equation*}
+S = \int_a^b (f_2(x) - f_1(x))\,dx
+\end{equation*}
+
+\subsubsection{Вычисление площади криволинейного отрезка}
+Пусть криволинейный сектор ограничен лучами $\varphi = \alpha$ и $\varphi = \beta$ и кривой $r = f(\varphi)$, где $(r, \varphi)$~--- точка, заданная полярными координатами.
+Рассмотрим его разбиение лучами~$\alpha = \varphi_0 < \varphi_1 < \ldots < \varphi_n = \beta$ и обозначим $\Delta \opbr= \max \{ \varphi_1 - \varphi_0, \varphi_2 - \varphi_1, \ldots, \varphi_n - \varphi_{n-1} \}$.
+Выберем точки $\xi_i \in [\varphi_{i-1}; \varphi_i]$, где $i = 1, \ldots, n$, тогда площадь сектора равна
+\begin{equation*}
+S = \lim_{\Delta \to 0} \sum_{i=1}^n \frac{f^2(\xi_i)}2\,(\varphi_i - \varphi_{i-1}) =
+\frac12 \int_\alpha^\beta f^2(\varphi)\,d\varphi
+\end{equation*}
+
+\subsubsection{Длина кривой}
+Пусть кривая задана уравнением $y = f(x)$ на отрезке~$[a; b]$.
+Рассмотрим разбиение~$R = (x_0, x_1, \ldots, x_n)$ этого отрезка, где $a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$ и обозначим $d = \max \{ x_1 - x_0, x_2 - x_1, \ldots, x_n - x_{n-1} \}$.
+Выберём точки $\xi_i \in [x_{i-1}; x_i]$, где $i = 1, \ldots, n$, тогда длина кривой равна
+\begin{equation*}
+L = \lim_{d \to 0} \sum_{i=1}^n \sqrt{(x_i - x_{i-1})^2 + (f(x_i) - f(x_{i-1}))^2} =
+\left| \text{По \hyperref[th:mean_value]{формуле конечных приращений}} \right|
+\end{equation*}
+\begin{equation*}
+= \lim_{d \to 0} \sum_{i=1}^n \sqrt{(x_i - x_{i-1})^2 + (x_i - x_{i-1})^2 (f'(\xi_i))^2} =
+\lim_{d \to 0} \sum_{i=1}^n \sqrt{1 + (f'(\xi_i))^2} (x_i - x_{i-1}) =
+\int_a^b \sqrt{1 + (f'(x))^2}\,dx
+\end{equation*}
+
+Если кривая задана параметрически: $\begin{cases}
+x = x(t) \\
+y = y(t) \\
+z = z(t)
+\end{cases}$\\
+где $t \in [a; b]$, то её длина равна $L = \int\limits_a^b \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}\,dt$.
+
+\subsubsection{Вычисление объёма тела}
+Пусть тело расположено над отрезком~$[a; b]$, а площадь его сечения плоскостью~$x = x_0$ выражается функцией $S(x)$.
+Рассмотрим разбиение~$R = (x_0, x_1, \ldots, x_n)$ отрезка~$[a; b]$, где $a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
+Среди длин подынтервалов $\Delta x_i = x_i - x_{i-1}$, $i = 1, \ldots, n$, найдём диаметр $d = \max \{ \Delta x_1, \Delta x_2, \ldots, \Delta x_n \}$ разбиения.
+Выберём множество точек $\xi = \{ \xi_1, \ldots, \xi_n \}$, где $\xi_i \in [x_{i-1}; x_i]$, $i = 1, \ldots, n$, тогда объём тела равен
+\begin{equation*}
+V = \lim_{d \to 0} \sum_{i=1}^n S(\xi_i) \Delta x_i =
+\int_a^b S(x)\,dx
+\end{equation*}
+
+Пусть тело получено вращением кривой $y = f(x)$, заданной на отрезке~$[a; b]$, вокруг оси $Ox$, тогда $S(x) = \pi f^2(x)$ и $V = \pi \int\limits_a^b f^2(x)\,dx$.
+
+\subsection{Приближённые методы вычисления интеграла}
+Пусть непрерывная функция~$f(x)$ задана на~$[a; b]$.
+Рассмотрим приближённые методы нахождения интеграла~$\int\limits_a^b f(x)\,dx$.
+
+\subsubsection{Формула прямоугольников}
+\index{Формула!прямоугольников} Разобьём отрезок~$[a; b]$ на $n$~частей точками $a = x_0 < x_1 < \ldots < x_n = b$ и заменим каждую криволинейную трапецию с основанием~$[x_{i-1}; x_i]$ на прямоугольник шириной $x_i - x_{i-1}$ и высотой либо $f(x_{i-1})$, либо $f(x_i)$, где $i = 1, \ldots, n$.
+Тогда получим \textbf{формулу левых прямоугольников}
+\begin{equation*}
+\int_a^b f(x)\,dx \approx \sum_{i=1}^n f(x_{i-1}) (x_i - x_{i-1})
+\end{equation*}
+а также \textbf{формулу правых прямоугольников}
+\begin{equation*}
+\int_a^b f(x)\,dx \approx \sum_{i=1}^n f(x_i) (x_i - x_{i-1})
+\end{equation*}
+
+\subsubsection{Формула трапеций}
+\begin{wrapfigure}[6]{r}{0pt}
+\noindent
+\begin{tikzpicture}
+\drawaxis{-0.5}{4}{-0.5}{3};
+\draw (0.5, 0.75) coordinate (x0) to[out=80, in=-135] (0.85, 1.5) coordinate (x1)
+	to[out=45, in=120] (1.5, 1) coordinate (x2)
+	to[out=-60, in=-130] (2.5, 2) coordinate (x3)
+	to[out=50, in=135] (3.5, 2.5) coordinate (x4);
+
+\printcoordsonaxis[solid]{x0}{a};
+\foreach \i in {1, 2}
+	\printcoordsonaxis{x\i}{x_\i};
+\printcoordsonaxis{x3}{x_{n-1}};
+\printcoordsonaxis[solid]{x4}{b};
+
+\coordinate (prev) at (x0);
+\foreach \i in {1, ..., 4}
+	\draw[dashed] (prev) -- (x\i) coordinate (prev);
+\end{tikzpicture}
+\end{wrapfigure}
+\index{Формула!трапеций} Разобьём отрезок~$[a; b]$ на $n$~частей точками $a = x_0 < x_1 < \ldots < x_n = b$ и построим отрезки, соединяющие точки $(x_{i-1}, f(x_{i-1}))$ и $(x_i, f(x_i))$, где $i = 1, \ldots, n$.
+Площадь получившейся фигуры приближённо равна площади всей криволинейной трапеции.
+Т.\,о., получим \textbf{формулу трапеций} (\textbf{средних прямоугольников}):
+\begin{equation*}
+\int_a^b f(x)\,dx \approx \sum_{i=1}^n \frac{f(x_{i-1}) + f(x_i)}2\,(x_i - x_{i-1})
+\end{equation*}

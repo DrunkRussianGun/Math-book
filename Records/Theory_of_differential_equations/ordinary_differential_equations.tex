@@ -1,0 +1,316 @@
+\section{Обыкновенные дифференциальные уравнения}
+\index{Уравнения!дифференциальные!обыкновенные} \textbf{Обыкновенным дифференциальным уравнением} называется уравнение вида
+\begin{equation*}
+F(x, y(x), y'(x), y''(x), \ldots, y^{(n)}(x)) = 0
+\end{equation*}
+
+Число~$n$ называется \textbf{порядком дифференциального уравнения}.
+
+Функция, удовлетворяющая дифференциальному уравнению, называется его \textbf{частным решением}.
+Множество всех частных решений называется \textbf{общим решением}.
+
+Задача нахождения решения дифференциального уравнения, удовлетворяющего \textbf{начальным условиям} $y(x_0) \opbr= y_0$, $y'(x_0) \opbr= y_1$, \ldots, $y^{(n-1)}(x_0) \opbr= y_{n-1}$, называется \textbf{задачей Коши}.
+
+\subsection{Уравнение с разделяющимися переменными}
+\index{Уравнения!дифференциальные!с разделяющимися переменными} \textbf{Дифференциальным уравнением с разделяющимися переменными} называется уравнение вида
+\begin{equation*}
+y' \opbr= f(x) \cdot g(y)
+\end{equation*}
+
+Решим его:
+\begin{equation*}
+y' = f(x)g(y) \Leftrightarrow
+\frac{dy}{dx} = f(x)g(y) \Leftrightarrow
+\frac{dy}{g(y)} = f(x)\,dx \Rightarrow
+\int \frac{dy}{g(y)} = \int f(x)\,dx
+\end{equation*}
+
+\subsection{Однородное уравнение первого порядка}
+\index{Уравнения!дифференциальные!однородные} \textbf{Однородным дифференциальным уравнением первого порядка} называется уравнение вида
+\begin{equation*}
+y' = F \left( \frac{y}x \right)
+\end{equation*}
+
+Пусть $p(x) = \frac{y}x$, тогда $y = xp \Rightarrow y' = p + xp'$.
+Получим уравнение с разделяющимися переменными:
+\begin{equation*}
+y' = F \left( \frac{y}x \right) \Leftrightarrow
+x p' = F(p) - p \Leftrightarrow
+p' = \frac{F(p) - p}x
+\end{equation*}
+
+Решив его, найдём $p$, а затем $y$.
+
+\subsection{Логистическое уравнение}
+\index{Уравнения!логистические} \index{Уравнения!Ферхюльста} Уравнение, характеризующее рост численности некоторой популяции (например, рыб в водоёме) при отсутствии внешнего влияния, называется \textbf{логистическим} (\textbf{уравнением Ферхюльста}) и имеет вид~$y' = k \bigl( 1 - \frac{y}r \bigr) y$, где $y(t)$~--- зависимость численности популяции от времени, $k$~--- скорость роста численности, $r$~--- максимально возможная численность.
+
+Решая его, получим
+\begin{equation*}
+y' = k \left(1 - \frac{y}r\right) y \Leftrightarrow
+\frac{r\,dy}{(r - y)y} = k\,dt \Leftrightarrow
+\frac{dy}{r - y} + \frac{dy}y = k\,dt \Rightarrow
+\ln \left| \frac{y}{r - y} \right| = kt + \ln C \Rightarrow
+\left| \frac{r}{r - y} - 1 \right| = C e^{kt}
+\end{equation*}
+
+Проанализируем результат:
+\begin{equation*}
+\lim_{t \to +\infty} \left| \frac{r}{r - y} - 1 \right| = +\infty \Rightarrow
+\lim_{t \to +\infty} \frac1{r - y} = \pm\infty \Rightarrow
+\lim_{t \to +\infty} y = r
+\end{equation*}
+
+Учитывая, что $y' = k \bigl( 1 - \frac{y}r \bigr) y$, видим, что $y$ возрастает к~$r$ при $y(0) < r$ и убывает к~$r$ при $y(0) > r$.
+
+\subsubsection{Логистическое уравнение с квотой отлова}
+Пусть численность популяции уменьшается под воздействием внешних факторов на фиксированную величину, называемую \textbf{квотой отлова} (например, определённое число рыб вылавливается из водоёма).
+Тогда уравнение примет вид~$y' = k \bigl( 1 - \frac{y}r \bigr) y - b$, где $b$~--- квота отлова.
+
+Преобразуя его, получим
+\begin{equation*}
+y' = k \left( 1 - \frac{y}r \right) y - b \Leftrightarrow
+-ry' = ky^2 - kry + rb \Rightarrow
+-\int \frac{r\,dy}{ky^2 - kry + rb} = t \Leftrightarrow
+-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2 + r\left( \frac{b}k - \frac{r}4 \right)} = kt
+\end{equation*}
+
+Рассмотрим следующие случаи:
+\begin{enumerate}
+	\item Пусть $\frac{b}k - \frac{r}4 < 0$, тогда
+	$\left( y - \frac{r}2 \right)^2 + r\left( \frac{b}k - \frac{r}4 \right) = (y - y_1)(y - y_2)$, где
+	$y_1 = \frac{r}2 - \sqrt{\frac{r(r - 4b)}{4k}}$,
+	$y_2 = \frac{r}2 + \sqrt{\frac{r(r - 4b)}{4k}}$.
+	
+	Получим
+	\begin{equation*}
+	-\int \frac{r\,dy}{(y - y_1)(y - y_2)} = kt \Leftrightarrow
+	\frac{r}{y_2 - y_1} \left( \int \frac{dy}{y - y_1} - \int \frac{dy}{y - y_2} \right) = kt \Rightarrow
+	\frac{r}{y_2 - y_1} \ln \left| \frac{y - y_1}{y - y_2} \right| = kt + C
+	\end{equation*}
+	
+	Проанализируем результат:
+	\begin{equation*}
+	\lim_{t \to +\infty} \ln \left| \frac{y - y_1}{y - y_2} \right| = +\infty \Rightarrow
+	\lim_{t \to +\infty} \left| \frac{y - y_1}{y - y_2} \right| = +\infty \Rightarrow
+	\lim_{t \to +\infty} y = y_2
+	\end{equation*}
+	
+	Дифференцируя, получим
+	\begin{equation*}
+	-\frac{ry'}{(y - y_1)(y - y_2)} = k
+	\end{equation*}
+	
+	Значит,
+	\begin{itemize}
+		\item $y$ убывает к~$0$ при $y(0) < y_1$;
+		\item $y$ возрастает к~$y_2$ при $y_1 < y(0) < y_2$;
+		\item $y$ убывает к~$y_2$ при $y(0) > y_2$.
+	\end{itemize}
+	
+	\item Пусть $\frac{b}k - \frac{r}4 = 0$, тогда
+	\begin{equation*}
+	-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2} = kt \Rightarrow
+	\frac{r}{y - \frac{r}2} = kt + C \Rightarrow
+	y = \frac{r}{kt + C} + \frac{r}2 \Rightarrow
+	\lim_{t \to +\infty} y = \frac{r}2 \lAnd y' < 0
+	\end{equation*}
+	
+	Значит,
+	\begin{itemize}
+		\item $y$ убывает к~$0$ при $y(0) < \frac{r}2$;
+		\item $y$ убывает к~$\frac{r}2$ при $y(0) > \frac{r}2$.
+	\end{itemize}
+	
+	\item Пусть $\frac{b}k - \frac{r}4 > 0$, тогда
+	\begin{equation*}
+	-\int \frac{r\,dy}{\left( y - \frac{r}2 \right)^2 + \left( \sqrt\frac{r(4b - rk)}{4k} \right)^2} = kt \Rightarrow
+	-\sqrt\frac{rk}{4b - rk} \arctg (2y - r)\sqrt\frac{k}{r(4b - rk)} = kt + C \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow (2y - r)\sqrt\frac{k}{r(4b - rk)} = -\tg (kt + C) \sqrt{\frac{4b}{rk} - 1} \Leftrightarrow
+	y = \frac{r}2 - \sqrt{\frac{4br}{k} - r^2}\tg (kt + C) \sqrt{\frac{4b}{rk} - 1}
+	\end{equation*}
+	
+	Значит, $y$ убывает к~$0$ вне зависимости от начальных условий.
+\end{enumerate}
+
+\subsection{Уравнение в полных дифференциалах}
+\index{Уравнения!дифференциальные!в полных дифференциалах} \textbf{Уравнением в полных дифференциалах} называется уравнение вида
+\begin{equation*}
+y' = -\frac{M(x, y)}{N(x, y)}
+\end{equation*}
+
+Если $M_y' = N_x'$, то $M(x, y) = F_x'$, $N(x, y) = F_y'$, тогда
+\begin{equation*}
+y' = -\frac{M(x, y)}{N(x, y)} \Leftrightarrow
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+Пусть $M_y' \neq N_x'$, но $\exists \mu(x, y) \colon (\mu \cdot M)_y' = (\mu \cdot N)_x'$, тогда
+\begin{equation*}
+M(x, y)\,dx + N(x, y)\,dy = 0 \Leftrightarrow
+\mu(x, y) M(x, y)\,dx + \mu(x, y) N(x, y)\,dy = 0 \Leftrightarrow
+dF(x, y) = 0 \Leftrightarrow
+F(x, y) = C
+\end{equation*}
+
+\index{Множитель!интегрирующий} $\mu(x, y)$ называется \textbf{интегрирующим множителем}.
+
+\subsection{Линейное уравнение первого порядка}
+\index{Уравнения!дифференциальные!линейные} \textbf{Линейным дифференциальным уравнением первого порядка} называется уравнение вида
+\begin{equation*}
+y' = a(x) y + b(x)
+\end{equation*}
+
+\index{Метод!вариации произвольной постоянной} Решим его \textbf{методом вариации произвольной постоянной}.
+\begin{enumerate}
+	\item Решим уравнение
+	\begin{equation*}
+	y_0' = a(x) y_0 \Leftrightarrow
+	\frac{dy_0}{y_0} = a(x)\,dx \Rightarrow
+	\ln y_0 = \varphi(x) + \ln C \Rightarrow
+	y_0 = C e^{\varphi(x)}
+	\end{equation*}
+	
+	\item Подставим $y = C(x) e^{\varphi(x)}$ в исходное уравнение:
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} + C(x) e^{\varphi(x)} \varphi'(x) = a(x) C(x) e^{\varphi(x)} + b(x)
+	\end{equation*}
+	
+	$y_0 = Ce^{\varphi(x)} \Rightarrow C e^{\varphi(x)} \varphi'(x) = a(x) C e^{\varphi(x)}$, тогда получим
+	\begin{equation*}
+	C'(x) e^{\varphi(x)} = b(x) \Leftrightarrow
+	C'(x) = b(x) e^{-\varphi(x)} \Leftrightarrow
+	C(x) = \int b(x) e^{-\varphi(x)}\,dx
+	\end{equation*}
+\end{enumerate}
+
+Тогда $y = C(x) e^{\varphi(x)}$.
+
+\subsection{Уравнение Бернулли}
+\index{Уравнения!Бернулли} \textbf{Уравнением Бернулли} называется уравнение вида
+\begin{equation*}
+y' = a(x) y + b(x) y^n, \ n \neq 1
+\end{equation*}
+
+Пусть $\frac1{y^{n-1}} = z$, тогда
+\begin{equation*}
+y' = a(x) y + b(x) y^n \Leftrightarrow
+\frac{y'}{y^n} = a(x) y^{1-n} + b(x) \Leftrightarrow
+\frac{z'}{1 - n} = a(x) z + b(x)
+\end{equation*}
+
+Т.\,о., решение уравнения Бернулли сводится к решению линейного уравнения.
+Решив его, найдём $z$, а затем $y$.
+
+\subsection{Теорема единственности}
+\index{Теорема!единственности}
+\begin{theorem}[единственности решения дифференциального уравнения]
+\label{th:differential_equation_has_single_solution}
+Пусть $y'(x) = f(x, y(x))$, $y(x_0) = y_0$, причём в некоторой окрестности точки~$x_0$ $\exists M > 0 \colon |f(x, y_1) - f(x, y_2)| \leqslant M |y_1 - y_2|$, тогда уравнение имеет единственное решение в некоторой окрестности~$(x_0 - d; x_0 + d)$.
+\end{theorem}
+\begin{proof}
+$y'(x) = f(x, y(x)) \Rightarrow
+y(x) = y_0 + \int\limits_{x_0}^x f(t, y(t))\,dt$.
+
+Воспользуемся методом итераций:\\
+$\displaystyle y_1(x) = y_0 + \int\limits_{x_0}^x f(t, y_0)\,dt$\\
+\ldots\\
+$\displaystyle y_n(x) = y_0 + \int\limits_{x_0}^x f(x, y_{n-1}(t))\,dt$
+\begin{equation*}
+y_{n+1}(x) - y_n(x) = \int\limits_{x_0}^x (f(t, y_n(t)) - f(t, y_{n-1}(t)))\,dt
+\end{equation*}
+
+По свойству~\ref{st:inequality_of_Riemann_integral} интеграла Римана и условию $|f(x, y_1) - f(x, y_2)| \leqslant M |y_1 - y_2|$ имеем
+\begin{equation*}
+\max_{|x - x_0| < d} |y_{n+1}(x) - y_n(x)| \leqslant
+d \max_{|x - x_0| < d} |f(x, y_n(x)) - f(x, y_{n-1}(x))| \leqslant
+dM \max_{|x - x_0| < d} |y_n(x) - y_{n-1}(x)|
+\end{equation*}
+
+Пусть $d, q \colon q = dM < 1$ тогда
+\begin{equation*}
+\max_{|x - x_0| < d} |y_n(x) - y_{n-1}(x)| \leqslant
+q \max_{|x - x_0| < d} |y_{n-1}(x) - y_{n-2}(x)| \leqslant \ldots \leqslant
+q^{n-1} \max_{|x - x_0| < d} |y_1(x) - y_0|
+\end{equation*}
+
+Отсюда
+\begin{equation*}
+\forall k \geqslant 1 \ \max_{|x - x_0| < d} |y_{n+k}(x) - y_n(x)| =
+\end{equation*}
+\begin{equation*}
+= \max_{|x - x_0| < d} |(y_{n+k}(x) - y_{n+k-1}(x)) +
+(y_{n+k-1}(x) + y_{n+k-2}(x)) + \ldots +
+(y_{n+1}(x) - y_n(x))| \leqslant
+\end{equation*}
+\begin{equation*}
+\leqslant \max_{|x - x_0| < d} |y_{n+k}(x) - y_{n+k-1}(x)| +
+\max_{|x - x_0| < d} |y_{n+k-1}(x) - y_{n+k-2}(x)| + \ldots +
+\max_{|x - x_0| < d} |y_{n+1}(x) - y_n(x)| \leqslant
+\end{equation*}
+\begin{equation*}
+\leqslant (q^{n+k-1} + q^{n+k-2} + \ldots + q^n) \max_{|x - x_0| < d} |y_1(x) - y_0| =
+q^n \cdot \frac{1 - q^k}{1 - q} \max_{|x - x_0| < d} |y_1(x) - y_0| <
+\frac{q^n}{1 - q} \max_{|x - x_0| < d} |y_1(x) - y_0|
+\end{equation*}
+
+По \hyperref[th:Cauchy_criterion]{признаку Коши} получим
+\begin{equation*}
+\forall \varepsilon > 0 \ \exists N \in \mathbb N \colon \forall n > N,\, k \geqslant 1 \
+\max_{|x - x_0| < d} |y_{n+k}(x) - y_n(x)| < \varepsilon \Rightarrow
+\exists \lim_{n \to \infty} y_n(x) = \tilde y(x)
+\end{equation*}
+
+Докажем единственность решения.
+Пусть существуют два решения $y(x)$ и $\tilde y(x)$.
+\begin{equation*}
+|y(x) - \tilde y(x)| =
+\left| \int_{x_0}^x (f(t, y(t)) - f(t, \tilde y(t)))\,dt \right| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant
+d \cdot \max_{|x - x_0| < d} |f(x, y(x)) - f(x, \tilde y(x))| \leqslant
+d M \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant q \max_{|x - x_0| < d} |y(x) - \tilde y(x)| \Rightarrow
+\max_{|x - x_0| < d} |y(x) - \tilde y(x)| \leqslant 0 \Rightarrow
+y(x) = \tilde y(x)
+\end{equation*}
+\end{proof}
+
+\subsection{Понижение порядка дифференциального уравнения}
+\begin{itemize}
+	\item $F(x, y', y'') = 0$.
+	
+	Пусть $z(x) = y'(x)$, тогда получим уравнение с разделяющимися переменными:
+	\begin{equation*}
+	F(x, z, z') = 0
+	\end{equation*}
+	
+	Решив его, найдём $z$, а затем $y = \int z(x)\,dx$.
+	
+	\item $F(y, y', y'') = 0$.
+	
+	Пусть $z(y) = y'(x)$, тогда
+	\begin{equation*}
+	y'' = \frac{dy'}{dx} =
+	\frac{dz}{dx} =
+	\frac{dz}{dy} \cdot \frac{dy}{dx} =
+	z z'
+	\end{equation*}
+	
+	Получим уравнение первого порядка:
+	\begin{equation*}
+	F(y, z, z z') = 0
+	\end{equation*}
+	
+	Решив его, найдём $z(y)$.
+	Чтобы найти $y$, необходимо решить уравнение
+	\begin{equation*}
+	y' = z(y)
+	\end{equation*}
+\end{itemize}

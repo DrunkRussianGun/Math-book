@@ -1,0 +1,29 @@
+\section{Принцип двойственности}
+\index{Функция!булева!двойственная} Если $f(x_1, \ldots, x_n)$~--- булева функция, то \textbf{двойственной к~$f$ функцией} называется функция $\overline f(\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})$, обозначаемая $f^*(x_1, x_2, \ldots, x_n)$.
+
+\begin{statement}
+$(f^*)^* = f$.
+\end{statement}
+\begin{proof}
+$\bigl( f^*(x_1, x_2, \ldots, x_n) \bigr)^* =
+\bigl( \overline f(\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n}) \bigr)^* =
+f(x_1, x_2, \ldots, x_n)$.
+\end{proof}
+
+\index{Принцип!двойственности}
+\begin{theorem}[принцип двойственности]
+Если формула~$\Phi_1 = f_0(f_1, f_2, \ldots, f_n)$ задаёт некоторую функцию~$f$, то формула~$\Phi_2 = f_0^*(f_1^*, f_2^*, \ldots, f_n^*)$ задаёт $f^*$.
+\end{theorem}
+\begin{proof}
+Без ограничения общности можно считать, что $f_1, \ldots, f_n$~--- функции от $m$~переменных, т.\,к. можно добавить несущественные переменные.
+\begin{equation*}
+f^*(x_1, \ldots, x_m) =
+\overline f(\overline{x_1}, \ldots, \overline{x_m}) =
+\overline{f_0}(\overline{\overline{f_1}}(\overline{x_1}, \ldots, \overline{x_m}), \ldots, \overline{\overline{f_n}}(\overline{x_1}, \ldots, \overline{x_m})) =
+\end{equation*}
+\begin{equation*}
+= \overline{f_0}(\overline{f_1^*}(x_1, \ldots, x_m), \ldots, \overline{f_n^*}(x_1, \ldots, x_m)) =
+f_0^*(f_1^*(x_1, \ldots, x_m), \ldots, f_n^*(x_1, \ldots, x_m)) =
+\Phi_2
+\end{equation*}
+\end{proof}

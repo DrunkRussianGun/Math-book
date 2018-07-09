@@ -1,0 +1,141 @@
+\section{Методы нахождения сокращённой ДНФ}
+\begin{statement}
+\label{st:about_prime_implicants_1}
+Пусть булева функция~$f = D(K_1, \ldots, K_m) = K_1 \lor K_2 \lor \ldots \lor K_m$, где $K_1, \ldots, K_m$~--- элементарные конъюнкты и $K$~--- простой импликант~$f$.
+Тогда
+\begin{itemize}
+	\item $K$ содержит только переменные, входящие в~$D$;
+	\item $\exists i, K' \colon K_i = K \lor K'$.
+\end{itemize}
+\end{statement}
+\begin{proof}
+\begin{equation*}
+K \rightarrow f = 1 \Rightarrow (K = 1 \Rightarrow f = 1)
+\end{equation*}
+\begin{itemize}
+	\item Докажем методом от противного, что $K$ содержит только переменные, входящие в~$D$.
+	Пусть $K$ содержит переменную~$y$, не входящую в~$D$, тогда
+	\begin{equation*}
+	K = x_1^{\sigma_1} \cdot \ldots \cdot x_n^{\sigma_n} y^\sigma \Rightarrow
+	K(\sigma_1, \ldots, \sigma_n, \sigma) = 1 \Rightarrow
+	f(\sigma_1, \ldots, \sigma_n, \sigma) = 1
+	\end{equation*}
+	
+	$y$ не входит в~$D$ $\Rightarrow$ $f(\sigma_1, \ldots, \sigma_n, \overline\sigma) = 1 \Rightarrow x_1^{\sigma_1} \cdot \ldots \cdot x_n^{\sigma_n}$~--- импликант $\Rightarrow$ $K$ не является простым импликантом.
+	Противоречие.
+	
+	\item Пусть
+	\begin{equation*}
+	K = x_1^{\sigma_1} \cdot \ldots \cdot x_n^{\sigma_n} \Rightarrow
+	K(\sigma_1, \ldots, \sigma_n) = 1 \Rightarrow
+	f(\sigma_1, \ldots, \sigma_n) = 1 \Rightarrow
+	\exists i \colon K_i(\sigma_1, \ldots, \sigma_n) = 1
+	\end{equation*}
+	
+	Покажем, что все литералы, содержащиеся в~$K$, содержатся и в~$K_i$.
+	\begin{itemize}
+		\item Пусть $x_j$ входит в~$K$, тогда $K(\sigma_1, \ldots, \sigma_{j-1}, 1, \sigma_{j+1}, \ldots, \sigma_n) = 1$.
+		Если $\overline{x_j}$ входит в~$K_i$, то $K_i(\sigma_1, \ldots, \allowbreak \sigma_{j-1}, 1, \sigma_{j+1}, \ldots, \sigma_n) = 0$.
+		Противоречие, значит, $\overline{x_j}$ не входит в~$K_i$.
+		
+		\item Пусть $\overline{x_j}$ входит в~$K$.
+		Аналогично доказывается, что $x_j$ не входит в~$K_i$.
+		
+		\item Пусть $x_j^{\sigma_j}$ входит в~$K$.
+		Если ни $x_j$, ни $\overline{x_j}$ не входят в~$K_i$, то $K_i(\sigma_1, \ldots, \sigma_j, \ldots, \sigma_n) \opbr=
+		K_i(\sigma_1, \ldots, \overline{\sigma_j}, \ldots, \sigma_n) \opbr= 1 \opbr\Rightarrow
+		x_1^{\sigma_1} \cdot \ldots \cdot x_{i-1}^{\sigma_{i-1}} x_{i+1}^{\sigma_{i+1}} \cdot \ldots \cdot x_n^{\sigma_n}$~--- импликант $\Rightarrow$ $K$ не является простым импликантом.
+		Противоречие, значит, $x_j$ или $\overline{x_j}$ входит в~$K_i$.
+	\end{itemize}
+	
+	Остаётся единственный возможный случай: если $x_j^{\sigma_j}$ входит в~$K$, то $x_j^{\sigma_j}$ входит и в~$K_i$.
+	Тогда $\exists K' \colon K_i = K \land K'$.
+\end{itemize}
+\end{proof}
+
+\begin{statement}
+\label{st:prime_implicants_of_conjuction}
+Если $K_1, \ldots, K_m$ и $M_1, \ldots, M_r$~--- простые импликанты булевых функций $f$ и $g$ соответственно, то любой простой импликант функции~$f \land g$ равен $K_i M_j$ для некоторых $i, j$.
+\end{statement}
+\begin{proof}
+Пусть $K$~--- простой импликант $f \land g$.
+По утверждению~\ref*{st:about_prime_implicants_1} $\exists i, j, K' \colon K_i M_j = K K'$.
+\begin{enumerate}
+	\item Докажем методом от противного, что $K_i M_j = K$.
+	Пусть $K' \neq 1$, $y$~--- переменная, входящая в~$K'$, тогда $y$ входит в $K_i$ или в $M_j$.
+	Без ограничения общности можно считать, что $y$ входит в~$K_i$.
+	Рассмотрим элементарный конъюнкт~$\widetilde{K_i}$, полученный из~$K_i$ удалением $y$.
+	Тогда $\widetilde{K_i}$~--- импликант~$f$, т.\,к. если изменить значение $y$, то значение $\widetilde{K_i}$ и $K$ не изменятся.
+	Если $\widetilde{K_i} = 1$, то можно подобрать такой набор значений переменных, что $K_i = 1 \Rightarrow f \land g = 1 \Rightarrow f = 1$, тогда $K_i$ не является простым импликантом.
+	Противоречие, значит, $K_i M_j = K$.
+	
+	\item Докажем методом от противного, что $K_i M_j$~--- простой импликант.
+	Пусть найдётся переменная~$y$ такая, что её удаление из~$K_i M_j$ даёт импликант~$\widetilde{K_i M_j}$.
+	$\widetilde{K_i M_j} = 1 \Rightarrow f \land g = 1 \Rightarrow f = 1 \lAnd g = 1$, тогда $K_i$ или $M_j$ не является простым импликантом.
+	Противоречие, значит, $K_i M_j$~--- простой импликант.
+\end{enumerate}
+\end{proof}
+
+\subsubsection{Метод Блейка}
+\index{Метод!Блейка}
+Применяется к произвольной ДНФ.
+\begin{enumerate}
+	\item Применяем формулу обобщённого склеивания, пока возможно: $x K_1 \lor \overline x K_2 =
+	x K_1 \lor \overline x K_2 \lor K_1 K_2$.
+	
+	\item Применяем формулу поглощения: $K \lor K K_1 = K$.
+\end{enumerate}
+\begin{proof}[корректности]
+Пусть после первого этапа метода Блейка получена ДНФ~$D'$ булевой функции~$f$.
+\begin{enumerate}
+	\item Докажем методом математической индукции, что для любого импликанта~$K$ функции~$f$ найдётся такой конъюнкт~$K'$ в~$D'$, что $K$~--- импликант~$K'$.
+		\indbase Пусть $K$ содержит все переменные $f$.
+		$K$~--- импликант~$f$, значит, $K$ входит в~$D'$.
+		\indstep Пусть для любого импликанта~$K$ функции~$f$, содержащего более $n$~переменных, найдётся такой конъюнкт~$K'$ в~$D'$, что $K$~--- импликант~$K'$.
+		Докажем то~же для импликанта~$K$, содержащего $n$~переменных.
+		Пусть $y$~--- переменная, не входящая в~$K$, тогда $K_1 = y \land K$, $K_2 = \overline y \land K$~--- импликанты $f$.
+		По предположению индукции для них найдутся конъюнкты~$K_1', K_2'$ в~$D'$ такие, что $K_1, K_2$~--- импликанты $K_1', K_2'$ соответственно.
+		Возможны два случая:
+		\begin{enumerate}
+			\item Пусть $K_1'$ или $K_2'$ не содержит $y$, тогда $K$~--- его импликант.
+			\item Пусть и $K_1'$, и $K_2'$ содержат $y$, тогда $K_1' = y \land K_1''$, $K_2' = \overline y \land K_2''$.
+			$D'$ содержит $K_1'$ и $K_2'$, значит, $D'$ содержит $K_1'' \land K_2''$.
+			$K$~--- импликант $K_1'' \land K_2''$.
+		\end{enumerate}
+		\indend
+	
+	Если $K$~--- простой импликант $f$, то существует такой конъюнкт~$K'$ в~$D'$, что $K$~--- импликант~$K'$.
+	Легко показать методом от противного, что $K = K'$, значит, в~$D'$ входят все простые импликанты.
+	
+	\item Пусть $K$~--- не простой импликант $f$, содержащийся в~$D'$, тогда из него вычёркиванием литералов можно получить простой импликант~$K'$.
+	$D'$ содержит $K'$, тогда на втором этапе метода Блейка имеем $K \lor K' = K'$.
+	Т.\,о., после второго этапа метода Блейка получим ДНФ, содержащую только простые импликанты.
+\end{enumerate}
+\end{proof}
+
+\subsubsection{Метод Квайна}
+\index{Метод!Квайна}
+Применяется к СДНФ.
+Пусть дана булева функция от $n$~переменных.
+Начинаем с~$k = n$.
+\begin{enumerate}
+	\item Применяем формулу $x K \lor \overline x K	= x K \lor \overline x K \lor K$ ко всем конъюнктам, содержащим $k$~литералов.
+	\item Применяем формулу поглощения: $K \lor K K_1 = K$.
+	\item Уменьшаем значение~$k$ на~$1$ и повторяем с начала.
+\end{enumerate}
+\begin{proof}[корректности]
+Пусть в сокращённой ДНФ $K$~--- элементарный конъюнкт, не содержащий переменной~$y$, тогда $K = y K \lor \overline y K$.
+Добавляя таким образом переменные, получим СДНФ.
+Тогда, если проделаем обратные операции (что и является методом Квайна), получим сокращённую ДНФ.
+\end{proof}
+
+\subsubsection{Метод Нельсона}
+\index{Метод!Нельсона}
+Применяется к произвольной КНФ.
+\begin{enumerate}
+	\item Раскрываем скобки: $(a \lor c)(b \lor c) = ab \lor c$.
+	\item Упрощаем, используя формулы $xxK = xK$, $x \overline x K = 0$, $K \lor K K_1 = K$.
+\end{enumerate}
+\begin{proof}[корректности]
+КНФ~--- конъюнкция сокращённых ДНФ, поэтому раскрытием скобок и упрощением по утверждению~\ref*{st:prime_implicants_of_conjuction} получим сокращённую ДНФ.
+\end{proof}

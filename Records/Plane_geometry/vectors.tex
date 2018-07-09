@@ -1,0 +1,40 @@
+\section{Векторы}
+\index{Векторы!коллинеарные} Векторы называются \textbf{коллинеарными}, если они лежат на одной прямой или на параллельных прямых, иначе~--- \textbf{неколлинеарными}.
+
+\subsection{Скалярное произведение}
+\index{Произведение!скалярное} \textbf{Скалярным произведением векторов $\overline a$ и $\overline b$} называется число, равное $|\overline a| \cdot |\overline b| \cdot \cos \angle(\overline a, \overline b)$, и обозначается $\overline a \cdot \overline b$ или $\overline a\,\overline b$.
+
+\begin{statement}
+$\forall \overline a, \overline b \neq \overline 0 \ \overline a\,\overline b = 0 \Leftrightarrow \overline a \perp \overline b$.
+\end{statement}
+\begin{proof}
+$\overline a\,\overline b = 0 \Leftrightarrow
+|\overline a| \cdot |\overline b| \cdot \cos \angle(\overline a, \overline b) = 0 \Leftrightarrow
+\cos \angle(\overline a, \overline b) = 0 \Leftrightarrow
+\overline a \perp \overline b$.
+\end{proof}
+
+Свойства скалярного произведения:
+\begin{enumerate}
+	\item $\overline a\,\overline b = \overline b\,\overline a$
+	\item $\forall \lambda \in \mathbb R \ (\lambda \overline a) \overline b = \lambda (\overline a\,\overline b)$
+	\item $\overline a (\overline b + \overline c) = \overline a\,\overline b + \overline a\,\overline c$
+	\begin{proof}
+	$\overline a (\overline b + \overline c) = 
+	|\overline a| \cdot |\overline b + \overline c| \cdot \cos \angle(\overline a, \overline b + \overline c) =
+	|\overline a| \cdot |\pr_{\overline a} (\overline b + \overline c)| =
+	|\overline a| \cdot |\pr_{\overline a} \overline b| + |\overline a| \cdot |\pr_{\overline a} \overline c| =
+	\overline a\,\overline b + \overline a\,\overline c$.
+	\end{proof}
+	\item $\overline a \cdot \overline 0 = 0$
+	\item $\overline a\,\overline a = \overline a^2 \geqslant 0$
+\end{enumerate}
+
+Пусть $\overline a = (x_1, y_1)$, $\overline b = (x_2, y_2)$.
+Заметим, что $\overline i^2 = \overline j^2 = 1$, $\overline i\,\overline j = 0$.
+Тогда
+\begin{equation*}
+\overline a\,\overline b =
+(x_1 \overline i + y_1 \overline j) (x_2 \overline i + y_2 \overline j) =
+x_1 x_2 + y_1 y_2
+\end{equation*}

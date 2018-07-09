@@ -1,0 +1,93 @@
+\section{Прямоугольная система координат}
+\subsection{Преобразования плоскости и пространства}
+\index{Преобразование} \textbf{Преобразованием пространства~$\mathbb R^n$} называется функция $f \colon \mathbb R^n \to \mathbb R^n$.
+
+Преобразование~$f \colon \mathbb R^n \to \mathbb R^n$ называется \textbf{линейным}, если $\forall \overline a, \overline b \in \mathbb R^n,\, \alpha \in \mathbb R \ f(\overline a) + f(\overline b) = f(\overline a + \overline b) \lAnd \alpha f(\overline a) \opbr= f(\alpha \overline a)$.
+
+Далее подразумевается, что $f(x, y, z) = (x', y', z')$.
+
+\subsubsection{Параллельный перенос}
+\index{Параллельный перенос} \textbf{Параллельным переносом на вектор~$(a, b, c)$} называется преобразование, при котором каждая точка пространства перемещается на вектор~$(a, b, c)$.
+\begin{equation*}
+\begin{cases}
+x' = x + a \\
+y' = y + b \\
+z' = z + c
+\end{cases} \Leftrightarrow
+\begin{cases}
+x = x' - a \\
+y = y' - b \\
+z = z' - c
+\end{cases}
+\end{equation*}
+
+Аналогично определяется параллельный перенос на плоскости.
+
+\subsubsection{Поворот}
+\begin{wrapfigure}{r}{0pt}\noindent
+\shorthandoff{"}
+\begin{tikzpicture}[scale=0.7]
+\drawaxis{-3}{6}[]{-1}{6}[];
+\def\rightanglesize{7.142857pt}
+
+% рисуем точку M
+\def\angleM{53.130102}
+\def\radM{5}
+\draw (0, 0) coordinate (O) node [below left] {$O$}
+	(\angleM:\radM) coordinate (M) node[above right] {$M(x, y)$}
+	(M |- O) coordinate (K);
+\printcoordsonaxis[solid]{M}{\scriptstyle K(x, 0)}{y};
+
+% проставляем координаты на новой системе
+\def\angle{30}
+\begin{scope}[rotate=\angle]
+\drawaxis[]{0}{6}[]{0}{6}[];
+\draw (\angleM - \angle:\radM) coordinate (M1) -- node[right] {$y'$} (M1 |- O) node[below right] {$x'$}
+	(M1) -- (M1 -| O) node[below left] {$y'$};
+\draw (M1 |- O) rectangle +(\rightanglesize, \rightanglesize);
+\end{scope}
+
+% рисуем точку L
+\draw let
+	\n1 = {\radM * cos(\angleM - \angle)}
+in
+	[dashed] (\angle:\n1) coordinate (L) -- (L |- O) node[below] {$L$}
+	(L) -- (L -| M) node[left] {$S$};
+
+% рисуем углы
+\draw (1, 0) coordinate (X)
+	pic[draw, "$\alpha$", angle eccentricity=1.5, angle radius=5mm] {angle = X--O--L}
+	pic[draw, "$\alpha$", angle eccentricity=1.5, angle radius=5mm] {angle = K--M--L}
+	(L |- O) rectangle +(\rightanglesize, \rightanglesize)
+	(L -| M) rectangle +(\rightanglesize, \rightanglesize);
+\end{tikzpicture}
+\shorthandon{"}
+\end{wrapfigure}
+\index{Поворот} \textbf{Поворотом на угол~$\alpha$} называется преобразование, при котором каждый луч, исходящий из начала координат, поворачивается на угол~$\alpha$.
+\begin{equation*}
+\begin{cases}
+x' = x \cos \alpha + y \sin \alpha \\
+y' = -x \sin \alpha + y \cos \alpha
+\end{cases} \Leftrightarrow
+\begin{cases}
+x = x' \cos \alpha - y' \sin \alpha \\
+y = x' \sin \alpha + y' \cos \alpha
+\end{cases}
+\end{equation*}
+\begin{proof}
+\begin{equation*}
+x = OL - KL = x' \cos \alpha - y' \sin \alpha \lAnd
+y = KS + MS = x' \sin \alpha + y' \cos \alpha
+\end{equation*}
+
+Решим получившуюся систему относительно $x'$ и $y'$ \hyperref[th:Cramer]{методом Крамера}:
+\begin{equation*}
+\Delta = \cos^2 \alpha + \sin^2 \alpha = 1 \lAnd
+\Delta_1 = x \cos \alpha + y \sin \alpha \lAnd
+\Delta_2 = -x \sin \alpha + y \cos \alpha \Rightarrow
+\end{equation*}
+\begin{equation*}
+\Rightarrow x' = x \cos \alpha + y \sin \alpha \lAnd
+y' = -x \sin \alpha + y \cos \alpha
+\end{equation*}
+\end{proof}

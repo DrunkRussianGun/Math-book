@@ -1,0 +1,45 @@
+\section{Парабола}
+\begin{wrapfigure}{r}{0pt}\noindent
+\begin{tikzpicture}[scale=0.5]
+\drawaxis{-3.5}{6}{-3}{7};
+
+% рисуем параболу y^2 = 5x
+\draw (-5/4, 0) coordinate (H)
+	node {$\bullet$} node[below left] {$\scriptstyle (-\frac{p}2, 0)$}
+	(H |- 0, \bottom_y) -- (H |- 0, \top_y)
+	(5/4, 0) coordinate (F)
+	node {$\bullet$} node[below] {$\scriptstyle F(\frac{p}2, 0)$}
+	-- (5, 5) coordinate (M)
+	node {$\bullet$} node[above left] {$\scriptstyle M(x, y)$}
+	-| (H)
+	(M -| H) rectangle +(10pt, 10pt);
+\draw[rotate=-90] (-5.91608, 7) parabola bend (0, 0) (5.91608, 7);
+\end{tikzpicture}
+\end{wrapfigure}
+
+\index{Парабола} \textbf{Параболой} называется геометрическое место точек~$M$ таких, что расстояния от~$M$ до некоторой прямой, называемой \textbf{директрисой}, и до некоторой точки, называемой \textbf{фокусом}, равны.
+
+Пусть директриса задаётся уравнением $x = -\frac{p}2$, а фокус имеет координаты~$\left(\frac{p}2, 0\right)$.
+Найдём уравнение параболы.
+\begin{equation*}
+\left(x + \frac{p}2\right)^2 = \left(x - \frac{p}2\right)^2 + y^2 \Leftrightarrow
+y^2 = 2px
+\end{equation*}
+
+\subsection{Уравнение касательной}
+Найдём уравнение касательной, проходящей через точку~$(x_0, y_0)$ параболы.
+\begin{equation*}
+y = \pm\sqrt{2px} \Rightarrow
+y' = \pm\frac{p}{\sqrt{2px}} =
+\pm\frac{\sqrt{2px}}{2x} =
+\frac{y}{2x}
+\end{equation*}
+\begin{equation*}
+y = y_0 + \frac{y_0}{2x_0} (x - x_0) \Leftrightarrow
+2 x_0 (y - y_0) = y_0 (x - x_0) \Leftrightarrow
+\end{equation*}
+\begin{equation*}
+\Leftrightarrow 2 x_0 y = y_0 (x + x_0) \Leftrightarrow
+2 x_0 y_0 y = y_0^2 (x + x_0) \Leftrightarrow
+2 y y_0 = 2p(x + x_0)
+\end{equation*}

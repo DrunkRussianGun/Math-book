@@ -1,0 +1,140 @@
+\section{Недетерминированные конечные автоматы}
+\index{Конечный автомат!недетерминированный} \index{Сокращения!НКА} \textbf{Недетерминированным конечным автоматом} (\textbf{НКА}) называется набор~$(S, X, \delta, s_1, F)$, где\\
+$S$~--- конечное множество состояний;\\
+$X$~--- конечный алфавит;\\
+$\delta \colon S \times (X \cup \{ \lambda \}) \to 2^S$~--- функция перехода;\\
+$s_1 \in S$~--- начальное состояние;\\
+$F \subseteq S$~--- множество допускающих состояний.
+
+Функция~$\delta$ определяет функцию~$\delta^* \colon S \times X^* \to 2^S$:
+\begin{enumerate}
+	\item $\delta^*(s, x) = \delta(s, x)$
+	\item $\delta^*(s, \alpha x) = \bigcup\limits_{s' \in \delta^*(s, \alpha)} \delta(s', x)$
+\end{enumerate}
+где $s \in S$, $x \in X \cup \{ \lambda \}$, $\alpha \in X^*$.
+
+Допустима запись $s \delta(\alpha)$ вместо $\delta^*(s, \alpha)$.
+
+\index{Конкатенация!языков} \textbf{Конкатенацией языков $L_1$ и $L_2$} называется язык~$\{ \alpha \beta \mid \alpha \in L_1 \lAnd \beta \in L_2 \}$ и обозначается $L_1 \cdot L_2 = L_1 L_2$.
+
+\index{Степень!языка} \textbf{$n$"~й степенью языка~$L$} называется $L^n = \underbrace{L L \ldots L}_n$.
+
+\index{Итерация} \index{Звёздочка Клини} \textbf{Итерацией} (\textbf{звёздочкой Клини}) \textbf{языка~$L$} называется $L^* = \bigcup\limits_{n=0}^\infty L^n$.
+
+Заметим, что автомат с несколькими допускающими состояниями можно преобразовать в НКА с одним допускающим состоянием, если исходные допускающие сделать недопускающими и добавить переходы из них по пустому слову в новое допускающее.
+
+\subsection{Распознаваемость языков}
+Говорят, что \textbf{НКА~$(S, X, \delta, s_1, F)$ распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \cap F \neq \varnothing$.
+
+Если языки $L_1$ и $L_2$ распознаются НКА $(S_1, X, \delta_1, s_1, F_1)$ и $(S_2, X, \delta_2, s_2, F_2)$ соответственно, тогда автомат~$(S_1 \opbr\cup S_2, \allowbreak X, \allowbreak \delta, \allowbreak s_1, \allowbreak F_2)$ распознаёт язык $L_1 L_2$, где
+\begin{equation*}
+s \delta(x) =
+\begin{cases}
+s \delta_1(x), \ s \in S_1 \\
+s \delta_2(x), \ s \in S_2 \\
+s_2, \ s \in F_1 \lAnd x = \lambda
+\end{cases}
+\end{equation*}
+
+Если $L$ распознаётся НКА~$(S, X, \delta, s_1, F)$, то $(S \cup \{ s_0 \}, X, \delta_1, s_0, F \cup \{ s_0 \})$ распознаёт $L^*$, где
+\begin{equation*}
+s \delta_1(x) =
+\begin{cases}
+s \delta(x), \ s \in S \\
+s_1, \ s \notin S \lAnd x = \lambda
+\end{cases}
+\end{equation*}
+
+\subsection{Построение ДКА по НКА}
+\label{sect:automaton_determination}
+\index{Замыкание} \textbf{Замыканием состояния~$s$} некоторого НКА называется множество~$\{ s' \mid s \delta(\lambda^k) = s' \}$ и обозначается~$[s]$.
+
+Пусть язык~$L$ распознаётся НКА~$(S, X, \delta, s_1, F)$.
+Тогда ДКА~$(T, X, \delta', [s_1], F')$ тоже распознаёт $L$, где\\
+$T = \{ M \mid M = \{ m_1, \ldots, m_k \} \subseteq S \lAnd \bigcup\limits_{i=1}^k [m_i] = M \}$,\\
+$\delta'(\{ m_1, \ldots, m_k \}, x) = \bigcup\limits_{i=1}^k [\delta(m_i, x)]$,\\
+$F' = \{ M \mid M \in T \lAnd M \cap F \neq \varnothing \}$.
+\begin{proofmathind}
+	\indbase $s_1 \delta(\lambda^k) = [s_1] \lAnd [s_1] \delta'(\lambda^k) = [s_1] \Rightarrow
+	s_1 \delta(\lambda^k) = [s_1] \delta'(\lambda^k)$
+	\indstep Пусть доказано для слов~$\alpha$ длины~$n$, $s_1 \delta(\alpha) = \{ m_1, \ldots, m_k \}$.
+	\begin{equation*}
+	s_1 \delta(\alpha x) = \bigcup_{i=1}^k [\delta(m_i, x)] \lAnd
+	[s_1] \delta'(\alpha x) = \bigcup_{i=1}^k [\delta(m_i, x)] \Rightarrow
+	s_1 \delta(\alpha x) = [s_1] \delta'(\alpha x)
+	\end{equation*}
+	\indend
+	
+Т.\,о., $\forall \alpha \in X^* \ s_1 \delta(\alpha) = [s_1] \delta'(\alpha)$.
+\end{proofmathind}
+
+Следует заметить, что при переходе от НКА к ДКА число состояний может увеличиваться экспоненциально.
+Например, рассмотрим НКА с $n + 1$~состояниями, распознающий слова в алфавите~$\{ 0, 1 \}$, в которых $n$"~й символ с конца является единицей.
+\begin{center}\noindent
+\begin{tikzpicture}[>=latex, minimum size=6mm]
+\begin{scope}[circle]
+\node (s0) [draw] {}
+	edge[->, loop above] node {$0, 1$} (s0);
+\node (s1) [draw, right=of s0] {}
+	edge[<-] node[above] {$1$} (s0);
+\node (s2) [draw, right=of s1] {}
+	edge[<-] node[above] {$0, 1$} (s1);
+\node (dots) [right=of s2] {\ldots}
+	edge[<-] node[above] {$0, 1$} (s2);
+\node (s3) [draw, right=of dots] {}
+	edge[<-] node[above] {$0, 1$} (dots);
+\node (s4) [draw, right=of s3, rectangle] {}
+	edge[<-] node[above] {$0, 1$} (s3);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+ДКА, распознающий этот же язык, должен <<помнить>> последние $n$ символов.
+Всего существует $2^n$ различных слов длины~$n$.
+Пусть в ДКА число состояний меньше $2^n$, тогда найдутся два слова $a_1 a_2 \ldots a_n$ и $b_1 b_2 \ldots b_n$, при чтении которых автомат переходит в одно и то же состояние.
+Предположим, что $a_1 a_2 \ldots a_{i-1} = b_1 b_2 \ldots b_{i-1}$, $a_i \neq b_i$.
+Тогда при чтении слов $a_i \ldots a_n \underbrace{00\ldots0}_{i-1}$ и $b_i \ldots b_n \underbrace{00\ldots0}_{i-1}$ автомат перейдёт в одно и то же состояние, причём оно должно быть одновременно и допускающим, и недопускающим, т.\,к. $a_i \neq b_i$.
+Противоречие, значит, в данном ДКА должно быть не менее $2^n$ состояний.
+
+\subsection{Алгоритм Бржозовского}
+\index{Алгоритм!Бржозовского}
+Рассмотрим автомат~$A = (S, X, \delta, s_1, F)$ и произвольное состояние~$s' \in S$.
+
+Назовём язык, распознаваемый автоматом~$(S, X, \delta, s_1, \{ s' \})$, \textbf{левым языком~$L_l(s')$}, а язык, распознаваемый автоматом~$(S, X, \delta, s', F)$~--- \textbf{правым языком~$L_r(s')$}.
+Тогда $L = \bigcup\limits_{s' \in S} L_l(s') L_r(s')$.
+
+\textbf{Обратным к языку~$L$} назовём язык~$r(L) = \{ \alpha \mid \alpha = x_1 \ldots x_n \lAnd x_n \ldots x_1 \in L \}$.
+
+\textbf{Обратным к автомату~$A$} назовём автомат~$r(A)$, в котором начальное и допускающее состояния сменены местами, а переходы идут в обратном направлении.
+
+Рассмотрим следующие утверждения:
+\begin{enumerate}
+	\item Автомат детерминирован $\Leftrightarrow$ все его левые языки не пересекаются.
+	\begin{proofcontra}
+	Пусть $\alpha \in L_l(s') \cap L_l(s'')$, тогда по~$\alpha$ можно прийти и в~$s'$, и в $s''$ $\Leftrightarrow$ автомат недетерминирован.
+	\end{proofcontra}
+	
+	\item Если $L_l(s')$~--- левый язык автомата~$A$, то $r(L_l(s'))$~--- правый язык~$r(A)$.
+	
+	\item Автомат минимальный $\Leftrightarrow$ все его правые языки различны и все состояния достижимы.
+	\begin{proof}
+	\begin{itemize}
+		\item Если $L_r(s) = L_r(s')$, тогда $s$ и $s'$ можно объединить в одно состояние.
+		\item Если одно из состояний недостижимо, то его можно убрать.
+	\end{itemize}
+	\end{proof}
+\end{enumerate}
+
+Через~$d(A)$ обозначим операцию детерминизации автомата~$A$, описанную в разделе~\ref{sect:automaton_determination}.
+
+\index{Теорема!Бржозовского}
+\begin{theorem}[Бржозовского]
+ДКА~$drdr(A)$ минимален и распознаёт тот же язык, что и~$A$, где $A$~--- конечный автомат.
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+	\item $drdr(A)$ детерминирован по построению.
+	\item Если $A$ распознаёт $L$, тогда $dr(A)$ распознаёт $r(L)$ $\Rightarrow$ $drdr(A)$ распознаёт $L$.
+	\item Левые языки автомата~$dr(A)$ не пересекаются $\Rightarrow$ правые языки $rdr(A)$ не пересекаются $\Rightarrow$ правые языки $drdr(A)$ различны $\Rightarrow$ $drdr(A)$ минимален.
+\end{itemize}
+\end{proof}

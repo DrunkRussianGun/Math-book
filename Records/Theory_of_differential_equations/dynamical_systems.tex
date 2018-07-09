@@ -1,0 +1,132 @@
+\section{Динамические системы}
+\index{Система!динамическая} \textbf{Динамической} называется система дифференциальных уравнений
+\begin{equation*}
+\begin{cases}
+x' = f(x, y, t) \\
+y' = g(x, y, t)
+\end{cases}
+\end{equation*}
+
+Частные решения $x_0(t)$, $y_0(t)$ этой системы называются \textbf{траекториями динамической системы}.
+
+\index{Точка!покоя} \index{Положение!равновесия} Если траектория вырождается в точку, то она называется \textbf{точкой покоя} (\textbf{положением равновесия}).
+
+\subsection{Линейные однородные динамические системы с постоянными коэффициентами}
+Исследуем систему
+\begin{equation*}
+\begin{cases}
+x' = ax + by \\
+y' = cx + dy
+\end{cases}
+\end{equation*}
+
+Очевидно, что $(0, 0)$~--- точка покоя.
+Найдём другие частные решения системы.
+Решив её характеристическое уравнение, получим два корня $k_1$ и $k_2$.
+Тогда
+\begin{itemize}
+	\item Если $k_1, k_2 \in \mathbb R$, $k_1 \neq k_2$, то
+	\begin{equation*}
+	\begin{dcases}
+	x = C_1 e^{k_1 t} + C_2 e^{k_2 t} \\
+	y = C_1\,\frac{k_1 - a}b\,e^{k_1 t} + C_2\,\frac{k_2 - a}b\,e^{k_2 t}
+	\end{dcases}
+	\end{equation*}
+	
+	\begin{itemize}
+		\item Если $k_1, k_2 < 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{устойчивым узлом}.
+		
+		\item Если $k_1, k_2 > 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = +\infty$,
+		$\lim\limits_{t \to -\infty} x(t) = \lim\limits_{t \to -\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{неустойчивым узлом}.
+		
+		\item Если $k_1 < 0 < k_2$, то точка~$(0, 0)$ называется \textbf{седлом}.
+		Это положение равновесия неустойчиво.
+	\end{itemize}
+	
+	\item Если $k_{1,2} = \alpha \pm i \beta$, то
+	\begin{equation*}
+	\begin{dcases}
+	x = C_1 e^{\alpha t} \cos \beta t + C_2 e^{\alpha t} \sin \beta t \\
+	y = \left(\frac{\alpha - a}b\,C_1 + \frac\beta{b}\,C_2\right) e^{\alpha t} \cos \beta t +
+	\left(\frac{\alpha - a}b\,C_1 - \frac\beta{b}\,C_2\right) e^{\alpha t} \sin \beta t
+	\end{dcases}
+	\end{equation*}
+	
+	\begin{itemize}
+		\item Если $\alpha < 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{устойчивым фокусом}.
+
+		\item Если $\alpha > 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = +\infty$,
+		$\lim\limits_{t \to -\infty} x(t) = \lim\limits_{t \to -\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{неустойчивым фокусом}.
+		
+		\item Если $\alpha = 0$, то траектории представляют собой эллипсы, а точка~$(0, 0)$ называется \textbf{центром}.
+	\end{itemize}
+	
+	\item Если $k_1 = k_2 = \alpha \in R$, то
+	\begin{equation*}
+	\begin{dcases}
+	x = C_1 e^{\alpha t} + C_2 t e^{\alpha t} \\
+	y = \left(\frac{\alpha - a}b\,C_1 + \frac1b\,C_2\right) e^{\alpha t} +
+	\frac{\alpha - a}b\,C_2 t e^{\alpha t}
+	\end{dcases}
+	\end{equation*}
+	
+	\begin{itemize}
+		\item Если $\alpha < 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{вырожденным устойчивым узлом}.
+		
+		\item Если $\alpha > 0$, то
+		$\lim\limits_{t \to +\infty} x(t) = \lim\limits_{t \to +\infty} y(t) = +\infty$,
+		$\lim\limits_{t \to -\infty} x(t) = \lim\limits_{t \to -\infty} y(t) = 0$.
+		
+		Точка~$(0, 0)$ называется \textbf{вырожденным неустойчивым узлом}.
+		
+		\item Если $\alpha = 0$, то
+		$\lim\limits_{t \to \pm\infty} x(t) = \lim\limits_{t \to \pm\infty} y(t) = \pm\infty$.
+		
+		В этом случае траектории представляют собой прямые~$y = \frac{\alpha - a}b\,C_1 + \frac1b\,C_2 + \frac{\alpha - a}b\,(x - C_1)$.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Устойчивость решения динамической системы}
+Анализируя поведение траекторий вблизи положения равновесия, можно заметить, что они могут:
+\begin{enumerate}
+	\item оставаться вблизи точки покоя с ростом~$t$.
+	Тогда положение равновесия \textbf{устойчиво}.
+
+	\item приближаться к точке покоя с ростом~$t$.
+	Тогда положение равновесия \textbf{асимптотически устойчиво}.
+	
+	\item удаляться от точки покоя с ростом~$t$.
+	Тогда положение равновесия \textbf{неустойчиво}.
+\end{enumerate}
+
+Пусть система
+$\begin{cases}
+x' = f(x, y, t) \\
+y' = g(x, y, t)
+\end{cases}$
+имеет частное решение $x_0(t)$, $y_0(t)$.
+Проведя замену $u(t) = x(t) - x_0(t)$, $v(t) \opbr= y(t) - y_0(t)$, получим
+\begin{equation*}
+\begin{cases}
+u' = f(u + x_0(t), v + y_0(t), t) - f(x_0(t), y_0(t), t) \\
+u' = g(u + x_0(t), v + y_0(t), t) - g(x_0(t), y_0(t), t)
+\end{cases}
+\end{equation*}
+
+Для этой системы точка~$(0, 0)$ станет положением равновесия.
+Если оставить в правых частях уравнений только линейные по $u$ и $v$ части выражений, то по полученной системе можно сделать вывод об устойчивости решения $x_0(t)$, $y_0(t)$ исходной системы.

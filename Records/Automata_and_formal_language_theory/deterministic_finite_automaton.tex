@@ -1,0 +1,256 @@
+\section{Детерминированные конечные автоматы}
+\index{Конечный автомат!детерминированный} \index{Сокращения!ДКА} \textbf{Детерминированным конечным автоматом} (\textbf{ДКА}) называется набор~$(S, X, \delta, s_1, F)$, где\\
+$S$~--- конечное множество \textbf{состояний};\\
+$X$~--- алфавит;\\
+$\delta \colon S \times (X \cup \{ \lambda \}) \to S$~--- \textbf{функция перехода}, причём $\delta(s, \lambda) = s$;\\
+$s_1 \in S$~--- \textbf{начальное состояние};\\
+$F \subseteq S$~--- множество \textbf{допускающих состояний}.
+
+Конечный автомат~$(S, X, \delta, s_1, F)$ удобно представлять в виде графа, в котором вершины представляют состояния автомата, а дуги показывают, между какими состояниями возможен переход и по каким буквам.
+
+Функция перехода по буквам определяет функцию~$\delta^* \colon S \times X^* \to S$ перехода по словам:
+\begin{enumerate}
+	\item $\delta^*(s, x) = \delta(s, x)$
+	\item $\delta^*(s, \alpha x) = \delta(\delta^*(s, \alpha), x)$
+\end{enumerate}
+где $\alpha \in X^*$, $x \in X \cup \{ \lambda \}$.
+
+Запись $\delta^*(s, \alpha)$ несколько громоздка, поэтому вместо неё обычно используется запись $s \delta(\alpha)$.
+
+\subsection{Распознаваемость языков}
+Говорят, что \textbf{ДКА~$(S, X, \delta, s_1, F)$ распознаёт язык~$L$}, если $\alpha \in L \Leftrightarrow s_1 \delta(\alpha) \in F$.
+
+\begin{statement}
+Любой конечный язык распознаётся конечным автоматом.
+\end{statement}
+\begin{proof}
+Пусть $L$~--- конечный язык, множество~$S$ состояний состоит из префиксов слов~$L$, а также включает дополнительное состояние~$s'$, $\alpha \delta(x) =
+\begin{cases}
+\alpha x, \ \alpha x \in S \\
+s', \ \alpha x \notin S
+\end{cases}$
+
+Рассмотрим автомат~$(S, X, \delta, \lambda, L)$.
+\begin{equation*}
+\lambda \delta(\alpha) =
+\begin{cases}
+\alpha, \ \alpha \in S \setminus \{ s' \} \\
+s', \ \alpha \notin S \setminus \{ s' \}
+\end{cases} \Rightarrow
+(s_1 \delta(\alpha) \in F \Leftrightarrow \alpha \in L)
+\end{equation*}
+\end{proof}
+
+\begin{statement}
+\label{st:ak_bk_is_not_recognized_by_DFA}
+Язык~$L = \{ a^n b^n \mid n \geqslant 0 \}$ не распознаётся конечным автоматом.
+\end{statement}
+\begin{proofcontra}
+Пусть $L$ распознаётся конечным автоматом~$A = (S, X, \delta, s_1, F)$ с $n$~состояниями.
+Тогда какие"~то из состояний $s_1, s_1 \delta(a), s_1 \delta(aa), \ldots, s_1 \delta(a^{n-1}), s_1 \delta(a^n)$ совпадают.
+Пусть $s_1 \delta(a^i) \opbr= s_1 \delta(a^j)$, тогда $s_1 \delta(a^i) \delta(b^i) \in F \Rightarrow
+s_1 \delta(a^j) \delta(b^i) \in F$.
+Значит, $a^j b^i \in L$.
+Противоречие.
+\end{proofcontra}
+
+Слова $\alpha$ и $\beta$ называются \textbf{различимыми словом~$\gamma \in X^*$ относительно языка~$L$}, если $\alpha \gamma \in L \opbr\lAnd \beta \gamma \notin L \opbr\lOr \alpha \gamma \notin L \opbr\lAnd \beta \gamma \in L$.
+Различимость обозначается $\alpha \not\sim_L \beta$.
+
+Слова $\alpha$ и $\beta$ называются \textbf{неразличимыми относительно языка~$L$}, если $\forall \gamma \in X^* \ \alpha \gamma \in L \Leftrightarrow \beta \gamma \in L$.
+Неразличимость обозначается $\alpha \sim_L \beta$.
+
+\begin{statement}
+Отношение неразличимости слов относительно языка является отношением эквивалентности.
+\end{statement}
+\begin{proof}
+Очевидно, что $\alpha \sim \alpha$ и $\alpha \sim \beta \Rightarrow \beta \sim \alpha$.
+
+Пусть $\alpha \sim \beta \lAnd \beta \sim \gamma$, тогда $\forall \Theta \in X^* \ 
+\alpha \Theta \in L \Leftrightarrow
+\beta \Theta \in L \Leftrightarrow
+\gamma \Theta \in L \Rightarrow
+\alpha \sim \gamma$.
+\end{proof}
+
+\begin{statement}
+$\alpha \sim \beta \Rightarrow \forall \gamma \in X^* \ \alpha \gamma \sim \beta \gamma$.
+\end{statement}
+\begin{proof}
+$\forall \Theta \in X^* \ (\alpha \gamma) \Theta \in L \Leftrightarrow
+\alpha (\gamma \Theta) \in L \Leftrightarrow
+\beta (\gamma \Theta) \in L \Leftrightarrow
+(\beta \gamma) \Theta \in L \Rightarrow
+\alpha \gamma \sim \beta \gamma$.
+\end{proof}
+
+Фактор"=класс слова~$\alpha$ относительно неразличимости обозначается~$[\alpha]$.
+
+\textbf{Рангом языка~$L$} называется количество элементов в фактор"=множестве относительно неразличимости слов и языка~$L$ и обозначается~$\rank L$.
+
+\index{Теорема!Майхилла---Нероуда}
+\begin{theorem}[Майхилла"--~Нероуда]
+\begin{enumerate}
+	\item Язык~$L$ распознаётся конечным автоматом с $n$~состояниями $\Leftrightarrow$ $\rank L \leqslant n$.
+	\item Если $\rank L = n$, то существует конечный автомат с $n$~состояниями, который распознаёт~$L$, и никакой конечный автомат с меньшим числом состояний не распознаёт~$L$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item Пусть язык~$L$ распознаётся конечным автоматом~$A = (S, X, \delta, s_1, F)$ с $n$~состояниями.
+	Рассмотрим слова $\alpha_1, \ldots, \alpha_{n+1} \opbr\in X^*$.
+	Хотя бы два из состояний $s_1 \delta(\alpha_1), \ldots, s_1 \delta(\alpha_{n+1})$ совпадают.
+	
+	Пусть $s_1 \delta(\alpha_i) = s_1 \delta(\alpha_j)$, где $i \neq j$, тогда
+	\begin{equation*}
+	\forall \gamma \in X^* \
+	s_1 \delta(\alpha_i \gamma) =
+	s_1 \delta(\alpha_i) \delta(\gamma) =
+	s_1 \delta(\alpha_j) \delta(\gamma) =
+	s_1 \delta(\alpha_j \gamma) \Rightarrow
+	(\alpha_i \gamma \in L \Leftrightarrow \alpha_j \gamma \in L)
+	\end{equation*}
+	
+	Т.\,о., среди любых $n + 1$~слов всегда найдётся пара неразличимых, значит, $\rank L \leqslant n$.
+	
+	\item Пусть $A = (S, X, \delta, [\lambda], F)$, где\\
+	$S = \{ [\alpha] \mid \alpha \in X^* \}$,\\
+	$\delta \colon [\alpha] \delta(x) = [\alpha x]$,\\
+	$F = \{ [\alpha] \mid \alpha \in L \}$,\\
+	тогда $s_1 \delta(\alpha) = [\alpha] \in F \Leftrightarrow \alpha \in L$.
+	
+	Пусть $L$ распознаётся конечным автоматом с $k$~состояниями, где $k < n$.
+	Тогда $n = \rank L \leqslant k$.
+	Противоречие.
+\end{enumerate}
+\end{proof}
+
+\index{Базис!языка} \textbf{Базисом языка~$L$} называется множество~$W \subseteq X^*$ такое, что все слова в нём попарно различимы, а любое другое слово неотличимо от одного из слов множества~$W$.
+
+\begin{theorem}
+Множество~$W$~--- базис языка $\Leftrightarrow$
+\begin{enumerate}
+	\item Все слова из~$W$ попарно различимы.
+	\item $\lambda \in W$.
+	\item $\forall \alpha \in W \ \forall x \in X \ \exists \beta \in W \colon \alpha x \sim \beta$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item $\Leftarrow$. Докажем, что $\forall \gamma \in X^* \ \exists \beta \in W \colon \gamma \sim \beta$.
+		\indbase Пусть $\alpha = \lambda$, тогда $\forall x \in X \ \exists \beta \in W \colon x \sim \beta$.
+		\indstep Пусть доказано для $\gamma \colon |\gamma| \leqslant k$, тогда $\gamma \sim \beta \in W \Rightarrow \gamma x \sim \beta x \sim \tau \in W$.
+		\indend
+	\item $\Rightarrow$. Докажем пункт~3 по индукции.
+		\indbase Пусть $\alpha = \lambda$, тогда $\forall x \in X \ \exists \beta \in W \colon x \sim \beta$, т.\,к. $W$~--- базис.
+		\indstep Пусть доказано для $\alpha \colon |\alpha| \leqslant k$, тогда $\alpha \sim \beta \in W \Rightarrow \alpha x \sim \beta x \sim \gamma \in W$.
+		\indend
+\end{enumerate}
+\end{proof}
+
+Два состояния $s$ и $s'$ называются \textbf{эквивалентными относительно автомата~$A = (S, X, \delta, s_1, F)$}, если $\forall \alpha \in X^* \ \allowbreak s \delta(\alpha) \in F \Leftrightarrow s' \delta(\alpha) \in F$.
+
+\index{Конечный автомат!связный} Автомат называется \textbf{связным}, если $\forall s \in S \ \exists \alpha \in X^* \ s_1 \delta(\alpha) = s$.
+
+\index{Конечный автомат!приведённый} \index{Конечный автомат!минимальный} Автомат называется \textbf{приведённым} (\textbf{минимальным}) если в нём нет эквивалентных состояний.
+
+Пусть задан автомат~$A = (S, X, \delta, s_1, F)$, распознающий язык~$L$.
+Рассмотрим автомат~$A_m = (S_m, X, \delta_m, [s_1], F_m)$, где\\
+$S_m = \{ [s] \mid s \in S \}$,\\
+$\delta_m \colon [s] \delta(x) = [s \delta(x)]$,\\
+$F_m = \{ [s] \mid s \in F \}$,\\
+тогда $\forall \alpha \in L \ [s_1] \delta(\alpha) = [s_1 \delta(\alpha)] \in F_m$, т.\,к. $s_1 \delta(\alpha) \in F$, значит, $A_m$ распознаёт~$L$.
+
+\index{Конечный автомат!изоморфный} Два автомата $(S, X, \delta, s_1, F)$ и $(S', X, \delta', s_2, F')$ называются \textbf{изоморфными}, если существует биекция~$\varphi \colon S \to S'$ такая, что:
+\begin{enumerate}
+	\item $s \delta(x) = t \Leftrightarrow \varphi(s) \delta'(x) = \varphi(t)$;
+	\item $\varphi(s_1) = s_2$;
+	\item $t \in F \Leftrightarrow \varphi(t) \in F'$.
+\end{enumerate}
+
+\begin{statement}
+Если два минимальных автомата распознают один и тот же язык, то они изоморфны.
+\end{statement}
+\begin{proof}
+Пусть $\alpha \in \{ \alpha_1, \ldots, \alpha_n \}$, причём $S = \{ s_1 \delta(\alpha) \mid \alpha \in \{ \alpha_1, \ldots, \alpha_n \} \} \opbr\lAnd S' \opbr= \{ s_2 \delta'(\alpha) \mid \alpha \opbr\in \{ \alpha_1, \ldots, \alpha_n \} \}$.
+В каждом из автоматов нет эквивалентных состояний, поэтому можно построить биекцию $\varphi(s_1 \delta(\alpha)) \opbr= s_2 \delta'(\alpha)$.
+Тогда $s_1 \delta(\alpha) \in F \Leftrightarrow \alpha \in L \Leftrightarrow s_1' \delta'(\alpha) \in F$.
+\end{proof}
+
+Исследуем распознаваемость дополнения, пересечения и объединения языков.
+Пусть $L_1$, $L_2$~--- языки, распознаваемые некоторыми конечными автоматами, $\rank L_1 = m$ и $\rank L_2 = n$.
+\begin{enumerate}
+	\item $\rank L_1 = \rank \overline L_1$.
+	\begin{proof}
+	$\alpha \not\sim_{L_1} \beta \Leftrightarrow
+	\exists \gamma \colon \alpha \gamma \in L_1 \lAnd \beta \gamma \notin L_1 \Leftrightarrow
+	\alpha \gamma \notin \overline L_1 \lAnd \beta \gamma \in \overline L_1 \Leftrightarrow
+	\alpha \not\sim_{\overline L_1} \beta$.
+	\end{proof}
+	
+	\item $\rank L_1 \cap L_2 \leqslant mn$.
+	\begin{proof}
+	Пусть $\alpha_1, \ldots, \alpha_m$ и $\beta_1, \ldots, \beta_n$~--- базисы $L_1$ и $L_2$ соответственно.
+	Тогда
+	\begin{equation*}
+	\forall \gamma \in X^* \ \exists \alpha_i, \beta_j \colon \alpha_i \sim_{L_1} \gamma \lAnd \beta_j \sim_{L_2} \gamma
+	\end{equation*}
+	
+	Пусть $\gamma_{ij} \colon \alpha_i \sim_{L_1} \gamma_{ij} \lAnd \beta_j \sim_{L_2} \gamma_{ij}$, тогда $\forall \Theta \in X^*$
+	\begin{itemize}
+		\item $\gamma \Theta \in L_1 \Leftrightarrow
+		\alpha_i \Theta \in L_1 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_1$;
+		\item $\gamma \Theta \in L_2 \Leftrightarrow
+		\beta_j \Theta \in L_2 \Leftrightarrow
+		\gamma_{ij} \Theta \in L_2$.
+	\end{itemize}
+	
+	Отсюда $\gamma \Theta \in L_1 \cap L_2 \Leftrightarrow
+	\alpha_i \Theta \in L_1 \lAnd \beta_j \in L_2 \Leftrightarrow
+	\gamma_{ij} \Theta \in L_1 \cap L_2$, тогда $y_{11}, y_{12}, \ldots, y_{mn}$~--- базис языка~$L_1 \cap L_2$.
+	\end{proof}
+	
+	\item Аналогично доказывается, что $\rank L_1 \cup L_2 \leqslant mn$.
+\end{enumerate}
+
+\index{Лемма!о накачке}
+\begin{lemma}[о накачке]
+Если $L$ распознаётся конечным автоматом, то
+$\exists n \in \mathbb N \colon (\forall \alpha \in X^* \colon |\alpha| \geqslant n) \ \allowbreak \exists \alpha_1, \alpha_2, \alpha_3 \colon \alpha = \alpha_1 \alpha_2 \alpha_3 \lAnd \alpha_2 \neq \lambda \lAnd |\alpha_1 \alpha_2| \leqslant n$,
+причём $\alpha \in L \Rightarrow \forall i \ \alpha_1 \alpha_2^i \alpha_3 \in L$.
+\end{lemma}
+\begin{proof}
+Пусть в конечном автомате $n$~состояний, $|\alpha| = k \geqslant n \lAnd \alpha = x_1 \ldots x_k$.
+Среди состояний $s_1 \delta(\lambda), s_1 \delta(x_1), s_1 \delta(x_1 x_2), \ldots, s_1 \delta(x_1 \ldots x_n)$ найдутся два совпадающих, т.\,е.
+$\exists l, m \colon 0 \leqslant l < m \leqslant n \lAnd s_1 \delta(x_1 \ldots x_l) \opbr= s_1 \delta(x_1 \ldots x_m) \opbr= s'$.
+
+Пусть $\alpha_1 = x_1 \ldots x_l$, $\alpha_2 = x_{l+1} \ldots x_m$, $\alpha_3 = x_{m+1} \ldots x_k$, $s_1 \delta(\alpha_1) = s'$, тогда $s_1 \delta(\alpha_1 \alpha_2) = s' \opbr\Rightarrow s_1 \delta(\alpha_1 \alpha_2^i) = s' \opbr\Rightarrow s_1 \delta(\alpha) = s_1 \delta(\alpha_1 \alpha_2 \alpha_3) = s' \delta(\alpha_3) = s_1 \delta(\alpha_1 \alpha_2^i \alpha_3)$.
+\end{proof}
+
+\begin{consequent}
+Если $\forall n \in \mathbb N \ \exists \alpha \colon |\alpha| \geqslant n$,
+причём $\forall \alpha_1, \alpha_2, \alpha_3 \colon \alpha = \alpha_1 \alpha_2 \alpha_3 \lAnd \alpha_2 \neq \lambda \lAnd |\alpha_1 \alpha_2| \leqslant n$
+выполняется $\alpha \in L \lAnd \exists i \colon \alpha_1 \alpha_2^i \alpha_3 \notin L$,
+то $L$ не распознаётся конечным автоматом.
+\end{consequent}
+
+Можно доказать утверждение~\ref{st:ak_bk_is_not_recognized_by_DFA}, используя полученное следствие.
+\begin{statement}
+Язык~$L = \{ a^n b^n \mid n \geqslant 0 \}$ не распознаётся конечным автоматом.
+\end{statement}
+\begin{proof}
+Пусть $a^n b^n = \alpha_1 \alpha_2 \alpha_3$.
+\begin{itemize}
+	\item Если $\alpha_2$ содержит только буквы~$a$ или только буквы~$b$, то очевидно, что $\alpha_1 \alpha_2^2 \alpha_3 \notin L$.
+	\item Если $\alpha_2$ содержит и $a$, и $b$, то $\alpha_1 \alpha_2^2 \alpha_3 \notin L$, т.\,к. буквы $a$ и $b$ не могут чередоваться в слове.
+\end{itemize}
+\end{proof}
+
+\begin{statement}
+Если непустой язык распознаётся автоматом с $n$~состояниями, то он содержит слово длины не больше~$n$.
+\end{statement}
+\begin{proof}
+Если автомат распознаёт слово, то в соответствующем графе есть путь из начального состояния в допускающее, а значит, есть и простой путь.
+В графе $n$~вершин, тогда длина простого пути не больше~$n$, а ему соответствует слово длины не больше~$n$.
+\end{proof}

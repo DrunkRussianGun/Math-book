@@ -1,0 +1,23 @@
+\section{Формулы}
+\index{Формула} \textbf{Формулой над множеством~$F$ булевых функций} называются:
+\begin{enumerate}
+	\item $f(x_1, \ldots, x_n) \in F$;
+	\item $\Phi(A_1, \ldots, A_n)$, где $\Phi(x_1, \ldots, x_n)$~--- формула, $A_1, \ldots, A_n$~--- переменные или функции из~$F$, называемые \textbf{подформулами}.
+\end{enumerate}
+
+\begin{statement}
+Каждой формуле~$\Phi$ над множеством~$F$ булевых функций соответствует булева функция.
+\end{statement}
+\begin{proof}
+Возможны два случая:
+\begin{enumerate}
+	\item Если $\Phi = f(x_1, \ldots, x_n) \in F$, то $\Phi \to f(x_1, \ldots, x_n)$.
+	\item Если $\Phi = f(A_1, \ldots, A_n)$, где $A_1 \to f_1$, $A_2 \to f_2$, \ldots, $A_n \to f_n$, $f_1, \ldots, f_n \in F$, то $\Phi \to f(f_1, \ldots, f_n)$.
+\end{enumerate}
+\end{proof}
+
+Две формулы называются \textbf{эквивалентными}, если им соответствуют равные функции.
+
+\begin{statement}
+Если формула~$\Phi'$ получается из формулы~$\Phi$ заменой подформулы~$A$ на эквивалентную ей $A'$, то $\Phi'$ эквивалентна $\Phi$.
+\end{statement}
