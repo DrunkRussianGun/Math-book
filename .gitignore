@@ -14,3 +14,6 @@
 # Ignore gnuplot files
 *.gnuplot
 *.table
+
+# Ignore my notes
+*.txt

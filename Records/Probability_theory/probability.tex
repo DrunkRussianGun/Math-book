@@ -1,0 +1,78 @@
+\section{Вероятность}
+\index{Вероятность} Существует несколько определений вероятности:
+\begin{enumerate}
+	\item \textbf{Классическое}
+	
+	Рассмотрим испытание с конечным числом~$n$ равновероятных элементарных исходов.
+	\textbf{Вероятностью события~$A$} называется число~$\frac{n_A}n$, где $n_A$~--- число элементарных исходов, при которых происходит событие~$A$, и обозначается~$P(A)$.
+	
+	\item \textbf{Геометрическое}
+	
+	Рассмотрим испытание с бесконечным числом равновероятных элементарных исходов, пространство которых имеет меру~$\mu(\Omega)$.
+	Пусть событие~$A$ происходит, когда случайная точка попадает в подпространство~$B$.
+	\textbf{Вероятностью события~$A$} называется число~$\frac{\mu(B)}{\mu(\Omega)}$ и обозначается~$P(A)$.
+	
+	\item \textbf{Статистическое}
+	
+	Рассмотрим серию из $m$ независимых подобных испытаний.
+	\textbf{Вероятностью события~$A$} называется число~$\lim\limits_{m \to \infty} \frac{m_A}m$, где $m_A$~--- число испытаний, в результате которых произошло событие~$A$, и обозначается~$P(A)$.
+	
+	Число~$\frac{m_A}m$ называется \textbf{частотой события~$A$}.
+	
+	\item \textbf{Аксиоматическое}
+	
+	Пусть $\Omega$~--- пространство элементарных исходов испытания, $S$~--- соответствующая алгебра событий.
+	\textbf{Вероятностью} называется функция~$P(A)$, заданная на~$S$ и удовлетворяющая требованиям:
+	\begin{itemize}
+		\item $\forall A \in S \ P(A) \geqslant 0$;
+		\item $P(A + B) = P(A) + P(B)$, где $A$ и $B$~--- несовместные события;
+		\item $P(\Omega) = 1$.
+	\end{itemize}
+	
+	\index{Модель!вероятностная} Тройка $(\Omega, S, P)$ называется \textbf{вероятностной моделью испытания}.
+\end{enumerate}
+
+Свойства вероятности (доказательства даны для классического определения):
+\begin{enumerate}
+	\item $\forall A \in S \ 0 \leqslant P(A) \leqslant 1$
+	\begin{proof}
+	$0 \leqslant n_A \leqslant n \Rightarrow
+	\frac0n \leqslant \frac{n_A}n \leqslant \frac{n}n \Rightarrow
+	0 \leqslant P(A) \leqslant 1$.
+	\end{proof}
+	
+	\item $P(\Omega) = 1$
+	\begin{proof}
+	$n_A = n \Rightarrow P(\Omega) = \frac{n}n = 1$.
+	\end{proof}
+	
+	\item $P(\varnothing) = 0$
+	\begin{proof}
+	$n_A = 0 \Rightarrow P(\Omega) = \frac0n = 0$.
+	\end{proof}
+	
+	\item $P(\overline A) = 1 - P(A)$
+	\begin{proof}
+	$P(\overline A) = \frac{n - n_A}n = 1 - \frac{n_A}n = 1 - P(A)$.
+	\end{proof}
+\end{enumerate}
+
+\index{Теорема!сложения вероятностей}
+\begin{theorem}[сложения вероятностей]
+$P(A + B) = P(A) + P(B) - P(AB)$, где $A$ и $B$~--- события.
+\end{theorem}
+\begin{proof}[для классического определения вероятности]
+Заметим, что $n_{A + B} = n_A + n_B - n_{AB}$, тогда
+\begin{equation*}
+\frac{n_{A + B}}n = \frac{n_A}n + \frac{n_B}n - \frac{n_{AB}}n \Rightarrow
+P(A + B) = P(A) + P(B) - P(AB)
+\end{equation*}
+\end{proof}
+
+\begin{consequent}
+$P(A + B) = P(A) + P(B)$, где $A$ и $B$~--- несовместные события.
+\end{consequent}
+
+\begin{theorem}[обобщённая т. сложения вероятностей]
+$P(A_1 + A_2 + \ldots + A_k) = 1 - P(A_1 \cdot A_2 \cdot \ldots \cdot A_k)$, где $A_1, A_2, \ldots, A_k$~--- события.
+\end{theorem}
