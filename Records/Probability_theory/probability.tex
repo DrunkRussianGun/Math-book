@@ -59,7 +59,10 @@
 
 \index{Теорема!сложения вероятностей}
 \begin{theorem}[сложения вероятностей]
-$P(A + B) = P(A) + P(B) - P(AB)$, где $A$ и $B$~--- события.
+Пусть $A$ и $B$~--- события, тогда
+\begin{equation*}
+P(A + B) = P(A) + P(B) - P(AB)
+\end{equation*}
 \end{theorem}
 \begin{proof}[для классического определения вероятности]
 Заметим, что $n_{A + B} = n_A + n_B - n_{AB}$, тогда
@@ -74,7 +77,10 @@ $P(A + B) = P(A) + P(B)$, где $A$ и $B$~--- несовместные соб�
 \end{consequent}
 
 \begin{theorem}[обобщённая т. сложения вероятностей]
-$P(A_1 + A_2 + \ldots + A_k) = 1 - P(A_1 \cdot A_2 \cdot \ldots \cdot A_k)$, где $A_1, A_2, \ldots, A_k$~--- события.
+Пусть $A_1, A_2, \ldots, A_k$~--- события, тогда
+\begin{equation*}
+P(A_1 + A_2 + \ldots + A_k) = 1 - P(A_1 \cdot A_2 \cdot \ldots \cdot A_k)
+\end{equation*}
 \end{theorem}
 
 \subsection{Условная вероятность}
@@ -84,7 +90,10 @@ $P(A_1 + A_2 + \ldots + A_k) = 1 - P(A_1 \cdot A_2 \cdot \ldots \cdot A_k)$, г�
 
 \index{Теорема!умножения вероятностей}
 \begin{theorem}[умножения вероятностей]
-$P(AB) = P(A \vert B) \cdot P(B) = P(B \vert A) \cdot P(A)$, где $A$ и $B$~--- события.
+Пусть $A$ и $B$~--- события, тогда
+\begin{equation*}
+P(AB) = P(A \vert B) \cdot P(B) = P(B \vert A) \cdot P(A)
+\end{equation*}
 \end{theorem}%
 Доказательство для классического определения вероятности очевидно.
 
@@ -93,5 +102,95 @@ $P(AB) = P(A) \cdot P(B)$, где $A$ и $B$~--- независимые собы
 \end{consequent}
 
 \begin{theorem}[обобщённая т. умножения вероятностей]
-$P(A_1 \cdot A_2 \cdot \ldots \cdot A_k) = P(A_1) \cdot P(A_2 \vert A_1) \cdot P(A_3 \vert A_1 \cdot A_2) \cdot \ldots \cdot P(A_k \vert A_1 \cdot A_2 \cdot \ldots \cdot A_{k-1})$, где $A_1, A_2, \ldots, A_k$~--- события.
+Пусть $A_1, A_2, \ldots, A_k$~--- события, тогда
+\begin{equation*}
+P(A_1 \cdot A_2 \cdot \ldots \cdot A_k) = P(A_1) \cdot P(A_2 \vert A_1) \cdot P(A_3 \vert A_1 \cdot A_2) \cdot \ldots \cdot P(A_k \vert A_1 \cdot A_2 \cdot \ldots \cdot A_{k-1})
+\end{equation*}
 \end{theorem}
+
+\subsection{Полная группа гипотез}
+\index{Гипотеза} \textbf{Гипотезой} называется предположение о результате испытания.
+
+Гипотезы $H_1, \ldots, H_n$ образуют \textbf{полную группу гипотез}, если они охватывают все возможные результаты испытания и в результате испытания подтверждается только одна из гипотез.
+Очевидно, что $\sum\limits_{i=1}^n P(H_i) = 1$.
+
+\index{Формула!полной вероятности}
+\begin{theorem}[формула полной вероятности]
+Пусть $A$~--- событие, $H_1, \ldots, H_n$~--- полная группа гипотез, тогда
+\begin{equation*}
+P(A) = \sum_{i=1}^n P(A \vert H_i) \cdot P(H_i)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Событие $A$ может произойти только вместе с одной из гипотез, т.\,к. они образуют полную группу, поэтому
+\begin{equation*}
+A = \sum_{i=1}^n A H_i \Rightarrow
+P(A) =
+P\left(\sum_{i=1}^n A H_i\right) \;
+\left| A H_1, \ldots, A H_n \text{ несовместимы} \right| =
+\sum_{i=1}^n P(A H_i) =
+\sum_{i=1}^n (P(A \vert H_i) \cdot P(H_i))
+\end{equation*}
+\end{proof}
+
+\index{Формула!Байеса}
+\begin{theorem}[формула Байеса]
+Пусть $A$ и $B$~--- события, тогда
+\begin{equation*}
+P(A \vert B) = \frac{P(B \vert A) \cdot P(A)}{P(B)}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+$P(AB) = P(A \vert B) \cdot P(B) = P(B \vert A) \cdot P(A) \Rightarrow
+P(A \vert B) = \frac{P(B \vert A) \cdot P(A)}{P(B)}$
+\end{proof}
+
+\subsection{Биномиальная вероятность}
+\index{Схема!Бернулли} \textbf{Схемой Бернулли для $n$ испытаний} называется серия из $n$ независимых подобных испытаний, в каждом из которых с постоянной вероятностью $p$ может произойти событие~$A = \{ \text{<<успех>>} \}$.
+
+\index{Вероятность!биномиальная} \textbf{Биномиальной} называется вероятность $P(A_{n,k}) = P_n(k)$, где $A_{n,k} = \{ \text{при } n \text{ испытаниях \allowbreak событие } A \allowbreak \text{ произойдёт } \allowbreak k \text{ раз} \}$.
+
+Пусть $q = 1 - p$.
+Свойства биномиальной вероятности:
+\begin{enumerate}
+	\item $P_n(k) = C_n^k \cdot p^k \cdot q^{n-k}$
+	\begin{proof}
+	$A_{n,k} = \sum \underbrace{A \cdot \ldots \cdot A}_k \cdot \underbrace{\overline A \cdot \ldots \cdot \overline A}_{n-k}$, где сумма берётся по всем перестановкам в произведении.
+	Тогда
+	\begin{equation*}
+	P_n(k) =
+	P\left(\sum \underbrace{A \cdot \ldots \cdot A}_k \cdot \underbrace{\overline A \cdot \ldots \cdot \overline A}_{n-k}\right) =
+	\sum P(\underbrace{A \cdot \ldots \cdot A}_k \cdot \underbrace{\overline A \cdot \ldots \cdot \overline A}_{n-k}) =
+	\sum (P^k(A) \cdot P^{n-k}(\overline A)) =
+	C_n^k \cdot p^k \cdot q^{n-k} 
+	\end{equation*}
+	\end{proof}
+	
+	\item $\sum\limits_{k=0}^n P_n(k) = 1$
+	\begin{proof}
+	$\sum\limits_{k=0}^n P_n(k) =
+	\sum\limits_{k=0}^n C_n^k \cdot p^k \cdot q^{n-k} =
+	(p + q)^n =
+	1^n =
+	1$.
+	\end{proof}
+	
+	\item Пусть $B = \{ \text{при } n \text{ испытаниях \allowbreak событие } A \allowbreak \text{ произойдёт \allowbreak от } k_1 \allowbreak \text{ до } k_2 \text{ раз} \}$, тогда $P(B) = \sum\limits_{k=k_1}^{k_2} P_n(k)$.
+	\begin{proof}
+	$B = \sum\limits_{k=k_1}^{k_2} A_{n,k} \Rightarrow
+	P(B) = \sum\limits_{k=k_1}^{k_2} P(A_{n,k}) = \sum\limits_{k=k_1}^{k_2} P_n(k)$.
+	\end{proof}
+	
+	\item Пусть $B = \{ \text{при } n \text{ испытаниях \allowbreak событие } A \allowbreak \text{ произойдёт хотя бы один раз} \}$, тогда $P(B) = 1 - q^n$.
+	\begin{proof}
+	$P(B) = 
+	\sum\limits_{k=1}^n P_n(k) =
+	\sum\limits_{k=0}^n P_n(k) - P_n(0) =
+	1 - C_n^0 \cdot p^0 \cdot q^n =
+	1 - q^n$.
+	\end{proof}
+	
+	\item Среднее число <<успехов>> при $n$ испытаниях равно $np$.
+	
+	\item Наивероятнейшее число~$k_0$ <<успехов>> (имеющее наибольшую вероятность~$P_n(k_0)$) при $n$ испытаниях удовлетворяет неравенству $np - q \opbr\leqslant k_0 \opbr\leqslant np + p$.
+\end{enumerate}
