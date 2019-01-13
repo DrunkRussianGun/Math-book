@@ -1,11 +1,11 @@
 \section{Случайные величины}
 \index{Величина!случайная} \textbf{Случайной величиной} называется числовая переменная, которая принимает свои значения случайным образом.
 
-Случайная величина называется \textbf{дискретной}, если она принимает конечное или счётное количество значений.
+Случайная величина называется \textbf{дискретной}, если она принимает конечное или счётно бесконечное количество значений.
 
-Случайная величина называется \textbf{непрерывной}, если она принимает несчётное количество значений.
+Случайная величина называется \textbf{непрерывной}, если она принимает несчётно бесконечное количество значений.
 
-\textbf{Законом распределения случайной величины~$X$} называется зависимость между её возможными значениями и соответствующими им вероятностями, обозначаемыми $P(X = x_i)$, где $x_i$~--- значение случайной величины.
+\index{Распределение} \textbf{Законом распределения случайной величины~$X$} называется зависимость между её возможными значениями и соответствующими им вероятностями, обозначаемыми $P(X = x_i)$, где $x_i$~--- значение случайной величины.
 \begin{enumerate}
 	\item Случайная величина имеет \textbf{равномерное} распределение, если она принимает свои значения с одинаковой вероятностью.
 	
@@ -21,6 +21,241 @@
 
 \subsection{Функция распределения}
 \index{Функция!распределения} \textbf{Функцией распределения случайной величины~$X$} называется функция $F(x) = P(X < x)$.
+Свойства функции распределения:
+\begin{enumerate}
+	\item $D(F) = \mathbb R$
+	
+	\item $E(F) = [0; 1]$
+	
+	\item $P(x_1 \leqslant X < x_2) = F(x_2) - F(x_1)$
+	\begin{proof}
+	Пусть событие $A = \{ X < x_1 \}, B = \{ x_1 \leqslant X < x_2 \}, C = \{ X < x_2 \}$, тогда
+	\begin{equation*}
+	C = A + B \Rightarrow
+	P(C) = P(A + B) \Rightarrow
+	P(C) = P(A) + P(B) \Rightarrow
+	\end{equation*}
+	\begin{equation*}
+	\Rightarrow P(x_1 \leqslant X < x_2) =
+	P(B) =
+	P(C) - P(A) =
+	P(X < x_2) - P(X < x_1) =
+	F(x_2) - F(x_1)
+	\end{equation*}
+	\end{proof}
+	
+	\item $F(x)$~--- неубывающая функция.
+	\begin{proof}
+	Пусть $x_1 < x_2$, тогда
+	$P(x_1 \leqslant X < x_2) \geqslant 0 \Rightarrow
+	F(x_2) - F(x_1) \geqslant 0 \Rightarrow
+	F(x_1) \leqslant F(x_2)$.
+	\end{proof}
+	
+	\item $\lim\limits_{x \to -\infty} F(x) = 0$
+	\begin{proof}
+	$\lim\limits_{x \to -\infty} F(x) =
+	\lim\limits_{x \to -\infty} P(X < x) =
+	P(X < -\infty) =
+	P(\varnothing) =
+	0$, где $\varnothing$~--- невозможное событие.
+	\end{proof}
+	
+	\item $\lim\limits_{x \to +\infty} F(x) = 1$
+	\begin{proof}
+	$\lim\limits_{x \to +\infty} F(x) =
+	\lim\limits_{x \to +\infty} P(X < x) =
+	P(X < +\infty) =
+	P(\Omega) =
+	1$, где $\Omega$~--- достоверное событие.
+	\end{proof}
+\end{enumerate}
 
 \subsection{Функция плотности вероятности}
 \index{Функция!плотности вероятности} \textbf{Функцией плотности вероятности} непрерывной \textbf{случайной величины~$X$}, имеющей дифференцируемую функцию распределения~$F(x)$, называется функция $f(x) = F'(x)$.
+
+Свойства функции плотности вероятности:
+\begin{enumerate}
+	\item $\forall x \in \mathbb R \ f(x) \geqslant 0$
+	\begin{proof}
+	$f(x) = F'(x) \geqslant 0$, т.\,к. $F(x)$ не убывает.
+	\end{proof}
+	
+	\item $P(x_1 \leqslant X < x_2) = \int\limits_{x_1}^{x_2} f(x)\,dx$
+	\begin{proof}
+	$P(x_1 \leqslant X < x_2) =
+	F(x_2) - F(x_1) =
+	\int\limits_{x_1}^{x_2} F'(x)\,dx =
+	\int\limits_{x_1}^{x_2} f(x)\,dx$.
+	\end{proof}
+	
+	\item $\int\limits_{-\infty}^{+\infty} f(x)\,dx = 1$
+	\begin{proof}
+	$\int\limits_{-\infty}^{+\infty} f(x)\,dx =
+	\lim\limits_{a \to +\infty} \int\limits_{-a}^a F'(x)\,dx =
+	\lim\limits_{a \to +\infty} (F(a) - F(-a)) =
+	1 - 0 =
+	1$.
+	\end{proof}
+\end{enumerate}
+
+\subsection{Числовые характеристики}
+Далее для дискретной случайной величины
+\begin{itemize}
+	\item $x_i$~--- $i$"~е возможное значение;
+	\item $p_i$~--- соответствующая $x_i$ вероятность;
+	\item $n$~--- количество возможных значений (может быть счётно бесконечным, тогда $n = \infty$).
+\end{itemize}
+
+\index{Математическое ожидание} \textbf{Математическим ожиданием случайной величины~$X$} называется среднее её возможных значений и обозначается $M[X]$.
+\begin{itemize}
+	\item $\displaystyle M[X] = \sum_{i=1}^n p_i x_i$ для дискретной случайной величины.
+	\item $\displaystyle M[X] = \int_{-\infty}^{+\infty} x f(x)\,dx$ для непрерывной случайной величины.
+\end{itemize}
+
+Пусть $C$~--- произвольная константа, $X, Y$~--- случайные величины.
+Свойства математического ожидания:
+\begin{enumerate}
+	\item $M[C] = C$
+	
+	\item $M[CX] = C \cdot M[X]$
+	\begin{proof}[для дискретной случайной величины]
+	\begin{equation*}
+	M[CX] =
+	\sum_{i=1}^n p_i (C x_i) =
+	C \sum_{i=1}^n p_i x_i =
+	C \cdot M[X]
+	\end{equation*}
+	\end{proof}
+	
+	\item $M[X + C] = M[X] + C$
+	\begin{proof}[для дискретной случайной величины]
+	\begin{equation*}
+	M[X + C] =
+	\sum_{i=1}^n p_i (x_i + C) =
+	\sum_{i=1}^n p_i x_i + C \sum_{i=1}^n p_i =
+	M[X] + C
+	\end{equation*}
+	\end{proof}
+	
+	\item $M[X + Y] = M[X] + M[Y]$
+	\begin{proof}[для дискретной случайной величины]
+	\begin{equation*}
+	M[X + Y] =
+	\sum_{i=1}^n \sum_{j=1}^m p_{ij} (x_i + y_j) =
+	\sum_{i=1}^n \sum_{j=1}^m p_{ij} x_i + \sum_{i=1}^n \sum_{j=1}^m p_{ij} y_j =
+	\end{equation*}
+	\begin{equation*}
+	= \sum_{i=1}^n x_i \sum_{j=1}^m p_{ij} + \sum_{j=1}^m y_j \sum_{i=1}^n p_{ij} =
+	\sum_{i=1}^n p_i x_i + \sum_{j=1}^m p_j y_j =
+	M[X] + M[Y]
+	\end{equation*}
+	\end{proof}
+	
+	\item $M[XY] = M[X] \cdot M[Y]$, где $X, Y$~--- независимые случайные величины.
+\end{enumerate}
+
+\index{Дисперсия} \textbf{Дисперсией случайной величины~$X$} называется среднее квадратов отклонений значений случайной величины от её математического ожидания и обозначается $D[X]$.
+\begin{itemize}
+	\item $\displaystyle D[X] = \sum_{i=1}^n p_i (x_i - M[X])^2$ для дискретной случайной величины.
+	\item $\displaystyle D[X] = \int_{-\infty}^{+\infty} (x - M[X])^2 f(x)\,dx$ для непрерывной случайной величины.
+	\item $\displaystyle D[X] = M\left[(X - M[X])^2\right]$.
+\end{itemize}
+
+Пусть $C$~--- произвольная константа, $X$~--- случайная величина.
+Свойства дисперсии:
+\begin{enumerate}
+	\item $D[C] = 0$
+	
+	\item $D[X + C] = D[X]$
+	\begin{proof}
+	\begin{equation*}
+	D[X + C] =
+	M\left[(X + C - M[X + C])^2\right] =
+	M\left[(X - M[X] + C - C)^2\right] =
+	M\left[(X - M[X])^2\right] =
+	D[X]
+	\end{equation*}
+	\end{proof}
+	
+	\item $D[CX] = C^2 \cdot D[X]$
+	\begin{proof}
+	\begin{equation*}
+	D[CX] =
+	M\left[(CX - M[CX])^2\right] =
+	M\left[(C(X - M[X]))^2\right] =
+	M\left[C^2 \cdot (X - M[X])^2\right] =
+	C^2 \cdot D[X]
+	\end{equation*}
+	\end{proof}
+	
+	\item $D[X] = M[X^2] - (M[X])^2$
+	\begin{proof}
+	\begin{equation*}
+	D[X] =
+	M\left[(X - M[X])^2\right] =
+	M\left[X^2 - 2X \cdot M[X] + (M[X])^2\right] =
+	\end{equation*}
+	\begin{equation*}
+	= M\left[X^2\right] - 2M[X] \cdot M[X] + (M[X])^2 =
+	M\left[X^2\right] - (M[X])^2
+	\end{equation*}
+	\end{proof}
+	
+	\item $D[X + Y] = D[X] + D[Y]$, где $X, Y$~--- независимые случайные величины.
+\end{enumerate}
+
+\index{Отклонение!среднее квадратичное} \textbf{Средним квадратичным отклонением случайной величины~$X$} называется показатель рассеивания значений случайной величины относительно её математического ожидания и обозначается $\sigma[X]$.
+\begin{itemize}
+	\item $\displaystyle \sigma[X] = \sqrt{D[X]}$.
+\end{itemize}
+
+\subsection{Показательное распределение}
+\index{Распределение!показательное} \index{Распределение!экспоненциальное} Случайная величина~$X$ имеет \textbf{показательное} (\textbf{экспоненциальное}) распределение, если её функция плотности вероятности имеет вид~$f(x) =
+\begin{cases}
+0, & x < 0 \\
+\lambda e^{-\lambda x}, & x \geqslant 0
+\end{cases}$,
+где $\lambda > 0$.
+
+Свойства показательного распределения:
+\begin{enumerate}
+	\item $\displaystyle F(x) =
+	\begin{cases}
+	0, & x < 0 \\
+	1 - e^{-\lambda x}, & x \geqslant 0
+	\end{cases}$
+	\begin{proof}
+	Для $x \geqslant 0$
+	$\displaystyle F(x) =
+	\int_{-\infty}^x f(x)\,dx =
+	\int_0^x \lambda e^{-\lambda x}\,dx =
+	\left. -e^{-\lambda x} \right|_0^x =
+	1 - e^{-\lambda x}$.
+	\end{proof}
+	
+	\item $\displaystyle P(a \leqslant X < b) = e^{-\lambda a} - e^{-\lambda b}$
+	
+	\item $\displaystyle M[X] = \frac1\lambda$
+	\begin{proof}
+	$\displaystyle M[X] =
+	\int_0^{+\infty} x\,e^{-\lambda x}\,dx =
+	\frac1\lambda$.
+	\end{proof}
+	
+	\item $\displaystyle D[X] = \frac1{\lambda^2}$
+	\begin{proof}
+	$\displaystyle D[X] =
+	M[X^2] - (M[X])^2 =
+	\int_0^{+\infty} \lambda x^2\,e^{-\lambda x}\,dx - \frac1{\lambda^2} =
+	\frac1{\lambda^2}$.
+	\end{proof}
+	
+	\item $\displaystyle \sigma[X] = \frac1\lambda$
+\end{enumerate}
+
+\subsection{Надёжность}
+Пусть $T$~--- время безотказной работы некоторого устройства, тогда вероятность отказа в момент времени $t$ равна $P(T \leqslant t) = F(t) = 1 - e^{-\lambda t}$.
+Отсюда вероятность отсутствия отказов за время $t$ равна $P(T > t) = 1 - P(T \leqslant t) = e^{-\lambda t}$.
+
+\index{Функция!надёжности} Функция $R(t) = P(T > t) = e^{-\lambda t}$ называется \textbf{функцией надёжности}.
