@@ -1,5 +1,5 @@
 \section{Случайные величины}
-\index{Величина!случайная} \textbf{Случайной величиной} называется числовая переменная, которая принимает свои значения случайным образом.
+\index{Величины!случайные} \textbf{Случайной величиной} называется числовая переменная, которая принимает свои значения случайным образом.
 
 Случайная величина называется \textbf{дискретной}, если она принимает конечное или счётно бесконечное количество значений.
 
@@ -210,8 +210,56 @@
 	\item $\displaystyle \sigma[X] = \sqrt{D[X]}$.
 \end{itemize}
 
+\subsection{Равномерное распределение}
+\index{Распределение!равномерное} Случайная величина~$X$, непрерывная на~$[a; b]$, имеет \textbf{равномерное} распределение, если её функция плотности вероятности имеет вид $f(x) =
+\begin{cases}
+0, & x < a \\
+\frac1{b - a}, & a \leqslant x \leqslant b \\
+0, & x > b
+\end{cases}$.
+
+Свойства равномерного распределения:
+\begin{enumerate}
+	\item $\displaystyle M[X] = \frac{a + b}2$
+	\begin{proof}
+	\begin{equation*}
+	M[X] =
+	\int_a^b \frac{x}{b - a}\,dx =
+	\frac1{b - a} \cdot \frac{b^2 - a^2}2 =
+	\frac{a + b}2
+	\end{equation*}
+	\end{proof}
+	
+	\item $\displaystyle D[X] = \frac{(b - a)^2}{12}$
+	\begin{proof}
+	\begin{equation*}
+	D[X] =
+	\int_a^b \frac{x^2}{b - a}\,dx - \frac{(a + b)^2}4 =
+	\frac{a^2 + ab + b^2}3 - \frac{(a + b)^2}4 =
+	\frac{4a^2 + 4ab + 4b^2 - 3a^2 - 6ab - 3b^2}{12} =
+	\frac{(b - a)^2}{12}
+	\end{equation*}
+	\end{proof}
+	
+	\item $\displaystyle F(x) =
+	\begin{cases}
+	0, & x < a \\
+	\frac{x - a}{b - a}, & a \leqslant x \leqslant b \\
+	1, & x > b
+	\end{cases}$
+	\begin{proof}
+	Для $a \leqslant x \leqslant b$
+	\begin{equation*}
+	F(x) =
+	\int_a^x \frac1{b - a}\,dt =
+	\left. \frac{t}{b - a} \right|_a^x =
+	\frac{x - a}{b - a}
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
 \subsection{Показательное распределение}
-\index{Распределение!показательное} \index{Распределение!экспоненциальное} Случайная величина~$X$ имеет \textbf{показательное} (\textbf{экспоненциальное}) распределение, если её функция плотности вероятности имеет вид~$f(x) =
+\index{Распределение!показательное} \index{Распределение!экспоненциальное} Случайная величина~$X$ имеет \textbf{показательное} (\textbf{экспоненциальное}) распределение, если её функция плотности вероятности имеет вид $f(x) =
 \begin{cases}
 0, & x < 0 \\
 \lambda e^{-\lambda x}, & x \geqslant 0
@@ -226,6 +274,7 @@
 	1 - e^{-\lambda x}, & x \geqslant 0
 	\end{cases}$
 	\begin{proof}
+	Для $x < 0$ очевидно.
 	Для $x \geqslant 0$
 	$\displaystyle F(x) =
 	\int_{-\infty}^x f(x)\,dx =
@@ -254,8 +303,185 @@
 	\item $\displaystyle \sigma[X] = \frac1\lambda$
 \end{enumerate}
 
-\subsection{Надёжность}
 Пусть $T$~--- время безотказной работы некоторого устройства, тогда вероятность отказа в момент времени $t$ равна $P(T \leqslant t) = F(t) = 1 - e^{-\lambda t}$.
 Отсюда вероятность отсутствия отказов за время $t$ равна $P(T > t) = 1 - P(T \leqslant t) = e^{-\lambda t}$.
 
 \index{Функция!надёжности} Функция $R(t) = P(T > t) = e^{-\lambda t}$ называется \textbf{функцией надёжности}.
+
+\subsection{Нормальное распределение}
+\index{Распределение!нормальное} \index{Распределение!гауссовское} Случайная величина~$X$ имеет \textbf{нормальное} (\textbf{гауссовское}) распределение, если её функция плотности вероятности имеет вид
+\begin{equation*}
+f(x) = \frac1{\sigma \sqrt{2 \pi}} \cdot e^{-\frac{(x - a)^2}{2 \sigma^2}}
+\end{equation*}
+
+Свойства нормального распределения:
+\begin{enumerate}
+	\item $M[X] = a$
+	\begin{proof}
+	\begin{equation*}
+	M[X] =
+	\frac1{\sigma \sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} x e^{-\frac{(x - a)^2}{2 \sigma^2}}\,dx \;
+	\left| \text{Пусть } \frac{x - a}\sigma = t, \text{ тогда } x = \sigma t + a, \ dx = \sigma\,dt \right| =
+	\frac1{\sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} (\sigma t + a) e^{-\frac{t^2}2}\,dt =
+	\end{equation*}
+	\begin{equation*}
+	= \frac{a}{\sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} e^{-\frac{t^2}2}\,dt - \frac\sigma{\sqrt{2 \pi}} \cdot \lim_{b \to +\infty} \left. e^{-\frac{t^2}2} \right|_{-b}^b =
+	\left| \lim_{b \to +\infty} \left. e^{-\frac{t^2}2} \right|_{-b}^b = 0, \text{ т.\,к. функция } e^{-\frac{t^2}2} \text{ чётная} \right|
+	\end{equation*}
+	\begin{equation*}
+	= \frac{a}{\sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} e^{-\frac{t^2}2}\,dt =
+	a \cdot (\Phi(+\infty) - \Phi(-\infty)) =
+	a
+	\end{equation*}
+	\end{proof}
+	
+	\item $D[X] = \sigma^2$
+	\begin{proof}
+	\begin{equation*}
+	D[X] =
+	\frac1{\sigma \sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} (x - a)^2 e^{-\frac{(x - a)^2}{2 \sigma^2}}\,dx \;
+	\left| \text{Пусть } \frac{x - a}\sigma = t, \text{ тогда } x = \sigma t + a, \ dx = \sigma\,dt \right| =
+	\frac{\sigma^2}{\sqrt{2 \pi}} \cdot \int_{-\infty}^{+\infty} t \cdot t e^{-\frac{t^2}2}\,dt =
+	\end{equation*}
+	\begin{equation*}
+	= \frac{\sigma^2}{\sqrt{2 \pi}} \cdot \left(-\lim_{b \to +\infty} \left. t e^{-\frac{t^2}2} \right|_{-b}^b + \int_{-\infty}^{+\infty} e^{-\frac{t^2}2}\,dt \right) =
+	\sigma^2 \cdot (\Phi(+\infty) - \Phi(-\infty)) - \frac{\sigma^2}{\sqrt{2 \pi}} \cdot \lim_{b \to +\infty} 2b\,e^{-\frac{b^2}2} =
+	\end{equation*}
+	\begin{equation*}
+	= \sigma^2 - \frac{\sigma^2}{\sqrt{2 \pi}} \cdot \lim_{b \to +\infty} 2b\,e^{-\frac{b^2}2} =
+	\sigma^2 - \frac{\sigma^2}{\sqrt{2 \pi}} \cdot \lim_{b \to +\infty} \frac{2b}{e^{\frac{b^2}2}} =
+	\sigma^2
+	\end{equation*}
+	\end{proof}
+	
+	\item $\sigma[X] = \sigma$
+	
+	\item $\displaystyle P(\alpha \leqslant X < \beta) = \Phi\left(\frac{\beta - a}\sigma\right) - \Phi\left(\frac{\alpha - a}\sigma\right)$
+	\begin{proof}
+	\begin{equation*}
+	P(\alpha \leqslant X < \beta) =
+	\frac1{\sigma \sqrt{2 \pi}} \cdot \int_\alpha^\beta e^{-\frac{(x - a)^2}{2 \sigma^2}}\,dx \;
+	\left| \text{Пусть } \frac{x - a}\sigma = t, \text{ тогда } x = \sigma t + a, \ dx = \sigma\,dt \right| =
+	\frac1{\sqrt{2 \pi}} \cdot \int_{\frac{\alpha - a}\sigma}^{\frac{\beta - a}\sigma} e^{-\frac{t^2}2}\,dt =
+	\end{equation*}
+	\begin{equation*}
+	= \frac1{\sqrt{2 \pi}} \cdot \int_0^{\frac{\beta - a}\sigma} e^{-\frac{t^2}2}\,dt - \frac1{\sqrt{2 \pi}} \cdot \int_0^{\frac{\alpha - a}\sigma} e^{-\frac{t^2}2}\,dt =
+	\Phi\left(\frac{\beta - a}\sigma\right) - \Phi\left(\frac{\alpha - a}\sigma\right)
+	\end{equation*}
+	\end{proof}
+	
+	\item $\displaystyle P(|X - a| < k) = 2 \Phi\left(\frac{k}\sigma\right)$
+	\begin{proof}
+	\begin{equation*}
+	P(|X - a| < k) =
+	P(-k < X - a < k) =
+	P(a - k < X < a + k) =
+	\end{equation*}
+	\begin{equation*}
+	= \Phi\left(\frac{a + k - a}\sigma\right) - \Phi\left(\frac{a - k - a}\sigma\right) =
+	\Phi\left(\frac{k}\sigma\right) - \Phi\left(-\frac{k}\sigma\right) =
+	2\Phi\left(\frac{k}\sigma\right)
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\subsection{Корреляция}
+\index{Корреляция} \textbf{Корреляцией} называется зависимость между случайными величинами, когда изменение значений одной из них приводит к изменению соответствующих значений другой.
+
+Корреляция называется \textbf{положительной}/\textbf{отрицательной}, если при увеличении значения одной случайной величины увеличиваются/уменьшаются усреднённые показатели другой. 
+
+\index{Величины!случайные!независимые} Случайные величины $X$ и $Y$ называются \textbf{независимыми}, если изменение значений одной из них не влияет на значения другой.
+При этом $P(X < x \lAnd Y < y) = P(X < x) \cdot P(Y < y)$.
+
+\index{Момент!корреляционный} \textbf{Корреляционным моментом случайных величин $X$ и $Y$} называется $K[X, Y] = M[(X - M[X]) (Y - M[Y])]$.
+
+Свойства корреляционного момента:
+\begin{enumerate}
+	\item $K[X, X] = D[X]$
+	
+	\item $K[X, Y] = M[XY] - M[X] \cdot M[Y]$
+	\begin{proof}
+	\begin{equation*}
+	K[X, Y] =
+	M[(X - M[X]) (Y - M[Y])] =
+	M[XY - M[X] \cdot Y - X \cdot M[Y] + M[X] \cdot M[Y]] =
+	\end{equation*}
+	\begin{equation*}
+	= M[XY] - M[X] \cdot M[Y] - M[Y] \cdot M[X] + M[X] \cdot M[Y] =
+	M[XY] - M[X] \cdot M[Y]
+	\end{equation*}
+	\end{proof}
+\end{enumerate}
+
+\index{Коэффициент!линейной корреляции} \textbf{Коэффициентом линейной корреляции случайных величин $X$ и $Y$} называется $\displaystyle R_{X,Y} = \frac{K[X, Y]}{\sigma[X] \sigma[Y]}$.
+
+Свойства коэффициента линейной корреляции:
+\begin{itemize}
+	\item $\displaystyle R_{X,Y} = \frac{M[XY] - M[X] \cdot M[Y]}{\sigma[X] \sigma[Y]}$;
+
+	\item $-1 \leqslant R_{X,Y} \leqslant 1$;
+	
+	\item $R_{X,Y} < 0$ для отрицательной корреляции $X$ и $Y$;
+	
+	\item $R_{X,Y} > 0$ для положительной корреляции $X$ и $Y$;
+	
+	\item $R_{X,Y} = 0$ для независимых $X$ и $Y$.
+\end{itemize}
+
+\subsection{Закон больших чисел}
+\textbf{Закон больших чисел}~--- это принцип, устанавливающий связь между случайностью и закономерностью.
+Согласно данному принципу, при большом числе испытаний случайное явление приобретает закономерные свойства.
+
+Пусть $X_1, \ldots, X_n$~--- независимые случайные величины, для которых $M[X_i] = m$, $D[X_i] = \sigma^2$.
+Рассмотрим их среднее арифметическое $\overline X = \frac1n \sum\limits_{i=1}^n X_i$.
+\begin{enumerate}
+	\item $M\left[\overline X\right] = m$
+	\begin{proof}
+	$M\left[\overline X\right] =
+	M\left[\frac1n \sum\limits_{i=1}^n X_i\right] =
+	\frac1n \sum\limits_{i=1}^n M[X_i] =
+	\frac1n \sum\limits_{i=1}^n m =
+	m$.
+	\end{proof}
+	
+	\item $D\left[\overline X\right] = \dfrac{\sigma^2}n$
+	\begin{proof}
+	$D\left[\overline X\right] =
+	D\left[\frac1n \sum\limits_{i=1}^n X_i\right] =
+	\frac1{n^2} D\left[\sum\limits_{i=1}^n X_i\right] \;
+	\left| X_1, \ldots, X_n \text{ независимы} \right| =
+	\frac1{n^2} \sum\limits_{i=1}^n D[X_i] =
+	\dfrac{\sigma^2}n$.
+	\end{proof}
+\end{enumerate}
+
+\index{Неравенство!Чебышёва}
+\begin{theorem}[неравенство Чебышёва]
+Пусть $k > 0$, $X$~--- случайная величина, $M[X] = m$, $D[X] = \sigma^2$, тогда $P(|X - m| \geqslant k) \leqslant \dfrac{\sigma^2}{k^2}$.
+\end{theorem}
+\begin{proof}[для дискретной случайной величины]
+\begin{equation*}
+\sigma^2 =
+\sum_{i=1}^n p_i (x_i - m)^2 \geqslant
+\sum_{|x_i - m| \geqslant k} p_i (x_i - m)^2 \geqslant
+k^2 \sum_{|x_i - m| \geqslant k} p_i =
+k^2 P(|X - m| \geqslant k) \Rightarrow
+P(|X - m| \geqslant k) \leqslant \frac{\sigma^2}{k^2}
+\end{equation*}
+\end{proof}
+
+\begin{consequent}
+Для среднего арифметического $\overline X$ независимых случайных величин $X_1, \ldots, X_n$ и $k > 0$ выполняется неравенство $P(|\overline X - m| \geqslant k) \leqslant \dfrac{\sigma^2}{n k^2}$.
+\end{consequent}
+
+\subsection{Центральная предельная теорема}
+\index{Теорема!Ляпунова} \index{Теорема!центральная предельная}
+\begin{theorem}[Ляпунова, центральная предельная теорема]
+Пусть $X_1, \ldots, X_n$~--- независимые случайные величины, для которых:
+\begin{itemize}
+	\item $M\left[X_i\right] = m_i$;
+	\item $D\left[X_i\right] = \sigma_i^2$;
+	\item $\displaystyle \lim_{n \to \infty} \frac{\sum\limits_{i=1}^n M\left[(X_i - m_i)^3\right]}{\left(\sum\limits_{i=1}^n \sigma_i^2\right)^{\frac32}} = 0$.
+\end{itemize}
+Тогда при увеличении~$n$ случайная величина $V = \sum\limits_{i=1}^n X_i$ стремится к нормальному распределению c $M[V] = \sum\limits_{i=1}^n m_i$ и $D[V] = \sum\limits_{i=1}^n \sigma_i^2$.
+\end{theorem}
